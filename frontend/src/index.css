@@ -180,19 +180,36 @@
   }
 }
 
-/* WebKit / Safari Rendering & GPU Layer Fixes */
+/* WebKit / Safari Specific Ultra-Fast Paint Rules */
 @supports (-webkit-touch-callout: none) {
   html, body {
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
+    text-rendering: optimizeLegibility;
   }
-  .glass, .glass-strong, .card-glow, section, nav, header {
+  /* Disable WebKit backdrop-filter pipeline lock on load */
+  .glass {
+    background: rgba(16, 24, 39, 0.94) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .glass-strong {
+    background: rgba(16, 24, 39, 0.97) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .card-glow, .btn-primary, .btn-ghost, section, nav, header {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
 }
+
 
 /* Accessibility & Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
