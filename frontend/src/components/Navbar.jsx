@@ -63,19 +63,17 @@ export const Navbar = () => {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+      <header
         className="fixed inset-x-0 top-0 z-[9990] flex justify-center px-4 pt-4"
         role="banner"
       >
         <nav
           data-testid="navbar"
           aria-label="Main Navigation"
-          className={`flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 ${
-            scrolled ? "glass-strong shadow-[0_10px_40px_-15px_rgba(0,0,0,0.7)]" : "bg-transparent"
+          className={`flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-200 sm:px-6 ${
+            scrolled ? "bg-[#0b1021]/95 border border-white/10 shadow-xl backdrop-blur-md" : "bg-transparent"
           }`}
+          style={{ transform: "translateZ(0)", WebkitTransform: "translateZ(0)" }}
         >
           <button
             data-testid="nav-logo"
@@ -83,8 +81,8 @@ export const Navbar = () => {
             aria-label="Kodeveill home"
             className="flex items-center gap-3 focus-visible:outline-none"
           >
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white shadow-[0_0_24px_-6px_rgba(79,70,229,0.85)]">
-              <img src={logo} alt="Kodeveill logo" className="h-8 w-8 object-contain" width="32" height="32" />
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white shadow-md">
+              <img src={logo} alt="Kodeveill logo" className="h-7 w-7 object-contain" width="28" height="28" />
             </span>
             <span className="font-display text-xl font-bold tracking-tight text-white sm:text-2xl">Kodeveill</span>
           </button>
@@ -102,11 +100,7 @@ export const Navbar = () => {
                   }`}
                 >
                   {active === link.id && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute inset-0 rounded-full bg-white/10"
-                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                    />
+                    <span className="absolute inset-0 rounded-full bg-white/10" />
                   )}
                   <span className="relative z-10">{link.label}</span>
                 </button>
@@ -131,7 +125,8 @@ export const Navbar = () => {
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </nav>
-      </motion.header>
+      </header>
+
 
       <AnimatePresence>
         {open && (
