@@ -23,13 +23,19 @@ import { Footer } from "@/sections/Footer";
 function App() {
   const [loading, setLoading] = useState(true);
 
-  // Loading screen timing with safe body overflow restoration
+  // Fast loading screen transition without viewport-locking overflow glitches on mobile
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    const isMobile = window.matchMedia("(max-width: 1024px) or (pointer: coarse)").matches;
+    if (!isMobile) {
+      document.body.style.overflow = "hidden";
+    }
+
     const timer = setTimeout(() => {
       setLoading(false);
-      document.body.style.overflow = "";
-    }, 1000);
+      if (!isMobile) {
+        document.body.style.overflow = "";
+      }
+    }, isMobile ? 300 : 600);
 
     return () => {
       clearTimeout(timer);
@@ -73,5 +79,6 @@ function App() {
 }
 
 export default App;
+
 
 
