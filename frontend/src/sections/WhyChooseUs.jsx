@@ -7,8 +7,8 @@ export const WhyChooseUs = () => (
   <section id="why" className="relative py-20 sm:py-28">
     <div className="container-x">
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.4fr] lg:gap-16">
-        {/* Sticky manifesto heading */}
-        <Reveal className="lg:sticky lg:top-28 lg:h-fit">
+        {/* Manifesto heading */}
+        <Reveal className="lg:h-fit">
           <span className="section-label">Why Kodeveill</span>
           <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
             Ten reasons businesses choose to build with us.
@@ -48,4 +48,5 @@ export const WhyChooseUs = () => (
     </div>
   </section>
 );
+
 
