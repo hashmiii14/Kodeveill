@@ -1,0 +1,16 @@
+# Netlify config for GitHub-connected deploys.
+# The React app lives in the /frontend folder.
+[build]
+  base = "frontend"
+  command = "yarn build"
+  publish = "frontend/build"
+
+[build.environment]
+  CI = "false"
+  GENERATE_SOURCEMAP = "false"
+
+# SPA fallback so client-side routes and page refreshes don't 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
