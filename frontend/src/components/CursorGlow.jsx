@@ -1,12 +1,19 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Soft glow that follows the cursor on desktop with GPU acceleration.
 export const CursorGlow = () => {
   const ref = useRef(null);
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
-    // Disable on touch / mobile devices for maximum performance
-    if (window.matchMedia("(max-width: 1024px) or (pointer: coarse)").matches) return;
+    const checkTouch = () => {
+      setIsTouch(window.matchMedia("(max-width: 1024px) or (pointer: coarse)").matches);
+    };
+    checkTouch();
+  }, []);
+
+  useEffect(() => {
+    if (isTouch) return;
 
     const el = ref.current;
     if (!el) return;
@@ -52,8 +59,11 @@ export const CursorGlow = () => {
       window.removeEventListener("mousemove", onMove);
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [isTouch]);
+
+  if (isTouch) return null;
 
   return <div ref={ref} className="cursor-glow" aria-hidden="true" data-testid="cursor-glow" />;
 };
+
 

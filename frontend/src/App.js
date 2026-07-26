@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import "@/App.css";
 
-import { Loader } from "@/components/Loader";
 import { CursorGlow } from "@/components/CursorGlow";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { FloatingActions } from "@/components/FloatingActions";
@@ -21,28 +19,6 @@ import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  // Fast loading screen transition without viewport-locking overflow glitches on mobile
-  useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 1024px) or (pointer: coarse)").matches;
-    if (!isMobile) {
-      document.body.style.overflow = "hidden";
-    }
-
-    const timer = setTimeout(() => {
-      setLoading(false);
-      if (!isMobile) {
-        document.body.style.overflow = "";
-      }
-    }, isMobile ? 300 : 600);
-
-    return () => {
-      clearTimeout(timer);
-      document.body.style.overflow = "";
-    };
-  }, []);
-
   return (
     <div className="relative min-h-screen bg-brand-bg text-white">
       {/* Accessibility Skip Link */}
@@ -53,7 +29,6 @@ function App() {
         Skip to main content
       </a>
 
-      <Loader show={loading} />
       <CursorGlow />
       <ScrollProgress />
       <Navbar />
@@ -79,6 +54,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
