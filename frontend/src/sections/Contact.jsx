@@ -58,8 +58,14 @@ export const Contact = () => {
 
   return (
     <section id="contact" className="relative py-20 sm:py-28">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[380px] w-[380px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" aria-hidden="true" />
+      {/* Zero-cost radial gradient glow */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%)" }}
+        aria-hidden="true"
+      />
       <div className="container-x relative">
+
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="section-label">Get In Touch</span>
           <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">

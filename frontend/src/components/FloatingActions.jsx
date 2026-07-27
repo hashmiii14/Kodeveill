@@ -52,15 +52,15 @@ export const FloatingActions = () => {
             transition={{ delay: 1.2 + i * 0.12, type: "spring", stiffness: 260, damping: 20 }}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.94 }}
-            className="group relative flex items-center justify-center rounded-full text-white backdrop-blur-md transition-transform"
+            className="group relative flex items-center justify-center rounded-full text-white transition-transform"
             style={{
               width: 52,
               height: 52,
               background: a.bg,
               border: "1px solid rgba(255,255,255,0.18)",
               boxShadow: `0 10px 30px -8px ${a.ring}`,
-              willChange: "transform",
             }}
+
           >
             {/* Pulse ring */}
             <span

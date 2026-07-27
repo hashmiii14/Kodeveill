@@ -25,8 +25,12 @@ export const Portfolio = () => {
 
   return (
     <section id="portfolio" className="relative py-20 sm:py-28">
-      {/* subtle gradient glow behind section */}
-      <div className="pointer-events-none absolute left-1/2 top-24 h-[350px] w-[80%] -translate-x-1/2 rounded-full bg-primary/10 blur-[130px]" aria-hidden="true" />
+      {/* Zero-cost radial gradient glow */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-24 h-[400px] w-[85%] -translate-x-1/2 rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%)" }}
+        aria-hidden="true"
+      />
 
       <div className="container-x relative">
         <Reveal className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
@@ -46,10 +50,10 @@ export const Portfolio = () => {
             <motion.article
               key={p.name}
               variants={revealItem}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/8 bg-brand-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[0_30px_70px_-25px_rgba(79,70,229,0.5)]"
-              style={{ willChange: "transform" }}
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/8 bg-brand-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[0_20px_50px_-20px_rgba(79,70,229,0.35)]"
               data-testid={`portfolio-card-${slug(p.name)}`}
             >
+
               {/* Real preview image — lazy loaded, fixed aspect, hover zoom */}
               <div className="relative aspect-[3/2] overflow-hidden">
                 <img

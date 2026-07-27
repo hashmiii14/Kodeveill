@@ -4,7 +4,12 @@ import { motion } from "framer-motion";
 
 export const Services = () => (
   <section id="services" className="relative py-20 sm:py-28">
-    <div className="pointer-events-none absolute right-0 top-40 h-[380px] w-[380px] rounded-full bg-secondary/10 blur-[120px]" aria-hidden="true" />
+    {/* Zero-cost radial gradient glow - no runtime GPU blur calculation */}
+    <div
+      className="pointer-events-none absolute right-0 top-40 h-[450px] w-[450px]"
+      style={{ background: "radial-gradient(circle, rgba(124,58,237,0.12) 0%, rgba(124,58,237,0.03) 45%, transparent 70%)" }}
+      aria-hidden="true"
+    />
     <div className="container-x relative">
       <Reveal className="max-w-2xl">
         <span className="section-label">What We Do</span>
@@ -24,10 +29,13 @@ export const Services = () => (
               key={s.title}
               variants={revealItem}
               className="card-glow group relative overflow-hidden rounded-2xl p-6"
-              style={{ willChange: "transform" }}
               data-testid={`service-card-${s.title.replace(/\s+/g, "-").toLowerCase()}`}
             >
-              <div className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-primary/10 blur-2xl transition-opacity duration-500 group-hover:opacity-100 opacity-0" aria-hidden="true" />
+              <div
+                className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full transition-opacity duration-300 group-hover:opacity-100 opacity-0"
+                style={{ background: "radial-gradient(circle, rgba(79,70,229,0.2) 0%, transparent 70%)" }}
+                aria-hidden="true"
+              />
               <span className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 text-accent transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                 <Icon className="h-6 w-6" aria-hidden="true" />
               </span>
@@ -40,4 +48,5 @@ export const Services = () => (
     </div>
   </section>
 );
+
 

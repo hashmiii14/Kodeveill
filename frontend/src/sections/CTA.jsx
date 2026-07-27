@@ -12,8 +12,17 @@ export const CTA = () => (
           data-testid="cta-banner"
         >
           <div className="noise" aria-hidden="true" />
-          <div className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/20 blur-3xl" aria-hidden="true" />
-          <div className="pointer-events-none absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-black/20 blur-3xl" aria-hidden="true" />
+          <div
+            className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full opacity-30"
+            style={{ background: "radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%)" }}
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute -bottom-20 -right-10 h-72 w-72 rounded-full opacity-30"
+            style={{ background: "radial-gradient(circle, rgba(0,0,0,0.5) 0%, transparent 70%)" }}
+            aria-hidden="true"
+          />
+
 
           <h2 className="relative font-display text-3xl font-extrabold leading-tight text-white sm:text-5xl">
             Ready to Grow Your Business?
