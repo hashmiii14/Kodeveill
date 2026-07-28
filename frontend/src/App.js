@@ -38,16 +38,16 @@ function App() {
         <Hero />
         <Trust />
         <Services />
-        <Pricing />
         <WhyChooseUs />
-
         <Portfolio />
         <Process />
         <Testimonials />
         <FAQ />
         <CTA />
         <Contact />
+        <Pricing />
       </main>
+
 
       <Footer />
       <FloatingActions />
