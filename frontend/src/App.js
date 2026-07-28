@@ -41,12 +41,13 @@ function App() {
         <WhyChooseUs />
         <Portfolio />
         <Process />
+        <Pricing />
         <Testimonials />
         <FAQ />
         <CTA />
         <Contact />
-        <Pricing />
       </main>
+
 
 
       <Footer />

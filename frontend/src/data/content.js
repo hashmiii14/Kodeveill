@@ -9,12 +9,13 @@ import {
 export const NAV_LINKS = [
   { label: "Home", id: "home" },
   { label: "Services", id: "services" },
-  { label: "Pricing", id: "pricing" },
   { label: "Portfolio", id: "portfolio" },
   { label: "Process", id: "process" },
+  { label: "Pricing", id: "pricing" },
   { label: "FAQ", id: "faq" },
   { label: "Contact", id: "contact" },
 ];
+
 
 
 export const STATS = [
