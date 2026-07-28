@@ -1,17 +1,21 @@
 // Central content for the Kodeveill landing page (frontend-only, no backend).
 import {
   Palette, Layout, Briefcase, Gauge, RefreshCw, Search, Wrench,
-  Smartphone, MonitorSmartphone, LayoutDashboard,
+  Smartphone, MonitorSmartphone, LayoutDashboard, Rocket, Zap, Lock,
+  MessageSquare, Code, Target, ShieldCheck
 } from "lucide-react";
+
 
 export const NAV_LINKS = [
   { label: "Home", id: "home" },
   { label: "Services", id: "services" },
+  { label: "Pricing", id: "pricing" },
   { label: "Portfolio", id: "portfolio" },
   { label: "Process", id: "process" },
   { label: "FAQ", id: "faq" },
   { label: "Contact", id: "contact" },
 ];
+
 
 export const STATS = [
   { value: 20, suffix: "+", label: "Projects Delivered" },
@@ -195,3 +199,89 @@ export const SOCIALS = [
   { label: "GitHub", href: "#", icon: "github" },
   { label: "Behance", href: "#", icon: "behance" },
 ];
+
+export const PRICING_PLANS = [
+  {
+    id: "starter",
+    name: "Starter Website",
+    price: "₹1,999",
+    badge: "Perfect for Individuals",
+    isPopular: false,
+    desc: "Perfect for portfolios, freelancers, startups, and small businesses that need a simple online presence.",
+    features: [
+      "One-Time Payment",
+      "Responsive Website",
+      "Up to 3 Pages",
+      "Modern Professional Design",
+      "Contact Form",
+      "WhatsApp Integration",
+      "Basic SEO Setup",
+      "SSL Ready",
+      "Fast Loading",
+      "Source Code Included",
+      "Delivery within 2–3 Days",
+    ],
+    notIncluded: ["Domain", "Hosting", "Maintenance"],
+    buttonText: "Get Started",
+  },
+  {
+    id: "business",
+    name: "Business Website",
+    price: "₹5,999",
+    badge: "⭐ MOST POPULAR",
+    isPopular: true,
+    desc: "A complete professional business website with everything required to launch your business online.",
+    features: [
+      "One-Time Payment",
+      "FREE .com Domain (1 Year)",
+      "FREE Hosting (1 Year)",
+      "Up to 5 Pages",
+      "Premium Responsive Design",
+      "Contact Form",
+      "WhatsApp Integration",
+      "Google Maps Integration",
+      "Basic SEO Optimization",
+      "SSL Certificate",
+      "Performance Optimization",
+      "Source Code Included",
+      "Priority Support",
+      "Delivery within 5–7 Days",
+    ],
+    maintenance: {
+      included: "First Year Maintenance Included",
+      renewal: "Renewal Maintenance: ₹999/year",
+    },
+    buttonText: "Choose Business Plan",
+  },
+];
+
+export const PRICING_COMPARISON = [
+  { feature: "One-Time Payment", starter: true, business: true },
+  { feature: "Responsive Website", starter: true, business: true },
+  { feature: "Number of Pages", starter: "Up to 3 Pages", business: "Up to 5 Pages" },
+  { feature: "Modern Professional Design", starter: true, business: true },
+  { feature: "Contact Form", starter: true, business: true },
+  { feature: "WhatsApp Integration", starter: true, business: true },
+  { feature: "Basic SEO Setup & Optimization", starter: true, business: true },
+  { feature: "SSL Certificate & Setup", starter: true, business: true },
+  { feature: "Fast Loading & Performance", starter: true, business: true },
+  { feature: "Source Code Included", starter: true, business: true },
+  { feature: "Delivery Time", starter: "2–3 Days", business: "5–7 Days" },
+  { feature: "FREE .com Domain (1 Year)", starter: false, business: true },
+  { feature: "FREE Hosting (1 Year)", starter: false, business: true },
+  { feature: "Google Maps Integration", starter: false, business: true },
+  { feature: "Priority Support", starter: false, business: true },
+  { feature: "First Year Maintenance", starter: false, business: "Included (Renewal: ₹999/yr)" },
+];
+
+export const WHY_CHOOSE_ME = [
+  { icon: Palette, title: "Modern UI Design", desc: "Pixel-perfect layouts crafted with high-end aesthetic precision." },
+  { icon: Smartphone, title: "Mobile Responsive", desc: "Flawless viewports optimized for desktop, tablet, and mobile devices." },
+  { icon: Zap, title: "Fast Loading Performance", desc: "Optimized code & assets engineered for lightning speed." },
+  { icon: Lock, title: "Secure SSL", desc: "Encrypted data protection and HTTPS configuration standard." },
+  { icon: Search, title: "SEO Friendly", desc: "Clean semantic HTML structure to rank high on search engines." },
+  { icon: MessageSquare, title: "WhatsApp Integration", desc: "Instant click-to-chat triggers for maximum customer leads." },
+  { icon: Code, title: "Clean & Maintainable Code", desc: "Component-driven React architecture built to last." },
+  { icon: Target, title: "Built for Business Growth", desc: "Conversion-first design elements engineered to turn visitors into buyers." },
+];
+

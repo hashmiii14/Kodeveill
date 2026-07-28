@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { Hero } from "@/sections/Hero";
 import { Trust } from "@/sections/Trust";
 import { Services } from "@/sections/Services";
+import { Pricing } from "@/sections/Pricing";
 import { WhyChooseUs } from "@/sections/WhyChooseUs";
 import { Portfolio } from "@/sections/Portfolio";
 import { Process } from "@/sections/Process";
@@ -37,7 +38,9 @@ function App() {
         <Hero />
         <Trust />
         <Services />
+        <Pricing />
         <WhyChooseUs />
+
         <Portfolio />
         <Process />
         <Testimonials />
