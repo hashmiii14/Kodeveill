@@ -26,15 +26,20 @@ export const Contact = () => {
     e.preventDefault();
     if (loading) return;
 
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+    const nameClean = form.name.replace(/<[^>]*>?/gm, "").trim();
+    const emailClean = form.email.trim();
+    const messageClean = form.message.replace(/<[^>]*>?/gm, "").trim();
+
+    if (!nameClean || !emailClean || !messageClean) {
       toast.error("Please fill in your name, email and message.");
       return;
     }
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email);
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailClean);
     if (!emailOk) {
       toast.error("Please enter a valid email address.");
       return;
     }
+
 
     setLoading(true);
 
