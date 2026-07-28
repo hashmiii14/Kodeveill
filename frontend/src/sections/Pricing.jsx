@@ -121,12 +121,12 @@ export const Pricing = () => {
                   {/* Not Included Features */}
                   {plan.notIncluded && plan.notIncluded.length > 0 && (
                     <div className="mt-6 border-t border-white/5 pt-4">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-brand-muted/60">Not Included:</p>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-rose-400/80">Not Included:</p>
                       <ul className="mt-2.5 space-y-2 text-sm">
                         {plan.notIncluded.map((item, idx) => (
-                          <li key={idx} className="flex items-center gap-3 text-brand-muted/50">
-                            <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-white/5 text-white/30">
-                              <X className="h-3.5 w-3.5" aria-hidden="true" />
+                          <li key={idx} className="flex items-center gap-3 font-medium text-rose-400/90">
+                            <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-rose-500/20 text-rose-400">
+                              <X className="h-3.5 w-3.5 text-rose-400" aria-hidden="true" />
                             </span>
                             <span>{item}</span>
                           </li>
@@ -141,12 +141,13 @@ export const Pricing = () => {
                     href={plan.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-ghost w-full !py-3.5 text-center text-sm font-bold"
+                    className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white bg-white/10 border border-white/20 transition-all duration-200 hover:bg-white/20 hover:border-white/40 hover:text-white w-full text-center shadow-md focus-visible:outline-none"
                     data-testid={`pricing-cta-${plan.id}`}
                   >
                     {plan.buttonText}
                   </a>
                 </div>
+
               </motion.div>
             );
           })}
