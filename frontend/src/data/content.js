@@ -182,11 +182,12 @@ export const FAQS = [
 
 export const CONTACT = {
   company: "Kodeveill",
-  email: "kodeveill@gmail.com",
-  phone: "+91 85789 15604",
-  phoneRaw: "+918578915604",
-  whatsapp: "https://wa.me/918578915604",
+  email: "contact.kodeveil@gmail.com",
+  phone: "+91 85950 18458",
+  phoneRaw: "+918595018458",
+  whatsapp: "https://wa.me/918595018458",
 };
+
 
 export const SOCIALS = [
   { label: "LinkedIn", href: "#", icon: "linkedin" },
