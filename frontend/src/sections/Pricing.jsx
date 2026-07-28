@@ -121,10 +121,10 @@ export const Pricing = () => {
                   {/* Not Included Features */}
                   {plan.notIncluded && plan.notIncluded.length > 0 && (
                     <div className="mt-6 border-t border-white/5 pt-4">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-rose-400/80">Not Included:</p>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-brand-muted/70">Not Included:</p>
                       <ul className="mt-2.5 space-y-2 text-sm">
                         {plan.notIncluded.map((item, idx) => (
-                          <li key={idx} className="flex items-center gap-3 font-medium text-rose-400/90">
+                          <li key={idx} className="flex items-center gap-3 text-white/80">
                             <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-rose-500/20 text-rose-400">
                               <X className="h-3.5 w-3.5 text-rose-400" aria-hidden="true" />
                             </span>
@@ -134,6 +134,7 @@ export const Pricing = () => {
                       </ul>
                     </div>
                   )}
+
                 </div>
 
                 <div className="mt-8 pt-2">
