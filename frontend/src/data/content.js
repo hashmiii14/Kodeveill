@@ -125,6 +125,27 @@ export const PORTFOLIO = [
     },
   },
   {
+  name: "VYU Industries",
+  category: "Industrial Manufacturing Website",
+  desc: "A modern corporate website showcasing industrial products, company expertise, and a professional business presence.",
+  url: "https://v-yu-industriespvt.netlify.app/",
+  image: "/portfolio/V-YU-INDUSTRIES.png",
+  accent: "#8B5E3C",
+  caseStudy: {
+    summary:
+      "Developed a responsive corporate website for VYU Industries to strengthen its online presence and showcase its manufacturing capabilities.",
+    challenge:
+      "The company needed a professional digital platform to present its products, services, and brand credibility while making it easy for potential clients to connect.",
+    solution:
+      "Designed and developed a clean, responsive website with a modern UI, structured product sections, company information, and clear contact options for improved user experience.",
+    results: [
+      { value: "100%", label: "Responsive Design" },
+      { value: "0.9s", label: "Fast Load Time" },
+      { value: "+50%", label: "Better Online Presence" },
+    ],
+  },
+},
+  {
     name: "Orizer ERP",
     category: "ERP Software",
     desc: "Business ERP dashboard that turns complex operations into a clean, usable interface.",
