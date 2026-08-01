@@ -2,8 +2,8 @@
 # The React app lives in the /frontend folder.
 [build]
   base = "frontend"
-  command = "yarn build"
-  publish = "frontend/build"
+  command = "npm run build"
+  publish = "build"
 
 [build.environment]
   CI = "false"
