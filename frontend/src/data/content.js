@@ -1,4 +1,4 @@
-// Central content for the Kodeveill landing page (frontend-only, no backend).
+// Central content for the KodeVeil landing page (frontend-only, no backend).
 import {
   Palette, Layout, Briefcase, Gauge, RefreshCw, Search, Wrench,
   Smartphone, MonitorSmartphone, LayoutDashboard, Rocket, Zap, Lock,
@@ -193,7 +193,7 @@ export const PROCESS = [
 ];
 
 export const TESTIMONIALS = [
-  { name: "Dr. Adil Zafar", company: "Faiz Dental Clinic", initials: "AZ", quote: "Kodeveill delivered a genuinely professional design and had it live faster than I expected. Communication was effortless throughout — they understood exactly what my clinic needed. Highly recommended." },
+  { name: "Dr. Adil Zafar", company: "Faiz Dental Clinic", initials: "AZ", quote: "KodeVeil delivered a genuinely professional design and had it live faster than I expected. Communication was effortless throughout — they understood exactly what my clinic needed. Highly recommended." },
   { name: "Anwarul Haque", company: "Orizer ERP", initials: "AH", quote: "They turned our complex requirements into an excellent, modern ERP interface. The responsive development and attention to detail were outstanding — truly professional work from start to finish." },
   { name: "Ritika Sharma", company: "Vision Classes", initials: "RS", quote: "The team understood exactly what we needed. Our coaching institute finally has a website that matches the quality of our teaching." },
 ];
@@ -207,7 +207,7 @@ export const FAQS = [
 ];
 
 export const CONTACT = {
-  company: "Kodeveill",
+  company: "KodeVeil",
   email: "contact.kodeveil@gmail.com",
   phone: "+91 85950 18458",
   phoneRaw: "+918595018458",

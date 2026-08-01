@@ -9,7 +9,7 @@ export const WhyChooseUs = () => (
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.4fr] lg:gap-16">
         {/* Manifesto heading */}
         <Reveal className="lg:h-fit">
-          <span className="section-label">Why Kodeveill</span>
+          <span className="section-label">Why KodeVeil</span>
           <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-[#111827] sm:text-5xl">
             Ten reasons businesses choose to build with us.
           </h2>
@@ -19,7 +19,7 @@ export const WhyChooseUs = () => (
           </p>
           <div className="mt-8 h-px w-full bg-gradient-to-r from-blue-500/30 to-transparent" aria-hidden="true" />
           <p className="mt-6 font-display text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">
-            The Kodeveill Standard
+            The KodeVeil Standard
           </p>
         </Reveal>
 

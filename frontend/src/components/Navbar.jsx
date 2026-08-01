@@ -78,13 +78,13 @@ export const Navbar = () => {
           <button
             data-testid="nav-logo"
             onClick={() => handleNav("home")}
-            aria-label="Kodeveill home"
+            aria-label="KodeVeil home"
             className="flex items-center gap-3 focus-visible:outline-none"
           >
             <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 border border-blue-100 shadow-xs">
-              <img src={logo} alt="Kodeveill logo" className="h-7 w-7 object-contain" width="28" height="28" />
+              <img src={logo} alt="KodeVeil logo" className="h-7 w-7 object-contain" width="28" height="28" />
             </span>
-            <span className="font-display text-xl font-bold tracking-tight text-[#111827] sm:text-2xl">Kodeveill</span>
+            <span className="font-display text-xl font-bold tracking-tight text-[#111827] sm:text-2xl">KodeVeil</span>
           </button>
 
           <ul className="hidden items-center gap-1 lg:flex" role="menubar">

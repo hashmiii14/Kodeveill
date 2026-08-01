@@ -126,7 +126,7 @@ export const Hero = () => {
               </div>
               <div className="absolute bottom-8 left-8 h-9 w-36 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 shadow-sm" />
               <span className="absolute bottom-8 right-8 text-[10px] font-semibold uppercase tracking-[0.3em] text-gray-400">
-                Kodeveill UI
+                KodeVeil UI
               </span>
             </div>
           </motion.div>

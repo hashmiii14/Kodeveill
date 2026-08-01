@@ -19,11 +19,11 @@ export const Footer = () => (
       <div className="grid gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-4">
         {/* Brand */}
         <div className="lg:col-span-2">
-          <button onClick={() => scrollToId("home")} aria-label="Kodeveill home" className="flex items-center gap-3 focus-visible:outline-none">
+          <button onClick={() => scrollToId("home")} aria-label="KodeVeil home" className="flex items-center gap-3 focus-visible:outline-none">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 border border-blue-100 shadow-xs">
-              <img src={logo} alt="Kodeveill logo" className="h-8 w-8 object-contain" width="32" height="32" />
+              <img src={logo} alt="KodeVeil logo" className="h-8 w-8 object-contain" width="32" height="32" />
             </span>
-            <span className="font-display text-2xl font-bold text-[#111827]">Kodeveill</span>
+            <span className="font-display text-2xl font-bold text-[#111827]">KodeVeil</span>
           </button>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-gray-600">
             Websites that turn visitors into customers. Premium, responsive, SEO-friendly,
@@ -78,9 +78,9 @@ export const Footer = () => (
       </div>
 
       <div className="flex flex-col items-center justify-between gap-3 border-t border-gray-200 py-6 text-center sm:flex-row sm:text-left">
-        <p className="text-xs text-gray-500">© 2026 Kodeveill. All Rights Reserved.</p>
+        <p className="text-xs text-gray-500">© 2026 KodeVeil. All Rights Reserved.</p>
         <p className="flex items-center gap-1.5 text-xs text-gray-500">
-          Designed with <Heart className="h-3.5 w-3.5 fill-red-500 text-red-500" aria-hidden="true" /> by Kodeveill.
+          Designed with <Heart className="h-3.5 w-3.5 fill-red-500 text-red-500" aria-hidden="true" /> by KodeVeil.
         </p>
       </div>
     </div>
