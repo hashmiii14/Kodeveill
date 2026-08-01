@@ -56,6 +56,9 @@ module.exports = {
           navy: '#1E293B',
         },
       },
+      boxShadow: {
+        xs: '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
