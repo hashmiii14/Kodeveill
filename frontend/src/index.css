@@ -68,76 +68,79 @@
     @apply mx-auto w-full max-w-7xl px-6 lg:px-10;
   }
   .glass {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid #E5E7EB;
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(229, 231, 235, 0.8);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
     transform: translateZ(0);
   }
   .glass-strong {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid #E5E7EB;
-    box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 14px 35px -8px rgba(37, 99, 235, 0.08);
     transform: translateZ(0);
   }
   .text-gradient {
-    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #0284C7 100%);
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 40%, #0284C7 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .text-gradient-soft {
-    background: linear-gradient(135deg, #1E293B 0%, #475569 100%);
+  .text-gradient-hero {
+    background: linear-gradient(135deg, #1E293B 0%, #2563EB 50%, #1D4ED8 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-all duration-200 shadow-md;
+    @apply relative inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold text-white transition-all duration-300 shadow-md;
     background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35);
+    box-shadow: 0 6px 20px -2px rgba(37, 99, 235, 0.4);
     transform: translateZ(0);
   }
   .btn-primary:hover {
-    box-shadow: 0 8px 22px 0 rgba(37, 99, 235, 0.45);
-    transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 12px 28px -4px rgba(37, 99, 235, 0.55);
+    transform: translateY(-2px) scale(1.01) translateZ(0);
   }
   .btn-ghost {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-[#111827] transition-all duration-200;
+    @apply relative inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold text-[#111827] transition-all duration-300;
     background: #FFFFFF;
     border: 1px solid #E5E7EB;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
     transform: translateZ(0);
   }
   .btn-ghost:hover {
     background: #F8FAFC;
-    border-color: #D1D5DB;
+    border-color: #93C5FD;
     color: #2563EB;
+    box-shadow: 0 8px 18px -4px rgba(37, 99, 235, 0.12);
     transform: translateY(-2px) translateZ(0);
   }
   .card-glow {
     background: #FFFFFF;
     border: 1px solid #E5E7EB;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     transform: translateZ(0);
   }
   .card-glow:hover {
     border-color: rgba(37, 99, 235, 0.4);
-    transform: translateY(-4px) translateZ(0);
-    box-shadow: 0 12px 30px -8px rgba(37, 99, 235, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    transform: translateY(-5px) translateZ(0);
+    box-shadow: 0 20px 40px -12px rgba(37, 99, 235, 0.18), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
   }
   .section-label {
-    @apply inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-blue-600;
+    @apply inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 shadow-xs;
   }
-  .grid-bg {
-    background-image:
-      linear-gradient(rgba(229,231,235,0.6) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(229,231,235,0.6) 1px, transparent 1px);
-    background-size: 60px 60px;
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle, rgba(203, 213, 225, 0.5) 1.2px, transparent 1.2px);
+    background-size: 28px 28px;
+  }
+  .bg-dot-mesh {
+    background-image: radial-gradient(circle, rgba(37, 99, 235, 0.1) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
   }
   .noise {
     position: absolute;

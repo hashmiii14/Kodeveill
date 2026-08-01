@@ -25,39 +25,43 @@ export const Pricing = () => {
           </p>
         </Reveal>
 
-        {/* Pricing Cards Grid (Exactly 2 Cards) */}
-        <RevealStagger className="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-10">
+        {/* Pricing Cards Grid */}
+        <RevealStagger className="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-10 items-stretch">
           {PRICING_PLANS.map((plan) => {
             if (plan.isPopular) {
               return (
                 <motion.div
                   key={plan.id}
                   variants={revealItem}
-                  className="relative flex flex-col rounded-3xl border-2 border-blue-600 bg-white shadow-[0_20px_50px_-20px_rgba(37,99,235,0.25)]"
+                  className="relative flex flex-col justify-between rounded-3xl border-2 border-blue-600 bg-white shadow-[0_20px_60px_-15px_rgba(37,99,235,0.22)] transition-all duration-300 hover:shadow-[0_30px_70px_-15px_rgba(37,99,235,0.3)]"
                   data-testid={`pricing-card-${plan.id}`}
                 >
-                  <div className="relative flex flex-1 flex-col justify-between rounded-[23px] bg-white p-7 sm:p-9">
-                    {/* Subtle Most Popular Badge */}
-                    <div className="absolute -top-4 right-6 inline-flex items-center gap-1.5 rounded-full bg-blue-600 px-4 py-1 text-xs font-bold text-white shadow-md">
-                      <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                      Recommended
-                    </div>
+                  {/* Glowing Most Popular Badge */}
+                  <div className="absolute -top-4 right-8 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-1.5 text-xs font-bold text-white shadow-md">
+                    <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span>🔥 MOST POPULAR</span>
+                  </div>
 
+                  <div className="flex flex-1 flex-col justify-between p-8 sm:p-10">
                     <div>
                       <div className="flex items-center justify-between">
-                        <h3 className="font-display text-2xl font-bold text-[#111827] sm:text-3xl">{plan.name}</h3>
+                        <h3 className="font-display text-2xl font-extrabold text-[#111827] sm:text-3xl">{plan.name}</h3>
+                        <span className="rounded-full bg-blue-50 border border-blue-100 px-3 py-1 text-xs font-bold text-blue-600">
+                          Best Value
+                        </span>
                       </div>
                       <p className="mt-2 text-sm text-gray-600">{plan.desc}</p>
 
-                      <div className="mt-5 flex items-baseline gap-2 border-b border-gray-100 pb-5">
-                        <span className="font-display text-4xl font-extrabold text-[#111827] sm:text-5xl">{plan.price}</span>
+                      <div className="mt-6 flex items-baseline gap-2 border-b border-gray-100 pb-6">
+                        <span className="font-display text-5xl font-extrabold text-[#111827]">{plan.price}</span>
+                        <span className="text-xs font-semibold text-gray-500">/ One-time</span>
                       </div>
 
                       {/* Included Features */}
-                      <ul className="mt-6 space-y-3 text-sm">
+                      <ul className="mt-6 space-y-3.5 text-sm">
                         {plan.features.map((feat, idx) => (
-                          <li key={idx} className="flex items-center gap-3 text-gray-700">
-                            <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
+                          <li key={idx} className="flex items-center gap-3 text-gray-800 font-medium">
+                            <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-xs">
                               <Check className="h-3.5 w-3.5" aria-hidden="true" />
                             </span>
                             <span>{feat}</span>
@@ -66,21 +70,21 @@ export const Pricing = () => {
                       </ul>
 
                       {plan.renewalNote && (
-                        <p className="mt-4 text-xs font-medium text-gray-500">
-                          {plan.renewalNote}
+                        <p className="mt-5 rounded-xl bg-gray-50 border border-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-600 text-center">
+                          💡 {plan.renewalNote}
                         </p>
                       )}
                     </div>
 
-                    <div className="mt-8 pt-2">
+                    <div className="mt-8 pt-4">
                       <a
                         href={plan.whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-primary w-full !py-3.5 text-center text-sm font-bold"
+                        className="btn-primary w-full !py-4 text-center text-sm font-bold shadow-lg shadow-blue-500/25"
                         data-testid={`pricing-cta-${plan.id}`}
                       >
-                        {plan.buttonText}
+                        <span>{plan.buttonText}</span>
                         <ArrowRight className="h-4 w-4" aria-hidden="true" />
                       </a>
                     </div>
@@ -93,23 +97,27 @@ export const Pricing = () => {
               <motion.div
                 key={plan.id}
                 variants={revealItem}
-                className="card-glow relative flex flex-col justify-between rounded-3xl p-7 sm:p-9"
+                className="card-glow relative flex flex-col justify-between rounded-3xl p-8 sm:p-10"
                 data-testid={`pricing-card-${plan.id}`}
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <h3 className="font-display text-2xl font-bold text-[#111827] sm:text-3xl">{plan.name}</h3>
+                    <h3 className="font-display text-2xl font-extrabold text-[#111827] sm:text-3xl">{plan.name}</h3>
+                    <span className="rounded-full bg-gray-100 border border-gray-200 px-3 py-1 text-xs font-bold text-gray-700">
+                      Standard
+                    </span>
                   </div>
                   <p className="mt-2 text-sm text-gray-600">{plan.desc}</p>
 
-                  <div className="mt-5 flex items-baseline gap-2 border-b border-gray-100 pb-5">
-                    <span className="font-display text-4xl font-extrabold text-[#111827] sm:text-5xl">{plan.price}</span>
+                  <div className="mt-6 flex items-baseline gap-2 border-b border-gray-100 pb-6">
+                    <span className="font-display text-5xl font-extrabold text-[#111827]">{plan.price}</span>
+                    <span className="text-xs font-semibold text-gray-500">/ One-time</span>
                   </div>
 
                   {/* Included Features */}
-                  <ul className="mt-6 space-y-3 text-sm">
+                  <ul className="mt-6 space-y-3.5 text-sm">
                     {plan.features.map((feat, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-gray-700">
+                      <li key={idx} className="flex items-center gap-3 text-gray-800 font-medium">
                         <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
                           <Check className="h-3.5 w-3.5" aria-hidden="true" />
                         </span>
@@ -120,35 +128,34 @@ export const Pricing = () => {
 
                   {/* Not Included Features */}
                   {plan.notIncluded && plan.notIncluded.length > 0 && (
-                    <div className="mt-6 border-t border-gray-100 pt-4">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">Not Included:</p>
-                      <ul className="mt-2.5 space-y-2 text-sm">
+                    <div className="mt-6 border-t border-gray-100 pt-5">
+                      <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Not Included:</p>
+                      <ul className="mt-3 space-y-2.5 text-sm">
                         {plan.notIncluded.map((item, idx) => (
                           <li key={idx} className="flex items-center gap-3 text-gray-500">
                             <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-500 border border-rose-100">
                               <X className="h-3.5 w-3.5 text-rose-500" aria-hidden="true" />
                             </span>
-                            <span>{item}</span>
+                            <span className="line-through text-gray-400">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                   )}
-
                 </div>
 
-                <div className="mt-8 pt-2">
+                <div className="mt-8 pt-4">
                   <a
                     href={plan.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white bg-gray-900 hover:bg-gray-800 transition-all duration-200 w-full text-center shadow-md focus-visible:outline-none"
+                    className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-bold text-white bg-slate-900 hover:bg-blue-600 transition-all duration-300 w-full text-center shadow-md focus-visible:outline-none"
                     data-testid={`pricing-cta-${plan.id}`}
                   >
-                    {plan.buttonText}
+                    <span>{plan.buttonText}</span>
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </a>
                 </div>
-
               </motion.div>
             );
           })}

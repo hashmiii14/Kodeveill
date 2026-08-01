@@ -23,26 +23,32 @@ export const WhyChooseUs = () => (
           </p>
         </Reveal>
 
-        <RevealStagger className="grid gap-4 sm:grid-cols-2">
-          {REASONS.map((r, i) => (
-            <motion.div
-              key={r.title}
-              variants={revealItem}
-              className="group flex gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-xs transition-all duration-300 hover:border-blue-300 hover:shadow-md"
-              data-testid={`reason-${i}`}
-            >
-              <span className="font-display text-sm font-bold text-blue-600">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <div className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-blue-600" aria-hidden="true" />
-                  <h3 className="font-display text-base font-semibold text-[#111827]">{r.title}</h3>
+        <RevealStagger className="grid gap-5 sm:grid-cols-2">
+          {REASONS.map((r, i) => {
+            const Icon = r.icon;
+            return (
+              <motion.div
+                key={r.title}
+                variants={revealItem}
+                className="card-glow group relative flex flex-col justify-between rounded-2xl p-6"
+                data-testid={`reason-${i}`}
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100 font-bold transition-transform group-hover:scale-105">
+                      {Icon ? <Icon className="h-5 w-5" /> : <Check className="h-5 w-5" />}
+                    </span>
+                    <span className="font-display text-xs font-extrabold text-blue-600 bg-blue-50/80 border border-blue-100 px-3 py-1 rounded-full">
+                      #{String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 font-display text-lg font-bold text-[#111827]">{r.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600">{r.desc}</p>
                 </div>
-                <p className="mt-1.5 text-sm leading-relaxed text-gray-600">{r.desc}</p>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </RevealStagger>
       </div>
     </div>

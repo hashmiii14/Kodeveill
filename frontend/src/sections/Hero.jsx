@@ -19,20 +19,21 @@ const lineVariant = {
 };
 
 export const Hero = () => {
-  return (
-    <section id="home" className="relative min-h-screen overflow-hidden bg-white pt-32 pb-20">
-      {/* Background grid */}
-      <div className="pointer-events-none absolute inset-0 grid-bg opacity-30" aria-hidden="true" />
+  const techStack = ["React", "Next.js", "Tailwind CSS", "TypeScript", "Node.js", "Framer Motion"];
 
-      {/* Subtle radial gradient glows */}
+  return (
+    <section id="home" className="relative min-h-screen overflow-hidden bg-white pt-32 pb-24">
+      {/* Background dot mesh & ambient spotlights */}
+      <div className="pointer-events-none absolute inset-0 bg-dot-mesh opacity-40" aria-hidden="true" />
+
       <div
-        className="pointer-events-none absolute -top-32 -left-24 h-[500px] w-[500px]"
-        style={{ background: "radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(37,99,235,0.02) 45%, transparent 70%)" }}
+        className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[800px] -translate-x-1/2 rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(37,99,235,0.12) 0%, rgba(59,130,246,0.03) 45%, transparent 70%)" }}
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute top-20 right-[-10%] h-[520px] w-[520px]"
-        style={{ background: "radial-gradient(circle, rgba(59,130,246,0.07) 0%, rgba(59,130,246,0.02) 45%, transparent 70%)" }}
+        className="pointer-events-none absolute top-1/3 -right-32 h-[450px] w-[450px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(2,132,199,0.08) 0%, transparent 70%)" }}
         aria-hidden="true"
       />
 
@@ -46,7 +47,7 @@ export const Hero = () => {
             data-testid="hero-badge"
           >
             <Sparkles className="h-3.5 w-3.5 text-blue-600" />
-            Premium Web Design Agency
+            <span>⚡ Premium Web Engineering Agency</span>
           </motion.div>
 
           <motion.h1
@@ -54,7 +55,7 @@ export const Hero = () => {
             initial="hidden"
             animate="show"
             data-testid="hero-headline"
-            className="mt-7 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#111827] sm:text-6xl lg:text-7xl"
+            className="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-[#111827] sm:text-6xl lg:text-7xl"
           >
             {HEADLINE.map((line, i) => (
               <span key={i} className="mask-line">
@@ -76,58 +77,114 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-7 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg"
+            className="mt-6 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg"
             data-testid="hero-subheading"
           >
-            We build modern, responsive, lightning-fast websites that help businesses build trust,
-            generate leads, and grow online.
+            We build high-converting, responsive, and performance-driven websites crafted to the standard of top Silicon Valley product teams.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.55 }}
-            className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
+            className="mt-8 flex flex-col items-center gap-3.5 sm:flex-row"
           >
             <button data-testid="hero-primary-cta" onClick={() => scrollToId("contact")} className="btn-primary group">
-              Book a Free Consultation
+              Start Your Project
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
             <button data-testid="hero-secondary-cta" onClick={() => scrollToId("portfolio")} className="btn-ghost">
-              View Portfolio
+              Explore Portfolio
             </button>
+          </motion.div>
+
+          {/* Tech Stack Pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            className="mt-10 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-gray-500"
+          >
+            <span className="text-gray-400 uppercase tracking-wider text-[11px] mr-2">Powered By:</span>
+            {techStack.map((tech) => (
+              <span key={tech} className="rounded-full bg-gray-100/80 border border-gray-200/80 px-3 py-1 text-gray-700">
+                {tech}
+              </span>
+            ))}
           </motion.div>
         </div>
 
         {/* Laptop mockup preview */}
-        <div className="relative mx-auto mt-16 max-w-4xl">
+        <div className="relative mx-auto mt-14 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-2xl border border-gray-200 bg-white p-3 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.12)]"
+            transition={{ duration: 0.6, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="relative rounded-2xl border border-gray-200/90 bg-white p-3.5 shadow-[0_25px_70px_-15px_rgba(37,99,235,0.16)]"
             data-testid="hero-mockup"
           >
-            <div className="flex items-center gap-1.5 px-2 pb-3 pt-1 border-b border-gray-100 mb-2">
-              <span className="h-3 w-3 rounded-full bg-red-400" />
-              <span className="h-3 w-3 rounded-full bg-yellow-400" />
-              <span className="h-3 w-3 rounded-full bg-green-400" />
-              <span className="ml-3 h-5 flex-1 rounded-full bg-gray-100" />
-            </div>
-            <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-slate-50 border border-gray-100">
-              <div className="absolute inset-0 grid-bg opacity-30" />
-              <div className="absolute left-8 top-8 h-3 w-40 rounded-full bg-gray-200" />
-              <div className="absolute left-8 top-16 h-8 w-64 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500" />
-              <div className="absolute left-8 top-28 h-3 w-72 rounded-full bg-gray-200" />
-              <div className="absolute left-8 top-36 h-3 w-56 rounded-full bg-gray-200" />
-              <div className="absolute right-8 top-10 flex gap-3">
-                <div className="h-24 w-28 rounded-xl border border-gray-200 bg-white shadow-xs" />
-                <div className="h-24 w-28 rounded-xl border border-blue-200 bg-blue-50 shadow-xs" />
+            {/* Browser top controls */}
+            <div className="flex items-center justify-between px-3 pb-3 pt-1 border-b border-gray-100 mb-2">
+              <div className="flex items-center gap-1.5">
+                <span className="h-3 w-3 rounded-full bg-rose-400" />
+                <span className="h-3 w-3 rounded-full bg-amber-400" />
+                <span className="h-3 w-3 rounded-full bg-emerald-400" />
               </div>
-              <div className="absolute bottom-8 left-8 h-9 w-36 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 shadow-sm" />
-              <span className="absolute bottom-8 right-8 text-[10px] font-semibold uppercase tracking-[0.3em] text-gray-400">
-                KodeVeil UI
-              </span>
+              <div className="h-5 w-64 rounded-full bg-gray-100 border border-gray-200/60 flex items-center justify-center text-[10px] text-gray-400 font-mono">
+                https://kodeveil.com
+              </div>
+              <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+            </div>
+
+            {/* Simulated rich dashboard mockup canvas */}
+            <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-gradient-to-br from-slate-50 via-white to-blue-50/30 border border-gray-200/60 p-6">
+              <div className="flex items-center justify-between border-b border-gray-200/60 pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white text-xs">KV</div>
+                  <div>
+                    <div className="h-3 w-28 rounded-md bg-gray-900" />
+                    <div className="mt-1 h-2 w-20 rounded-md bg-gray-300" />
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <div className="h-7 w-20 rounded-md bg-blue-50 border border-blue-100" />
+                  <div className="h-7 w-20 rounded-md bg-blue-600" />
+                </div>
+              </div>
+
+              <div className="mt-6 grid grid-cols-3 gap-4">
+                <div className="rounded-xl border border-gray-200/80 bg-white p-4 shadow-xs">
+                  <div className="text-[11px] text-gray-400 uppercase font-semibold">Speed Score</div>
+                  <div className="mt-1 text-2xl font-extrabold text-blue-600">100/100</div>
+                  <div className="mt-2 h-1.5 w-full rounded-full bg-gray-100">
+                    <div className="h-full w-full rounded-full bg-blue-600" />
+                  </div>
+                </div>
+                <div className="rounded-xl border border-gray-200/80 bg-white p-4 shadow-xs">
+                  <div className="text-[11px] text-gray-400 uppercase font-semibold">SEO Rating</div>
+                  <div className="mt-1 text-2xl font-extrabold text-emerald-600">100%</div>
+                  <div className="mt-2 h-1.5 w-full rounded-full bg-gray-100">
+                    <div className="h-full w-full rounded-full bg-emerald-500" />
+                  </div>
+                </div>
+                <div className="rounded-xl border border-gray-200/80 bg-white p-4 shadow-xs">
+                  <div className="text-[11px] text-gray-400 uppercase font-semibold">Conversion Boost</div>
+                  <div className="mt-1 text-2xl font-extrabold text-indigo-600">+68%</div>
+                  <div className="mt-2 h-1.5 w-full rounded-full bg-gray-100">
+                    <div className="h-full w-[68%] rounded-full bg-indigo-600" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 flex items-center justify-between rounded-xl bg-blue-600 p-4 text-white">
+                <div>
+                  <p className="text-xs font-semibold text-blue-100">KodeVeil Custom Solution</p>
+                  <p className="font-display text-sm font-bold">Turn browsers into paying clients.</p>
+                </div>
+                <div className="rounded-lg bg-white px-3 py-1.5 text-xs font-bold text-blue-600 shadow-sm">
+                  Live Preview
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -135,15 +192,15 @@ export const Hero = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8, duration: 0.4 }}
-            className="absolute -left-4 top-16 hidden rounded-2xl border border-gray-200 bg-white p-3 shadow-xl sm:flex sm:items-center sm:gap-3 lg:-left-12"
+            transition={{ delay: 0.85, duration: 0.4 }}
+            className="absolute -left-4 top-16 hidden rounded-2xl border border-gray-200 bg-white p-3.5 shadow-xl sm:flex sm:items-center sm:gap-3 lg:-left-12"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100 shadow-xs">
               <Zap className="h-5 w-5" />
             </span>
             <div className="text-left">
-              <p className="text-xs text-gray-500">Load time</p>
-              <p className="font-display text-sm font-bold text-gray-900">0.8s</p>
+              <p className="text-xs text-gray-500 font-medium">Avg Load Time</p>
+              <p className="font-display text-sm font-bold text-gray-900">0.8 Seconds</p>
             </div>
           </motion.div>
 
@@ -151,14 +208,14 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.95, duration: 0.4 }}
-            className="absolute -right-4 top-32 hidden rounded-2xl border border-gray-200 bg-white p-3 shadow-xl sm:flex sm:items-center sm:gap-3 lg:-right-10"
+            className="absolute -right-4 top-32 hidden rounded-2xl border border-gray-200 bg-white p-3.5 shadow-xl sm:flex sm:items-center sm:gap-3 lg:-right-10"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-100 shadow-xs">
               <TrendingUp className="h-5 w-5" />
             </span>
             <div className="text-left">
-              <p className="text-xs text-gray-500">Conversions</p>
-              <p className="font-display text-sm font-bold text-gray-900">+68%</p>
+              <p className="text-xs text-gray-500 font-medium">Lead Conversion</p>
+              <p className="font-display text-sm font-bold text-gray-900">+68% Growth</p>
             </div>
           </motion.div>
 
@@ -166,10 +223,10 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.1, duration: 0.4 }}
-            className="absolute -bottom-6 left-1/2 hidden -translate-x-1/2 rounded-full border border-gray-200 bg-white px-4 py-2 shadow-xl sm:flex sm:items-center sm:gap-2"
+            className="absolute -bottom-6 left-1/2 hidden -translate-x-1/2 rounded-full border border-gray-200/90 bg-white px-5 py-2.5 shadow-xl sm:flex sm:items-center sm:gap-2.5"
           >
             <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-            <span className="text-xs font-semibold text-gray-900">5.0 client rating</span>
+            <span className="text-xs font-bold text-gray-900">5.0 Star Client Rating</span>
           </motion.div>
         </div>
       </div>
