@@ -71,7 +71,7 @@ export const Navbar = () => {
           data-testid="navbar"
           aria-label="Main Navigation"
           className={`flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-200 sm:px-6 ${
-            scrolled ? "bg-[#0b1021]/95 border border-white/10 shadow-xl backdrop-blur-md" : "bg-transparent"
+            scrolled ? "bg-white/95 border border-gray-200/90 shadow-lg shadow-slate-900/5 backdrop-blur-md" : "bg-white/80 border border-gray-200/60 shadow-sm backdrop-blur-sm"
           }`}
           style={{ transform: "translateZ(0)", WebkitTransform: "translateZ(0)" }}
         >
@@ -81,10 +81,10 @@ export const Navbar = () => {
             aria-label="Kodeveill home"
             className="flex items-center gap-3 focus-visible:outline-none"
           >
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white shadow-md">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 border border-blue-100 shadow-xs">
               <img src={logo} alt="Kodeveill logo" className="h-7 w-7 object-contain" width="28" height="28" />
             </span>
-            <span className="font-display text-xl font-bold tracking-tight text-white sm:text-2xl">Kodeveill</span>
+            <span className="font-display text-xl font-bold tracking-tight text-[#111827] sm:text-2xl">Kodeveill</span>
           </button>
 
           <ul className="hidden items-center gap-1 lg:flex" role="menubar">
@@ -96,11 +96,11 @@ export const Navbar = () => {
                   onClick={() => handleNav(link.id)}
                   aria-current={active === link.id ? "page" : undefined}
                   className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                    active === link.id ? "text-white" : "text-brand-muted hover:text-white"
+                    active === link.id ? "text-blue-600 font-semibold" : "text-gray-600 hover:text-gray-900 hover:bg-gray-100/70"
                   }`}
                 >
                   {active === link.id && (
-                    <span className="absolute inset-0 rounded-full bg-white/10" />
+                    <span className="absolute inset-0 rounded-full bg-blue-50 border border-blue-100/80" />
                   )}
                   <span className="relative z-10">{link.label}</span>
                 </button>
@@ -120,7 +120,7 @@ export const Navbar = () => {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white transition-colors hover:bg-white/10 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-900 transition-colors hover:bg-gray-200 lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -139,7 +139,7 @@ export const Navbar = () => {
             className="fixed inset-0 z-[9985] lg:hidden"
           >
             <div
-              className="absolute inset-0 bg-[#050816]/85 backdrop-blur-xl"
+              className="absolute inset-0 bg-slate-900/40 backdrop-blur-md"
               onClick={() => setOpen(false)}
               aria-hidden="true"
             />
@@ -148,7 +148,7 @@ export const Navbar = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -15, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="absolute inset-x-4 top-24 rounded-3xl glass-strong p-4 shadow-2xl"
+              className="absolute inset-x-4 top-24 rounded-3xl bg-white border border-gray-200 p-4 shadow-2xl"
             >
               <ul className="flex flex-col gap-1">
                 {NAV_LINKS.map((link) => (
@@ -157,7 +157,7 @@ export const Navbar = () => {
                       data-testid={`mobile-nav-link-${link.id}`}
                       onClick={() => handleNav(link.id)}
                       className={`w-full rounded-2xl px-4 py-3.5 text-left text-base font-medium transition-colors ${
-                        active === link.id ? "bg-white/10 text-white" : "text-brand-muted hover:text-white"
+                        active === link.id ? "bg-blue-50 text-blue-600 font-semibold" : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/70"
                       }`}
                     >
                       {link.label}

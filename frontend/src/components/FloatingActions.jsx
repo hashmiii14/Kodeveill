@@ -15,8 +15,8 @@ export const FloatingActions = () => {
       href: `tel:${CONTACT.phoneRaw}`,
       icon: Phone,
       testid: "fab-call",
-      bg: "linear-gradient(135deg,#4F46E5,#7C3AED)",
-      ring: "rgba(79,70,229,0.55)",
+      bg: "linear-gradient(135deg,#2563EB,#1D4ED8)",
+      ring: "rgba(37,99,235,0.45)",
     },
     {
       label: "Chat on WhatsApp",
@@ -25,7 +25,7 @@ export const FloatingActions = () => {
       external: true,
       testid: "fab-whatsapp",
       bg: "linear-gradient(135deg,#25D366,#128C7E)",
-      ring: "rgba(37,211,102,0.55)",
+      ring: "rgba(37,211,102,0.45)",
     },
   ];
 
@@ -57,7 +57,7 @@ export const FloatingActions = () => {
               width: 52,
               height: 52,
               background: a.bg,
-              border: "1px solid rgba(255,255,255,0.18)",
+              border: "1px solid rgba(255,255,255,0.25)",
               boxShadow: `0 10px 30px -8px ${a.ring}`,
             }}
 
@@ -70,7 +70,7 @@ export const FloatingActions = () => {
             />
             <Icon className="relative h-6 w-6" style={{ width: 24, height: 24 }} />
             {/* Tooltip label (desktop) */}
-            <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg bg-brand-card px-3 py-1.5 text-xs font-semibold text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 lg:block">
+            <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100 lg:block">
               {a.label}
             </span>
           </motion.a>

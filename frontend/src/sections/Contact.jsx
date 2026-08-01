@@ -40,7 +40,6 @@ export const Contact = () => {
       return;
     }
 
-
     setLoading(true);
 
     setTimeout(() => {
@@ -62,21 +61,21 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="relative py-20 sm:py-28">
-      {/* Zero-cost radial gradient glow */}
+    <section id="contact" className="relative bg-[#F8FAFC] py-20 sm:py-28 border-t border-gray-200/80">
+      {/* Subtle radial gradient glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)" }}
         aria-hidden="true"
       />
       <div className="container-x relative">
 
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="section-label">Get In Touch</span>
-          <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
+          <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-[#111827] sm:text-5xl">
             Let's Build Something <span className="text-gradient">Amazing</span>
           </h2>
-          <p className="mt-4 text-brand-muted">
+          <p className="mt-4 text-gray-600">
             Tell us about your project. We usually reply within one business day.
           </p>
         </Reveal>
@@ -84,27 +83,27 @@ export const Contact = () => {
         <div className="mt-14 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           {/* Contact info */}
           <Reveal>
-            <div className="flex h-full flex-col justify-between rounded-3xl glass p-8">
+            <div className="flex h-full flex-col justify-between rounded-3xl bg-white border border-gray-200 p-8 shadow-sm">
               <div>
-                <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-brand-muted">Company</p>
-                <p className="mt-1 font-display text-2xl font-bold text-white">{CONTACT.company}</p>
+                <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">Company</p>
+                <p className="mt-1 font-display text-2xl font-bold text-[#111827]">{CONTACT.company}</p>
 
                 <div className="mt-8 space-y-4">
                   <a
                     href={`mailto:${CONTACT.email}`}
                     aria-label={`Send email to ${CONTACT.email}`}
-                    className="flex items-center gap-3 text-brand-muted transition-colors hover:text-white"
+                    className="flex items-center gap-3 text-gray-600 transition-colors hover:text-blue-600"
                     data-testid="contact-email-link"
                   >
-                    <Mail className="h-5 w-5 text-accent" aria-hidden="true" /> {CONTACT.email}
+                    <Mail className="h-5 w-5 text-blue-600" aria-hidden="true" /> {CONTACT.email}
                   </a>
                   <a
                     href={`tel:${CONTACT.phoneRaw}`}
                     aria-label={`Call phone number ${CONTACT.phone}`}
-                    className="flex items-center gap-3 text-brand-muted transition-colors hover:text-white"
+                    className="flex items-center gap-3 text-gray-600 transition-colors hover:text-blue-600"
                     data-testid="contact-phone-link"
                   >
-                    <Phone className="h-5 w-5 text-accent" aria-hidden="true" /> {CONTACT.phone}
+                    <Phone className="h-5 w-5 text-blue-600" aria-hidden="true" /> {CONTACT.phone}
                   </a>
                 </div>
               </div>
@@ -119,9 +118,9 @@ export const Contact = () => {
                       data-testid={a.testid}
                       aria-label={`Contact via ${a.label}`}
                       {...(a.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="flex flex-col items-center gap-2 rounded-2xl border border-white/8 bg-white/[0.03] py-4 text-xs font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:bg-primary/10"
+                      className="flex flex-col items-center gap-2 rounded-2xl border border-gray-200 bg-gray-50 py-4 text-xs font-semibold text-gray-900 transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600"
                     >
-                      <Icon className="h-5 w-5 text-accent" aria-hidden="true" />
+                      <Icon className="h-5 w-5 text-blue-600" aria-hidden="true" />
                       {a.label}
                     </a>
                   );
@@ -132,12 +131,12 @@ export const Contact = () => {
 
           {/* Form */}
           <Reveal delay={0.1}>
-            <form onSubmit={handleSubmit} className="rounded-3xl glass p-8" data-testid="contact-form" noValidate aria-label="Contact form">
+            <form onSubmit={handleSubmit} className="rounded-3xl bg-white border border-gray-200 p-8 shadow-sm" data-testid="contact-form" noValidate aria-label="Contact form">
               <div className="grid gap-5 sm:grid-cols-2">
                 {FIELDS.map((f) => (
                   <div key={f.name} className={f.name === "message" ? "sm:col-span-2" : ""}>
-                    <label htmlFor={f.name} className="mb-2 block text-xs font-semibold uppercase tracking-wider text-brand-muted">
-                      {f.label}{f.required && <span className="text-accent" aria-hidden="true"> *</span>}
+                    <label htmlFor={f.name} className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-600">
+                      {f.label}{f.required && <span className="text-blue-600" aria-hidden="true"> *</span>}
                     </label>
                     <input
                       id={f.name}
@@ -149,13 +148,13 @@ export const Contact = () => {
                       onChange={handleChange}
                       placeholder={f.placeholder}
                       data-testid={`contact-input-${f.name}`}
-                      className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-primary/60 focus:bg-white/[0.05] focus:ring-2 focus:ring-primary/30"
+                      className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-[#111827] placeholder:text-gray-400 outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/20"
                     />
                   </div>
                 ))}
                 <div className="sm:col-span-2">
-                  <label htmlFor="message" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-brand-muted">
-                    Message<span className="text-accent" aria-hidden="true"> *</span>
+                  <label htmlFor="message" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-600">
+                    Message<span className="text-blue-600" aria-hidden="true"> *</span>
                   </label>
                   <textarea
                     id="message"
@@ -167,7 +166,7 @@ export const Contact = () => {
                     onChange={handleChange}
                     placeholder="Tell us about your project goals..."
                     data-testid="contact-input-message"
-                    className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-primary/60 focus:bg-white/[0.05] focus:ring-2 focus:ring-primary/30"
+                    className="w-full resize-none rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-[#111827] placeholder:text-gray-400 outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/20"
                   />
                 </div>
               </div>
@@ -199,10 +198,10 @@ export const Contact = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-4 flex items-center gap-3 overflow-hidden rounded-xl border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-white"
+                    className="mt-4 flex items-center gap-3 overflow-hidden rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800"
                     data-testid="contact-success"
                   >
-                    <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-accent" aria-hidden="true" />
+                    <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-emerald-600" aria-hidden="true" />
                     Thank you! Your message has been received. We'll get back to you soon.
                   </motion.div>
                 )}
