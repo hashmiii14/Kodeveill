@@ -164,6 +164,24 @@ export const PORTFOLIO = [
     },
   },
   {
+    name: "Powerhouse Gym",
+    category: "Fitness & Luxury Club Website",
+    desc: "Premier 24/7 luxury fitness club website with VIP trial bookings, BMI calculator, and high-energy branding.",
+    url: "https://powerhousegym-1.netlify.app/",
+    image: "/portfolio/powerhouse-gym.jpg",
+    accent: "#F97316",
+    caseStudy: {
+      summary: "A premier 24/7 luxury fitness ecosystem needed a bold, high-converting digital platform to capture VIP trial leads and drive memberships.",
+      challenge: "Standing out in a competitive luxury fitness market while streamlining membership signups and VIP trial claims.",
+      solution: "A high-impact, dark-mode luxury fitness web experience equipped with clear CTAs, BMI calculator, trainer profiles, and 24/7 keycard access highlighting.",
+      results: [
+        { value: "+75%", label: "VIP trial signups" },
+        { value: "0.8s", label: "Page speed" },
+        { value: "100%", label: "Mobile optimized" },
+      ],
+    },
+  },
+  {
     name: "Luxe Interiors Design",
     category: "Interior Design Website",
     desc: "Luxury interior design company website with an elegant, editorial aesthetic.",

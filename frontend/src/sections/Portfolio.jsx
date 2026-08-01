@@ -12,16 +12,23 @@ export const Portfolio = () => {
   const slug = useCallback((n) => n.replace(/\s+/g, "-").toLowerCase(), []);
 
   const ORDER = [
-    "Orizer ERP",
+    "Powerhouse Gym",
     "Luxe Interiors Design",
+    "Orizer ERP",
     "Faiz Dental Clinic",
     "Pearl Root Dental Clinic",
     "Vision Classes",
     "Unlimited Car Rental",
+    "VYU Industries",
   ];
-  const projects = [...PORTFOLIO].sort(
-    (a, b) => ORDER.indexOf(a.name) - ORDER.indexOf(b.name)
-  );
+  const projects = [...PORTFOLIO].sort((a, b) => {
+    const ia = ORDER.indexOf(a.name);
+    const ib = ORDER.indexOf(b.name);
+    if (ia !== -1 && ib !== -1) return ia - ib;
+    if (ia !== -1) return -1;
+    if (ib !== -1) return 1;
+    return 0;
+  });
 
   return (
     <section id="portfolio" className="relative bg-white py-20 sm:py-28">
@@ -63,6 +70,11 @@ export const Portfolio = () => {
                   decoding="async"
                   width="1200"
                   height="800"
+                  onError={(e) => {
+                    if (e.target.src.endsWith(".jpg")) {
+                      e.target.src = e.target.src.replace(".jpg", ".png");
+                    }
+                  }}
                   data-testid={`portfolio-image-${slug(p.name)}`}
                   className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.06]"
                 />
