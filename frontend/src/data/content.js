@@ -8,13 +8,10 @@ import {
 
 export const NAV_LINKS = [
   { label: "Home", id: "home" },
-  { label: "Who We Are", id: "about" },
   { label: "Services", id: "services" },
   { label: "Portfolio", id: "portfolio" },
-  { label: "Why Us", id: "why-us" },
   { label: "Process", id: "process" },
   { label: "Pricing", id: "pricing" },
-  { label: "Testimonials", id: "testimonials" },
   { label: "Contact", id: "contact" },
 ];
 
