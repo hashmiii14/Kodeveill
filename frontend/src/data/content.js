@@ -204,7 +204,7 @@ export const PORTFOLIO = [
     category: "Restaurant & Café Website",
     desc: "Premium Indian café website serving artisanal coffee, gourmet food, and a vibrant dining experience.",
     url: "https://urbancafe-1.netlify.app/",
-    image: "/portfolio/faiz-dental.jpg",
+    image: "/portfolio/urban-cafe.jpg",
     accent: "#D97706",
     caseStudy: {
       summary: "A premium café needed an online presence to showcase their artisanal coffee, gourmet menu, and cozy atmosphere in Connaught Place.",
@@ -222,7 +222,7 @@ export const PORTFOLIO = [
     category: "Digital Archive & Scrapbook",
     desc: "A handcrafted digital scrapbook documenting college life, squad memories, and journey at Jamia Hamdard.",
     url: "https://jamiahamdardmemories.vercel.app/",
-    image: "/portfolio/faiz-dental.jpg",
+    image: "/portfolio/jamia-hamdard.jpg",
     accent: "#10B981",
     caseStudy: {
       summary: "A digital scrapbook and archive built to preserve college memories, media galleries, squad milestones, and student stories for Jamia Hamdard B.Tech CSE.",

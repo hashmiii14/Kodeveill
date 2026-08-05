@@ -12,6 +12,8 @@ export const Portfolio = () => {
   const slug = useCallback((n) => n.replace(/\s+/g, "-").toLowerCase(), []);
 
   const ORDER = [
+    "The Urban Café",
+    "Jamia Hamdard Memory Archive",
     "Powerhouse Gym",
     "Luxe Interiors Design",
     "Orizer ERP",
