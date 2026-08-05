@@ -235,6 +235,24 @@ export const PORTFOLIO = [
       ],
     },
   },
+  {
+    name: "Oud Arábia — Luxury Perfumes",
+    category: "Luxury E-Commerce Website",
+    desc: "A luxury e-commerce experience for rare oud, attars, and Arabian perfumes crafted with timeless elegance.",
+    url: "https://oudperfumes.vercel.app/",
+    image: "/portfolio/oud-arabia.jpg",
+    accent: "#D4AF37",
+    caseStudy: {
+      summary: "A high-end luxury fragrance maison needed an opulent digital storefront to showcase rare oud, attars, and limited reserve collections across India & the Gulf region.",
+      challenge: "Capturing the rich heritage and exclusivity of artisanal Arabian perfumes in an immersive, high-converting digital experience.",
+      solution: "Designed and built a sleek, dark-mode luxury e-commerce platform with dynamic collection showcases, multi-currency support, curated product galleries, and seamless cart management.",
+      results: [
+        { value: "0.7s", label: "Fast Page Load" },
+        { value: "100%", label: "Responsive UI" },
+        { value: "Multi-Currency", label: "INR & GCC Support" },
+      ],
+    },
+  },
 ];
 
 export const PROCESS = [
