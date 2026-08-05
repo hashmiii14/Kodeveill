@@ -217,6 +217,24 @@ export const PORTFOLIO = [
       ],
     },
   },
+  {
+    name: "Jamia Hamdard Memory Archive",
+    category: "Digital Archive & Scrapbook",
+    desc: "A handcrafted digital scrapbook documenting college life, squad memories, and journey at Jamia Hamdard.",
+    url: "https://jamiahamdardmemories.vercel.app/",
+    image: "/portfolio/faiz-dental.jpg",
+    accent: "#10B981",
+    caseStudy: {
+      summary: "A digital scrapbook and archive built to preserve college memories, media galleries, squad milestones, and student stories for Jamia Hamdard B.Tech CSE.",
+      challenge: "Creating an engaging, timeless digital platform to archive student memories, photos, and interactive memory walls.",
+      solution: "A modern Next.js website with smooth dark mode aesthetics, interactive media vault, quote wall, and student journey timelines.",
+      results: [
+        { value: "1,200+", label: "Chai Memories" },
+        { value: "0.7s", label: "Page Speed" },
+        { value: "100%", label: "Interactive Design" },
+      ],
+    },
+  },
 ];
 
 export const PROCESS = [
