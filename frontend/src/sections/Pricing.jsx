@@ -2,7 +2,7 @@ import React from "react";
 import { PRICING_PLANS, PRICING_COMPARISON } from "@/data/content";
 import { Reveal, RevealStagger, revealItem } from "@/components/Reveal";
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
+import { Check, X, ArrowRight, Sparkles } from "lucide-react";
 
 export const Pricing = () => {
   return (
@@ -38,9 +38,9 @@ export const Pricing = () => {
                 variants={revealItem}
                 className={`relative flex flex-col justify-between rounded-3xl border ${
                   isPopular
-                    ? "border-blue-400 bg-slate-900/90 shadow-[0_20px_70px_-15px_rgba(37,99,235,0.4)]"
-                    : "border-blue-400/20 bg-slate-900/60 shadow-xl"
-                } p-8 sm:p-10 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2`}
+                    ? "border-blue-400 bg-[#0E2242] shadow-[0_20px_70px_-15px_rgba(37,99,235,0.4)]"
+                    : "border-blue-400/30 bg-[#0B1A30] shadow-xl"
+                } p-8 sm:p-10 transition-all duration-300 hover:-translate-y-2`}
                 data-testid={`pricing-card-${plan.id}`}
               >
                 {isPopular && (
@@ -68,7 +68,7 @@ export const Pricing = () => {
                   {/* Included Features */}
                   <ul className="mt-6 space-y-3.5 text-sm">
                     {plan.features.map((feat, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-slate-200 font-medium">
+                      <li key={idx} className="flex items-center gap-3 text-slate-100 font-medium">
                         <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-xs">
                           <Check className="h-3.5 w-3.5" />
                         </span>
@@ -94,7 +94,7 @@ export const Pricing = () => {
                   )}
 
                   {plan.renewalNote && (
-                    <p className="mt-5 rounded-xl bg-blue-950/60 border border-blue-400/20 px-4 py-2.5 text-xs font-semibold text-blue-300 text-center">
+                    <p className="mt-5 rounded-xl bg-blue-950 border border-blue-400/30 px-4 py-2.5 text-xs font-semibold text-blue-300 text-center">
                       💡 {plan.renewalNote}
                     </p>
                   )}
@@ -119,18 +119,18 @@ export const Pricing = () => {
 
         {/* Small Compact Comparison Table */}
         <Reveal className="mt-20">
-          <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-blue-400/20 bg-slate-900/80 backdrop-blur-md shadow-xl">
+          <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-blue-400/30 bg-[#0B1A30] shadow-xl">
             <table className="w-full text-left text-sm text-white" data-testid="pricing-comparison-table">
               <thead>
-                <tr className="border-b border-blue-400/20 bg-slate-950">
+                <tr className="border-b border-blue-400/30 bg-[#06101E]">
                   <th scope="col" className="p-4 font-display font-bold text-white sm:p-5">Feature</th>
-                  <th scope="col" className="p-4 text-center font-display font-bold text-slate-300 sm:p-5">Starter (₹9,999)</th>
+                  <th scope="col" className="p-4 text-center font-display font-bold text-slate-200 sm:p-5">Starter (₹9,999)</th>
                   <th scope="col" className="p-4 text-center font-display font-bold text-blue-400 sm:p-5">Business (₹24,999)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-blue-400/10">
+              <tbody className="divide-y divide-blue-400/15">
                 {PRICING_COMPARISON.map((row, idx) => (
-                  <tr key={idx} className="transition-colors hover:bg-blue-950/40">
+                  <tr key={idx} className="transition-colors hover:bg-blue-950/60">
                     <td className="p-3.5 font-medium text-slate-200 sm:p-4">{row.feature}</td>
                     <td className="p-3.5 text-center sm:p-4">
                       {typeof row.starter === "boolean" ? (
@@ -144,7 +144,7 @@ export const Pricing = () => {
                           </span>
                         )
                       ) : (
-                        <span className="font-semibold text-slate-400">{row.starter}</span>
+                        <span className="font-semibold text-slate-300">{row.starter}</span>
                       )}
                     </td>
                     <td className="p-3.5 text-center sm:p-4">

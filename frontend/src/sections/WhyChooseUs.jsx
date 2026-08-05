@@ -34,7 +34,7 @@ export const WhyChooseUs = () => {
               <motion.div
                 key={reason.title}
                 variants={revealItem}
-                className="group relative flex flex-col justify-between rounded-3xl border border-blue-400/20 bg-slate-900/60 p-7 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-400/60 hover:bg-slate-900/90 hover:shadow-2xl hover:shadow-blue-500/15"
+                className="group relative flex flex-col justify-between rounded-3xl border border-blue-400/30 bg-[#0B1A30] p-7 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-400/70 hover:shadow-2xl hover:shadow-blue-500/20"
               >
                 <div>
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600/20 border border-blue-400/30 text-blue-400 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
@@ -45,12 +45,12 @@ export const WhyChooseUs = () => {
                     {reason.title}
                   </h3>
 
-                  <p className="mt-3 text-sm leading-relaxed text-blue-200/90">
+                  <p className="mt-3 text-sm leading-relaxed text-blue-200">
                     {reason.desc}
                   </p>
                 </div>
 
-                <div className="mt-6 h-1 w-12 rounded-full bg-blue-900/80 transition-all duration-300 group-hover:w-full group-hover:bg-blue-500" />
+                <div className="mt-6 h-1 w-12 rounded-full bg-blue-900 transition-all duration-300 group-hover:w-full group-hover:bg-blue-500" />
               </motion.div>
             );
           })}

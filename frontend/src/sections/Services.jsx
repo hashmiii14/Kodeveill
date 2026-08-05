@@ -35,7 +35,7 @@ export const Services = () => {
               <motion.article
                 key={s.title}
                 variants={revealItem}
-                className="group relative flex flex-col justify-between rounded-3xl border border-blue-400/20 bg-slate-900/60 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-400/60 hover:bg-slate-900/90 hover:shadow-2xl hover:shadow-blue-500/15"
+                className="group relative flex flex-col justify-between rounded-3xl border border-blue-400/30 bg-[#0B1A30] p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-400/70 hover:shadow-2xl hover:shadow-blue-500/20"
               >
                 <div>
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600/20 border border-blue-400/30 text-blue-400 shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
@@ -46,16 +46,16 @@ export const Services = () => {
                     {s.title}
                   </h3>
 
-                  <p className="mt-3 text-sm leading-relaxed text-blue-200/90">
+                  <p className="mt-3 text-sm leading-relaxed text-blue-200">
                     {s.desc}
                   </p>
                 </div>
 
-                <div className="mt-8 border-t border-slate-800/80 pt-4 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-blue-400/80">KodeVeil Standard</span>
+                <div className="mt-8 border-t border-blue-900/60 pt-4 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-blue-400">KodeVeil Standard</span>
                   <button
                     onClick={() => scrollToId("contact")}
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/10 text-blue-300 transition-all group-hover:bg-blue-600 group-hover:text-white"
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-blue-300 transition-all group-hover:bg-blue-600 group-hover:text-white"
                   >
                     <ArrowRight className="h-4 w-4" />
                   </button>
