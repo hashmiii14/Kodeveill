@@ -7,24 +7,20 @@ import { Navbar } from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 
 import { Hero } from "@/sections/Hero";
-import { Portfolio } from "@/sections/Portfolio";
-import { Trust } from "@/sections/Trust";
-import { WhyChooseUs } from "@/sections/WhyChooseUs";
-import { StatsCounter } from "@/components/StatsCounter";
+import { WhoWeAre } from "@/sections/WhoWeAre";
 import { Services } from "@/sections/Services";
-import { TechStack } from "@/components/TechStack";
+import { Portfolio } from "@/sections/Portfolio";
+import { WhyChooseUs } from "@/sections/WhyChooseUs";
 import { Process } from "@/sections/Process";
 import { Pricing } from "@/sections/Pricing";
-import { WhatYouGet } from "@/components/WhatYouGet";
 import { Testimonials } from "@/sections/Testimonials";
-import { FAQ } from "@/sections/FAQ";
 import { CTA } from "@/sections/CTA";
 import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-white text-gray-900 font-sans antialiased selection:bg-blue-500/20 selection:text-blue-900">
+    <div className="relative min-h-screen bg-white text-slate-900 font-sans antialiased selection:bg-blue-500/20 selection:text-blue-900">
       {/* Accessibility Skip Link */}
       <a
         href="#main-content"
@@ -38,44 +34,36 @@ function App() {
       <Navbar />
 
       <main id="main-content" tabIndex="-1" className="outline-none">
-        {/* 1. Hero Section */}
+        {/* SECTION 1 — HERO (Deep Blue Gradient) */}
         <Hero />
 
-        {/* 2. Projects Shown Immediately After Hero */}
+        {/* SECTION 2 — WHO WE ARE (Pure White) */}
+        <WhoWeAre />
+
+        {/* SECTION 3 — SERVICES (Deep Blue) */}
+        <Services />
+
+        {/* SECTION 4 — FEATURED PORTFOLIO (Pure White) */}
         <Portfolio />
 
-        {/* 3. Trust & Why Choose Us */}
-        <Trust />
+        {/* SECTION 5 — WHY CHOOSE KODEVEIL (Deep Blue) */}
         <WhyChooseUs />
 
-        {/* 4. Animated Stats Counter */}
-        <StatsCounter />
-
-        {/* 5. Services & Interactive Tech Stack */}
-        <Services />
-        <TechStack />
-
-        {/* 6. Process Timeline */}
+        {/* SECTION 6 — OUR PROCESS (Pure White) */}
         <Process />
 
-        {/* 7. Redesigned Premium Pricing (₹9,999 & ₹24,999) */}
+        {/* SECTION 7 — PRICING (Deep Blue: Starter ₹9,999 & Business ₹24,999) */}
         <Pricing />
 
-        {/* 8. What You Get Deliverables Breakdown */}
-        <WhatYouGet />
-
-        {/* 9. Client Testimonials */}
+        {/* SECTION 8 — TESTIMONIALS (Pure White) */}
         <Testimonials />
 
-        {/* 10. Frequently Asked Questions */}
-        <FAQ />
-
-        {/* 11. Final Call To Action & Inquiry Form */}
+        {/* SECTION 9 — FINAL CTA & CONTACT (Deep Blue Gradient) */}
         <CTA />
         <Contact />
       </main>
 
-      {/* 12. Enhanced Footer */}
+      {/* FOOTER (Dark Deep Blue) */}
       <Footer />
       <FloatingActions />
       <Toaster position="bottom-right" richColors theme="dark" />

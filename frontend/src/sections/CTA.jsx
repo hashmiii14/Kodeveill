@@ -1,53 +1,56 @@
+import React from "react";
 import { Reveal } from "@/components/Reveal";
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles, MessageSquare } from "lucide-react";
 import { scrollToId } from "@/lib/scroll";
-import { ArrowRight, Sparkles } from "lucide-react";
 
-export const CTA = () => (
-  <section className="relative bg-white py-16 sm:py-24">
-    <div className="container-x">
-      <Reveal>
-        <div
-          className="relative overflow-hidden rounded-[2.5rem] px-8 py-16 text-center sm:px-16 sm:py-24 shadow-2xl"
-          style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #2563EB 100%)" }}
-          data-testid="cta-banner"
-        >
-          {/* Ambient lighting spots */}
-          <div
-            className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full opacity-30"
-            style={{ background: "radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%)" }}
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute -bottom-24 -right-16 h-96 w-96 rounded-full opacity-25"
-            style={{ background: "radial-gradient(circle, rgba(96,165,250,0.8) 0%, transparent 70%)" }}
-            aria-hidden="true"
-          />
+export const CTA = () => {
+  return (
+    <section id="cta" className="relative bg-gradient-to-br from-[#06101E] via-[#0A1F44] to-[#1D4ED8] text-white py-24 sm:py-32 overflow-hidden">
+      {/* Background Lighting */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#3B82F6_1px,transparent_1px)] [background-size:32px_32px] opacity-15" />
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-50 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(37,99,235,0.4) 0%, transparent 70%)" }}
+      />
 
-          <div className="relative inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-200 backdrop-blur-md mb-6">
-            <Sparkles className="h-3.5 w-3.5 text-blue-300" />
-            <span>Ready for Growth</span>
-          </div>
+      <div className="container-x relative z-10 text-center">
+        <Reveal className="mx-auto max-w-3xl">
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-300 backdrop-blur-md">
+            <Sparkles className="h-3.5 w-3.5" />
+            <span>Ready To Scale Your Digital Presence?</span>
+          </span>
 
-          <h2 className="relative font-display text-3xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
-            Let's Build Your Hardest-Working Salesperson
+          <h2 className="mt-8 font-display text-4xl font-extrabold leading-[1.1] text-white sm:text-6xl">
+            Let's Build Something <span className="bg-gradient-to-r from-blue-300 via-blue-400 to-indigo-200 bg-clip-text text-transparent">Amazing Together.</span>
           </h2>
-          <p className="relative mx-auto mt-5 max-w-2xl text-blue-100 text-base sm:text-xl font-normal leading-relaxed">
-            Turn browsers into paying clients with a custom, high-converting website built for speed and credibility.
+
+          <p className="mt-6 text-base text-blue-100 sm:text-xl font-normal leading-relaxed">
+            Whether you need a bespoke portfolio website, a high-converting landing page, or an enterprise e-commerce platform — we are ready to bring your vision to life.
           </p>
 
-          <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <button
-              data-testid="cta-button"
               onClick={() => scrollToId("contact")}
-              className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-white px-8 py-4 text-sm font-extrabold text-blue-600 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-blue-50 hover:text-blue-700 hover:shadow-2xl focus-visible:outline-none"
+              className="btn-primary group !bg-white !text-blue-900 hover:!bg-blue-50 shadow-2xl shadow-blue-500/30 px-8 py-4 text-base"
+              data-testid="cta-primary-button"
             >
-              <span>Book a Free Consultation</span>
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              <span className="font-extrabold">Start Your Project</span>
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </button>
-          </div>
-        </div>
-      </Reveal>
-    </div>
-  </section>
-);
 
+            <a
+              href="https://wa.me/918595018458?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20new%20website%20project%20with%20KodeVeil."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost !bg-blue-950/60 !text-white !border-blue-400/40 hover:!bg-blue-900 px-8 py-4 text-base flex items-center gap-2"
+            >
+              <MessageSquare className="h-5 w-5 text-blue-400" />
+              <span>Chat on WhatsApp</span>
+            </a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+};

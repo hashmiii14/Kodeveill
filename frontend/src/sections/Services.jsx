@@ -1,70 +1,70 @@
+import React from "react";
 import { SERVICES } from "@/data/content";
 import { Reveal, RevealStagger, revealItem } from "@/components/Reveal";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { scrollToId } from "@/lib/scroll";
 
-export const Services = () => (
-  <section id="services" className="relative bg-white py-20 sm:py-28">
-    {/* Subtle radial gradient glow */}
-    <div
-      className="pointer-events-none absolute right-0 top-40 h-[450px] w-[450px]"
-      style={{ background: "radial-gradient(circle, rgba(37,99,235,0.06) 0%, rgba(37,99,235,0.01) 45%, transparent 70%)" }}
-      aria-hidden="true"
-    />
-    <div className="container-x relative">
-      <Reveal className="max-w-2xl">
-        <span className="section-label">What We Do</span>
-        <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-[#111827] sm:text-5xl">
-          Premium services built to <span className="text-gradient">grow your business</span>
-        </h2>
-        <p className="mt-4 text-gray-600 sm:text-lg">
-          From first pixel to final launch, every service is engineered for speed, trust, and conversions.
-        </p>
-      </Reveal>
+export const Services = () => {
+  return (
+    <section id="services" className="relative bg-[#06101E] text-white py-24 sm:py-32 overflow-hidden border-b border-blue-900/30">
+      {/* Radial Blue Glow */}
+      <div className="pointer-events-none absolute -left-40 top-1/4 h-96 w-96 rounded-full bg-blue-600/20 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-96 w-96 rounded-full bg-indigo-600/20 blur-[120px]" />
 
-      <RevealStagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {SERVICES.map((s) => {
-          const Icon = s.icon;
-          return (
-            <motion.article
-              key={s.title}
-              variants={revealItem}
-              className="card-glow group relative flex flex-col justify-between overflow-hidden rounded-2xl p-7"
-              data-testid={`service-card-${s.title.replace(/\s+/g, "-").toLowerCase()}`}
-            >
-              <div>
-                <div className="flex items-center justify-between">
-                  <span className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-md shadow-blue-500/20 transition-transform duration-300 group-hover:scale-110">
+      <div className="container-x relative">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-300">
+            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>Our Core Services</span>
+          </span>
+
+          <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
+            Bespoke Web Capabilities <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-indigo-200 bg-clip-text text-transparent">For Modern Businesses</span>
+          </h2>
+
+          <p className="mt-4 text-base text-blue-200 sm:text-lg">
+            From high-end portfolio websites to enterprise digital systems, we build software solutions engineered for maximum performance and conversion.
+          </p>
+        </Reveal>
+
+        <RevealStagger className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((s, idx) => {
+            const Icon = s.icon;
+            return (
+              <motion.article
+                key={s.title}
+                variants={revealItem}
+                className="group relative flex flex-col justify-between rounded-3xl border border-blue-400/20 bg-slate-900/60 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-400/60 hover:bg-slate-900/90 hover:shadow-2xl hover:shadow-blue-500/15"
+              >
+                <div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600/20 border border-blue-400/30 text-blue-400 shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
                     <Icon className="h-6 w-6" aria-hidden="true" />
-                  </span>
+                  </div>
+
+                  <h3 className="mt-6 font-display text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                    {s.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-relaxed text-blue-200/90">
+                    {s.desc}
+                  </p>
+                </div>
+
+                <div className="mt-8 border-t border-slate-800/80 pt-4 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-blue-400/80">KodeVeil Standard</span>
                   <button
                     onClick={() => scrollToId("contact")}
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-all duration-200 group-hover:bg-blue-600 group-hover:text-white"
-                    aria-label={`Inquire about ${s.title}`}
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/10 text-blue-300 transition-all group-hover:bg-blue-600 group-hover:text-white"
                   >
-                    <ArrowUpRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4" />
                   </button>
                 </div>
-                <h3 className="relative mt-6 font-display text-xl font-bold text-[#111827]">{s.title}</h3>
-                <p className="relative mt-2.5 text-sm leading-relaxed text-gray-600">{s.desc}</p>
-              </div>
-
-              <div className="mt-6 border-t border-gray-100 pt-4">
-                <button
-                  onClick={() => scrollToId("contact")}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700"
-                >
-                  <span>Discuss This Service</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
-              </div>
-            </motion.article>
-          );
-        })}
-      </RevealStagger>
-    </div>
-  </section>
-);
-
-
+              </motion.article>
+            );
+          })}
+        </RevealStagger>
+      </div>
+    </section>
+  );
+};
