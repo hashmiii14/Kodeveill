@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, MousePointerClick, Zap, TrendingUp, Star, ShieldCheck, Code, Cpu } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, ShieldCheck, Star, TrendingUp } from "lucide-react";
 import { scrollToId } from "@/lib/scroll";
-import logo from "@/assets/kodeveill-logo.webp";
 
 export const Hero = () => {
   return (
@@ -22,47 +21,81 @@ export const Hero = () => {
         aria-hidden="true"
       />
 
-      {/* Floating Badges */}
+      {/* Left Side Floating Widgets */}
       <motion.div
-        animate={{ y: [0, -12, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute left-[6%] top-40 hidden rounded-2xl border border-blue-400/30 bg-slate-900/80 p-3.5 shadow-2xl backdrop-blur-xl lg:flex lg:items-center lg:gap-3"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute left-[3%] top-36 hidden rounded-2xl border border-blue-400/30 bg-slate-900/90 p-4 shadow-2xl backdrop-blur-xl lg:flex lg:items-center lg:gap-3.5 z-20"
       >
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-xs shadow-md">
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white font-bold shadow-md">
           ⚡
         </span>
         <div className="text-left pr-2">
-          <p className="text-[11px] font-bold text-white">0.8s Sub-Second Speed</p>
-          <p className="text-[10px] text-blue-200">Google Core Web Vitals</p>
+          <p className="text-xs font-extrabold text-white">0.8s Sub-Second Speed</p>
+          <p className="text-[11px] font-medium text-blue-200">100/100 Lighthouse Score</p>
         </div>
       </motion.div>
 
       <motion.div
-        animate={{ y: [0, 14, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="pointer-events-none absolute right-[6%] top-48 hidden rounded-2xl border border-blue-400/30 bg-slate-900/80 p-3.5 shadow-2xl backdrop-blur-xl lg:flex lg:items-center lg:gap-3"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        className="pointer-events-none absolute left-[4%] top-[340px] hidden rounded-2xl border border-blue-400/30 bg-slate-900/90 p-4 shadow-2xl backdrop-blur-xl lg:flex lg:items-center lg:gap-3.5 z-20"
       >
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-500 text-white font-bold text-xs shadow-md">
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500 text-white font-bold shadow-md">
+          <TrendingUp className="h-5 w-5" />
+        </span>
+        <div className="text-left pr-2">
+          <p className="text-xs font-extrabold text-white">+68% Lead Growth</p>
+          <p className="text-[11px] font-medium text-blue-200">High-Converting UX</p>
+        </div>
+      </motion.div>
+
+      {/* Right Side Floating Widgets */}
+      <motion.div
+        animate={{ y: [0, 12, 0] }}
+        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="pointer-events-none absolute right-[3%] top-36 hidden rounded-2xl border border-blue-400/30 bg-slate-900/90 p-4 shadow-2xl backdrop-blur-xl lg:flex lg:items-center lg:gap-3.5 z-20"
+      >
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white font-bold shadow-md">
           <ShieldCheck className="h-5 w-5" />
         </span>
         <div className="text-left pr-2">
-          <p className="text-[11px] font-bold text-white">100% SEO Certified</p>
-          <p className="text-[10px] text-blue-200">Semantic Architecture</p>
+          <p className="text-xs font-extrabold text-white">100% SEO & SSL</p>
+          <p className="text-[11px] font-medium text-blue-200">Semantic Google Indexing</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        className="pointer-events-none absolute right-[4%] top-[340px] hidden rounded-2xl border border-blue-400/30 bg-slate-900/90 p-4 shadow-2xl backdrop-blur-xl lg:flex lg:items-center lg:gap-3.5 z-20"
+      >
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white font-bold shadow-md">
+          <Star className="h-5 w-5 fill-white text-white" />
+        </span>
+        <div className="text-left pr-2">
+          <p className="text-xs font-extrabold text-white">5.0 ★ Client Rating</p>
+          <p className="text-[11px] font-medium text-blue-200">50+ Delivered Builds</p>
         </div>
       </motion.div>
 
       <div className="container-x relative z-10">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           
-          {/* Logo & Brand Header */}
+          {/* Sleek Live Pulse Premium Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center gap-3 rounded-full border border-blue-400/30 bg-blue-900/40 px-5 py-2 backdrop-blur-md shadow-lg"
+            className="inline-flex items-center gap-2.5 rounded-full border border-blue-400/40 bg-blue-950/80 px-5 py-2 backdrop-blur-md shadow-xl"
           >
-            <img src={logo} alt="KodeVeil logo" className="h-6 w-6 object-contain" />
-            <span className="font-display text-sm font-bold tracking-wider text-blue-200 uppercase">KodeVeil Digital Agency</span>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-400"></span>
+            </span>
+            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-blue-200">
+              Premium Software & Web Engineering
+            </span>
           </motion.div>
 
           {/* Requested Headline */}
