@@ -1,7 +1,7 @@
 # Kodeveill — Premium Website Design Agency (Landing Page)
 
-A premium, frontend-only, dark-themed marketing landing page for **Kodeveill**.
-No backend, no database, no authentication — 100% static and Netlify-ready.
+A premium, dark-themed marketing landing page for **Kodeveill**.
+Configured for automatic deployment on Vercel.
 
 ## Tech
 - React + Tailwind CSS
@@ -11,12 +11,8 @@ No backend, no database, no authentication — 100% static and Netlify-ready.
 
 ## Sections
 Sticky navbar · Hero (masked line reveal + laptop mockup + floating UI) · Trust counters + marquee ·
-Services (10) · Why Choose Us (numbered manifesto) · Portfolio (6 live projects) · Process timeline ·
+Services (10) · Why Choose Us (numbered manifesto) · Portfolio (live projects) · Process timeline ·
 Testimonials · FAQ accordion · CTA banner · Contact (simulated form + email/call/WhatsApp) · Footer.
-
-## Notes
-- The contact form is a **simulation only** — it prevents page reload and shows a success message. No email is sent.
-- Replace the logo/preview placeholders in `src/assets/` as needed.
 
 ## Develop
 ```bash
@@ -24,8 +20,8 @@ yarn install
 yarn start
 ```
 
-## Build & Deploy (Netlify)
+## Build & Deploy (Vercel)
 ```bash
 yarn build      # outputs to /build
 ```
-Drag-and-drop the `build/` folder into Netlify, or connect the repo (config in `netlify.toml`).
+Connect the repository directly to Vercel for automatic continuous deployment.
