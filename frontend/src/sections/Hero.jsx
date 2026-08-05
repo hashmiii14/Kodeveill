@@ -59,7 +59,7 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center gap-3 rounded-full border border-blue-400/30 bg-blue-900/30 px-5 py-2 backdrop-blur-md shadow-lg"
+            className="flex items-center gap-3 rounded-full border border-blue-400/30 bg-blue-900/40 px-5 py-2 backdrop-blur-md shadow-lg"
           >
             <img src={logo} alt="KodeVeil logo" className="h-6 w-6 object-contain" />
             <span className="font-display text-sm font-bold tracking-wider text-blue-200 uppercase">KodeVeil Digital Agency</span>
@@ -87,7 +87,7 @@ export const Hero = () => {
             We design and develop premium websites that are fast, modern, SEO-optimized, and built to help businesses create a powerful online presence.
           </motion.p>
 
-          {/* CTAs */}
+          {/* High-Contrast Visible CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -96,16 +96,16 @@ export const Hero = () => {
           >
             <button
               onClick={() => scrollToId("contact")}
-              className="btn-primary group !bg-white !text-blue-900 hover:!bg-blue-50 shadow-xl shadow-blue-500/20"
+              className="group relative inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base font-extrabold text-[#06101E] bg-white hover:bg-blue-50 transition-all duration-300 shadow-[0_10px_35px_-5px_rgba(255,255,255,0.4)] hover:shadow-[0_15px_45px_-5px_rgba(255,255,255,0.6)] hover:-translate-y-0.5 active:translate-y-0"
               data-testid="hero-primary-cta"
             >
-              <span className="font-extrabold">Start Your Project</span>
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <span>Start Your Project</span>
+              <ArrowRight className="h-5 w-5 text-[#06101E] transition-transform group-hover:translate-x-1" />
             </button>
             
             <button
               onClick={() => scrollToId("portfolio")}
-              className="btn-ghost !bg-blue-900/40 !text-white !border-blue-400/40 hover:!bg-blue-800/60"
+              className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-bold text-white bg-blue-950/60 border border-blue-400/40 hover:bg-blue-900 transition-all duration-300 shadow-md backdrop-blur-md"
               data-testid="hero-secondary-cta"
             >
               Explore Work

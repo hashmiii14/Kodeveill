@@ -34,36 +34,36 @@ function App() {
       <Navbar />
 
       <main id="main-content" tabIndex="-1" className="outline-none">
-        {/* SECTION 1 — HERO (Deep Blue Gradient) */}
+        {/* 1. BLUE HERO */}
         <Hero />
 
-        {/* SECTION 2 — WHO WE ARE (Pure White) */}
+        {/* 2. WHITE WHO WE ARE */}
         <WhoWeAre />
 
-        {/* SECTION 3 — SERVICES (Deep Blue) */}
+        {/* 3. WHITE SERVICES */}
         <Services />
 
-        {/* SECTION 4 — FEATURED PORTFOLIO (Pure White) */}
+        {/* 4. BLUE FEATURED PORTFOLIO (Displays ALL 11 projects; Perfume, Gym, Cafe & Jamia Memories featured first) */}
         <Portfolio />
 
-        {/* SECTION 5 — WHY CHOOSE KODEVEIL (Deep Blue) */}
+        {/* 5. WHITE WHY CHOOSE US */}
         <WhyChooseUs />
 
-        {/* SECTION 6 — OUR PROCESS (Pure White) */}
+        {/* 6. BLUE OUR PROCESS */}
         <Process />
 
-        {/* SECTION 7 — PRICING (Deep Blue: Starter ₹9,999 & Business ₹24,999) */}
+        {/* 7. WHITE PRICING & COMPARISON (Starter ₹9,999 & Business ₹24,999) */}
         <Pricing />
 
-        {/* SECTION 8 — TESTIMONIALS (Pure White) */}
+        {/* 8. WHITE TESTIMONIALS */}
         <Testimonials />
 
-        {/* SECTION 9 — FINAL CTA & CONTACT (Deep Blue Gradient) */}
+        {/* 9. DEEP BLUE FINAL CTA & CONTACT */}
         <CTA />
         <Contact />
       </main>
 
-      {/* FOOTER (Dark Deep Blue) */}
+      {/* DARK BLUE FOOTER */}
       <Footer />
       <FloatingActions />
       <Toaster position="bottom-right" richColors theme="dark" />
