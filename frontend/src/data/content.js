@@ -199,6 +199,24 @@ export const PORTFOLIO = [
       ],
     },
   },
+  {
+    name: "The Urban Café",
+    category: "Restaurant & Café Website",
+    desc: "Premium Indian café website serving artisanal coffee, gourmet food, and a vibrant dining experience.",
+    url: "https://urbancafe-1.netlify.app/",
+    image: "/portfolio/faiz-dental.jpg",
+    accent: "#D97706",
+    caseStudy: {
+      summary: "A premium café needed an online presence to showcase their artisanal coffee, gourmet menu, and cozy atmosphere in Connaught Place.",
+      challenge: "Differentiating in a competitive dining market and driving foot traffic and table reservations online.",
+      solution: "A mouth-watering, highly responsive website featuring dynamic menu showcases, rich visual aesthetics, ambiance highlights, and seamless contact options.",
+      results: [
+        { value: "+85%", label: "Table Reservations" },
+        { value: "0.8s", label: "Page Load Time" },
+        { value: "100%", label: "Mobile Responsive" },
+      ],
+    },
+  },
 ];
 
 export const PROCESS = [
