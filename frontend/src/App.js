@@ -20,7 +20,7 @@ import { Footer } from "@/sections/Footer";
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-white text-slate-900 font-sans antialiased selection:bg-blue-500/20 selection:text-blue-900">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-white text-slate-900 font-sans antialiased selection:bg-blue-500/20 selection:text-blue-900">
       {/* Accessibility Skip Link */}
       <a
         href="#main-content"
@@ -33,26 +33,26 @@ function App() {
       <ScrollProgress />
       <Navbar />
 
-      <main id="main-content" tabIndex="-1" className="outline-none">
+      <main id="main-content" tabIndex="-1" className="w-full max-w-full overflow-x-hidden outline-none">
         {/* 1. BLUE HERO */}
         <Hero />
 
         {/* 2. WHITE WHO WE ARE */}
         <WhoWeAre />
 
-        {/* 3. WHITE SERVICES */}
+        {/* 3. BLUE SERVICES */}
         <Services />
 
-        {/* 4. BLUE FEATURED PORTFOLIO (Displays ALL 11 projects; Perfume, Gym, Cafe & Jamia Memories featured first) */}
+        {/* 4. WHITE FEATURED PORTFOLIO (Displays ALL 11 projects in split layout) */}
         <Portfolio />
 
-        {/* 5. WHITE WHY CHOOSE US */}
+        {/* 5. BLUE WHY CHOOSE US */}
         <WhyChooseUs />
 
-        {/* 6. BLUE OUR PROCESS */}
+        {/* 6. WHITE OUR PROCESS */}
         <Process />
 
-        {/* 7. WHITE PRICING & COMPARISON (Starter ₹9,999 & Business ₹24,999) */}
+        {/* 7. BLUE PRICING & COMPARISON (Starter ₹9,999 & Business ₹24,999) */}
         <Pricing />
 
         {/* 8. WHITE TESTIMONIALS */}
