@@ -363,8 +363,3 @@ export const CONTACT = {
   whatsapp: "https://wa.me/918595018458",
 };
 
-export const SOCIALS = [
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
-  { label: "Instagram", href: "https://instagram.com", icon: "instagram" },
-  { label: "GitHub", href: "https://github.com/hashmiii14/Kodeveill", icon: "github" },
-];
