@@ -15,24 +15,24 @@ const CATEGORIES = [
   { id: "lifestyle", label: "Lifestyle & Hospitality" },
 ];
 
+const ORDER = [
+  "Oakmora — Custom Furniture",
+  "Oud Arábia — Luxury Perfumes",
+  "The Urban Café",
+  "Powerhouse Gym",
+  "Jamia Hamdard Memory Archive",
+  "Faiz Dental Clinic",
+  "Pearl Root Dental Clinic",
+  "Vision Classes",
+  "Unlimited Car Rental",
+  "VYU Industries",
+  "Orizer ERP",
+  "Luxe Interiors Design",
+];
+
 export const Portfolio = () => {
   const [activeDialog, setActiveDialog] = useState(null);
   const [filter, setFilter] = useState("all");
-
-  const ORDER = [
-    "Oakmora — Custom Furniture",
-    "Oud Arábia — Luxury Perfumes",
-    "The Urban Café",
-    "Powerhouse Gym",
-    "Jamia Hamdard Memory Archive",
-    "Faiz Dental Clinic",
-    "Pearl Root Dental Clinic",
-    "Vision Classes",
-    "Unlimited Car Rental",
-    "VYU Industries",
-    "Orizer ERP",
-    "Luxe Interiors Design",
-  ];
 
   const sortedProjects = useMemo(() => {
     return [...PORTFOLIO].sort((a, b) => {
