@@ -120,25 +120,25 @@ export const Hero = () => {
             We design and develop premium websites that are fast, modern, SEO-optimized, and built to help businesses create a powerful online presence.
           </motion.p>
 
-          {/* High-Contrast Visible CTAs */}
+          {/* High-Contrast Premium CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
+            className="mt-10 flex flex-col items-center gap-4 sm:flex-row w-full sm:w-auto"
           >
             <button
               onClick={() => scrollToId("contact")}
-              className="group relative inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base font-extrabold text-[#06101E] bg-white hover:bg-blue-50 transition-all duration-300 shadow-[0_10px_35px_-5px_rgba(255,255,255,0.4)] hover:shadow-[0_15px_45px_-5px_rgba(255,255,255,0.6)] hover:-translate-y-0.5 active:translate-y-0"
+              className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-white px-9 py-4 text-base font-extrabold text-slate-950 shadow-[0_0_30px_rgba(255,255,255,0.45)] transition-all duration-300 hover:bg-slate-100 hover:shadow-[0_0_40px_rgba(255,255,255,0.7)] hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300"
               data-testid="hero-primary-cta"
             >
               <span>Start Your Project</span>
-              <ArrowRight className="h-5 w-5 text-[#06101E] transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-5 w-5 text-slate-950 transition-transform duration-300 group-hover:translate-x-1.5" />
             </button>
             
             <button
               onClick={() => scrollToId("portfolio")}
-              className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-bold text-white bg-blue-950/60 border border-blue-400/40 hover:bg-blue-900 transition-all duration-300 shadow-md backdrop-blur-md"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-blue-400/40 bg-blue-950/70 px-8 py-4 text-base font-bold text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:bg-blue-900/90 hover:border-blue-300 hover:-translate-y-0.5 focus-visible:outline-none"
               data-testid="hero-secondary-cta"
             >
               Explore Work

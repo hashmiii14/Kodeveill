@@ -3,6 +3,7 @@ import "@/App.css";
 import { CursorGlow } from "@/components/CursorGlow";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { FloatingActions } from "@/components/FloatingActions";
+import { BackToTop } from "@/components/BackToTop";
 import { Navbar } from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -66,6 +67,7 @@ function App() {
       {/* DARK BLUE FOOTER */}
       <Footer />
       <FloatingActions />
+      <BackToTop />
       <Toaster position="bottom-right" richColors theme="dark" />
     </div>
   );

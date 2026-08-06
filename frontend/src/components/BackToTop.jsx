@@ -11,7 +11,7 @@ export const BackToTop = () => {
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setVisible(window.scrollY > 600);
+          setVisible(window.scrollY > 500);
           ticking = false;
         });
         ticking = true;
@@ -31,16 +31,16 @@ export const BackToTop = () => {
           initial={{ opacity: 0, scale: 0.6, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.6, y: 16 }}
-          whileHover={{ y: -3 }}
+          whileHover={{ scale: 1.08, y: -2 }}
           whileTap={{ scale: 0.92 }}
-          className="fixed bottom-6 right-6 z-[9997] flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg focus-visible:outline-none"
+          className="fixed bottom-[136px] right-5 z-[9997] flex h-12 w-12 items-center justify-center rounded-full text-white shadow-xl focus-visible:outline-none sm:right-6"
           style={{
-            background: "linear-gradient(135deg,#4F46E5,#7C3AED)",
-            boxShadow: "0 10px 30px -8px rgba(124,58,237,0.6)",
+            background: "linear-gradient(135deg, #2563EB, #1D4ED8)",
+            boxShadow: "0 10px 25px -5px rgba(37,99,235,0.5)",
             willChange: "transform, opacity",
           }}
         >
-          <ArrowUp className="h-5 w-5" />
+          <ArrowUp className="h-5 w-5 stroke-[2.5]" />
         </motion.button>
       )}
     </AnimatePresence>
