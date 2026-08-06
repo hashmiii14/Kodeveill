@@ -44,6 +44,25 @@ export const SERVICES = [
 
 export const PORTFOLIO = [
   {
+    name: "Oakmora — Custom Furniture",
+    category: "Luxury E-Commerce Website",
+    desc: "A premium handcrafted custom furniture website featuring an editorial layout, interactive custom design builder, and rich catalog displays.",
+    url: "https://oakmora.vercel.app/",
+    image: "/portfolio/oakmora.png",
+    accent: "#B45309",
+    tags: ["React", "Tailwind CSS", "Framer Motion", "Supabase"],
+    caseStudy: {
+      summary: "Oakmora, a boutique luxury custom furniture brand, needed a gorgeous digital storefront to showcase master-crafted hardwoods and handle custom design requests.",
+      challenge: "Creating an online shopping and customization journey that matches the physical tactile touch and elegance of high-end wooden furniture.",
+      solution: "Developed an elegant, high-performance storefront with detailed product collections, structured white-glove shipping highlights, custom furniture request systems, and a premium editorial aesthetic.",
+      results: [
+        { value: "0.6s", label: "Fast Page Load" },
+        { value: "100%", label: "Responsive Layout" },
+        { value: "+65%", label: "Custom Inquiries" },
+      ],
+    },
+  },
+  {
     name: "Oud Arábia — Luxury Perfumes",
     category: "Luxury E-Commerce Website",
     desc: "A luxury e-commerce experience for rare oud, attars, and Arabian perfumes crafted with timeless elegance.",
