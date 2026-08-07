@@ -1,23 +1,24 @@
+import React, { lazy, Suspense } from "react";
 import "@/App.css";
 
 import { CursorGlow } from "@/components/CursorGlow";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { FloatingActions } from "@/components/FloatingActions";
-import { BackToTop } from "@/components/BackToTop";
 import { Navbar } from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
-
 import { Hero } from "@/sections/Hero";
-import { WhoWeAre } from "@/sections/WhoWeAre";
-import { Services } from "@/sections/Services";
-import { Portfolio } from "@/sections/Portfolio";
-import { WhyChooseUs } from "@/sections/WhyChooseUs";
-import { Process } from "@/sections/Process";
-import { Pricing } from "@/sections/Pricing";
-import { Testimonials } from "@/sections/Testimonials";
-import { CTA } from "@/sections/CTA";
-import { Contact } from "@/sections/Contact";
-import { Footer } from "@/sections/Footer";
+
+// Lazy-load non-critical sections below the fold for minimal initial bundle size & sub-second FCP
+const WhoWeAre = lazy(() => import("@/sections/WhoWeAre").then((m) => ({ default: m.WhoWeAre })));
+const Services = lazy(() => import("@/sections/Services").then((m) => ({ default: m.Services })));
+const Portfolio = lazy(() => import("@/sections/Portfolio").then((m) => ({ default: m.Portfolio })));
+const WhyChooseUs = lazy(() => import("@/sections/WhyChooseUs").then((m) => ({ default: m.WhyChooseUs })));
+const Process = lazy(() => import("@/sections/Process").then((m) => ({ default: m.Process })));
+const Pricing = lazy(() => import("@/sections/Pricing").then((m) => ({ default: m.Pricing })));
+const Testimonials = lazy(() => import("@/sections/Testimonials").then((m) => ({ default: m.Testimonials })));
+const CTA = lazy(() => import("@/sections/CTA").then((m) => ({ default: m.CTA })));
+const Contact = lazy(() => import("@/sections/Contact").then((m) => ({ default: m.Contact })));
+const Footer = lazy(() => import("@/sections/Footer").then((m) => ({ default: m.Footer })));
 
 function App() {
   return (
@@ -35,39 +36,42 @@ function App() {
       <Navbar />
 
       <main id="main-content" tabIndex="-1" className="w-full max-w-full overflow-x-hidden outline-none">
-        {/* 1. BLUE HERO */}
+        {/* 1. BLUE HERO (Eagerly loaded for immediate FCP) */}
         <Hero />
 
-        {/* 2. WHITE WHO WE ARE */}
-        <WhoWeAre />
+        {/* Lazy Loaded Sections below fold */}
+        <Suspense fallback={<div className="min-h-[200px] w-full" />}>
+          {/* 2. WHITE WHO WE ARE */}
+          <WhoWeAre />
 
-        {/* 3. BLUE SERVICES */}
-        <Services />
+          {/* 3. BLUE SERVICES */}
+          <Services />
 
-        {/* 4. WHITE FEATURED PORTFOLIO (Displays ALL 11 projects in split layout) */}
-        <Portfolio />
+          {/* 4. WHITE FEATURED PORTFOLIO */}
+          <Portfolio />
 
-        {/* 5. BLUE WHY CHOOSE US */}
-        <WhyChooseUs />
+          {/* 5. BLUE WHY CHOOSE US */}
+          <WhyChooseUs />
 
-        {/* 6. WHITE OUR PROCESS */}
-        <Process />
+          {/* 6. WHITE OUR PROCESS */}
+          <Process />
 
-        {/* 7. BLUE PRICING & COMPARISON (Starter ₹9,999 & Business ₹24,999) */}
-        <Pricing />
+          {/* 7. BLUE PRICING & COMPARISON */}
+          <Pricing />
 
-        {/* 8. WHITE TESTIMONIALS */}
-        <Testimonials />
+          {/* 8. WHITE TESTIMONIALS */}
+          <Testimonials />
 
-        {/* 9. DEEP BLUE FINAL CTA & CONTACT */}
-        <CTA />
-        <Contact />
+          {/* 9. DEEP BLUE FINAL CTA & CONTACT */}
+          <CTA />
+          <Contact />
+
+          {/* DARK BLUE FOOTER */}
+          <Footer />
+        </Suspense>
       </main>
 
-      {/* DARK BLUE FOOTER */}
-      <Footer />
       <FloatingActions />
-      <BackToTop />
       <Toaster position="bottom-right" richColors theme="dark" />
     </div>
   );

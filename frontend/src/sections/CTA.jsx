@@ -30,14 +30,17 @@ export const CTA = () => {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => scrollToId("contact")}
-              className="btn-primary group !bg-white !text-blue-900 hover:!bg-blue-50 shadow-2xl shadow-blue-500/30 px-8 py-4 text-base"
+              className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full bg-white px-9 py-4 text-base font-extrabold text-[#0A1F44] shadow-[0_10px_35px_rgba(255,255,255,0.35)] transition-all duration-300 hover:bg-blue-50 hover:shadow-[0_15px_45px_rgba(255,255,255,0.6)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300"
+              style={{ background: "#FFFFFF", color: "#0A1F44" }}
               data-testid="cta-primary-button"
             >
-              <span className="font-extrabold">Start Your Project</span>
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </button>
+              <span className="font-extrabold text-[#0A1F44]">Start Your Project</span>
+              <ArrowRight className="h-5 w-5 text-[#0A1F44] transition-transform duration-300 group-hover:translate-x-1.5" />
+            </motion.button>
 
             <a
               href="https://wa.me/918595018458?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20new%20website%20project%20with%20KodeVeil."

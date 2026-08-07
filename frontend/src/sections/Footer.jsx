@@ -77,7 +77,15 @@ export const Footer = () => (
         
         <div className="flex items-center gap-4">
           <p className="flex items-center gap-1.5 text-xs font-semibold text-white">
-            Designed with <Heart className="h-4 w-4 fill-red-500 text-red-500" aria-hidden="true" /> by <span className="font-bold text-white">KodeVeil Team</span>
+            Designed with <Heart className="h-4 w-4 fill-red-500 text-red-500" aria-hidden="true" /> by{" "}
+            <a
+              href="https://www.kodeveil.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-white hover:text-blue-400 transition-colors underline-offset-4 hover:underline"
+            >
+              Kodeveil
+            </a>
           </p>
           <button
             onClick={() => scrollToId("home")}

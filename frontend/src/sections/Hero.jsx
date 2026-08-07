@@ -187,7 +187,7 @@ export const Hero = () => {
                 <span className="h-3 w-3 rounded-full bg-blue-300/40" />
               </div>
               <div className="h-6 w-64 rounded-full bg-blue-950/80 border border-blue-400/30 flex items-center justify-center text-[11px] text-blue-300 font-mono">
-                https://www.kodeveil.com
+                https://www.kodeveil.in
               </div>
               <span className="h-2.5 w-2.5 rounded-full bg-blue-400 animate-pulse" />
             </div>

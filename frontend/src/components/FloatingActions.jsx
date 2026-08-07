@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Phone } from "lucide-react";
 import { CONTACT } from "@/data/content";
+import { BackToTop } from "@/components/BackToTop";
 
 const WhatsAppIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
@@ -37,6 +38,7 @@ export const FloatingActions = () => {
       role="region"
       aria-label="Quick contact actions"
     >
+      <BackToTop />
       {actions.map((a, i) => {
         const Icon = a.icon;
         return (
