@@ -8,19 +8,19 @@ import { scrollToId } from "@/lib/scroll";
 export const Services = () => {
   return (
     <section id="services" className="relative bg-[#06101E] text-white py-24 sm:py-32 overflow-hidden border-b border-blue-900/30">
-      {/* Radial Blue Glow */}
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-96 w-96 rounded-full bg-blue-600/20 blur-[120px]" />
-      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-96 w-96 rounded-full bg-indigo-600/20 blur-[120px]" />
+      {/* Radial Blue & Purple Glow */}
+      <div className="pointer-events-none absolute -left-40 top-1/4 h-[500px] w-[500px] rounded-full bg-purple-600/25 blur-[140px]" />
+      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[500px] w-[500px] rounded-full bg-indigo-600/20 blur-[140px]" />
 
       <div className="container-x relative">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-300">
+          <span className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-purple-300">
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             <span>Our Core Capabilities</span>
           </span>
 
           <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
-            Bespoke Web Capabilities <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-indigo-200 bg-clip-text text-transparent">For Modern Businesses</span>
+            Bespoke Web Capabilities <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-300 bg-clip-text text-transparent">For Modern Businesses</span>
           </h2>
 
           <p className="mt-4 text-base text-blue-200 sm:text-lg">
@@ -35,7 +35,7 @@ export const Services = () => {
               <motion.article
                 key={s.title}
                 variants={revealItem}
-                className="group relative flex flex-col justify-between rounded-3xl border border-blue-400/30 bg-[#0B1A30] p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-400/70 hover:shadow-2xl hover:shadow-blue-500/20"
+                className="group relative flex flex-col justify-between rounded-3xl border border-blue-400/30 bg-[#0B1A30] p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:border-purple-500/60 hover:shadow-2xl hover:shadow-purple-500/20"
               >
                 <div>
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600/20 border border-blue-400/30 text-blue-400 shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">

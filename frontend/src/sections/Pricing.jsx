@@ -140,7 +140,7 @@ export const Pricing = () => {
               <thead>
                 <tr className="border-b border-blue-900/60 bg-[#06101E]/90">
                   <th scope="col" className="p-4 sm:p-5 font-display font-bold text-white">Features</th>
-                  <th scope="col" className="p-4 sm:p-5 text-center font-display font-bold text-blue-200">Starter (₹2,999)</th>
+                  <th scope="col" className="p-4 sm:p-5 text-center font-display font-bold text-blue-200">Starter (₹4,999)</th>
                   <th scope="col" className="p-4 sm:p-5 text-center font-display font-bold text-purple-300 bg-purple-950/30">Professional (₹9,999)</th>
                   <th scope="col" className="p-4 sm:p-5 text-center font-display font-bold text-indigo-300">Business (₹24,999)</th>
                 </tr>

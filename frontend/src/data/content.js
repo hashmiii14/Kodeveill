@@ -297,7 +297,7 @@ export const PRICING_PLANS = [
   {
     id: "starter",
     name: "Starter",
-    price: "₹2,999",
+    price: "₹4,999",
     badge: "🚀 Best for Beginners",
     isPopular: false,
     desc: "Perfect for students, freelancers, startups, and small businesses looking for an affordable online presence.",
@@ -315,7 +315,7 @@ export const PRICING_PLANS = [
       "1 Free Revision",
     ],
     buttonText: "Launch Now",
-    whatsappLink: "https://wa.me/918595018458?text=Hi%2C%20I%27m%20interested%20in%20the%20Starter%20%28%E2%82%B92%2C999%29%20plan.%20Please%20share%20the%20next%20steps.",
+    whatsappLink: "https://wa.me/918595018458?text=Hi%2C%20I%27m%20interested%20in%20the%20Starter%20%28%E2%82%B94%2C999%29%20plan.%20Please%20share%20the%20next%20steps.",
   },
   {
     id: "professional",
