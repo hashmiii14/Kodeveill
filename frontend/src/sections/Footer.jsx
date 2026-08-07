@@ -1,7 +1,7 @@
 import React from "react";
 import { CONTACT } from "@/data/content";
 import { scrollToId } from "@/lib/scroll";
-import { Heart, ArrowUp } from "lucide-react";
+import { Heart } from "lucide-react";
 import logo from "@/assets/kodeveill-logo.webp";
 
 const QUICK = [
@@ -87,13 +87,6 @@ export const Footer = () => (
               Kodeveil
             </a>
           </p>
-          <button
-            onClick={() => scrollToId("home")}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-blue-400/40 bg-slate-900 text-white hover:bg-blue-600 hover:border-blue-400 transition-all shadow-md"
-            aria-label="Back to top"
-          >
-            <ArrowUp className="h-4.5 w-4.5 text-white" />
-          </button>
         </div>
       </div>
     </div>

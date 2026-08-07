@@ -31,7 +31,7 @@ export const Pricing = () => {
 
         {/* 3-Tier Pricing Cards Grid */}
         <RevealStagger className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 items-stretch">
-          {PRICING_PLANS.map((plan) => {
+          {PRICING_PLANS.map((plan, idx) => {
             const isFeatured = plan.isPopular;
 
             return (
@@ -45,7 +45,9 @@ export const Pricing = () => {
                     : {}
                 }
                 whileHover={{ y: -8, transition: { duration: 0.25 } }}
-                className={`relative flex flex-col justify-between rounded-3xl p-8 sm:p-9 transition-all duration-300 ${
+                className={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-8 lg:p-9 transition-all duration-300 ${
+                  idx === 2 ? "md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0 w-full" : "w-full"
+                } ${
                   isFeatured
                     ? "bg-gradient-to-b from-[#131132] via-[#0E1A38] to-[#0A162B] border-2 border-purple-500/80 shadow-[0_0_50px_rgba(124,58,237,0.3)] lg:-translate-y-2"
                     : "bg-[#0B1A30]/90 border border-blue-900/40 hover:border-blue-400/50 shadow-xl hover:shadow-[0_20px_50px_rgba(37,99,235,0.2)]"
@@ -54,7 +56,7 @@ export const Pricing = () => {
               >
                 {/* Most Popular Ribbon */}
                 {isFeatured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-blue-600 px-4 py-1 text-xs font-extrabold uppercase tracking-wider text-white shadow-lg shadow-purple-500/40">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-blue-600 px-4 py-1 text-xs font-extrabold uppercase tracking-wider text-white shadow-lg shadow-purple-500/40 z-10">
                     <Sparkles className="h-3.5 w-3.5" />
                     <span>Most Popular</span>
                   </div>

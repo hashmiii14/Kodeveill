@@ -16,13 +16,13 @@ export const CTA = () => {
 
       <div className="container-x relative z-10 text-center">
         <Reveal className="mx-auto max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-300 backdrop-blur-md">
+          <span className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-purple-300 backdrop-blur-md">
             <Sparkles className="h-3.5 w-3.5" />
             <span>Ready To Scale Your Digital Presence?</span>
           </span>
 
           <h2 className="mt-8 font-display text-4xl font-extrabold leading-[1.1] text-white sm:text-6xl">
-            Let's Build Something <span className="bg-gradient-to-r from-blue-300 via-blue-400 to-indigo-200 bg-clip-text text-transparent">Amazing Together.</span>
+            Let's Build Something <span className="bg-gradient-to-r from-blue-300 via-indigo-300 to-purple-300 bg-clip-text text-transparent">Amazing Together.</span>
           </h2>
 
           <p className="mt-6 text-base text-blue-100 sm:text-xl font-normal leading-relaxed">

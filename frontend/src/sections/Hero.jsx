@@ -87,13 +87,13 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2.5 rounded-full border border-blue-400/40 bg-blue-950/80 px-5 py-2 backdrop-blur-md shadow-xl"
+            className="inline-flex items-center gap-2.5 rounded-full border border-purple-400/30 bg-purple-950/70 px-5 py-2 backdrop-blur-md shadow-xl"
           >
             <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-400"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-purple-400"></span>
             </span>
-            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-blue-200">
+            <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-purple-200">
               Premium Software & Web Engineering
             </span>
           </motion.div>
@@ -106,7 +106,7 @@ export const Hero = () => {
             data-testid="hero-headline"
             className="mt-8 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl"
           >
-            We Build Websites That <span className="bg-gradient-to-r from-blue-300 via-blue-400 to-indigo-200 bg-clip-text text-transparent">Grow Businesses.</span>
+            We Build Websites That <span className="bg-gradient-to-r from-blue-300 via-indigo-300 to-purple-300 bg-clip-text text-transparent">Grow Businesses.</span>
           </motion.h1>
 
           {/* Requested Description */}
