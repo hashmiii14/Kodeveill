@@ -8,8 +8,11 @@ import {
 
 export const NAV_LINKS = [
   { label: "Home", id: "home" },
+  { label: "About", id: "about" },
   { label: "Services", id: "services" },
-  { label: "Portfolio", id: "portfolio" },
+  { label: "Work", id: "portfolio" },
+  { label: "Why Us", id: "why-us" },
+  { label: "Process", id: "process" },
   { label: "Pricing", id: "pricing" },
   { label: "Contact", id: "contact" },
 ];

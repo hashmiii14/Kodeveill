@@ -187,7 +187,7 @@ export const Hero = () => {
                   {/* Screen Header */}
                   <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
                     <div className="flex items-center gap-2.5">
-                      <img src={logo} alt="KodeVeil" className="h-6 w-6 object-contain" />
+                      <img src={logo} alt="Kodeveil" className="h-6 w-6 object-contain" width="24" height="24" />
                       <div>
                         <div className="text-xs font-bold text-white tracking-wide">Kodeveil Software</div>
                         <div className="text-[9px] text-blue-400 font-mono">Bespoke Engineering Platform</div>
