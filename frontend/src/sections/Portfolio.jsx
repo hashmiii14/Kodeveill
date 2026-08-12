@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { PORTFOLIO } from "@/data/content";
 import { Reveal } from "@/components/Reveal";
-import { ArrowUpRight, LineChart, Sparkles, Filter } from "lucide-react";
+import { ArrowUpRight, LineChart, Sparkles, Code } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,
@@ -53,26 +53,29 @@ export const Portfolio = () => {
   }, [filter, sortedProjects]);
 
   return (
-    <section id="portfolio" className="relative bg-white text-slate-900 py-24 sm:py-32 overflow-hidden border-b border-gray-100">
-      <div className="container-x relative">
+    <section id="portfolio" className="relative bg-[#030712] text-white py-24 sm:py-32 overflow-hidden border-b border-slate-800/80">
+      {/* Background Radial Glow */}
+      <div className="pointer-events-none absolute right-1/3 top-1/4 h-[500px] w-[500px] rounded-full bg-blue-600/15 blur-[150px]" aria-hidden="true" />
+
+      <div className="container-x relative z-10">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
-            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+          <span className="section-label-dark">
+            <Sparkles className="h-3.5 w-3.5 text-blue-400" aria-hidden="true" />
             <span>Complete Portfolio Showcase</span>
           </span>
 
-          <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-slate-900 sm:text-5xl">
-            Live Case Studies & <span className="text-gradient">Client Websites</span>
+          <h2 className="mt-5 font-display text-4xl font-extrabold leading-tight text-white sm:text-6xl tracking-tight">
+            SELECTED <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">WORK</span>
           </h2>
 
-          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+          <p className="mt-4 text-base text-slate-300 font-normal sm:text-lg">
             Explore our live website deployments — engineered for sub-second speed, custom aesthetic polish, and measurable ROI.
           </p>
         </Reveal>
 
         {/* Category Filter Tabs */}
         <Reveal delay={0.1} className="mt-10 flex justify-center">
-          <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl bg-slate-100 p-1.5 border border-gray-200/80 shadow-inner">
+          <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl bg-[#080D1C]/90 p-2 border border-slate-800 backdrop-blur-xl shadow-lg">
             {CATEGORIES.map((c) => {
               const active = filter === c.id;
               return (
@@ -81,14 +84,14 @@ export const Portfolio = () => {
                   onClick={() => setFilter(c.id)}
                   className={`relative rounded-xl px-4 py-2 text-xs sm:text-sm font-semibold transition-all duration-300 ${
                     active
-                      ? "text-blue-600 shadow-md"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
+                      ? "text-white shadow-md font-bold"
+                      : "text-slate-400 hover:text-white hover:bg-slate-800/50"
                   }`}
                 >
                   {active && (
                     <motion.span
                       layoutId="activeFilterTab"
-                      className="absolute inset-0 rounded-xl bg-white border border-gray-200/90 shadow-sm"
+                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/40 to-purple-600/40 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
@@ -116,7 +119,7 @@ export const Portfolio = () => {
                   <div className={`grid gap-8 lg:grid-cols-12 lg:gap-12 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
                     {/* Preview Image Column */}
                     <div className={`lg:col-span-7 ${isEven ? "" : "lg:order-2"}`}>
-                      <div className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-slate-100 shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/15">
+                      <div className="group relative overflow-hidden rounded-3xl border border-slate-800 bg-[#090F20] shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-[0_20px_50px_rgba(37,99,235,0.25)]">
                         <div className="relative aspect-[16/10] overflow-hidden">
                           <img
                             src={p.image}
@@ -132,8 +135,8 @@ export const Portfolio = () => {
                             }}
                             className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                           />
-                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-60" />
-                          <span className="absolute left-5 top-5 rounded-full bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-md">
+                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
+                          <span className="absolute left-5 top-5 rounded-full bg-blue-600/90 border border-blue-400/40 px-3.5 py-1.5 text-xs font-bold text-white shadow-lg backdrop-blur-md">
                             {p.category}
                           </span>
                         </div>
@@ -142,12 +145,12 @@ export const Portfolio = () => {
 
                     {/* Project Info Column */}
                     <div className={`lg:col-span-5 ${isEven ? "" : "lg:order-1"}`}>
-                      <span className="text-xs font-bold uppercase tracking-widest text-blue-600">Case Study 0{idx + 1}</span>
-                      <h3 className="mt-2 font-display text-2xl font-bold text-slate-900 sm:text-3xl">
+                      <span className="text-xs font-bold uppercase tracking-widest text-blue-400 font-mono">Case Study 0{idx + 1}</span>
+                      <h3 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-white">
                         {p.name}
                       </h3>
 
-                      <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+                      <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300 font-normal">
                         {p.desc}
                       </p>
 
@@ -155,7 +158,7 @@ export const Portfolio = () => {
                       {p.tags && (
                         <div className="mt-5 flex flex-wrap gap-2">
                           {p.tags.map((tag) => (
-                            <span key={tag} className="rounded-lg bg-blue-50 border border-blue-100 px-3 py-1 text-xs font-bold text-blue-700">
+                            <span key={tag} className="rounded-lg bg-blue-950/60 border border-blue-500/30 px-3 py-1 text-xs font-semibold text-blue-300 font-mono">
                               {tag}
                             </span>
                           ))}
@@ -168,7 +171,7 @@ export const Portfolio = () => {
                           href={p.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-xs font-bold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:bg-blue-700 hover:shadow-blue-500/40 hover:-translate-y-0.5"
+                          className="btn-glow-blue group text-xs px-6 py-3"
                         >
                           <span>Live Preview</span>
                           <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -177,9 +180,9 @@ export const Portfolio = () => {
                         {p.caseStudy && (
                           <button
                             onClick={() => setActiveDialog(p)}
-                            className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-5 py-3 text-xs font-bold text-blue-600 transition-all duration-300 hover:bg-blue-100 hover:border-blue-300"
+                            className="btn-dark-ghost text-xs px-5 py-3"
                           >
-                            <LineChart className="h-4 w-4" />
+                            <LineChart className="h-4 w-4 text-blue-400" />
                             <span>View Case Study</span>
                           </button>
                         )}
@@ -195,10 +198,10 @@ export const Portfolio = () => {
 
       {/* Case Study Modal Dialog */}
       <Dialog open={!!activeDialog} onOpenChange={(o) => !o && setActiveDialog(null)}>
-        <DialogContent className="max-h-[88vh] max-w-2xl overflow-y-auto border-gray-200 bg-white text-slate-900 p-6 rounded-3xl shadow-2xl">
+        <DialogContent className="max-h-[88vh] max-w-2xl overflow-y-auto border-slate-800 bg-[#090E1F] text-white p-6 rounded-3xl shadow-2xl backdrop-blur-2xl">
           {activeDialog && (
             <>
-              <div className="relative -mx-6 -mt-6 mb-4 aspect-[16/9] overflow-hidden rounded-t-2xl bg-gray-100">
+              <div className="relative -mx-6 -mt-6 mb-4 aspect-[16/9] overflow-hidden rounded-t-2xl bg-slate-950 border-b border-slate-800">
                 <img src={activeDialog.image} alt={activeDialog.name} width="1200" height="800" className="h-full w-full object-cover object-top" />
                 <span className="absolute left-5 top-5 rounded-full bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-md">
                   {activeDialog.category}
@@ -206,27 +209,27 @@ export const Portfolio = () => {
               </div>
 
               <DialogHeader>
-                <DialogTitle className="font-display text-2xl font-bold text-slate-900">{activeDialog.name}</DialogTitle>
-                <DialogDescription className="text-slate-600 text-sm leading-relaxed mt-1">{activeDialog.caseStudy.summary}</DialogDescription>
+                <DialogTitle className="font-display text-2xl font-bold text-white">{activeDialog.name}</DialogTitle>
+                <DialogDescription className="text-slate-300 text-sm leading-relaxed mt-1">{activeDialog.caseStudy.summary}</DialogDescription>
               </DialogHeader>
 
               <div className="mt-4 grid grid-cols-3 gap-3">
                 {activeDialog.caseStudy.results.map((r) => (
-                  <div key={r.label} className="rounded-2xl border border-blue-100 bg-blue-50/50 p-4 text-center">
-                    <p className="font-display text-2xl font-extrabold text-blue-600">{r.value}</p>
-                    <p className="mt-1 text-xs font-semibold text-slate-600">{r.label}</p>
+                  <div key={r.label} className="rounded-2xl border border-blue-500/30 bg-blue-950/40 p-4 text-center">
+                    <p className="font-display text-2xl font-extrabold text-blue-400">{r.value}</p>
+                    <p className="mt-1 text-xs font-semibold text-slate-300">{r.label}</p>
                   </div>
                 ))}
               </div>
 
               <div className="mt-6 space-y-4">
-                <div className="rounded-xl border border-gray-100 bg-slate-50 p-4">
-                  <p className="font-display text-xs font-bold uppercase tracking-wider text-blue-600">The Challenge</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-700">{activeDialog.caseStudy.challenge}</p>
+                <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-4">
+                  <p className="font-display text-xs font-bold uppercase tracking-wider text-blue-400 font-mono">The Challenge</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-slate-300">{activeDialog.caseStudy.challenge}</p>
                 </div>
-                <div className="rounded-xl border border-gray-100 bg-slate-50 p-4">
-                  <p className="font-display text-xs font-bold uppercase tracking-wider text-blue-600">Our Solution</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-700">{activeDialog.caseStudy.solution}</p>
+                <div className="rounded-xl border border-slate-800 bg-slate-900/80 p-4">
+                  <p className="font-display text-xs font-bold uppercase tracking-wider text-blue-400 font-mono">Our Solution</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-slate-300">{activeDialog.caseStudy.solution}</p>
                 </div>
               </div>
 
@@ -234,7 +237,7 @@ export const Portfolio = () => {
                 href={activeDialog.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-700"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 py-3.5 text-sm font-bold text-white shadow-xl shadow-blue-500/30 transition-all hover:brightness-110"
               >
                 <span>Visit Live Website</span>
                 <ArrowUpRight className="h-4 w-4" />
@@ -246,3 +249,4 @@ export const Portfolio = () => {
     </section>
   );
 };
+

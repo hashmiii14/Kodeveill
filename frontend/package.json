@@ -44,6 +44,7 @@
     "embla-carousel-react": "8.6.0",
     "framer-motion": "11.18.0",
     "input-otp": "1.4.2",
+    "is-plain-object": "^5.0.0",
     "lenis": "1.1.13",
     "lodash": "4.18.1",
     "lucide-react": "0.516.0",
@@ -82,7 +83,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.21.11",
-    "@craco/craco": "7.1.0",
+    "@craco/craco": "^7.1.0",
     "@emergentbase/visual-edits": "https://assets.emergent.sh/npm/emergentbase-visual-edits-1.0.13.tgz",
     "@eslint/js": "9.23.0",
     "@types/lodash": "4.17.24",

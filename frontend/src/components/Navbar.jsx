@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, Code } from "lucide-react";
 import { NAV_LINKS } from "@/data/content";
 import { scrollToId } from "@/lib/scroll";
 import logo from "@/assets/kodeveill-logo.webp";
@@ -21,7 +21,6 @@ export const Navbar = () => {
         window.requestAnimationFrame(() => {
           const currentY = window.scrollY;
 
-          // Add threshold of 60px before triggering state
           setScrolled(currentY > 40);
 
           if (currentY > 100 && currentY > lastScrollY.current + 5) {
@@ -90,8 +89,8 @@ export const Navbar = () => {
           aria-label="Main Navigation"
           className={`flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 ${
             scrolled
-              ? "bg-white/90 border border-gray-200/90 shadow-xl shadow-slate-900/5 backdrop-blur-xl"
-              : "bg-white/80 border border-gray-200/70 shadow-sm backdrop-blur-md"
+              ? "bg-[#060D1F]/90 border border-blue-500/30 shadow-2xl shadow-blue-500/10 backdrop-blur-xl"
+              : "bg-[#030712]/80 border border-slate-800/80 shadow-lg backdrop-blur-md"
           }`}
           style={{ transform: "translateZ(0)", WebkitTransform: "translateZ(0)" }}
         >
@@ -100,14 +99,22 @@ export const Navbar = () => {
             data-testid="nav-logo"
             onClick={() => handleNav("home")}
             aria-label="KodeVeil home"
-            className="flex items-center gap-3 focus-visible:outline-none group"
+            className="flex items-center gap-3 focus-visible:outline-none group text-left"
           >
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100/80 shadow-xs transition-transform duration-300 group-hover:scale-105">
-              <img src={logo} alt="KodeVeil logo" className="h-7 w-7 object-contain" width="28" height="28" />
+            <span className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 border border-blue-400/40 shadow-lg shadow-blue-500/30 transition-transform duration-300 group-hover:scale-105">
+              <img src={logo} alt="KodeVeil logo" className="h-6 w-6 object-contain brightness-125" width="24" height="24" />
+              <span className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-slate-950 text-[9px] font-mono font-bold text-blue-400 border border-blue-500/50">
+                &lt;/&gt;
+              </span>
             </span>
-            <span className="font-display text-xl font-bold tracking-tight text-[#111827] sm:text-2xl">
-              KodeVeil
-            </span>
+            <div className="flex flex-col">
+              <span className="font-display text-lg font-extrabold tracking-tight text-white sm:text-xl flex items-center gap-1">
+                Kodeveil
+              </span>
+              <span className="text-[9px] font-bold tracking-widest text-blue-400 uppercase -mt-1 hidden sm:block">
+                Software Solutions
+              </span>
+            </div>
           </button>
 
           {/* Desktop Navigation Links */}
@@ -123,14 +130,14 @@ export const Navbar = () => {
                     aria-current={isActive ? "page" : undefined}
                     className={`relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
                       isActive
-                        ? "text-blue-600 font-semibold"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100/70"
+                        ? "text-white font-bold"
+                        : "text-slate-300 hover:text-white hover:bg-slate-800/60"
                     }`}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="activePill"
-                        className="absolute inset-0 rounded-full bg-blue-50 border border-blue-100"
+                        className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600/30 via-indigo-600/30 to-purple-600/30 border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -146,9 +153,9 @@ export const Navbar = () => {
             <button
               data-testid="nav-cta"
               onClick={() => handleNav("contact")}
-              className="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:bg-blue-700 hover:shadow-blue-500/40 hover:-translate-y-0.5"
+              className="group relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-6 py-2.5 text-sm font-bold text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.7)] hover:-translate-y-0.5 active:translate-y-0"
             >
-              <span>Book a Call</span>
+              <span>Let's Talk</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
@@ -160,7 +167,7 @@ export const Navbar = () => {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-900 transition-colors hover:bg-gray-200 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 border border-slate-700 text-white transition-colors hover:bg-slate-800 lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -179,7 +186,7 @@ export const Navbar = () => {
             className="fixed inset-0 z-[9985] lg:hidden"
           >
             <div
-              className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
               onClick={() => setOpen(false)}
               aria-hidden="true"
             />
@@ -188,9 +195,9 @@ export const Navbar = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute inset-x-4 top-24 rounded-3xl bg-white/95 border border-gray-200 p-5 shadow-2xl backdrop-blur-xl"
+              className="absolute inset-x-4 top-24 rounded-3xl bg-[#090D18]/95 border border-slate-800 p-6 shadow-2xl backdrop-blur-2xl"
             >
-              <ul className="flex flex-col gap-1">
+              <ul className="flex flex-col gap-1.5">
                 {NAV_LINKS.map((link) => (
                   <li key={link.id}>
                     <button
@@ -198,8 +205,8 @@ export const Navbar = () => {
                       onClick={() => handleNav(link.id)}
                       className={`w-full rounded-2xl px-4 py-3.5 text-left text-base font-semibold transition-colors ${
                         active === link.id
-                          ? "bg-blue-50 text-blue-600"
-                          : "text-gray-700 hover:text-gray-900 hover:bg-gray-100/70"
+                          ? "bg-blue-600/20 text-blue-400 border border-blue-500/30"
+                          : "text-slate-300 hover:text-white hover:bg-slate-800/60"
                       }`}
                     >
                       {link.label}
@@ -210,9 +217,9 @@ export const Navbar = () => {
               <button
                 data-testid="mobile-nav-cta"
                 onClick={() => handleNav("contact")}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-5 py-4 text-base font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-700"
+                className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-5 py-4 text-base font-bold text-white shadow-xl shadow-blue-600/30 transition-all hover:brightness-110"
               >
-                <span>Book a Free Consultation</span>
+                <span>Let's Build Something</span>
                 <ArrowRight className="h-5 w-5" />
               </button>
             </motion.div>
@@ -222,4 +229,5 @@ export const Navbar = () => {
     </>
   );
 };
+
 

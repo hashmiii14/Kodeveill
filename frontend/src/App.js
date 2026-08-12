@@ -22,7 +22,7 @@ const Footer = lazy(() => import("@/sections/Footer").then((m) => ({ default: m.
 
 function App() {
   return (
-    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-white text-slate-900 font-sans antialiased selection:bg-blue-500/20 selection:text-blue-900">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-[#030712] text-slate-100 font-sans antialiased selection:bg-blue-500/30 selection:text-white">
       {/* Accessibility Skip Link */}
       <a
         href="#main-content"
@@ -35,38 +35,38 @@ function App() {
       <ScrollProgress />
       <Navbar />
 
-      <main id="main-content" tabIndex="-1" className="w-full max-w-full overflow-x-hidden outline-none">
-        {/* 1. BLUE HERO (Eagerly loaded for immediate FCP) */}
+      <main id="main-content" tabIndex="-1" className="w-full max-w-full overflow-x-hidden outline-none bg-[#030712]">
+        {/* 1. HERO (Eagerly loaded for immediate FCP) */}
         <Hero />
 
         {/* Lazy Loaded Sections below fold */}
-        <Suspense fallback={<div className="min-h-[200px] w-full" />}>
-          {/* 2. WHITE WHO WE ARE */}
+        <Suspense fallback={<div className="min-h-[200px] w-full bg-[#030712]" />}>
+          {/* 2. WHO WE ARE */}
           <WhoWeAre />
 
-          {/* 3. BLUE SERVICES */}
+          {/* 3. CORE SERVICES */}
           <Services />
 
-          {/* 4. WHITE FEATURED PORTFOLIO */}
+          {/* 4. FEATURED PORTFOLIO */}
           <Portfolio />
 
-          {/* 5. BLUE WHY CHOOSE US */}
+          {/* 5. WHY CHOOSE KODEVEIL */}
           <WhyChooseUs />
 
-          {/* 6. WHITE OUR PROCESS */}
+          {/* 6. OUR WORKFLOW PROCESS */}
           <Process />
 
-          {/* 7. BLUE PRICING & COMPARISON */}
+          {/* 7. PRICING & COMPARISON */}
           <Pricing />
 
-          {/* 8. WHITE TESTIMONIALS */}
+          {/* 8. TESTIMONIALS */}
           <Testimonials />
 
-          {/* 9. DEEP BLUE FINAL CTA & CONTACT */}
+          {/* 9. FINAL CTA & CONTACT */}
           <CTA />
           <Contact />
 
-          {/* DARK BLUE FOOTER */}
+          {/* FOOTER */}
           <Footer />
         </Suspense>
       </main>

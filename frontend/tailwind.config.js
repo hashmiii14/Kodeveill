@@ -5,8 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', 'system-ui', 'ui-sans-serif', 'sans-serif'],
-        display: ['Poppins', 'Inter', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+        display: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['"Space Mono"', 'ui-monospace', 'monospace'],
       },
 
       colors: {
@@ -44,16 +45,15 @@ module.exports = {
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         brand: {
-          bg: '#FFFFFF',
-          card: '#FFFFFF',
-          secondaryBg: '#F8FAFC',
-          primary: '#2563EB',
-          secondary: '#3B82F6',
-          accent: '#0284C7',
-          text: '#111827',
-          muted: '#6B7280',
-          border: '#E5E7EB',
-          navy: '#1E293B',
+          bg: '#02030A',
+          card: '#080B18',
+          secondaryBg: '#050817',
+          electric: '#147BFF',
+          bright: '#2196FF',
+          violet: '#7C3CFF',
+          purple: '#A855F7',
+          muted: '#A8B0C0',
+          border: 'rgba(30, 41, 59, 0.8)',
         },
       },
       boxShadow: {
