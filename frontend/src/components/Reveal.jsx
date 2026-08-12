@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export const Reveal = ({ children, delay = 0, y = 20, className = "", once = true }) => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.matchMedia("(max-width: 1024px) or (pointer: coarse)").matches);
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(media.matches);
   }, []);
 
-  if (isMobile) {
+  if (reduceMotion) {
     return <div className={className}>{children}</div>;
   }
 
@@ -18,21 +19,22 @@ export const Reveal = ({ children, delay = 0, y = 20, className = "", once = tru
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "-40px" }}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
   );
 };
 
-export const RevealStagger = ({ children, className = "", stagger = 0.06 }) => {
-  const [isMobile, setIsMobile] = useState(false);
+export const RevealStagger = ({ children, className = "", stagger = 0.08 }) => {
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.matchMedia("(max-width: 1024px) or (pointer: coarse)").matches);
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(media.matches);
   }, []);
 
-  if (isMobile) {
+  if (reduceMotion) {
     return <div className={className}>{children}</div>;
   }
 
@@ -54,7 +56,8 @@ export const RevealStagger = ({ children, className = "", stagger = 0.06 }) => {
 
 export const revealItem = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 };
+
 
 
