@@ -12,26 +12,14 @@ export const Navbar = () => {
   const [active, setActive] = useState("home");
   const lastScrollY = useRef(0);
 
-  // Smart Scroll Direction & Scrolled State Detection
+  // Scrolled state detection for background glass transition
   useEffect(() => {
     let ticking = false;
 
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const currentY = window.scrollY;
-
-          setScrolled(currentY > 40);
-
-          if (currentY > 100 && currentY > lastScrollY.current + 5) {
-            // Scrolling down -> hide navbar
-            setVisible(false);
-          } else if (currentY < lastScrollY.current - 5 || currentY < 80) {
-            // Scrolling up or near top -> show navbar
-            setVisible(true);
-          }
-
-          lastScrollY.current = currentY;
+          setScrolled(window.scrollY > 30);
           ticking = false;
         });
         ticking = true;
@@ -91,9 +79,7 @@ export const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-[9990] flex justify-center px-4 pt-4 transition-transform duration-300 ease-in-out ${
-          visible ? "translate-y-0" : "-translate-y-full"
-        }`}
+        className="fixed inset-x-0 top-0 z-[9990] flex justify-center px-4 pt-4 transition-all duration-300 ease-in-out"
         role="banner"
       >
         <nav
@@ -102,7 +88,7 @@ export const Navbar = () => {
           className={`flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 ${
             scrolled
               ? "bg-[#060D1F]/90 border border-blue-500/30 shadow-2xl shadow-blue-500/10 backdrop-blur-xl"
-              : "bg-[#030712]/80 border border-slate-800/80 shadow-lg backdrop-blur-md"
+              : "bg-[#030712]/40 border border-transparent backdrop-blur-sm"
           }`}
           style={{ transform: "translateZ(0)", WebkitTransform: "translateZ(0)" }}
         >

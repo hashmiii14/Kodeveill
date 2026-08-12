@@ -53,29 +53,29 @@ export const Portfolio = () => {
   }, [filter, sortedProjects]);
 
   return (
-    <section id="portfolio" className="relative bg-[#030712] text-white py-24 sm:py-32 overflow-hidden border-b border-slate-800/80">
+    <section id="portfolio" className="relative bg-slate-50 text-slate-900 py-24 sm:py-32 overflow-hidden border-y border-slate-200">
       {/* Background Radial Glow */}
-      <div className="pointer-events-none absolute right-1/3 top-1/4 h-[500px] w-[500px] rounded-full bg-blue-600/15 blur-[150px]" aria-hidden="true" />
+      <div className="pointer-events-none absolute right-1/3 top-1/4 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[150px]" aria-hidden="true" />
 
       <div className="container-x relative z-10">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <span className="section-label-dark">
-            <Sparkles className="h-3.5 w-3.5 text-blue-400" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-100/80 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-700 shadow-sm">
+            <Sparkles className="h-3.5 w-3.5 text-blue-600" aria-hidden="true" />
             <span>Complete Portfolio Showcase</span>
           </span>
 
-          <h2 className="mt-5 font-display text-4xl font-extrabold leading-tight text-white sm:text-6xl tracking-tight">
-            SELECTED <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">WORK</span>
+          <h2 className="mt-5 font-display text-4xl font-extrabold leading-tight text-slate-900 sm:text-6xl tracking-tight">
+            SELECTED <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">WORK</span>
           </h2>
 
-          <p className="mt-4 text-base text-slate-300 font-normal sm:text-lg">
+          <p className="mt-4 text-base text-slate-600 font-normal sm:text-lg">
             Explore our live website deployments — engineered for sub-second speed, custom aesthetic polish, and measurable ROI.
           </p>
         </Reveal>
 
         {/* Category Filter Tabs */}
         <Reveal delay={0.1} className="mt-10 flex justify-center">
-          <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl bg-[#080D1C]/90 p-2 border border-slate-800 backdrop-blur-xl shadow-lg">
+          <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl bg-white p-2 border border-slate-200 shadow-md">
             {CATEGORIES.map((c) => {
               const active = filter === c.id;
               return (
@@ -85,13 +85,13 @@ export const Portfolio = () => {
                   className={`relative rounded-xl px-4 py-2 text-xs sm:text-sm font-semibold transition-all duration-300 ${
                     active
                       ? "text-white shadow-md font-bold"
-                      : "text-slate-400 hover:text-white hover:bg-slate-800/50"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                   }`}
                 >
                   {active && (
                     <motion.span
                       layoutId="activeFilterTab"
-                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/40 to-purple-600/40 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
@@ -119,7 +119,7 @@ export const Portfolio = () => {
                   <div className={`grid gap-8 lg:grid-cols-12 lg:gap-12 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
                     {/* Preview Image Column */}
                     <div className={`lg:col-span-7 ${isEven ? "" : "lg:order-2"}`}>
-                      <div className="group relative overflow-hidden rounded-3xl border border-slate-800 bg-[#090F20] shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-[0_20px_50px_rgba(37,99,235,0.25)]">
+                      <div className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-2xl">
                         <div className="relative aspect-[16/10] overflow-hidden">
                           <img
                             src={p.image}
@@ -135,7 +135,7 @@ export const Portfolio = () => {
                             }}
                             className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                           />
-                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
+                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-60" />
                           <span className="absolute left-5 top-5 rounded-full bg-blue-600/90 border border-blue-400/40 px-3.5 py-1.5 text-xs font-bold text-white shadow-lg backdrop-blur-md">
                             {p.category}
                           </span>
@@ -145,12 +145,12 @@ export const Portfolio = () => {
 
                     {/* Project Info Column */}
                     <div className={`lg:col-span-5 ${isEven ? "" : "lg:order-1"}`}>
-                      <span className="text-xs font-bold uppercase tracking-widest text-blue-400 font-mono">Case Study 0{idx + 1}</span>
-                      <h3 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-white">
+                      <span className="text-xs font-bold uppercase tracking-widest text-blue-600 font-mono">Case Study 0{idx + 1}</span>
+                      <h3 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold text-slate-900">
                         {p.name}
                       </h3>
 
-                      <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300 font-normal">
+                      <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-600 font-normal">
                         {p.desc}
                       </p>
 
@@ -158,7 +158,7 @@ export const Portfolio = () => {
                       {p.tags && (
                         <div className="mt-5 flex flex-wrap gap-2">
                           {p.tags.map((tag) => (
-                            <span key={tag} className="rounded-lg bg-blue-950/60 border border-blue-500/30 px-3 py-1 text-xs font-semibold text-blue-300 font-mono">
+                            <span key={tag} className="rounded-lg bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-semibold text-blue-700 font-mono">
                               {tag}
                             </span>
                           ))}
@@ -180,9 +180,9 @@ export const Portfolio = () => {
                         {p.caseStudy && (
                           <button
                             onClick={() => setActiveDialog(p)}
-                            className="btn-dark-ghost text-xs px-5 py-3"
+                            className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-xs font-bold text-slate-800 transition-all duration-300 hover:bg-slate-100 hover:border-slate-400 shadow-sm"
                           >
-                            <LineChart className="h-4 w-4 text-blue-400" />
+                            <LineChart className="h-4 w-4 text-blue-600" />
                             <span>View Case Study</span>
                           </button>
                         )}
