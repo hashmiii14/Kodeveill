@@ -20,10 +20,8 @@ const ORDER = [
   "Oud Arábia — Luxury Perfumes",
   "The Urban Café",
   "Powerhouse Gym",
-  "Jamia Hamdard Memory Archive",
   "Faiz Dental Clinic",
-  "Pearl Root Dental Clinic",
-  "Vision Classes",
+  "Orchid Institute",
   "Unlimited Car Rental",
   "VYU Industries",
   "Orizer ERP",
@@ -38,10 +36,7 @@ export const Portfolio = () => {
     return [...PORTFOLIO].sort((a, b) => {
       const ia = ORDER.indexOf(a.name);
       const ib = ORDER.indexOf(b.name);
-      if (ia !== -1 && ib !== -1) return ia - ib;
-      if (ia !== -1) return -1;
-      if (ib !== -1) return 1;
-      return 0;
+      return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
     });
   }, []);
 
@@ -52,7 +47,7 @@ export const Portfolio = () => {
       if (filter === "e-commerce") return cat.includes("e-commerce") || cat.includes("commerce");
       if (filter === "healthcare") return cat.includes("health") || cat.includes("dental");
       if (filter === "corporate") return cat.includes("erp") || cat.includes("manufacturing") || cat.includes("education") || cat.includes("rental") || cat.includes("interior");
-      if (filter === "lifestyle") return cat.includes("fitness") || cat.includes("restaurant") || cat.includes("café") || cat.includes("archive");
+      if (filter === "lifestyle") return cat.includes("fitness") || cat.includes("restaurant") || cat.includes("café");
       return true;
     });
   }, [filter, sortedProjects]);
