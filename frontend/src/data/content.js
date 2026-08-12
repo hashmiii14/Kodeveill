@@ -285,7 +285,7 @@ export const PRICING_PLANS = [
   {
     id: "professional",
     name: "Professional",
-    price: "₹9,999",
+    price: "₹14,999",
     badge: "⭐ Most Popular",
     isPopular: true,
     desc: "The perfect choice for businesses that need a professional website with custom branding and multiple pages.",
@@ -303,7 +303,7 @@ export const PRICING_PLANS = [
       "3 Free Revisions",
     ],
     buttonText: "Build My Website",
-    whatsappLink: "https://wa.me/918595018458?text=Hi%2C%20I%27m%20interested%20in%20the%20Professional%20%28%E2%82%B99%2C999%29%20plan.%20Please%20share%20the%20next%20steps.",
+    whatsappLink: "https://wa.me/918595018458?text=Hi%2C%20I%27m%20interested%20in%20the%20Professional%20%28%E2%82%B914%2C999%29%20plan.%20Please%20share%20the%20next%20steps.",
   },
   {
     id: "business",

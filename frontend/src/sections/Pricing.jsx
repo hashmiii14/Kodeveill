@@ -37,12 +37,6 @@ export const Pricing = () => {
               <motion.div
                 key={plan.id}
                 variants={revealItem}
-                animate={isFeatured ? { y: [0, -6, 0] } : {}}
-                transition={
-                  isFeatured
-                    ? { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                    : {}
-                }
                 whileHover={{ y: -8, transition: { duration: 0.25 } }}
                 className={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-8 lg:p-9 transition-all duration-300 ${
                   idx === 2 ? "md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0 w-full" : "w-full"
@@ -140,7 +134,7 @@ export const Pricing = () => {
                 <tr className="border-b border-slate-800 bg-[#040814]">
                   <th scope="col" className="p-4 sm:p-5 font-display font-bold text-white">Features</th>
                   <th scope="col" className="p-4 sm:p-5 text-center font-display font-bold text-blue-300">Starter (₹4,999)</th>
-                  <th scope="col" className="p-4 sm:p-5 text-center font-display font-bold text-purple-300 bg-purple-950/30">Professional (₹9,999)</th>
+                  <th scope="col" className="p-4 sm:p-5 text-center font-display font-bold text-purple-300 bg-purple-950/30">Professional (₹14,999)</th>
                   <th scope="col" className="p-4 sm:p-5 text-center font-display font-bold text-indigo-300">Business (₹24,999)</th>
                 </tr>
               </thead>

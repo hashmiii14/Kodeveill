@@ -142,17 +142,21 @@ export const Hero = () => {
 
               {/* Floating Top Rocket & Sparkle Badges */}
               <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -right-2 z-20 hidden sm:flex items-center gap-2 rounded-2xl border border-purple-500/40 bg-[#0D1224]/90 px-3.5 py-2 text-xs font-bold text-purple-300 shadow-xl backdrop-blur-xl"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="absolute -top-6 -right-4 z-20 hidden sm:flex items-center gap-2 rounded-2xl border border-purple-500/40 bg-[#0E122A]/90 p-3 text-xs font-bold text-purple-200 shadow-2xl backdrop-blur-xl"
               >
-                <Rocket className="h-4 w-4 text-purple-400" />
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-purple-600 text-white font-bold shadow-md">
+                  <Zap className="h-4 w-4" />
+                </span>
                 <span>Next-Gen Tech Stack</span>
               </motion.div>
 
               <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
                 className="absolute -bottom-6 -left-4 z-20 hidden sm:flex items-center gap-3 rounded-2xl border border-blue-500/40 bg-[#0A1022]/90 p-3 text-xs font-bold text-blue-200 shadow-2xl backdrop-blur-xl"
               >
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white font-bold shadow-md">
