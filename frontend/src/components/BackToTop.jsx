@@ -10,9 +10,9 @@ export const BackToTop = () => {
     let ticking = false;
     const checkScroll = () => {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      // Appear only after user has scrolled approximately halfway down the page
       const halfWayThreshold = Math.max(500, docHeight * 0.45);
-      setVisible(window.scrollY >= halfWayThreshold);
+      const isPast = window.scrollY >= halfWayThreshold;
+      setVisible((prev) => (prev !== isPast ? isPast : prev));
     };
 
     const onScroll = () => {
