@@ -119,13 +119,14 @@ export const Portfolio = () => {
                   <div className={`grid gap-8 lg:grid-cols-12 lg:gap-12 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
                     {/* Preview Image Column */}
                     <div className={`lg:col-span-7 ${isEven ? "" : "lg:order-2"}`}>
-                      <div className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/50 hover:shadow-2xl">
+                      <div className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl transition-all duration-300 transform-gpu hover:-translate-y-1.5 hover:border-blue-500/50 hover:shadow-2xl">
                         <div className="relative aspect-[16/10] overflow-hidden">
                           <img
                             src={p.image}
                             alt={`${p.name} website preview`}
                             loading="lazy"
                             decoding="async"
+                            fetchpriority="low"
                             width="1200"
                             height="800"
                             onError={(e) => {
@@ -133,7 +134,7 @@ export const Portfolio = () => {
                                 e.target.src = e.target.src.replace(".jpg", ".png");
                               }
                             }}
-                            className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                            className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03] transform-gpu"
                           />
                           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-60" />
                           <span className="absolute left-5 top-5 rounded-full bg-blue-600/90 border border-blue-400/40 px-3.5 py-1.5 text-xs font-bold text-white shadow-lg backdrop-blur-md">

@@ -196,14 +196,29 @@
   html, body, #root, main, section {
     max-width: 100vw !important;
     overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
   }
-  .cursor-glow, [class*="blur-[150px]"], [class*="blur-[140px]"], [class*="blur-[120px]"] {
+  .cursor-glow, [class*="blur-3xl"], [class*="blur-2xl"], [class*="blur-[160px]"], [class*="blur-[150px]"], [class*="blur-[140px]"], [class*="blur-[120px]"] {
     display: none !important;
   }
-  .glass-card-dark, .glass-card-purple, [class*="backdrop-blur-xl"], [class*="backdrop-blur-2xl"] {
+  .glass-card-dark, .glass-card-purple, [class*="backdrop-blur-xl"], [class*="backdrop-blur-2xl"], [class*="backdrop-blur-md"] {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     background-color: #080D1C !important;
   }
 }
+
+/* GPU Hardware Acceleration Utilities */
+.transform-gpu {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optimize painting & composite layers */
+article, section, button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 

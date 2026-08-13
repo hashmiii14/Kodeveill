@@ -134,8 +134,8 @@ export const Hero = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative mx-auto max-w-lg lg:max-w-none"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative mx-auto max-w-lg lg:max-w-none transform-gpu"
             >
               {/* Outer Glow Halo */}
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-blue-600/30 via-purple-600/20 to-cyan-500/20 blur-2xl opacity-70" />
