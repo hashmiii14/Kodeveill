@@ -6,13 +6,14 @@ import logo from "@/assets/kodeveill-logo.webp";
 
 const QUICK = [
   { label: "Home", id: "home" },
-  { label: "Who We Are", id: "about" },
+  { label: "About Us", id: "about" },
   { label: "Services", id: "services" },
   { label: "Portfolio", id: "portfolio" },
   { label: "Why Us", id: "why-us" },
   { label: "Process", id: "process" },
   { label: "Pricing", id: "pricing" },
   { label: "Testimonials", id: "testimonials" },
+  { label: "Privacy Policy", id: "privacy-policy" },
   { label: "Contact", id: "contact" },
 ];
 

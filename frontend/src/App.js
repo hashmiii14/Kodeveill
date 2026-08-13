@@ -18,6 +18,7 @@ const Pricing = lazy(() => import("@/sections/Pricing").then((m) => ({ default: 
 const Testimonials = lazy(() => import("@/sections/Testimonials").then((m) => ({ default: m.Testimonials })));
 const CTA = lazy(() => import("@/sections/CTA").then((m) => ({ default: m.CTA })));
 const Contact = lazy(() => import("@/sections/Contact").then((m) => ({ default: m.Contact })));
+const PrivacyPolicy = lazy(() => import("@/sections/PrivacyPolicy").then((m) => ({ default: m.PrivacyPolicy })));
 const Footer = lazy(() => import("@/sections/Footer").then((m) => ({ default: m.Footer })));
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
 
         {/* Lazy Loaded Sections below fold */}
         <Suspense fallback={<div className="min-h-[200px] w-full bg-[#030712]" />}>
-          {/* 2. WHO WE ARE */}
+          {/* 2. WHO WE ARE / ABOUT US */}
           <WhoWeAre />
 
           {/* 3. CORE SERVICES */}
@@ -65,6 +66,9 @@ function App() {
           {/* 9. FINAL CTA & CONTACT */}
           <CTA />
           <Contact />
+
+          {/* 10. PRIVACY POLICY */}
+          <PrivacyPolicy />
 
           {/* FOOTER */}
           <Footer />

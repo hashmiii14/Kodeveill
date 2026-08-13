@@ -8,12 +8,13 @@ import {
 
 export const NAV_LINKS = [
   { label: "Home", id: "home" },
-  { label: "About", id: "about" },
+  { label: "About Us", id: "about" },
   { label: "Services", id: "services" },
   { label: "Work", id: "portfolio" },
   { label: "Why Us", id: "why-us" },
   { label: "Process", id: "process" },
   { label: "Pricing", id: "pricing" },
+  { label: "Privacy Policy", id: "privacy-policy" },
   { label: "Contact", id: "contact" },
 ];
 
@@ -382,7 +383,7 @@ export const TESTIMONIALS = [
 
 export const CONTACT = {
   company: "KodeVeil",
-  email: "contact.kodeveil@gmail.com",
+  email: "mdhashmi955@gmail.com",
   phone: "+91 85950 18458",
   phoneRaw: "+918595018458",
   whatsapp: "https://wa.me/918595018458",
