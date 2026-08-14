@@ -22,36 +22,59 @@ const SECTION_MAP = {
 };
 
 export const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrollMetrics, setScrollMetrics] = useState({ scrolled: false, progress: 0 });
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
 
-  // Scrolled state detection
+  // Continuous scroll metrics and scrolled detection
   useEffect(() => {
     let rafId = null;
 
-    const checkScrolled = () => {
+    const updateMetrics = () => {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-      const isScrolled = scrollY > 30;
-      setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+      const scrollHeight = Math.max(
+        document.body ? document.body.scrollHeight : 0,
+        document.documentElement ? document.documentElement.scrollHeight : 0
+      );
+      const windowHeight = window.innerHeight || (document.documentElement ? document.documentElement.clientHeight : 1);
+      const docHeight = scrollHeight - windowHeight;
+
+      const progress = docHeight > 0 ? Math.min(1, Math.max(0, scrollY / docHeight)) : 0;
+      const isScrolled = scrollY > 20;
+
+      setScrollMetrics((prev) => {
+        if (prev.scrolled !== isScrolled || Math.abs(prev.progress - progress) > 0.002) {
+          return { scrolled: isScrolled, progress };
+        }
+        return prev;
+      });
     };
 
     const onScroll = () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(checkScrolled);
+      rafId = requestAnimationFrame(updateMetrics);
     };
 
-    checkScrolled();
+    updateMetrics();
+
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
+    window.addEventListener("load", updateMetrics, { passive: true });
+
+    let observer = null;
+    if (typeof ResizeObserver !== "undefined" && document.body) {
+      observer = new ResizeObserver(() => updateMetrics());
+      observer.observe(document.body);
+    }
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("load", updateMetrics);
+      if (observer) observer.disconnect();
     };
   }, []);
-
 
   // Safe body scroll locking when mobile menu is open
   useEffect(() => {
@@ -98,7 +121,7 @@ export const Navbar = () => {
           }
         });
       },
-      { rootMargin: "-30% 0px -40% 0px", threshold: 0 }
+      { rootMargin: "-25% 0px -40% 0px", threshold: 0 }
     );
 
     sectionIds.forEach((id) => {
@@ -111,7 +134,6 @@ export const Navbar = () => {
 
   const handleNav = useCallback((id) => {
     setOpen(false);
-    // Allow React state & body overflow restore pass before smooth scroll
     window.requestAnimationFrame(() => {
       scrollToId(id);
     });
@@ -126,12 +148,27 @@ export const Navbar = () => {
         <nav
           data-testid="navbar"
           aria-label="Main Navigation"
-          className={`flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 ${
-            scrolled
+          className={`relative flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 overflow-hidden ${
+            scrollMetrics.scrolled
               ? "bg-[#060D1F]/90 border border-blue-500/30 shadow-2xl shadow-blue-500/10 backdrop-blur-xl"
               : "bg-[#030712]/40 border border-transparent backdrop-blur-sm"
           }`}
         >
+          {/* Continuous Scroll Progress Accent Line inside Navbar */}
+          <div
+            className="absolute bottom-0 left-6 right-6 h-[2px] rounded-full overflow-hidden pointer-events-none opacity-90"
+            aria-hidden="true"
+          >
+            <div
+              className="h-full w-full origin-left bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"
+              style={{
+                transform: `scaleX(${scrollMetrics.progress})`,
+                willChange: "transform",
+                transition: "transform 40ms linear",
+              }}
+            />
+          </div>
+
           {/* Logo */}
           <button
             data-testid="nav-logo"
