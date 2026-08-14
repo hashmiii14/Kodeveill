@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import "@/App.css";
+import { Analytics } from "@vercel/analytics/react";
 
 import { CursorGlow } from "@/components/CursorGlow";
 import { ScrollProgress } from "@/components/ScrollProgress";
@@ -67,6 +68,7 @@ function App() {
 
       <FloatingActions />
       <Toaster position="bottom-right" richColors theme="dark" />
+      <Analytics />
     </div>
   );
 }
