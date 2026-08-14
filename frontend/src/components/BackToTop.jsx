@@ -7,30 +7,30 @@ export const BackToTop = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    let ticking = false;
+    let rafId = null;
+
     const checkScroll = () => {
-      const isPast = window.scrollY >= 400;
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const isPast = scrollY >= 400;
       setVisible((prev) => (prev !== isPast ? isPast : prev));
     };
 
     const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          checkScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(checkScroll);
     };
 
     checkScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
+
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
   }, []);
+
 
   return (
     <AnimatePresence>

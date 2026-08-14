@@ -28,22 +28,30 @@ export const Navbar = () => {
 
   // Scrolled state detection
   useEffect(() => {
-    let ticking = false;
+    let rafId = null;
 
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const isScrolled = window.scrollY > 30;
-          setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
-          ticking = false;
-        });
-        ticking = true;
-      }
+    const checkScrolled = () => {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const isScrolled = scrollY > 30;
+      setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
     };
 
+    const onScroll = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(checkScrolled);
+    };
+
+    checkScrolled();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
+
 
   // Safe body scroll locking when mobile menu is open
   useEffect(() => {
