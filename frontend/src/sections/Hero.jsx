@@ -11,17 +11,18 @@ export const Hero = () => {
       <div className="pointer-events-none absolute inset-0 tech-grid opacity-25" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 tech-grid-lines opacity-15" aria-hidden="true" />
 
-      {/* Primary Glowing Radial Lights */}
+      {/* Primary Glowing Radial Lights (Desktop only for GPU efficiency) */}
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-[750px] w-[950px] -translate-x-1/2 rounded-full opacity-50 blur-3xl"
+        className="pointer-events-none absolute -top-40 left-1/2 hidden md:block h-[750px] w-[950px] -translate-x-1/2 rounded-full opacity-50 blur-3xl"
         style={{ background: "radial-gradient(circle, rgba(59,130,246,0.35) 0%, rgba(139,92,246,0.2) 45%, transparent 70%)" }}
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute bottom-10 right-10 h-[500px] w-[500px] rounded-full opacity-35 blur-3xl"
+        className="pointer-events-none absolute bottom-10 right-10 hidden md:block h-[500px] w-[500px] rounded-full opacity-35 blur-3xl"
         style={{ background: "radial-gradient(circle, rgba(168,85,247,0.3) 0%, rgba(37,99,235,0.15) 50%, transparent 70%)" }}
         aria-hidden="true"
       />
+
 
       <div className="container-x relative z-10">
         <div className="grid gap-12 lg:grid-cols-12 items-center">

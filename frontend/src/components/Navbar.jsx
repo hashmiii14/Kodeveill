@@ -1,18 +1,32 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Code } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { NAV_LINKS } from "@/data/content";
 import { scrollToId } from "@/lib/scroll";
 import logo from "@/assets/kodeveill-logo.webp";
 
+// Section to nav link mapping for active state observer
+const SECTION_MAP = {
+  home: "home",
+  about: "home",
+  services: "services",
+  capabilities: "services",
+  "why-us": "pricing",
+  process: "pricing",
+  pricing: "pricing",
+  portfolio: "portfolio",
+  testimonials: "contact",
+  cta: "contact",
+  contact: "contact",
+  "privacy-policy": "contact",
+};
+
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [visible, setVisible] = useState(true);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
-  const lastScrollY = useRef(0);
 
-  // Scrolled state detection for background glass transition
+  // Scrolled state detection
   useEffect(() => {
     let ticking = false;
 
@@ -31,16 +45,26 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Prevent background scroll when mobile menu is open
+  // Safe body scroll locking when mobile menu is open
   useEffect(() => {
     if (open) {
+      const origOverflow = document.body.style.overflow;
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      return () => {
+        document.body.style.overflow = origOverflow || "";
+      };
     }
-    return () => {
-      document.body.style.overflow = "";
+  }, [open]);
+
+  // Window resize handler (auto close mobile menu on screen expand)
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024 && open) {
+        setOpen(false);
+      }
     };
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => window.removeEventListener("resize", onResize);
   }, [open]);
 
   // Keyboard escape listener to close mobile menu
@@ -54,33 +78,41 @@ export const Navbar = () => {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
-  // Active section observer
+  // Active section observer across all sections
   useEffect(() => {
-    const ids = NAV_LINKS.map((l) => l.id);
+    const sectionIds = Object.keys(SECTION_MAP);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id);
+          if (e.isIntersecting) {
+            const navId = SECTION_MAP[e.target.id];
+            if (navId) setActive(navId);
+          }
         });
       },
-      { rootMargin: "-35% 0px -45% 0px", threshold: 0 }
+      { rootMargin: "-30% 0px -40% 0px", threshold: 0 }
     );
-    ids.forEach((id) => {
+
+    sectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
+
     return () => observer.disconnect();
   }, []);
 
   const handleNav = useCallback((id) => {
     setOpen(false);
-    scrollToId(id);
+    // Allow React state & body overflow restore pass before smooth scroll
+    window.requestAnimationFrame(() => {
+      scrollToId(id);
+    });
   }, []);
 
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-[9990] flex justify-center px-4 pt-4 transition-all duration-300 ease-in-out"
+        className="fixed inset-x-0 top-0 z-[9995] flex justify-center px-4 pt-4 transition-all duration-300 ease-in-out"
         role="banner"
       >
         <nav
@@ -91,7 +123,6 @@ export const Navbar = () => {
               ? "bg-[#060D1F]/90 border border-blue-500/30 shadow-2xl shadow-blue-500/10 backdrop-blur-xl"
               : "bg-[#030712]/40 border border-transparent backdrop-blur-sm"
           }`}
-          style={{ transform: "translateZ(0)", WebkitTransform: "translateZ(0)" }}
         >
           {/* Logo */}
           <button
@@ -182,7 +213,7 @@ export const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9985] lg:hidden"
+            className="fixed inset-0 z-[9990] lg:hidden"
           >
             <div
               className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
@@ -194,7 +225,7 @@ export const Navbar = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute inset-x-4 top-24 rounded-3xl bg-[#090D18]/95 border border-slate-800 p-6 shadow-2xl backdrop-blur-2xl"
+              className="absolute inset-x-4 top-24 z-[9991] rounded-3xl bg-[#090D18]/95 border border-slate-800 p-6 shadow-2xl backdrop-blur-2xl"
             >
               <ul className="flex flex-col gap-1.5">
                 {NAV_LINKS.map((link) => (
@@ -228,5 +259,6 @@ export const Navbar = () => {
     </>
   );
 };
+
 
 

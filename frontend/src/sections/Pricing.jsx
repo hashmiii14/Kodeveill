@@ -7,9 +7,10 @@ import { Check, Minus, ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
 export const Pricing = () => {
   return (
     <section id="pricing" className="relative bg-[#030712] text-white py-24 sm:py-32 overflow-hidden border-b border-slate-800/80">
-      {/* Ambient Background Lighting */}
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-[500px] w-[500px] rounded-full bg-purple-600/20 blur-[150px]" aria-hidden="true" />
-      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[500px] w-[500px] rounded-full bg-blue-600/20 blur-[150px]" aria-hidden="true" />
+      {/* Ambient Background Lighting (Desktop only) */}
+      <div className="pointer-events-none absolute -left-40 top-1/4 hidden md:block h-[500px] w-[500px] rounded-full bg-purple-600/20 blur-[150px]" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-40 bottom-1/4 hidden md:block h-[500px] w-[500px] rounded-full bg-blue-600/20 blur-[150px]" aria-hidden="true" />
+
 
       <div className="container-x relative z-10">
         {/* Section Header */}

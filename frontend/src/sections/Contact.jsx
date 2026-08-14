@@ -62,12 +62,13 @@ export const Contact = () => {
 
   return (
     <section id="contact" className="relative bg-[#030712] text-white py-20 sm:py-28 border-t border-slate-800/80 overflow-hidden">
-      {/* Background Radial Glow */}
+      {/* Background Radial Glow (Desktop only) */}
       <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full"
+        className="pointer-events-none absolute left-1/2 top-0 hidden md:block h-[500px] w-[500px] -translate-x-1/2 rounded-full"
         style={{ background: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)" }}
         aria-hidden="true"
       />
+
 
       <div className="container-x relative z-10">
         <Reveal className="mx-auto max-w-2xl text-center">

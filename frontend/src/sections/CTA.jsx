@@ -8,12 +8,13 @@ import { CONTACT } from "@/data/content";
 export const CTA = () => {
   return (
     <section id="cta" className="relative bg-[#030712] text-white py-24 sm:py-32 overflow-hidden border-b border-slate-800/80">
-      {/* Intense Background Glow Halo */}
+      {/* Intense Background Glow Halo (Desktop only) */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-1/2 hidden md:block h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 blur-3xl"
         style={{ background: "radial-gradient(circle, rgba(59,130,246,0.35) 0%, rgba(139,92,246,0.25) 50%, transparent 70%)" }}
         aria-hidden="true"
       />
+
 
       <div className="container-x relative z-10">
         <div className="rounded-3xl border border-slate-800 bg-gradient-to-r from-[#090D1F] via-[#0D152D] to-[#090D1F] p-8 sm:p-12 lg:p-16 backdrop-blur-2xl shadow-[0_0_80px_rgba(37,99,235,0.2)]">

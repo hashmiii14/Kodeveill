@@ -8,9 +8,10 @@ import { scrollToId } from "@/lib/scroll";
 export const Services = () => {
   return (
     <section id="services" className="relative bg-white text-slate-900 py-24 sm:py-32 overflow-hidden border-b border-slate-200">
-      {/* Background Radial Glow */}
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[160px]" aria-hidden="true" />
-      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[500px] w-[500px] rounded-full bg-purple-500/10 blur-[160px]" aria-hidden="true" />
+      {/* Background Radial Glow (Desktop only) */}
+      <div className="pointer-events-none absolute -left-40 top-1/4 hidden md:block h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[160px]" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-40 bottom-1/4 hidden md:block h-[500px] w-[500px] rounded-full bg-purple-500/10 blur-[160px]" aria-hidden="true" />
+
 
       <div className="container-x relative z-10">
         <Reveal className="mx-auto max-w-2xl text-center">

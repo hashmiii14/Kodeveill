@@ -8,8 +8,9 @@ import { scrollToId } from "@/lib/scroll";
 export const WhoWeAre = () => {
   return (
     <section id="about" className="relative bg-slate-50 text-slate-900 py-24 sm:py-32 overflow-hidden border-b border-slate-200">
-      {/* Subtle Ambient Lighting */}
-      <div className="pointer-events-none absolute left-1/3 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[140px]" aria-hidden="true" />
+      {/* Subtle Ambient Lighting (Desktop only) */}
+      <div className="pointer-events-none absolute left-1/3 top-0 hidden md:block h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[140px]" aria-hidden="true" />
+
 
       <div className="container-x relative z-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">

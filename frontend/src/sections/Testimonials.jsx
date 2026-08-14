@@ -7,8 +7,9 @@ import { Sparkles, Star, Quote } from "lucide-react";
 export const Testimonials = () => {
   return (
     <section id="testimonials" className="relative bg-[#030712] text-white py-24 sm:py-32 overflow-hidden border-b border-slate-800/80">
-      {/* Radial Ambient Glow */}
-      <div className="pointer-events-none absolute left-1/3 top-1/4 h-[400px] w-[500px] rounded-full bg-purple-600/15 blur-[140px]" aria-hidden="true" />
+      {/* Radial Ambient Glow (Desktop only) */}
+      <div className="pointer-events-none absolute left-1/3 top-1/4 hidden md:block h-[400px] w-[500px] rounded-full bg-purple-600/15 blur-[140px]" aria-hidden="true" />
+
 
       <div className="container-x relative z-10">
         <Reveal className="mx-auto max-w-2xl text-center">

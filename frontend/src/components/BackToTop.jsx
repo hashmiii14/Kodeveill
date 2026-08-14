@@ -9,9 +9,7 @@ export const BackToTop = () => {
   useEffect(() => {
     let ticking = false;
     const checkScroll = () => {
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const halfWayThreshold = Math.max(500, docHeight * 0.45);
-      const isPast = window.scrollY >= halfWayThreshold;
+      const isPast = window.scrollY >= 400;
       setVisible((prev) => (prev !== isPast ? isPast : prev));
     };
 
@@ -45,7 +43,7 @@ export const BackToTop = () => {
           initial={{ opacity: 0, scale: 0.6, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.6, y: 16 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.92 }}
           className="group relative flex items-center justify-center rounded-full text-white shadow-xl focus-visible:outline-none"
@@ -55,7 +53,6 @@ export const BackToTop = () => {
             background: "linear-gradient(135deg, #2563EB, #1D4ED8)",
             border: "1px solid rgba(255,255,255,0.25)",
             boxShadow: "0 10px 25px -5px rgba(37,99,235,0.5)",
-            willChange: "transform, opacity",
           }}
         >
           <ArrowUp className="h-6 w-6 stroke-[2.5]" />
@@ -68,4 +65,5 @@ export const BackToTop = () => {
     </AnimatePresence>
   );
 };
+
 

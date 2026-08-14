@@ -42,9 +42,10 @@ export const WhyChooseUs = () => {
 
   return (
     <section id="why-us" className="relative bg-[#030712] text-white py-24 sm:py-32 overflow-hidden border-b border-slate-800/80">
-      {/* Radial Blue & Purple Background Lighting */}
-      <div className="pointer-events-none absolute -right-32 top-1/4 h-[550px] w-[550px] rounded-full bg-purple-600/20 blur-[150px]" aria-hidden="true" />
-      <div className="pointer-events-none absolute -left-32 bottom-1/4 h-[550px] w-[550px] rounded-full bg-blue-600/20 blur-[150px]" aria-hidden="true" />
+      {/* Radial Blue & Purple Background Lighting (Desktop only) */}
+      <div className="pointer-events-none absolute -right-32 top-1/4 hidden md:block h-[550px] w-[550px] rounded-full bg-purple-600/20 blur-[150px]" aria-hidden="true" />
+      <div className="pointer-events-none absolute -left-32 bottom-1/4 hidden md:block h-[550px] w-[550px] rounded-full bg-blue-600/20 blur-[150px]" aria-hidden="true" />
+
 
       <div className="container-x relative z-10">
         <Reveal className="mx-auto max-w-3xl text-center">

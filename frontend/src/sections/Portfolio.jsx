@@ -54,8 +54,9 @@ export const Portfolio = () => {
 
   return (
     <section id="portfolio" className="relative bg-slate-50 text-slate-900 py-24 sm:py-32 overflow-hidden border-y border-slate-200">
-      {/* Background Radial Glow */}
-      <div className="pointer-events-none absolute right-1/3 top-1/4 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[150px]" aria-hidden="true" />
+      {/* Background Radial Glow (Desktop only) */}
+      <div className="pointer-events-none absolute right-1/3 top-1/4 hidden md:block h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[150px]" aria-hidden="true" />
+
 
       <div className="container-x relative z-10">
         <Reveal className="mx-auto max-w-3xl text-center">

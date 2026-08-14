@@ -14,8 +14,9 @@ const PROCESS_STEPS = [
 export const Process = () => {
   return (
     <section id="process" className="relative bg-[#02030A] text-white py-24 sm:py-32 overflow-hidden border-b border-slate-800/80">
-      {/* Background Lighting */}
-      <div className="pointer-events-none absolute right-1/4 top-1/3 h-[450px] w-[450px] rounded-full bg-blue-600/15 blur-[140px]" aria-hidden="true" />
+      {/* Background Lighting (Desktop only) */}
+      <div className="pointer-events-none absolute right-1/4 top-1/3 hidden md:block h-[450px] w-[450px] rounded-full bg-blue-600/15 blur-[140px]" aria-hidden="true" />
+
 
       <div className="container-x relative z-10">
         <Reveal className="mx-auto max-w-2xl text-center">

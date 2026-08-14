@@ -105,12 +105,13 @@ export const PrivacyPolicy = () => {
 
   return (
     <section id="privacy-policy" className="relative bg-[#030712] text-white py-20 sm:py-28 border-t border-slate-800/80 overflow-hidden">
-      {/* Radial Background Glow */}
+      {/* Radial Background Glow (Desktop only) */}
       <div
-        className="pointer-events-none absolute right-1/4 top-1/4 h-[450px] w-[450px] rounded-full"
+        className="pointer-events-none absolute right-1/4 top-1/4 hidden md:block h-[450px] w-[450px] rounded-full"
         style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
         aria-hidden="true"
       />
+
 
       <div className="container-x relative z-10">
         <Reveal className="mx-auto max-w-3xl text-center">
