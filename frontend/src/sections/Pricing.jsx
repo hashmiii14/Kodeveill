@@ -42,28 +42,28 @@ export const Pricing = () => {
                   idx === 2 ? "md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0 w-full" : "w-full"
                 } ${
                   isFeatured
-                    ? "bg-gradient-to-b from-[#10142A] via-[#0B0F22] to-[#070B18] border-2 border-purple-500/80 shadow-[0_0_50px_rgba(139,92,246,0.3)] lg:-translate-y-2 backdrop-blur-2xl"
-                    : "bg-[#080D1C]/90 border border-slate-800 hover:border-blue-500/50 shadow-2xl backdrop-blur-xl hover:shadow-[0_20px_50px_rgba(37,99,235,0.2)]"
+                    ? "bg-gradient-to-b from-[#131B36] via-[#0E152E] to-[#0A0E22] border-2 border-purple-500 shadow-[0_0_50px_rgba(168,85,247,0.35)] lg:-translate-y-2"
+                    : "bg-[#090E22] border border-slate-800 hover:border-blue-500/50 shadow-2xl hover:shadow-[0_20px_50px_rgba(37,99,235,0.25)]"
                 }`}
                 data-testid={`pricing-card-${plan.id}`}
               >
                 {/* Most Popular Ribbon */}
                 {isFeatured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-blue-600 px-4 py-1 text-xs font-extrabold uppercase tracking-wider text-white shadow-lg shadow-purple-500/40 z-10">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-blue-600 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-xl shadow-purple-500/50 z-20">
                     <Sparkles className="h-3.5 w-3.5" />
-                    <span>Most Popular</span>
+                    <span>⭐ Most Popular Choice</span>
                   </div>
                 )}
 
                 <div>
                   {/* Top Badge & Header */}
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center justify-between gap-2 pt-1">
                     <h3 className="font-display text-2xl font-extrabold text-white">{plan.name}</h3>
                     <span
                       className={`rounded-full px-3 py-1 text-xs font-bold ${
                         isFeatured
                           ? "bg-purple-500/20 text-purple-300 border border-purple-400/40"
-                          : "bg-blue-500/15 text-blue-300 border border-blue-400/30"
+                          : "bg-blue-500/20 text-blue-300 border border-blue-400/30"
                       }`}
                     >
                       {plan.badge}
@@ -72,18 +72,21 @@ export const Pricing = () => {
 
                   <p className="mt-3 text-xs leading-relaxed text-slate-300 font-normal min-h-[36px]">{plan.desc}</p>
 
-                  {/* Price Block */}
-                  <div className="mt-6 flex items-baseline gap-1.5 border-b border-slate-800 pb-6">
-                    <span className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+                  {/* Price Block — High Contrast & Clearly Visible */}
+                  <div className="mt-6 flex items-baseline gap-2 border-b border-slate-800 pb-6">
+                    <span
+                      className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl drop-shadow-md"
+                      data-testid={`price-display-${plan.id}`}
+                    >
                       {plan.price}
                     </span>
-                    <span className="text-xs font-semibold text-slate-400 font-mono">/ One-time</span>
+                    <span className="text-xs font-semibold text-slate-400 font-mono">/ One-time investment</span>
                   </div>
 
                   {/* Feature Checklist */}
                   <ul className="mt-6 space-y-3 text-xs sm:text-sm">
                     {plan.features.map((feat, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-slate-200 font-medium">
+                      <li key={idx} className="flex items-start gap-2.5 text-slate-100 font-medium">
                         <span
                           className={`flex h-4.5 w-4.5 flex-shrink-0 items-center justify-center rounded-full mt-0.5 ${
                             isFeatured ? "bg-purple-600 text-white" : "bg-blue-600 text-white"
@@ -91,7 +94,7 @@ export const Pricing = () => {
                         >
                           <Check className="h-3 w-3 stroke-[3]" />
                         </span>
-                        <span>{feat}</span>
+                        <span className="leading-snug">{feat}</span>
                       </li>
                     ))}
                   </ul>
@@ -100,14 +103,14 @@ export const Pricing = () => {
                 {/* CTA Button */}
                 <div className="mt-8 pt-2">
                   <motion.a
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     href={plan.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`group relative inline-flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-extrabold transition-all duration-300 ${
                       isFeatured
-                        ? "bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white shadow-lg shadow-purple-600/35 hover:shadow-purple-500/50"
+                        ? "bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white shadow-xl shadow-purple-600/40 hover:shadow-purple-500/60"
                         : "btn-glow-blue"
                     }`}
                     data-testid={`pricing-cta-${plan.id}`}

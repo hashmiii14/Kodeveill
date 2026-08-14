@@ -42,32 +42,22 @@ function App() {
 
         {/* Lazy Loaded Sections below fold */}
         <Suspense fallback={<div className="min-h-[200px] w-full bg-[#030712]" />}>
-          {/* 2. WHO WE ARE / ABOUT US */}
+          {/* 2. WHO WE ARE & SERVICES (Light Theme) */}
           <WhoWeAre />
-
-          {/* 3. CORE SERVICES */}
           <Services />
 
-          {/* 4. FEATURED PORTFOLIO */}
-          <Portfolio />
-
-          {/* 5. WHY CHOOSE KODEVEIL */}
+          {/* 3. WHY CHOOSE US, PROCESS & PRICING (Dark Deep Blue & Purple Theme) */}
           <WhyChooseUs />
-
-          {/* 6. OUR WORKFLOW PROCESS */}
           <Process />
-
-          {/* 7. PRICING & COMPARISON */}
           <Pricing />
 
-          {/* 8. TESTIMONIALS */}
-          <Testimonials />
+          {/* 4. FEATURED PORTFOLIO (Light Theme) */}
+          <Portfolio />
 
-          {/* 9. FINAL CTA & CONTACT */}
+          {/* 5. TESTIMONIALS, CTA, CONTACT & PRIVACY (Dark Theme) */}
+          <Testimonials />
           <CTA />
           <Contact />
-
-          {/* 10. PRIVACY POLICY */}
           <PrivacyPolicy />
 
           {/* FOOTER */}

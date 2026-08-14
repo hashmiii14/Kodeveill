@@ -8,13 +8,9 @@ import {
 
 export const NAV_LINKS = [
   { label: "Home", id: "home" },
-  { label: "About Us", id: "about" },
   { label: "Services", id: "services" },
-  { label: "Work", id: "portfolio" },
-  { label: "Why Us", id: "why-us" },
-  { label: "Process", id: "process" },
-  { label: "Pricing", id: "pricing" },
-  { label: "Privacy Policy", id: "privacy-policy" },
+  { label: "Price", id: "pricing" },
+  { label: "Portfolio", id: "portfolio" },
   { label: "Contact", id: "contact" },
 ];
 
