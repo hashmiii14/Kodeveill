@@ -158,25 +158,19 @@ export const Navbar = () => {
                     data-testid={`nav-link-${link.id}`}
                     onClick={() => handleNav(link.id)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                    className={`relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                       isActive
-                        ? "text-white font-bold"
-                        : "text-slate-300 hover:text-white hover:bg-slate-800/60"
+                        ? "text-white font-bold bg-gradient-to-r from-blue-600/30 via-indigo-600/30 to-purple-600/30 border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                        : "text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent"
                     }`}
                   >
-                    {isActive && (
-                      <motion.span
-                        layoutId="activePill"
-                        className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600/30 via-indigo-600/30 to-purple-600/30 border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      />
-                    )}
                     <span className="relative z-10">{link.label}</span>
                   </button>
                 </li>
               );
             })}
           </ul>
+
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:block">
