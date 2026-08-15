@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
+import { Phone, Sun, Moon } from "lucide-react";
 import { CONTACT } from "@/data/content";
+import { useTheme } from "@/context/ThemeContext";
 import { BackToTop } from "@/components/BackToTop";
 
 const WhatsAppIcon = (props) => (
@@ -10,6 +11,8 @@ const WhatsAppIcon = (props) => (
 );
 
 export const FloatingActions = () => {
+  const { theme, toggleTheme } = useTheme();
+
   const actions = [
     {
       label: "Call us",
@@ -32,13 +35,33 @@ export const FloatingActions = () => {
 
   return (
     <div
-      className="fixed bottom-6 right-5 z-[9996] flex flex-col items-center gap-3.5 sm:right-6"
+      className="fixed bottom-6 right-5 z-[9996] flex flex-col items-center gap-3 sm:right-6"
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
       data-testid="floating-actions"
       role="region"
       aria-label="Quick contact actions"
     >
       <BackToTop />
+
+      {/* Floating Theme Switcher Button */}
+      <motion.button
+        type="button"
+        onClick={toggleTheme}
+        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+        data-testid="fab-theme-toggle"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.94 }}
+        className="group relative flex items-center justify-center rounded-full text-slate-800 bg-white border border-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-amber-400 shadow-xl transition-all"
+        style={{ width: 44, height: 44 }}
+      >
+        {theme === "dark" ? <Sun className="h-5 w-5 text-amber-400" /> : <Moon className="h-5 w-5 text-slate-800" />}
+        <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-900 shadow-md transition-opacity duration-200 group-hover:opacity-100 dark:border-slate-800 dark:bg-slate-900 dark:text-white lg:block">
+          Switch to {theme === "dark" ? "Light" : "Dark"} Mode
+        </span>
+      </motion.button>
+
       {actions.map((a, i) => {
         const Icon = a.icon;
         return (
@@ -56,23 +79,15 @@ export const FloatingActions = () => {
             whileTap={{ scale: 0.94 }}
             className="group relative flex items-center justify-center rounded-full text-white transition-transform"
             style={{
-              width: 52,
-              height: 52,
+              width: 48,
+              height: 48,
               background: a.bg,
               border: "1px solid rgba(255,255,255,0.25)",
               boxShadow: `0 10px 30px -8px ${a.ring}`,
             }}
-
           >
-            {/* Pulse ring */}
-            <span
-              className="absolute inset-0 rounded-full pointer-events-none"
-              style={{ border: `2px solid ${a.ring}`, animation: "pulse-ring 2.6s cubic-bezier(0.4,0,0.2,1) infinite" }}
-              aria-hidden="true"
-            />
-            <Icon className="relative h-6 w-6" style={{ width: 24, height: 24 }} />
-            {/* Tooltip label (desktop) */}
-            <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-900 opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100 lg:block">
+            <Icon className="relative h-5 w-5" style={{ width: 22, height: 22 }} />
+            <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-900 shadow-md transition-opacity duration-200 group-hover:opacity-100 dark:border-slate-800 dark:bg-slate-900 dark:text-white lg:block">
               {a.label}
             </span>
           </motion.a>
@@ -81,4 +96,5 @@ export const FloatingActions = () => {
     </div>
   );
 };
+
 

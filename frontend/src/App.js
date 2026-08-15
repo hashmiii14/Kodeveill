@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import "@/App.css";
 
+import { ThemeProvider } from "@/context/ThemeContext";
 import { CursorGlow } from "@/components/CursorGlow";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { FloatingActions } from "@/components/FloatingActions";
@@ -23,52 +24,55 @@ const Footer = lazy(() => import("@/sections/Footer").then((m) => ({ default: m.
 
 function App() {
   return (
-    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-[#030712] text-slate-100 font-sans antialiased selection:bg-blue-500/30 selection:text-white">
-      {/* Accessibility Skip Link */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[10001] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-xl focus:shadow-xl"
-      >
-        Skip to main content
-      </a>
+    <ThemeProvider>
+      <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-slate-50 dark:bg-[#0B0F19] text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-blue-500/20 selection:text-blue-700 dark:selection:bg-blue-500/30 dark:selection:text-white transition-colors duration-300">
+        {/* Accessibility Skip Link */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[10001] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-xl focus:shadow-xl"
+        >
+          Skip to main content
+        </a>
 
-      <CursorGlow />
-      <ScrollProgress />
-      <Navbar />
+        <CursorGlow />
+        <ScrollProgress />
+        <Navbar />
 
-      <main id="main-content" tabIndex="-1" className="w-full max-w-full overflow-x-hidden outline-none bg-[#030712]">
-        {/* 1. HERO (Eagerly loaded for immediate FCP) */}
-        <Hero />
+        <main id="main-content" tabIndex="-1" className="w-full max-w-full overflow-x-hidden outline-none bg-slate-50 dark:bg-[#0B0F19] transition-colors duration-300">
+          {/* 1. HERO (Eagerly loaded for immediate FCP) */}
+          <Hero />
 
-        {/* Lazy Loaded Sections below fold */}
-        <Suspense fallback={<div className="min-h-[200px] w-full bg-[#030712]" />}>
-          {/* 2. WHO WE ARE & SERVICES (Light Theme) */}
-          <WhoWeAre />
-          <Services />
+          {/* Lazy Loaded Sections below fold */}
+          <Suspense fallback={<div className="min-h-[200px] w-full bg-slate-50 dark:bg-[#0B0F19]" />}>
+            {/* 2. WHO WE ARE & SERVICES */}
+            <WhoWeAre />
+            <Services />
 
-          {/* 3. WHY CHOOSE US, PROCESS & PRICING (Dark Deep Blue & Purple Theme) */}
-          <WhyChooseUs />
-          <Process />
-          <Pricing />
+            {/* 3. WHY CHOOSE US, PROCESS & PRICING */}
+            <WhyChooseUs />
+            <Process />
+            <Pricing />
 
-          {/* 4. FEATURED PORTFOLIO (Light Theme) */}
-          <Portfolio />
+            {/* 4. FEATURED PORTFOLIO */}
+            <Portfolio />
 
-          {/* 5. TESTIMONIALS, CTA, CONTACT & PRIVACY (Dark Theme) */}
-          <Testimonials />
-          <CTA />
-          <Contact />
-          <PrivacyPolicy />
+            {/* 5. TESTIMONIALS, CTA, CONTACT & PRIVACY */}
+            <Testimonials />
+            <CTA />
+            <Contact />
+            <PrivacyPolicy />
 
-          {/* FOOTER */}
-          <Footer />
-        </Suspense>
-      </main>
+            {/* FOOTER */}
+            <Footer />
+          </Suspense>
+        </main>
 
-      <FloatingActions />
-      <Toaster position="bottom-right" richColors theme="dark" />
-    </div>
+        <FloatingActions />
+        <Toaster position="bottom-right" richColors />
+      </div>
+    </ThemeProvider>
   );
 }
 
 export default App;
+
