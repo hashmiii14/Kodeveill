@@ -52,9 +52,10 @@ export const Pricing = () => {
                 {isFeatured && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-blue-600 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-xl shadow-purple-500/50 z-20">
                     <Sparkles className="h-3.5 w-3.5" />
-                    <span>⭐ Most Popular Choice</span>
+                    <span>Most Popular Choice</span>
                   </div>
                 )}
+
 
                 <div>
                   {/* Top Badge & Header */}

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Zap, ShieldCheck, Star, TrendingUp, Globe, Code, Rocket, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, ShieldCheck, Star, TrendingUp, Globe, Code, Rocket, CheckCircle2, Lock } from "lucide-react";
+
 import { scrollToId } from "@/lib/scroll";
 import logo from "@/assets/kodeveill-logo.webp";
 
@@ -197,8 +198,10 @@ export const Hero = () => {
                     <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
                   </div>
                   <div className="flex items-center gap-2 rounded-md bg-slate-900 px-3 py-1 text-[10px] font-mono text-blue-300 border border-slate-800">
-                    <span className="text-emerald-400">🔒</span> https://www.kodeveil.in
+                    <Lock className="h-3 w-3 text-emerald-400" aria-hidden="true" />
+                    <span>https://www.kodeveil.in</span>
                   </div>
+
                   <div className="flex items-center gap-1 text-[10px] text-slate-400 font-mono">
                     <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
                     LIVE

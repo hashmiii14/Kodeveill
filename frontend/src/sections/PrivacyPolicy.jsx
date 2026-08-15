@@ -51,8 +51,9 @@ const PRIVACY_SECTIONS = [
           We employ bank-grade SSL encryption and secure server protocols to protect your personal and business information against unauthorized access, loss, or misuse.
         </p>
         <p className="text-blue-300 font-medium">
-          🔒 <strong>Zero Selling Policy:</strong> We never sell, rent, trade, or monetize your personal or business data to any third-party advertisers or data brokers.
+          <strong>Zero Selling Policy:</strong> We never sell, rent, trade, or monetize your personal or business data to any third-party advertisers or data brokers.
         </p>
+
       </div>
     ),
   },

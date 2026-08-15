@@ -260,7 +260,7 @@ export const PRICING_PLANS = [
     id: "starter",
     name: "Starter",
     price: "₹4,999",
-    badge: "🚀 Best for Beginners",
+    badge: "Starter Tier",
     isPopular: false,
     desc: "Perfect for students, freelancers, startups, and small businesses looking for an affordable online presence.",
     features: [
@@ -283,7 +283,7 @@ export const PRICING_PLANS = [
     id: "professional",
     name: "Professional",
     price: "₹14,999",
-    badge: "⭐ Most Popular",
+    badge: "Most Popular",
     isPopular: true,
     desc: "The perfect choice for businesses that need a professional website with custom branding and multiple pages.",
     features: [
@@ -306,9 +306,10 @@ export const PRICING_PLANS = [
     id: "business",
     name: "Business",
     price: "₹24,999",
-    badge: "💎 Best Value",
+    badge: "Enterprise Tier",
     isPopular: false,
     desc: "A complete solution for businesses and startups requiring premium features, scalability, and long-term growth.",
+
     features: [
       "Premium Business Website",
       "Unlimited Sections",
