@@ -22,57 +22,33 @@ const SECTION_MAP = {
 };
 
 export const Navbar = () => {
-  const [scrollMetrics, setScrollMetrics] = useState({ scrolled: false, progress: 0 });
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
 
-  // Continuous scroll metrics and scrolled detection
+  // Scrolled state detection - ONLY updates state when crossing 20px threshold (Zero lag)
   useEffect(() => {
     let rafId = null;
 
-    const updateMetrics = () => {
+    const checkScrolled = () => {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-      const scrollHeight = Math.max(
-        document.body ? document.body.scrollHeight : 0,
-        document.documentElement ? document.documentElement.scrollHeight : 0
-      );
-      const windowHeight = window.innerHeight || (document.documentElement ? document.documentElement.clientHeight : 1);
-      const docHeight = scrollHeight - windowHeight;
-
-      const progress = docHeight > 0 ? Math.min(1, Math.max(0, scrollY / docHeight)) : 0;
       const isScrolled = scrollY > 20;
-
-      setScrollMetrics((prev) => {
-        if (prev.scrolled !== isScrolled || Math.abs(prev.progress - progress) > 0.002) {
-          return { scrolled: isScrolled, progress };
-        }
-        return prev;
-      });
+      setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
     };
 
     const onScroll = () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(updateMetrics);
+      rafId = requestAnimationFrame(checkScrolled);
     };
 
-    updateMetrics();
-
+    checkScrolled();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
-    window.addEventListener("load", updateMetrics, { passive: true });
-
-    let observer = null;
-    if (typeof ResizeObserver !== "undefined" && document.body) {
-      observer = new ResizeObserver(() => updateMetrics());
-      observer.observe(document.body);
-    }
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      window.removeEventListener("load", updateMetrics);
-      if (observer) observer.disconnect();
     };
   }, []);
 
@@ -148,33 +124,19 @@ export const Navbar = () => {
         <nav
           data-testid="navbar"
           aria-label="Main Navigation"
-          className={`relative flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 overflow-hidden ${
-            scrollMetrics.scrolled
-              ? "bg-[#060D1F]/90 border border-blue-500/30 shadow-2xl shadow-blue-500/10 backdrop-blur-xl"
-              : "bg-[#030712]/40 border border-transparent backdrop-blur-sm"
+          className={`flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 ${
+            scrolled
+              ? "bg-[#060D1F]/95 border border-blue-500/40 shadow-2xl shadow-blue-500/10 backdrop-blur-xl"
+              : "bg-[#030712]/50 border border-slate-800/40 backdrop-blur-md"
           }`}
         >
-          {/* Continuous Scroll Progress Accent Line inside Navbar */}
-          <div
-            className="absolute bottom-0 left-6 right-6 h-[2px] rounded-full overflow-hidden pointer-events-none opacity-90"
-            aria-hidden="true"
-          >
-            <div
-              className="h-full w-full origin-left bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"
-              style={{
-                transform: `scaleX(${scrollMetrics.progress})`,
-                willChange: "transform",
-                transition: "transform 40ms linear",
-              }}
-            />
-          </div>
-
           {/* Logo */}
           <button
+            type="button"
             data-testid="nav-logo"
             onClick={() => handleNav("home")}
             aria-label="KodeVeil home"
-            className="flex items-center gap-3 focus-visible:outline-none group text-left"
+            className="flex items-center gap-3 focus-visible:outline-none group text-left touch-manipulation"
           >
             <span className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 border border-blue-400/40 shadow-lg shadow-blue-500/30 transition-transform duration-300 group-hover:scale-105">
               <img src={logo} alt="KodeVeil logo" className="h-6 w-6 object-contain brightness-125" width="24" height="24" />
@@ -199,6 +161,7 @@ export const Navbar = () => {
               return (
                 <li key={link.id} role="none">
                   <button
+                    type="button"
                     role="menuitem"
                     data-testid={`nav-link-${link.id}`}
                     onClick={() => handleNav(link.id)}
@@ -216,10 +179,10 @@ export const Navbar = () => {
             })}
           </ul>
 
-
           {/* Desktop CTA Button */}
           <div className="hidden lg:block">
             <button
+              type="button"
               data-testid="nav-cta"
               onClick={() => handleNav("contact")}
               className="group relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-6 py-2.5 text-sm font-bold text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.7)] hover:-translate-y-0.5 active:translate-y-0"
@@ -231,19 +194,20 @@ export const Navbar = () => {
 
           {/* Mobile Menu Toggle Button */}
           <button
+            type="button"
             data-testid="mobile-menu-toggle"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen((prev) => !prev)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 border border-slate-700 text-white transition-colors hover:bg-slate-800 lg:hidden"
+            className="relative z-50 flex h-11 w-11 items-center justify-center rounded-full bg-slate-900/90 border border-slate-700 text-white transition-all active:scale-95 hover:bg-slate-800 touch-manipulation lg:hidden"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <X className="h-5 w-5 text-blue-400" /> : <Menu className="h-5 w-5 text-slate-100" />}
           </button>
         </nav>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Overlay */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -252,30 +216,34 @@ export const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9990] lg:hidden"
+            className="fixed inset-0 z-[10000] lg:hidden flex flex-col justify-start pt-20 px-4"
           >
+            {/* Backdrop */}
             <div
-              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
+              className="fixed inset-0 bg-slate-950/85 backdrop-blur-xl transition-opacity"
               onClick={() => setOpen(false)}
               aria-hidden="true"
             />
+
+            {/* Menu Box */}
             <motion.div
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
+              initial={{ y: -15, opacity: 0, scale: 0.98 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: -15, opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute inset-x-4 top-24 z-[9991] rounded-3xl bg-[#090D18]/95 border border-slate-800 p-6 shadow-2xl backdrop-blur-2xl"
+              className="relative z-10 w-full max-w-md mx-auto rounded-3xl bg-[#090D18]/98 border border-blue-500/30 p-6 shadow-2xl backdrop-blur-2xl"
             >
-              <ul className="flex flex-col gap-1.5">
+              <ul className="flex flex-col gap-2">
                 {NAV_LINKS.map((link) => (
                   <li key={link.id}>
                     <button
+                      type="button"
                       data-testid={`mobile-nav-link-${link.id}`}
                       onClick={() => handleNav(link.id)}
-                      className={`w-full rounded-2xl px-4 py-3.5 text-left text-base font-semibold transition-colors ${
+                      className={`w-full rounded-2xl px-5 py-4 text-left text-base font-bold transition-all active:scale-[0.98] ${
                         active === link.id
-                          ? "bg-blue-600/20 text-blue-400 border border-blue-500/30"
-                          : "text-slate-300 hover:text-white hover:bg-slate-800/60"
+                          ? "bg-blue-600/20 text-blue-400 border border-blue-500/40 shadow-lg shadow-blue-500/10"
+                          : "text-slate-200 hover:text-white hover:bg-slate-800/70 border border-transparent"
                       }`}
                     >
                       {link.label}
@@ -284,9 +252,10 @@ export const Navbar = () => {
                 ))}
               </ul>
               <button
+                type="button"
                 data-testid="mobile-nav-cta"
                 onClick={() => handleNav("contact")}
-                className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-5 py-4 text-base font-bold text-white shadow-xl shadow-blue-600/30 transition-all hover:brightness-110"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-5 py-4 text-base font-bold text-white shadow-xl shadow-blue-600/40 transition-all active:scale-[0.98]"
               >
                 <span>Let's Build Something</span>
                 <ArrowRight className="h-5 w-5" />
@@ -298,6 +267,7 @@ export const Navbar = () => {
     </>
   );
 };
+
 
 
 
