@@ -121,8 +121,8 @@ export const Navbar = () => {
           aria-label="Main Navigation"
           className={`flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 ${
             scrolled
-              ? "bg-white/95 border border-slate-200/90 shadow-xl shadow-slate-900/5 backdrop-blur-xl dark:bg-[#090D1C]/95 dark:border-blue-500/40 dark:shadow-blue-500/10"
-              : "bg-white/70 border border-slate-200/60 backdrop-blur-md dark:bg-[#030712]/50 dark:border-slate-800/40"
+              ? "bg-white/95 border border-slate-200/90 shadow-xl shadow-slate-900/5 backdrop-blur-xl dark:bg-[#0E152A]/95 dark:border-blue-500/50 dark:shadow-[0_0_20px_rgba(37,99,235,0.25)]"
+              : "bg-white/80 border border-slate-200/80 backdrop-blur-md dark:bg-[#080D1C]/90 dark:border-slate-800"
           }`}
         >
           {/* Corporate Logo */}
@@ -143,7 +143,7 @@ export const Navbar = () => {
               <span className="font-display text-lg font-black tracking-tight text-slate-900 dark:text-white sm:text-xl flex items-center gap-0.5">
                 Kodeveil<span className="text-blue-600 dark:text-blue-400 font-extrabold">.</span>
               </span>
-              <span className="text-[9px] font-bold tracking-widest text-blue-600 dark:text-blue-400 uppercase -mt-1 hidden sm:block">
+              <span className="text-[9px] font-bold tracking-widest text-blue-600 dark:text-blue-400 uppercase -mt-1 hidden sm:block font-mono">
                 Software Solutions
               </span>
             </div>
@@ -163,8 +163,8 @@ export const Navbar = () => {
                     aria-current={isActive ? "page" : undefined}
                     className={`relative rounded-full px-4 py-2 text-sm font-extrabold transition-all duration-200 ${
                       isActive
-                        ? "text-blue-600 bg-blue-50 border border-blue-200 shadow-sm dark:text-white dark:bg-gradient-to-r dark:from-blue-600/40 dark:via-indigo-600/40 dark:to-purple-600/40 dark:border-blue-400/50 dark:shadow-[0_0_15px_rgba(59,130,246,0.35)]"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 border border-transparent dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60"
+                        ? "text-blue-600 bg-blue-50 border border-blue-200 shadow-sm dark:text-white dark:bg-blue-600 dark:border-blue-400 dark:shadow-[0_0_15px_rgba(37,99,235,0.4)]"
+                        : "text-slate-700 hover:text-slate-900 hover:bg-slate-100/80 border border-transparent dark:text-slate-200 dark:hover:text-white dark:hover:bg-slate-800/90"
                     }`}
                   >
                     <span className="relative z-10">{link.label}</span>
@@ -184,7 +184,7 @@ export const Navbar = () => {
               type="button"
               data-testid="nav-cta"
               onClick={() => handleNav("contact")}
-              className="hidden sm:inline-flex group relative items-center gap-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white dark:bg-gradient-to-r dark:from-blue-600 dark:via-indigo-600 dark:to-purple-600 px-5 py-2 text-xs font-extrabold shadow-md transition-all duration-200 hover:scale-[1.02] active:scale-95"
+              className="hidden sm:inline-flex group relative items-center gap-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white dark:bg-blue-600 dark:hover:bg-blue-500 px-5 py-2 text-xs font-extrabold shadow-md transition-all duration-200 hover:scale-[1.02] active:scale-95"
             >
               <span>Let's Talk</span>
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -198,9 +198,9 @@ export const Navbar = () => {
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="mobile-menu"
-              className="relative z-[10001] flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 border border-slate-300 text-slate-900 dark:bg-slate-900/90 dark:border-slate-700 dark:text-white transition-all active:scale-95 hover:bg-slate-200 dark:hover:bg-slate-800 touch-manipulation lg:hidden"
+              className="relative z-[10001] flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 border border-slate-300 text-slate-900 dark:bg-[#0E152A] dark:border-slate-700 dark:text-white transition-all active:scale-95 hover:bg-slate-200 dark:hover:bg-slate-800 touch-manipulation lg:hidden shadow-sm"
             >
-              {open ? <X className="h-5 w-5 text-blue-600 dark:text-blue-400" /> : <Menu className="h-5 w-5 text-slate-800 dark:text-slate-100" />}
+              {open ? <X className="h-5 w-5 text-blue-600 dark:text-blue-400" /> : <Menu className="h-5 w-5 text-slate-800 dark:text-white" />}
             </button>
           </div>
         </nav>
@@ -220,7 +220,7 @@ export const Navbar = () => {
           >
             {/* Backdrop */}
             <div
-              className="fixed inset-0 bg-slate-950/60 dark:bg-slate-950/90"
+              className="fixed inset-0 bg-slate-950/60 dark:bg-slate-950/90 backdrop-blur-sm"
               onClick={() => setOpen(false)}
               aria-hidden="true"
             />
@@ -231,7 +231,7 @@ export const Navbar = () => {
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: -12, opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="relative z-10 w-full max-w-[320px] sm:max-w-xs mx-auto rounded-2xl bg-white border border-slate-200 p-4 shadow-2xl dark:bg-[#090D1C]/98 dark:border-blue-500/50"
+              className="relative z-10 w-full max-w-[320px] sm:max-w-xs mx-auto rounded-2xl bg-white border border-slate-200 p-4 shadow-2xl dark:bg-[#0E152A] dark:border-blue-500/60"
             >
               <ul className="flex flex-col gap-1">
                 {NAV_LINKS.map((link) => {
@@ -244,8 +244,8 @@ export const Navbar = () => {
                         onClick={() => handleNav(link.id)}
                         className={`w-full rounded-xl px-4 py-2.5 text-left text-sm font-extrabold transition-all active:scale-[0.98] ${
                           isActive
-                            ? "bg-blue-50 text-blue-600 border border-blue-200 dark:bg-blue-600/30 dark:text-blue-400 dark:border-blue-400/50"
-                            : "text-slate-700 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-200 dark:hover:text-white dark:hover:bg-slate-800/70 border border-transparent"
+                            ? "bg-blue-50 text-blue-600 border border-blue-200 dark:bg-blue-600 dark:text-white dark:border-blue-400"
+                            : "text-slate-700 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-100 dark:hover:text-white dark:hover:bg-slate-800/90 border border-transparent"
                         }`}
                       >
                         {link.label}
@@ -257,7 +257,7 @@ export const Navbar = () => {
 
               <div className="mt-3 flex items-center justify-between gap-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-200 font-mono">
                     {theme === "dark" ? "Night Mode 🌙" : "Morning Mode ☀️"}
                   </span>
                 </div>
@@ -268,9 +268,9 @@ export const Navbar = () => {
                 type="button"
                 data-testid="mobile-nav-cta"
                 onClick={() => handleNav("contact")}
-                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-gradient-to-r dark:from-blue-600 dark:via-indigo-600 dark:to-purple-600 px-4 py-3 text-sm font-extrabold text-white shadow-lg transition-all active:scale-[0.98]"
+                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-500 px-4 py-3 text-sm font-black text-white shadow-lg transition-all active:scale-[0.98]"
               >
-                <span>Let's Build Something</span>
+                <span>Start Your Project</span>
                 <ArrowRight className="h-4 w-4" />
               </button>
             </motion.div>
@@ -279,6 +279,7 @@ export const Navbar = () => {
       </AnimatePresence>
     </>
   );
+
 };
 
 
