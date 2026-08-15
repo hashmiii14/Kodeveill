@@ -70,44 +70,43 @@ export const Hero = () => {
               Kodeveil is a software solutions agency that creates bespoke, modern websites and custom web applications engineered to accelerate business growth and maximize conversion.
             </motion.p>
 
-            {/* Hero CTAs: 3 Action Buttons */}
+            {/* Hero CTAs: 3 Distinct High-Visibility Colored Action Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.45 }}
-              className="mt-8 flex flex-wrap items-center gap-3 w-full sm:w-auto"
+              className="mt-8 flex flex-wrap items-center gap-3.5 w-full sm:w-auto"
             >
-              {/* Button 1: Start a Project (Primary CTA) */}
+              {/* Button 1: Start a Project (Electric Blue) */}
               <button
                 type="button"
                 onClick={() => scrollToId("contact")}
-                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-gradient-to-r dark:from-blue-600 dark:via-indigo-600 dark:to-purple-600 dark:hover:from-blue-500 dark:hover:to-purple-500 px-7 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-slate-900/10 dark:shadow-blue-600/30 transition-all duration-200 hover:scale-[1.02] active:scale-95"
+                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-black px-7 py-3.5 text-sm shadow-xl shadow-blue-600/30 transition-all duration-200 hover:scale-[1.03] active:scale-95"
                 data-testid="hero-primary-cta"
               >
-                <Rocket className="h-4 w-4 text-blue-400 dark:text-blue-200" />
                 <span>Start a Project</span>
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </button>
 
-              {/* Button 2: Explore Our Work (Secondary CTA) */}
+              {/* Button 2: Explore Our Work (Emerald Green) */}
               <button
                 type="button"
                 onClick={() => scrollToId("portfolio")}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-slate-100 text-slate-900 font-extrabold px-6 py-3.5 text-sm border border-slate-300 shadow-sm dark:bg-slate-900/90 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-white dark:border-slate-700/80 transition-all duration-200 hover:scale-[1.02] active:scale-95"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-black px-7 py-3.5 text-sm shadow-xl shadow-emerald-600/30 transition-all duration-200 hover:scale-[1.03] active:scale-95"
                 data-testid="hero-secondary-cta"
               >
-                <Code className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                <Code className="h-4 w-4 text-white" />
                 <span>Explore Our Work</span>
               </button>
 
-              {/* Button 3: View Pricing (3rd CTA) */}
+              {/* Button 3: View Pricing (Purple Indigo) */}
               <button
                 type="button"
                 onClick={() => scrollToId("pricing")}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-slate-100 text-slate-900 font-extrabold px-6 py-3.5 text-sm border border-slate-300 shadow-sm dark:bg-slate-900/90 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-white dark:border-slate-700/80 transition-all duration-200 hover:scale-[1.02] active:scale-95"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-black px-7 py-3.5 text-sm shadow-xl shadow-purple-600/30 transition-all duration-200 hover:scale-[1.03] active:scale-95"
                 data-testid="hero-pricing-cta"
               >
-                <Sparkles className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                <TrendingUp className="h-4 w-4 text-white" />
                 <span>View Pricing</span>
               </button>
             </motion.div>

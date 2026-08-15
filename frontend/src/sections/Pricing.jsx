@@ -13,9 +13,9 @@ export const Pricing = () => {
       <div className="container-x relative z-10">
         {/* Section Header */}
         <Reveal className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-blue-700 shadow-sm dark:border-blue-500/30 dark:bg-blue-950/60 dark:text-blue-300">
-            <Sparkles className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
-            <span>Transparent Investment</span>
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/80 bg-blue-50/90 px-4 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-blue-700 shadow-sm dark:border-blue-500/40 dark:bg-blue-950/80 dark:text-blue-300 font-mono">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" aria-hidden="true" />
+            <span>Transparent Investment & Plans</span>
           </span>
 
           <h2 className="mt-6 font-display text-3xl font-black leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl tracking-tight">
@@ -48,8 +48,7 @@ export const Pricing = () => {
               >
                 {/* Most Popular Ribbon */}
                 {isFeatured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-blue-600 dark:bg-gradient-to-r dark:from-purple-600 dark:via-indigo-500 dark:to-blue-600 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-lg shadow-blue-500/30 z-20">
-                    <Sparkles className="h-3.5 w-3.5 text-amber-300" />
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-blue-600 dark:bg-gradient-to-r dark:from-purple-600 dark:via-indigo-500 dark:to-blue-600 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-white shadow-lg shadow-blue-500/30 z-20 font-mono">
                     <span>Most Popular Choice</span>
                   </div>
                 )}

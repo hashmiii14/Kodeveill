@@ -14,10 +14,10 @@ export const ThemeToggle = ({ className = "" }) => {
       whileTap={{ scale: 0.9, rotate: -30 }}
       aria-label={`Switch to ${isDark ? "morning" : "night"} mode`}
       data-testid="theme-toggle-btn"
-      className={`relative flex h-10 w-10 items-center justify-center rounded-full text-base transition-all duration-300 cursor-pointer select-none border overflow-hidden ${
+      className={`relative flex h-10 w-10 items-center justify-center rounded-full text-base transition-all duration-200 cursor-pointer select-none border overflow-hidden ${
         isDark
-          ? "bg-slate-900 border-indigo-500/40 text-amber-300 shadow-[0_0_15px_rgba(99,102,241,0.25)] hover:border-indigo-400"
-          : "bg-amber-50/90 border-amber-200 text-amber-500 shadow-sm hover:border-amber-300 hover:bg-amber-100"
+          ? "bg-slate-900 border-slate-700 text-amber-300 hover:border-slate-500"
+          : "bg-slate-100 border-slate-300 text-amber-500 hover:border-slate-400"
       } ${className}`}
     >
       <AnimatePresence mode="wait" initial={false}>

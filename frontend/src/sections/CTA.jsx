@@ -21,8 +21,8 @@ export const CTA = () => {
             
             {/* Left Headline */}
             <div className="lg:col-span-7 text-left">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur-md dark:border-blue-500/30 dark:bg-blue-950/60 dark:text-blue-300">
-                <Sparkles className="h-3.5 w-3.5 text-amber-300 dark:text-blue-400" aria-hidden="true" />
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/20 px-4 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-white backdrop-blur-md dark:border-blue-500/40 dark:bg-blue-950/80 dark:text-blue-300 font-mono">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-300 dark:bg-blue-400" aria-hidden="true" />
                 <span>Next-Gen Web Engineering</span>
               </span>
 
