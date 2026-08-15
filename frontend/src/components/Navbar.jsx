@@ -22,7 +22,7 @@ export const Navbar = () => {
       setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
 
       // 2. Active Section detection based on scroll position
-      if (scrollY < 300) {
+      if (scrollY < 200) {
         setActive("home");
         return;
       }
@@ -36,20 +36,20 @@ export const Navbar = () => {
         { id: "process", navId: "pricing" },
         { id: "why-us", navId: "pricing" },
         { id: "services", navId: "services" },
-        { id: "about", navId: "home" },
         { id: "home", navId: "home" },
       ];
 
       for (const target of navTargets) {
         const el = document.getElementById(target.id);
         if (el) {
-          const top = el.getBoundingClientRect().top + scrollY - 150;
-          if (scrollY >= top) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 200) {
             setActive(target.navId);
             break;
           }
         }
       }
+
     };
 
     const handleScroll = () => {
