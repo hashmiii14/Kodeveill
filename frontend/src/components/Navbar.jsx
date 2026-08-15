@@ -175,15 +175,32 @@ export const Navbar = () => {
 
           {/* Right Action Cluster: Theme Switcher & CTA */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Theme Toggle Button */}
-            <button
+            {/* Animated Theme Toggle Button */}
+            <motion.button
               type="button"
               onClick={toggleTheme}
+              whileHover={{ scale: 1.12, rotate: 15 }}
+              whileTap={{ scale: 0.88, rotate: -45 }}
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-700 hover:text-blue-600 hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800 transition-all shadow-sm active:scale-95"
+              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-800 hover:text-blue-600 hover:bg-blue-50 dark:border-slate-800 dark:bg-slate-900/90 dark:text-amber-400 dark:hover:bg-slate-800 transition-all shadow-sm overflow-hidden"
             >
-              {theme === "dark" ? <Sun className="h-4.5 w-4.5 text-amber-400" /> : <Moon className="h-4.5 w-4.5 text-slate-700" />}
-            </button>
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={theme}
+                  initial={{ y: -16, opacity: 0, rotate: -90 }}
+                  animate={{ y: 0, opacity: 1, rotate: 0 }}
+                  exit={{ y: 16, opacity: 0, rotate: 90 }}
+                  transition={{ duration: 0.22, ease: "easeInOut" }}
+                >
+                  {theme === "dark" ? (
+                    <Sun className="h-5 w-5 text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
+                  ) : (
+                    <Moon className="h-5 w-5 text-slate-800" />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </motion.button>
+
 
             {/* Desktop Quick Contact CTA */}
             <button
