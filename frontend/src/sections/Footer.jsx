@@ -18,23 +18,23 @@ const QUICK = [
 ];
 
 export const Footer = () => (
-  <footer className="relative bg-[#02050E] text-white border-t border-slate-800/80 pt-16" data-testid="footer" role="contentinfo">
+  <footer className="relative bg-slate-900 text-slate-300 border-t border-slate-800 pt-16 dark:bg-[#02050E] dark:text-slate-400 dark:border-slate-800/80 transition-colors duration-300" data-testid="footer" role="contentinfo">
     <div className="container-x relative">
       <div className="grid gap-10 pb-16 sm:grid-cols-2 lg:grid-cols-4">
         {/* Brand Column */}
         <div className="lg:col-span-2">
-          <button onClick={() => scrollToId("home")} aria-label="KodeVeil home" className="flex items-center gap-3 focus-visible:outline-none group">
+          <button type="button" onClick={() => scrollToId("home")} aria-label="KodeVeil home" className="flex items-center gap-3 focus-visible:outline-none group">
             <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 border border-blue-400/40 shadow-lg shadow-blue-500/30">
               <img src={logo} alt="KodeVeil logo" className="h-7 w-7 object-contain brightness-125" width="28" height="28" />
             </span>
             <div className="flex flex-col text-left">
-              <span className="font-display text-2xl font-extrabold text-white">Kodeveil</span>
-              <span className="text-[10px] font-bold tracking-widest text-blue-400 uppercase -mt-1 font-mono">Software Solutions</span>
+              <span className="font-display text-2xl font-black text-white flex items-center gap-0.5">Kodeveil<span className="text-blue-400 font-black">.</span></span>
+              <span className="text-[10px] font-bold tracking-widest text-blue-400 uppercase -mt-1 font-mono">Software Solutions Agency</span>
             </div>
           </button>
           
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-300 font-normal">
-            Kodeveil is a software solutions company that helps businesses grow with modern, scalable & result-driven websites engineered for sub-second speed and high conversion.
+            Kodeveil is a software solutions agency that helps businesses grow with modern, scalable & result-driven websites engineered for sub-second speed and high conversion.
           </p>
         </div>
 
@@ -45,6 +45,7 @@ export const Footer = () => (
             {QUICK.map((q) => (
               <li key={q.id}>
                 <button
+                  type="button"
                   onClick={() => scrollToId(q.id)}
                   data-testid={`footer-link-${q.id}`}
                   className="text-sm text-slate-300 font-medium transition-colors hover:text-white focus-visible:outline-none"
@@ -66,8 +67,9 @@ export const Footer = () => (
 
           <div className="mt-6">
             <button
+              type="button"
               onClick={() => scrollToId("contact")}
-              className="btn-glow-blue w-full text-center text-xs py-3 font-extrabold"
+              className="inline-flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-500 text-white w-full text-center text-xs py-3 font-extrabold shadow-md transition-all active:scale-95"
             >
               <span>Get In Touch</span>
             </button>
@@ -94,4 +96,5 @@ export const Footer = () => (
     </div>
   </footer>
 );
+
 

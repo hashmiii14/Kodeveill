@@ -61,25 +61,23 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="relative bg-[#030712] text-white py-20 sm:py-28 border-t border-slate-800/80 overflow-hidden">
-      {/* Background Radial Glow (Desktop only) */}
+    <section id="contact" className="relative bg-white dark:bg-[#030712] text-slate-900 dark:text-white py-20 sm:py-28 border-t border-slate-200 dark:border-slate-800/80 overflow-hidden transition-colors duration-300">
+      {/* Background Radial Glow */}
       <div
-        className="pointer-events-none absolute left-1/2 top-0 hidden md:block h-[500px] w-[500px] -translate-x-1/2 rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)" }}
+        className="pointer-events-none absolute left-1/2 top-0 hidden md:block h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-blue-500/10 dark:bg-blue-500/5 blur-3xl"
         aria-hidden="true"
       />
 
-
       <div className="container-x relative z-10">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="section-label-dark">
-            <Sparkles className="h-3.5 w-3.5 text-blue-400" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-blue-700 shadow-sm dark:border-blue-500/30 dark:bg-blue-950/60 dark:text-blue-300">
+            <Sparkles className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
             <span>Get In Touch</span>
           </span>
-          <h2 className="mt-5 font-display text-3xl sm:text-5xl font-extrabold leading-tight text-white">
-            Let's Build Something <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Amazing</span>
+          <h2 className="mt-5 font-display text-3xl sm:text-5xl font-black leading-tight text-slate-900 dark:text-white">
+            Let's Build Something <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-400 bg-clip-text text-transparent">Amazing</span>
           </h2>
-          <p className="mt-4 text-slate-300 font-normal">
+          <p className="mt-4 text-slate-600 dark:text-slate-300 font-normal">
             Tell us about your project goals. We usually respond within one business day.
           </p>
         </Reveal>
@@ -87,27 +85,27 @@ export const Contact = () => {
         <div className="mt-14 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           {/* Contact Info Panel */}
           <Reveal>
-            <div className="flex h-full flex-col justify-between rounded-3xl bg-[#080D1C]/90 border border-slate-800 p-8 backdrop-blur-xl shadow-2xl">
+            <div className="flex h-full flex-col justify-between rounded-3xl bg-slate-50 border border-slate-200 p-8 shadow-xl dark:bg-[#080D1C]/90 dark:border-slate-800">
               <div>
-                <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">Software Agency</p>
-                <p className="mt-1 font-display text-2xl font-extrabold text-white">{CONTACT.company}</p>
+                <p className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">Software Agency</p>
+                <p className="mt-1 font-display text-2xl font-black text-slate-900 dark:text-white">{CONTACT.company}</p>
 
-                <div className="mt-8 space-y-4 font-medium text-sm">
+                <div className="mt-8 space-y-4 font-bold text-sm">
                   <a
                     href={`mailto:${CONTACT.email}`}
                     aria-label={`Send email to ${CONTACT.email}`}
-                    className="flex items-center gap-3 text-slate-300 transition-colors hover:text-blue-400"
+                    className="flex items-center gap-3 text-slate-700 dark:text-slate-300 transition-colors hover:text-blue-600 dark:hover:text-blue-400"
                     data-testid="contact-email-link"
                   >
-                    <Mail className="h-5 w-5 text-blue-400" aria-hidden="true" /> {CONTACT.email}
+                    <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" aria-hidden="true" /> {CONTACT.email}
                   </a>
                   <a
                     href={`tel:${CONTACT.phoneRaw}`}
                     aria-label={`Call phone number ${CONTACT.phone}`}
-                    className="flex items-center gap-3 text-slate-300 transition-colors hover:text-blue-400"
+                    className="flex items-center gap-3 text-slate-700 dark:text-slate-300 transition-colors hover:text-blue-600 dark:hover:text-blue-400"
                     data-testid="contact-phone-link"
                   >
-                    <Phone className="h-5 w-5 text-blue-400" aria-hidden="true" /> {CONTACT.phone}
+                    <Phone className="h-5 w-5 text-blue-600 dark:text-blue-400" aria-hidden="true" /> {CONTACT.phone}
                   </a>
                 </div>
               </div>
@@ -122,9 +120,9 @@ export const Contact = () => {
                       data-testid={a.testid}
                       aria-label={`Contact via ${a.label}`}
                       {...(a.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="flex flex-col items-center gap-2 rounded-2xl border border-slate-800 bg-slate-900/80 py-4 text-xs font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:bg-blue-600/20 hover:text-blue-300"
+                      className="flex flex-col items-center gap-2 rounded-2xl border border-slate-200 bg-white py-4 text-xs font-bold text-slate-900 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-500 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-900/80 dark:text-white dark:hover:border-blue-500/50 dark:hover:text-blue-300"
                     >
-                      <Icon className="h-5 w-5 text-blue-400" aria-hidden="true" />
+                      <Icon className="h-5 w-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
                       {a.label}
                     </a>
                   );
@@ -135,12 +133,12 @@ export const Contact = () => {
 
           {/* Form Panel */}
           <Reveal delay={0.1}>
-            <form onSubmit={handleSubmit} className="rounded-3xl bg-[#080D1C]/90 border border-slate-800 p-8 backdrop-blur-xl shadow-2xl" data-testid="contact-form" noValidate aria-label="Contact form">
+            <form onSubmit={handleSubmit} className="rounded-3xl bg-slate-50 border border-slate-200 p-8 shadow-xl dark:bg-[#080D1C]/90 dark:border-slate-800" data-testid="contact-form" noValidate aria-label="Contact form">
               <div className="grid gap-5 sm:grid-cols-2">
                 {FIELDS.map((f) => (
                   <div key={f.name} className={f.name === "message" ? "sm:col-span-2" : ""}>
-                    <label htmlFor={f.name} className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-300 font-mono">
-                      {f.label}{f.required && <span className="text-blue-400" aria-hidden="true"> *</span>}
+                    <label htmlFor={f.name} className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 font-mono">
+                      {f.label}{f.required && <span className="text-blue-600 dark:text-blue-400" aria-hidden="true"> *</span>}
                     </label>
                     <input
                       id={f.name}
@@ -152,13 +150,13 @@ export const Contact = () => {
                       onChange={handleChange}
                       placeholder={f.placeholder}
                       data-testid={`contact-input-${f.name}`}
-                      className="w-full rounded-xl border border-slate-800 bg-[#040814] px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition-all focus:border-blue-500 focus:bg-[#060B1A] focus:ring-2 focus:ring-blue-500/30"
+                      className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all focus:border-blue-600 focus:ring-2 focus:ring-blue-500/30 dark:border-slate-800 dark:bg-[#040814] dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-500"
                     />
                   </div>
                 ))}
                 <div className="sm:col-span-2">
-                  <label htmlFor="message" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-300 font-mono">
-                    Message<span className="text-blue-400" aria-hidden="true"> *</span>
+                  <label htmlFor="message" className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 font-mono">
+                    Message<span className="text-blue-600 dark:text-blue-400" aria-hidden="true"> *</span>
                   </label>
                   <textarea
                     id="message"
@@ -170,7 +168,7 @@ export const Contact = () => {
                     onChange={handleChange}
                     placeholder="Tell us about your project goals..."
                     data-testid="contact-input-message"
-                    className="w-full resize-none rounded-xl border border-slate-800 bg-[#040814] px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition-all focus:border-blue-500 focus:bg-[#060B1A] focus:ring-2 focus:ring-blue-500/30"
+                    className="w-full resize-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all focus:border-blue-600 focus:ring-2 focus:ring-blue-500/30 dark:border-slate-800 dark:bg-[#040814] dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-500"
                   />
                 </div>
               </div>
@@ -179,7 +177,7 @@ export const Contact = () => {
                 type="submit"
                 disabled={loading}
                 data-testid="contact-submit"
-                className="btn-glow-blue mt-6 w-full group disabled:opacity-60 disabled:cursor-not-allowed"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-gradient-to-r dark:from-blue-600 dark:to-purple-600 py-4 text-sm font-extrabold shadow-md transition-all active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed group"
               >
                 <AnimatePresence mode="wait" initial={false}>
                   {submitted ? (
@@ -202,10 +200,10 @@ export const Contact = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-4 flex items-center gap-3 overflow-hidden rounded-xl border border-emerald-500/40 bg-emerald-950/40 px-4 py-3 text-sm text-emerald-300"
+                    className="mt-4 flex items-center gap-3 overflow-hidden rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-800 dark:border-emerald-500/40 dark:bg-emerald-950/40 dark:text-emerald-300"
                     data-testid="contact-success"
                   >
-                    <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-emerald-400" aria-hidden="true" />
+                    <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
                     Thank you! Your message has been received. We'll get back to you soon.
                   </motion.div>
                 )}
@@ -217,5 +215,6 @@ export const Contact = () => {
     </section>
   );
 };
+
 
 
