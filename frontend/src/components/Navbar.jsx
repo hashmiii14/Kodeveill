@@ -219,15 +219,15 @@ export const Navbar = () => {
               aria-hidden="true"
             />
 
-            {/* Solid Menu Box */}
+            {/* Sleek Compact Rectangular Menu Card */}
             <motion.div
-              initial={{ y: -15, opacity: 0, scale: 0.98 }}
+              initial={{ y: -12, opacity: 0, scale: 0.98 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
-              exit={{ y: -15, opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="relative z-10 w-full max-w-md mx-auto rounded-3xl bg-[#090D1C] border-2 border-blue-500/50 p-6 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]"
+              exit={{ y: -12, opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="relative z-10 w-full max-w-[320px] sm:max-w-xs mx-auto rounded-2xl bg-[#090D1C]/98 border border-blue-500/50 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.85)]"
             >
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col gap-1">
                 {NAV_LINKS.map((link) => {
                   const isActive = active === link.id;
                   return (
@@ -236,10 +236,10 @@ export const Navbar = () => {
                         type="button"
                         data-testid={`mobile-nav-link-${link.id}`}
                         onClick={() => handleNav(link.id)}
-                        className={`w-full rounded-2xl px-5 py-4 text-left text-base font-extrabold transition-all active:scale-[0.98] ${
+                        className={`w-full rounded-xl px-4 py-2.5 text-left text-sm font-extrabold transition-all active:scale-[0.98] ${
                           isActive
-                            ? "bg-blue-600/30 text-blue-400 border border-blue-400/50 shadow-md shadow-blue-500/20"
-                            : "text-slate-100 hover:text-white hover:bg-slate-800/80 border border-transparent"
+                            ? "bg-blue-600/30 text-blue-400 border border-blue-400/50 shadow-sm shadow-blue-500/20"
+                            : "text-slate-200 hover:text-white hover:bg-slate-800/70 border border-transparent"
                         }`}
                       >
                         {link.label}
@@ -252,10 +252,10 @@ export const Navbar = () => {
                 type="button"
                 data-testid="mobile-nav-cta"
                 onClick={() => handleNav("contact")}
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-5 py-4 text-base font-extrabold text-white shadow-xl shadow-blue-600/40 transition-all active:scale-[0.98]"
+                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-4 py-3 text-sm font-extrabold text-white shadow-lg shadow-blue-600/40 transition-all active:scale-[0.98]"
               >
                 <span>Let's Build Something</span>
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-4 w-4" />
               </button>
             </motion.div>
           </motion.div>
@@ -264,6 +264,7 @@ export const Navbar = () => {
     </>
   );
 };
+
 
 
 
