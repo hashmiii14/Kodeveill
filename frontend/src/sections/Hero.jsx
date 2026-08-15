@@ -11,15 +11,15 @@ export const Hero = () => {
       <div className="pointer-events-none absolute inset-0 tech-grid opacity-25" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 tech-grid-lines opacity-15" aria-hidden="true" />
 
-      {/* Primary Glowing Radial Lights (Desktop only for GPU efficiency) */}
+      {/* Primary Subtle Ambient Radial Lights */}
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 hidden md:block h-[750px] w-[950px] -translate-x-1/2 rounded-full opacity-50 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(59,130,246,0.35) 0%, rgba(139,92,246,0.2) 45%, transparent 70%)" }}
+        className="pointer-events-none absolute -top-40 left-1/2 hidden md:block h-[600px] w-[800px] -translate-x-1/2 rounded-full opacity-25 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(59,130,246,0.2) 0%, rgba(139,92,246,0.1) 45%, transparent 70%)" }}
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute bottom-10 right-10 hidden md:block h-[500px] w-[500px] rounded-full opacity-35 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(168,85,247,0.3) 0%, rgba(37,99,235,0.15) 50%, transparent 70%)" }}
+        className="pointer-events-none absolute bottom-10 right-10 hidden md:block h-[400px] w-[400px] rounded-full opacity-20 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(168,85,247,0.18) 0%, rgba(37,99,235,0.1) 50%, transparent 70%)" }}
         aria-hidden="true"
       />
 
@@ -35,9 +35,9 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-3 rounded-full border border-blue-500/40 bg-[#0A1128]/80 px-4 py-2 backdrop-blur-xl shadow-[0_0_20px_rgba(59,130,246,0.25)]"
+              className="inline-flex items-center gap-3 rounded-full border border-blue-500/30 bg-[#0A1128]/90 px-4 py-2 backdrop-blur-md shadow-sm"
             >
-              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600/30 text-blue-400 border border-blue-400/40">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600/20 text-blue-400 border border-blue-400/30">
                 <Globe className="h-3.5 w-3.5" aria-hidden="true" />
               </div>
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-300 font-mono">
@@ -56,7 +56,7 @@ export const Hero = () => {
               className="mt-6 font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.05]"
             >
               WE BUILD{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(59,130,246,0.4)]">
+              <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
                 DIGITAL EXPERIENCES
               </span>{" "}
               THAT GROW YOUR{" "}
@@ -76,30 +76,48 @@ export const Hero = () => {
               Kodeveil is a software solutions company that creates bespoke, modern websites and custom web applications engineered to accelerate business growth and maximize conversion.
             </motion.p>
 
-            {/* Primary & Secondary CTAs */}
+            {/* Hero CTAs: 3 Customized Action Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.45 }}
-              className="mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
+              className="mt-8 flex flex-wrap items-center gap-3 w-full sm:w-auto"
             >
+              {/* Button 1: Start a Project (Primary CTA) */}
               <button
+                type="button"
                 onClick={() => scrollToId("contact")}
-                className="btn-glow-blue group text-base px-8 py-4"
+                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 px-7 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-blue-600/30 transition-all duration-200 hover:scale-[1.02] active:scale-95"
                 data-testid="hero-primary-cta"
               >
+                <Rocket className="h-4 w-4 text-blue-200" />
                 <span>Start a Project</span>
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </button>
 
+              {/* Button 2: Explore Our Work (Secondary CTA) */}
               <button
+                type="button"
                 onClick={() => scrollToId("portfolio")}
-                className="btn-dark-ghost text-base px-8 py-4"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900/90 hover:bg-slate-800 text-slate-100 hover:text-white font-extrabold px-6 py-3.5 text-sm border border-slate-700/80 hover:border-purple-500/50 shadow-md transition-all duration-200 hover:scale-[1.02] active:scale-95"
                 data-testid="hero-secondary-cta"
               >
-                Explore Our Work
+                <Code className="h-4 w-4 text-purple-400" />
+                <span>Explore Our Work</span>
+              </button>
+
+              {/* Button 3: Price Plans (New 3rd CTA) */}
+              <button
+                type="button"
+                onClick={() => scrollToId("pricing")}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900/90 hover:bg-slate-800 text-slate-100 hover:text-white font-extrabold px-6 py-3.5 text-sm border border-slate-700/80 hover:border-emerald-500/50 shadow-md transition-all duration-200 hover:scale-[1.02] active:scale-95"
+                data-testid="hero-pricing-cta"
+              >
+                <Sparkles className="h-4 w-4 text-emerald-400" />
+                <span>View Pricing</span>
               </button>
             </motion.div>
+
 
             {/* Trust Metrics / Stats Strip */}
             <motion.div
