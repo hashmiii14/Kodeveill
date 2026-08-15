@@ -5,50 +5,66 @@ import { NAV_LINKS } from "@/data/content";
 import { scrollToId } from "@/lib/scroll";
 import logo from "@/assets/kodeveill-logo.webp";
 
-// Section to nav link mapping for active state observer
-const SECTION_MAP = {
-  home: "home",
-  about: "home",
-  services: "services",
-  capabilities: "services",
-  "why-us": "pricing",
-  process: "pricing",
-  pricing: "pricing",
-  portfolio: "portfolio",
-  testimonials: "contact",
-  cta: "contact",
-  contact: "contact",
-  "privacy-policy": "contact",
-};
-
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
 
-  // Scrolled state detection - ONLY updates state when crossing 20px threshold (Zero lag)
+  // Scroll listener for Scrolled Header + Active Section Tracking
   useEffect(() => {
     let rafId = null;
 
-    const checkScrolled = () => {
+    const onScroll = () => {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+
+      // 1. Scrolled state toggle (Header background glass)
       const isScrolled = scrollY > 20;
       setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+
+      // 2. Active Section detection based on scroll position
+      if (scrollY < 300) {
+        setActive("home");
+        return;
+      }
+
+      const navTargets = [
+        { id: "contact", navId: "contact" },
+        { id: "cta", navId: "contact" },
+        { id: "testimonials", navId: "contact" },
+        { id: "portfolio", navId: "portfolio" },
+        { id: "pricing", navId: "pricing" },
+        { id: "process", navId: "pricing" },
+        { id: "why-us", navId: "pricing" },
+        { id: "services", navId: "services" },
+        { id: "about", navId: "home" },
+        { id: "home", navId: "home" },
+      ];
+
+      for (const target of navTargets) {
+        const el = document.getElementById(target.id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + scrollY - 150;
+          if (scrollY >= top) {
+            setActive(target.navId);
+            break;
+          }
+        }
+      }
     };
 
-    const onScroll = () => {
+    const handleScroll = () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(checkScrolled);
+      rafId = requestAnimationFrame(onScroll);
     };
 
-    checkScrolled();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
@@ -84,29 +100,6 @@ export const Navbar = () => {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
-
-  // Active section observer across all sections
-  useEffect(() => {
-    const sectionIds = Object.keys(SECTION_MAP);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            const navId = SECTION_MAP[e.target.id];
-            if (navId) setActive(navId);
-          }
-        });
-      },
-      { rootMargin: "-25% 0px -40% 0px", threshold: 0 }
-    );
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleNav = useCallback((id) => {
     setOpen(false);
@@ -166,9 +159,9 @@ export const Navbar = () => {
                     data-testid={`nav-link-${link.id}`}
                     onClick={() => handleNav(link.id)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                    className={`relative rounded-full px-4 py-2 text-sm font-bold transition-all duration-200 ${
                       isActive
-                        ? "text-white font-bold bg-gradient-to-r from-blue-600/30 via-indigo-600/30 to-purple-600/30 border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                        ? "text-white bg-gradient-to-r from-blue-600/40 via-indigo-600/40 to-purple-600/40 border border-blue-400/50 shadow-[0_0_15px_rgba(59,130,246,0.35)]"
                         : "text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent"
                     }`}
                   >
@@ -200,7 +193,7 @@ export const Navbar = () => {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="relative z-50 flex h-11 w-11 items-center justify-center rounded-full bg-slate-900/90 border border-slate-700 text-white transition-all active:scale-95 hover:bg-slate-800 touch-manipulation lg:hidden"
+            className="relative z-[10001] flex h-11 w-11 items-center justify-center rounded-full bg-slate-900/90 border border-slate-700 text-white transition-all active:scale-95 hover:bg-slate-800 touch-manipulation lg:hidden"
           >
             {open ? <X className="h-5 w-5 text-blue-400" /> : <Menu className="h-5 w-5 text-slate-100" />}
           </button>
@@ -267,6 +260,7 @@ export const Navbar = () => {
     </>
   );
 };
+
 
 
 
