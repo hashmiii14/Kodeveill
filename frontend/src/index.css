@@ -188,8 +188,8 @@
   }
 }
 
-/* Mobile & Touch Performance Optimization */
-@media (max-width: 768px) {
+/* Mobile & Tablet Performance Optimization */
+@media (max-width: 1024px) {
   html, body {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -197,12 +197,13 @@
   .cursor-glow, [class*="blur-3xl"], [class*="blur-2xl"], [class*="blur-[160px]"], [class*="blur-[150px]"], [class*="blur-[140px]"], [class*="blur-[120px]"] {
     display: none !important;
   }
-  .glass-card-dark, .glass-card-purple, [class*="backdrop-blur-xl"], [class*="backdrop-blur-2xl"], [class*="backdrop-blur-md"] {
+  .glass-card-dark, .glass-card-purple {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     background-color: #080D1C !important;
   }
 }
+
 
 /* GPU Hardware Acceleration Utilities */
 .transform-gpu {

@@ -200,7 +200,7 @@ export const Navbar = () => {
         </nav>
       </header>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile & Tablet Drawer Overlay */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -209,46 +209,50 @@ export const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
             className="fixed inset-0 z-[10000] lg:hidden flex flex-col justify-start pt-20 px-4"
           >
             {/* Backdrop */}
             <div
-              className="fixed inset-0 bg-slate-950/85 backdrop-blur-xl transition-opacity"
+              className="fixed inset-0 bg-slate-950/90"
               onClick={() => setOpen(false)}
               aria-hidden="true"
             />
 
-            {/* Menu Box */}
+            {/* Solid Menu Box */}
             <motion.div
               initial={{ y: -15, opacity: 0, scale: 0.98 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: -15, opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="relative z-10 w-full max-w-md mx-auto rounded-3xl bg-[#090D18]/98 border border-blue-500/30 p-6 shadow-2xl backdrop-blur-2xl"
+              className="relative z-10 w-full max-w-md mx-auto rounded-3xl bg-[#090D1C] border-2 border-blue-500/50 p-6 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]"
             >
               <ul className="flex flex-col gap-2">
-                {NAV_LINKS.map((link) => (
-                  <li key={link.id}>
-                    <button
-                      type="button"
-                      data-testid={`mobile-nav-link-${link.id}`}
-                      onClick={() => handleNav(link.id)}
-                      className={`w-full rounded-2xl px-5 py-4 text-left text-base font-bold transition-all active:scale-[0.98] ${
-                        active === link.id
-                          ? "bg-blue-600/20 text-blue-400 border border-blue-500/40 shadow-lg shadow-blue-500/10"
-                          : "text-slate-200 hover:text-white hover:bg-slate-800/70 border border-transparent"
-                      }`}
-                    >
-                      {link.label}
-                    </button>
-                  </li>
-                ))}
+                {NAV_LINKS.map((link) => {
+                  const isActive = active === link.id;
+                  return (
+                    <li key={link.id}>
+                      <button
+                        type="button"
+                        data-testid={`mobile-nav-link-${link.id}`}
+                        onClick={() => handleNav(link.id)}
+                        className={`w-full rounded-2xl px-5 py-4 text-left text-base font-extrabold transition-all active:scale-[0.98] ${
+                          isActive
+                            ? "bg-blue-600/30 text-blue-400 border border-blue-400/50 shadow-md shadow-blue-500/20"
+                            : "text-slate-100 hover:text-white hover:bg-slate-800/80 border border-transparent"
+                        }`}
+                      >
+                        {link.label}
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
               <button
                 type="button"
                 data-testid="mobile-nav-cta"
                 onClick={() => handleNav("contact")}
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-5 py-4 text-base font-bold text-white shadow-xl shadow-blue-600/40 transition-all active:scale-[0.98]"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-5 py-4 text-base font-extrabold text-white shadow-xl shadow-blue-600/40 transition-all active:scale-[0.98]"
               >
                 <span>Let's Build Something</span>
                 <ArrowRight className="h-5 w-5" />
@@ -260,6 +264,7 @@ export const Navbar = () => {
     </>
   );
 };
+
 
 
 
