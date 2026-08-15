@@ -1,8 +1,9 @@
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Sun, Moon, Phone } from "lucide-react";
+import { Menu, X, ArrowRight, Phone } from "lucide-react";
 import { NAV_LINKS, CONTACT } from "@/data/content";
 import { useTheme } from "@/context/ThemeContext";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { scrollToId } from "@/lib/scroll";
 import logo from "@/assets/kodeveill-logo.webp";
 
@@ -10,7 +11,7 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   // Scroll listener for Scrolled Header + Active Section Tracking
   useEffect(() => {
@@ -175,32 +176,8 @@ export const Navbar = () => {
 
           {/* Right Action Cluster: Theme Switcher & CTA */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Animated Theme Toggle Button */}
-            <motion.button
-              type="button"
-              onClick={toggleTheme}
-              whileHover={{ scale: 1.12, rotate: 15 }}
-              whileTap={{ scale: 0.88, rotate: -45 }}
-              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-800 hover:text-blue-600 hover:bg-blue-50 dark:border-slate-800 dark:bg-slate-900/90 dark:text-amber-400 dark:hover:bg-slate-800 transition-all shadow-sm overflow-hidden"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={theme}
-                  initial={{ y: -16, opacity: 0, rotate: -90 }}
-                  animate={{ y: 0, opacity: 1, rotate: 0 }}
-                  exit={{ y: 16, opacity: 0, rotate: 90 }}
-                  transition={{ duration: 0.22, ease: "easeInOut" }}
-                >
-                  {theme === "dark" ? (
-                    <Sun className="h-5 w-5 text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]" />
-                  ) : (
-                    <Moon className="h-5 w-5 text-slate-800" />
-                  )}
-                </motion.div>
-              </AnimatePresence>
-            </motion.button>
-
+            {/* Animated Sun ☀️ / Moon 🌙 Emoji Theme Toggle */}
+            <ThemeToggle />
 
             {/* Desktop Quick Contact CTA */}
             <button
@@ -278,22 +255,13 @@ export const Navbar = () => {
                 })}
               </ul>
 
-              <div className="mt-3 flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
-                <button
-                  type="button"
-                  onClick={toggleTheme}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 py-2.5 text-xs font-bold text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
-                >
-                  {theme === "dark" ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-slate-700" />}
-                  <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
-                </button>
-                <a
-                  href={`tel:${CONTACT.phoneRaw}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600 border border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-700/50"
-                  aria-label="Call Kodeveil"
-                >
-                  <Phone className="h-4 w-4" />
-                </a>
+              <div className="mt-3 flex items-center justify-between gap-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                    {theme === "dark" ? "Night Mode 🌙" : "Morning Mode ☀️"}
+                  </span>
+                </div>
+                <ThemeToggle />
               </div>
 
               <button
@@ -312,6 +280,7 @@ export const Navbar = () => {
     </>
   );
 };
+
 
 
 
