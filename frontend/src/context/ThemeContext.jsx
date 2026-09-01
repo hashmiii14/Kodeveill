@@ -4,13 +4,13 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    // Check localStorage or fallback to light theme default
+    // Check localStorage or fallback to dark theme default
     const savedTheme = localStorage.getItem("kodeveil_theme");
     if (savedTheme === "dark" || savedTheme === "light") {
       return savedTheme;
     }
-    // Default to light mode for crisp professional aesthetics
-    return "light";
+    // Default to dark mode
+    return "dark";
   });
 
   useEffect(() => {
