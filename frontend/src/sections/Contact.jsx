@@ -22,7 +22,7 @@ export const Contact = () => {
     setForm((f) => ({ ...f, [name]: value }));
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (loading) return;
 
@@ -42,16 +42,43 @@ export const Contact = () => {
 
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-      toast.success("Thank you! Your message has been received.", {
-        description: "We'll get back to you soon.",
-        duration: 5000,
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/mdhashmi955@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: nameClean,
+          email: emailClean,
+          business: form.business.trim() || "N/A",
+          phone: form.phone.trim() || "N/A",
+          message: messageClean,
+          _subject: `New Contact from ${nameClean} — KodeVeil`,
+          _captcha: "false",
+          _template: "table",
+        }),
       });
-      setForm({ name: "", email: "", business: "", phone: "", message: "" });
-      setTimeout(() => setSubmitted(false), 6000);
-    }, 400);
+
+      const data = await response.json();
+
+      if (data.success === "true" || data.success === true) {
+        setSubmitted(true);
+        toast.success("Thank you! Your message has been received.", {
+          description: "We'll get back to you within one business day.",
+          duration: 5000,
+        });
+        setForm({ name: "", email: "", business: "", phone: "", message: "" });
+        setTimeout(() => setSubmitted(false), 6000);
+      } else {
+        toast.error("Something went wrong. Please try again or email us directly.");
+      }
+    } catch (err) {
+      toast.error("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const quickActions = [
@@ -183,6 +210,14 @@ export const Contact = () => {
                   {submitted ? (
                     <motion.span key="done" initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-emerald-400" aria-hidden="true" /> Message Received
+                    </motion.span>
+                  ) : loading ? (
+                    <motion.span key="loading" initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-2">
+                      <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                      </svg>
+                      Sending...
                     </motion.span>
                   ) : (
                     <motion.span key="send" initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-2">
