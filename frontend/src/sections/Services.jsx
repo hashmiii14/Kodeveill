@@ -2,12 +2,12 @@ import React from "react";
 import { SERVICES } from "@/data/content";
 import { Reveal, RevealStagger, revealItem } from "@/components/Reveal";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { scrollToId } from "@/lib/scroll";
 
 export const Services = () => {
   return (
-    <section id="services" className="relative bg-slate-50 dark:bg-[#070B14] text-slate-900 dark:text-white py-24 sm:py-32 overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <section id="services" className="relative bg-slate-50 dark:bg-[#070B14] text-slate-900 dark:text-white py-20 sm:py-28 lg:py-32 overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
       {/* Background Radial Glow */}
       <div className="pointer-events-none absolute -left-40 top-1/4 hidden md:block h-[450px] w-[450px] rounded-full bg-blue-500/10 dark:bg-blue-500/5 blur-3xl" aria-hidden="true" />
 

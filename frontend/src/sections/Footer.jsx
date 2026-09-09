@@ -1,7 +1,7 @@
 import React from "react";
 import { CONTACT } from "@/data/content";
 import { scrollToId } from "@/lib/scroll";
-import { Heart, Code } from "lucide-react";
+import { Heart } from "lucide-react";
 import logo from "@/assets/kodeveill-logo.webp";
 
 const QUICK = [

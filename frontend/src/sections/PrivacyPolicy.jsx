@@ -98,7 +98,7 @@ const PRIVACY_SECTIONS = [
 ];
 
 export const PrivacyPolicy = () => {
-  const [openId, setOpenId] = useState("collection");
+  const [openId, setOpenId] = useState(null);
 
   const toggleAccordion = (id) => {
     setOpenId((prev) => (prev === id ? null : id));

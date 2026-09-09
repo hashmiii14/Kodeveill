@@ -1,9 +1,8 @@
 // Central content for the KodeVeil landing page (Deep Blue + Pure White Theme).
 import {
-  Palette, Layout, Briefcase, Gauge, RefreshCw, Search, Wrench,
-  Smartphone, MonitorSmartphone, LayoutDashboard, Rocket, Zap, Lock,
-  MessageSquare, Code, Target, ShieldCheck, CheckCircle2, Cpu, Globe,
-  Headphones, Sparkles, Layers, Shield, Award, Users, FileCheck, Layers3
+  Palette, Layout, Briefcase, RefreshCw, Search, Wrench,
+  Smartphone, MonitorSmartphone, LayoutDashboard, Zap, Lock,
+  Code, Headphones, Layers, ShoppingBag
 } from "lucide-react";
 
 export const NAV_LINKS = [
@@ -36,6 +35,8 @@ export const SERVICES = [
   { icon: Palette, title: "Portfolio Websites", desc: "Editorial, gallery-led experiences that showcase your craftsmanship and turn browsers into high-value inbound leads." },
   { icon: Briefcase, title: "Business Websites", desc: "Credible, high-end digital homes that position your company as the undisputed leader in your industry." },
   { icon: MonitorSmartphone, title: "Landing Pages", desc: "Performance-driven landing pages designed around a single, focused call-to-action for maximum conversion ROI." },
+  { icon: ShoppingBag, title: "E-Commerce Websites", desc: "High-converting online storefronts with seamless product catalogs, secure payment gateways, and custom checkout flows." },
+  { icon: LayoutDashboard, title: "Custom Web Applications", desc: "Bespoke web applications, internal dashboards, and client portals engineered with scalable architectures and complex workflow logic." },
   { icon: Layout, title: "UI/UX Design", desc: "Pixel-perfect, brand-aligned interfaces engineered for intuitive navigation and aesthetic luxury." },
   { icon: RefreshCw, title: "Website Redesign", desc: "Transform outdated, slow websites into modern, hyper-fast, high-converting digital platforms." },
   { icon: Search, title: "SEO Optimization", desc: "Semantic HTML5 markup, schema data, and search-optimized structure so Google ranks your business high." },
@@ -260,6 +261,7 @@ export const PRICING_PLANS = [
     id: "starter",
     name: "Starter",
     price: "₹4,999",
+    maintenance: "₹5,000 / year",
     badge: "Starter Tier",
     isPopular: false,
     desc: "Perfect for students, freelancers, startups, and small businesses looking for an affordable online presence.",
@@ -283,6 +285,7 @@ export const PRICING_PLANS = [
     id: "professional",
     name: "Professional",
     price: "₹14,999",
+    maintenance: "₹5,000 / year",
     badge: "Most Popular",
     isPopular: true,
     desc: "The perfect choice for businesses that need a professional website with custom branding and multiple pages.",
@@ -306,6 +309,7 @@ export const PRICING_PLANS = [
     id: "business",
     name: "Business",
     price: "₹24,999",
+    maintenance: "₹5,000 / year",
     badge: "Enterprise Tier",
     isPopular: false,
     desc: "A complete solution for businesses and startups requiring premium features, scalability, and long-term growth.",
@@ -337,6 +341,7 @@ export const PRICING_COMPARISON = [
   { feature: "Premium Hosting", starter: false, professional: true, business: true },
   { feature: "Contact Form", starter: true, professional: true, business: true },
   { feature: "WhatsApp Integration", starter: true, professional: true, business: true },
+  { feature: "Yearly Maintenance", starter: "₹5,000 / year", professional: "₹5,000 / year", business: "₹5,000 / year" },
   { feature: "SEO", starter: "Basic", professional: "Full", business: "Advanced" },
   { feature: "CMS", starter: false, professional: false, business: true },
   { feature: "API Integration", starter: false, professional: false, business: true },

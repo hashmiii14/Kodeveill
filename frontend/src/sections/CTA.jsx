@@ -1,7 +1,7 @@
 import React from "react";
 import { Reveal } from "@/components/Reveal";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { scrollToId } from "@/lib/scroll";
 import { CONTACT } from "@/data/content";
 

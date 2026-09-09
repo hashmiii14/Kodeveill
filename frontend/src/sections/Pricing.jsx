@@ -2,7 +2,7 @@ import React from "react";
 import { PRICING_PLANS, PRICING_COMPARISON, PRICING_TRUST_BADGES } from "@/data/content";
 import { Reveal, RevealStagger, revealItem } from "@/components/Reveal";
 import { motion } from "framer-motion";
-import { Check, Minus, ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
+import { Check, Minus, ArrowRight, ShieldCheck } from "lucide-react";
 
 export const Pricing = () => {
   return (
@@ -71,14 +71,22 @@ export const Pricing = () => {
                   <p className="mt-3 text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-normal min-h-[36px]">{plan.desc}</p>
 
                   {/* Price Block */}
-                  <div className="mt-6 flex items-baseline gap-2 border-b border-slate-200 dark:border-slate-800 pb-6">
-                    <span
-                      className="font-display text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl"
-                      data-testid={`price-display-${plan.id}`}
-                    >
-                      {plan.price}
-                    </span>
-                    <span className="text-xs font-bold text-slate-500 dark:text-slate-400 font-mono">/ One-time investment</span>
+                  <div className="mt-6 border-b border-slate-200 dark:border-slate-800 pb-5">
+                    <div className="flex items-baseline gap-2">
+                      <span
+                        className="font-display text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl"
+                        data-testid={`price-display-${plan.id}`}
+                      >
+                        {plan.price}
+                      </span>
+                      <span className="text-xs font-bold text-slate-500 dark:text-slate-400 font-mono">/ One-time investment</span>
+                    </div>
+
+                    {/* Yearly Maintenance Notice */}
+                    <div className="mt-3 inline-flex items-center gap-2 rounded-xl bg-blue-50/90 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/70 px-3 py-1.5 text-xs font-bold font-mono text-blue-700 dark:text-blue-300">
+                      <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" aria-hidden="true" />
+                      <span>Maintenance: ₹5,000/year</span>
+                    </div>
                   </div>
 
                   {/* Feature Checklist */}

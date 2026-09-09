@@ -2,7 +2,7 @@ import React from "react";
 import { TESTIMONIALS } from "@/data/content";
 import { Reveal, RevealStagger, revealItem } from "@/components/Reveal";
 import { motion } from "framer-motion";
-import { Sparkles, Star, Quote } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 export const Testimonials = () => {
   return (

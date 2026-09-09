@@ -1,7 +1,7 @@
 import React from "react";
 import { Reveal, RevealStagger, revealItem } from "@/components/Reveal";
 import { motion } from "framer-motion";
-import { Sparkles, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 const PROCESS_STEPS = [
   { step: "01", title: "DISCOVER", desc: "We analyze your business goals, target audience, competitive market, and tech requirements to build a clear project blueprint." },

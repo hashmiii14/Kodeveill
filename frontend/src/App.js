@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from "react";
 import "@/App.css";
 
 import { ThemeProvider } from "@/context/ThemeContext";
-import { CursorGlow } from "@/components/CursorGlow";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { FloatingActions } from "@/components/FloatingActions";
 import { Navbar } from "@/components/Navbar";
@@ -34,7 +33,6 @@ function App() {
           Skip to main content
         </a>
 
-        <CursorGlow />
         <ScrollProgress />
         <Navbar />
 

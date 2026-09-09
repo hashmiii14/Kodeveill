@@ -3,7 +3,7 @@ import { Reveal } from "@/components/Reveal";
 import { CONTACT } from "@/data/content";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MessageCircle, Send, CheckCircle2, Sparkles } from "lucide-react";
+import { Mail, Phone, MessageCircle, Send, CheckCircle2 } from "lucide-react";
 
 const FIELDS = [
   { name: "name", label: "Name", type: "text", placeholder: "Your full name", required: true },

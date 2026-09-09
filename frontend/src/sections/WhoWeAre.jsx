@@ -2,7 +2,7 @@ import React from "react";
 import { WHO_WE_ARE } from "@/data/content";
 import { Reveal, RevealStagger, revealItem } from "@/components/Reveal";
 import { motion } from "framer-motion";
-import { CheckCircle2, Sparkles, ArrowRight, Terminal } from "lucide-react";
+import { CheckCircle2, ArrowRight, Terminal } from "lucide-react";
 import { scrollToId } from "@/lib/scroll";
 
 export const WhoWeAre = () => {

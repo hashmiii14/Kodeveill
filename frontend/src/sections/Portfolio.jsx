@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { PORTFOLIO } from "@/data/content";
 import { Reveal } from "@/components/Reveal";
-import { ArrowUpRight, LineChart, Sparkles, Code } from "lucide-react";
+import { ArrowUpRight, LineChart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,
