@@ -85,7 +85,7 @@ export const Pricing = () => {
                     {/* Yearly Maintenance Notice */}
                     <div className="mt-3 inline-flex items-center gap-2 rounded-xl bg-blue-50/90 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/70 px-3 py-1.5 text-xs font-bold font-mono text-blue-700 dark:text-blue-300">
                       <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" aria-hidden="true" />
-                      <span>Maintenance: ₹5,000/year</span>
+                      <span>Maintenance: ₹4,999/year</span>
                     </div>
                   </div>
 
