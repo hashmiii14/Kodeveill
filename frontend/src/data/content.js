@@ -389,7 +389,7 @@ export const TESTIMONIALS = [
 
 export const CONTACT = {
   company: "KodeVeil",
-  email: "contact@kodeveil.com",
+  email: "contact.kodeveil@gmail.com",
   phone: "+91 85950 18458",
   phoneRaw: "+918595018458",
   whatsapp: "https://wa.me/918595018458",
