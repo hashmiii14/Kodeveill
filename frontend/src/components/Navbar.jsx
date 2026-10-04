@@ -7,28 +7,22 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { scrollToId } from "@/lib/scroll";
 import logo from "@/assets/kodeveill-logo.webp";
 
+const spring = { type: "spring", stiffness: 400, damping: 30 };
+
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
   const { theme } = useTheme();
 
-  // Scroll listener for Scrolled Header + Active Section Tracking
   useEffect(() => {
     let rafId = null;
-
     const onScroll = () => {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-
-      // 1. Scrolled state toggle (Header background glass)
       const isScrolled = scrollY > 20;
       setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
 
-      // 2. Active Section detection based on viewport position
-      if (scrollY < 200) {
-        setActive("home");
-        return;
-      }
+      if (scrollY < 200) { setActive("home"); return; }
 
       const navTargets = [
         { id: "contact", navId: "contact" },
@@ -46,10 +40,7 @@ export const Navbar = () => {
         const el = document.getElementById(target.id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 200) {
-            setActive(target.navId);
-            break;
-          }
+          if (rect.top <= 200) { setActive(target.navId); break; }
         }
       }
     };
@@ -62,7 +53,6 @@ export const Navbar = () => {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
-
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("scroll", handleScroll);
@@ -70,44 +60,29 @@ export const Navbar = () => {
     };
   }, []);
 
-  // Safe body scroll locking when mobile menu is open
   useEffect(() => {
     if (open) {
       const origOverflow = document.body.style.overflow;
       document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = origOverflow || "";
-      };
+      return () => { document.body.style.overflow = origOverflow || ""; };
     }
   }, [open]);
 
-  // Window resize handler (auto close mobile menu on screen expand)
   useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth >= 1024 && open) {
-        setOpen(false);
-      }
-    };
+    const onResize = () => { if (window.innerWidth >= 1024 && open) setOpen(false); };
     window.addEventListener("resize", onResize, { passive: true });
     return () => window.removeEventListener("resize", onResize);
   }, [open]);
 
-  // Keyboard escape listener to close mobile menu
   useEffect(() => {
-    const onKeyDown = (e) => {
-      if (e.key === "Escape" && open) {
-        setOpen(false);
-      }
-    };
+    const onKeyDown = (e) => { if (e.key === "Escape" && open) setOpen(false); };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
   const handleNav = useCallback((id) => {
     setOpen(false);
-    window.requestAnimationFrame(() => {
-      scrollToId(id);
-    });
+    window.requestAnimationFrame(() => scrollToId(id));
   }, []);
 
   return (
@@ -119,38 +94,35 @@ export const Navbar = () => {
         <nav
           data-testid="navbar"
           aria-label="Main Navigation"
-          className={`flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-6 ${
+          className={`flex w-full max-w-5xl items-center justify-between rounded-2xl px-4 py-2.5 transition-all duration-300 sm:px-5 ${
             scrolled
-              ? "bg-white/95 border border-slate-200/90 shadow-xl shadow-slate-900/5 backdrop-blur-xl dark:bg-[#0E152A]/95 dark:border-blue-500/50 dark:shadow-[0_0_20px_rgba(37,99,235,0.25)]"
-              : "bg-white/80 border border-slate-200/80 backdrop-blur-md dark:bg-[#080D1C]/90 dark:border-slate-800"
+              ? "bg-white/90 border border-zinc-200/80 shadow-lg shadow-zinc-900/5 backdrop-blur-xl dark:bg-zinc-900/90 dark:border-zinc-800 dark:shadow-none"
+              : "bg-white/60 border border-zinc-200/50 backdrop-blur-md dark:bg-zinc-950/60 dark:border-zinc-800/50"
           }`}
         >
-          {/* Corporate Logo */}
+          {/* Logo */}
           <button
             type="button"
             data-testid="nav-logo"
             onClick={() => handleNav("home")}
             aria-label="KodeVeil home"
-            className="flex items-center gap-3 focus-visible:outline-none group text-left touch-manipulation"
+            className="flex items-center gap-2.5 focus-visible:outline-none group text-left touch-manipulation"
           >
-            <span className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 border border-blue-400/40 shadow-md shadow-blue-500/20 transition-transform duration-300 group-hover:scale-105">
-              <img src={logo} alt="KodeVeil logo" className="h-6 w-6 object-contain brightness-125" width="24" height="24" />
-              <span className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-slate-900 text-[9px] font-mono font-bold text-blue-400 border border-blue-400/50">
-                &lt;/&gt;
-              </span>
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900 shadow-sm transition-transform duration-300 group-hover:scale-105">
+              <img src={logo} alt="KodeVeil logo" className="h-5 w-5 object-contain brightness-125" width="20" height="20" />
             </span>
             <div className="flex flex-col">
-              <span className="font-display text-lg font-black tracking-tight text-slate-900 dark:text-white sm:text-xl flex items-center gap-0.5">
-                Kodeveil<span className="text-blue-600 dark:text-blue-400 font-extrabold">.</span>
+              <span className="font-display text-base font-bold tracking-tight text-zinc-900 dark:text-white sm:text-lg">
+                Kodeveil
               </span>
-              <span className="text-[9px] font-bold tracking-widest text-blue-600 dark:text-blue-400 uppercase -mt-1 hidden sm:block font-mono">
+              <span className="text-[9px] font-medium tracking-widest text-zinc-400 dark:text-zinc-500 uppercase -mt-0.5 hidden sm:block font-mono">
                 Software Solutions
               </span>
             </div>
           </button>
 
-          {/* Desktop Navigation Links */}
-          <ul className="hidden items-center gap-1 lg:flex" role="menubar">
+          {/* Desktop Nav Links */}
+          <ul className="hidden items-center gap-0.5 lg:flex" role="menubar">
             {NAV_LINKS.map((link) => {
               const isActive = active === link.id;
               return (
@@ -161,36 +133,42 @@ export const Navbar = () => {
                     data-testid={`nav-link-${link.id}`}
                     onClick={() => handleNav(link.id)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`relative rounded-full px-4 py-2 text-sm font-extrabold transition-all duration-200 ${
-                      isActive
-                        ? "text-blue-600 bg-blue-50 border border-blue-200 shadow-sm dark:text-white dark:bg-blue-600 dark:border-blue-400 dark:shadow-[0_0_15px_rgba(37,99,235,0.4)]"
-                        : "text-slate-700 hover:text-slate-900 hover:bg-slate-100/80 border border-transparent dark:text-slate-200 dark:hover:text-white dark:hover:bg-slate-800/90"
-                    }`}
+                    className="relative rounded-lg px-3.5 py-2 text-sm font-medium transition-colors duration-200"
                   >
-                    <span className="relative z-10">{link.label}</span>
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeNavTab"
+                        className="absolute inset-0 rounded-lg bg-slate-100 dark:bg-slate-300/10"
+                        transition={spring}
+                      />
+                    )}
+                    <span className={`relative z-10 ${
+                      isActive
+                        ? "text-zinc-900 dark:text-white"
+                        : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                    }`}>
+                      {link.label}
+                    </span>
                   </button>
                 </li>
               );
             })}
           </ul>
 
-          {/* Right Action Cluster: Theme Switcher & CTA */}
+          {/* Right Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Animated Sun ☀️ / Moon 🌙 Emoji Theme Toggle */}
             <ThemeToggle />
-
-            {/* Desktop Quick Contact CTA */}
             <button
               type="button"
               data-testid="nav-cta"
               onClick={() => handleNav("contact")}
-              className="hidden sm:inline-flex group relative items-center gap-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white dark:bg-blue-600 dark:hover:bg-blue-500 px-5 py-2 text-xs font-extrabold shadow-md transition-all duration-200 hover:scale-[1.02] active:scale-95"
+              className="hidden sm:inline-flex group items-center gap-2 rounded-lg bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900 hover:bg-slate-900 dark:bg-slate-200 text-white px-4 py-2 text-xs font-semibold shadow-sm transition-all duration-200 active:scale-95"
             >
-              <span>Let's Talk</span>
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              <span>Get a Quote</span>
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </button>
 
-            {/* Mobile Menu Toggle Button */}
+            {/* Mobile toggle */}
             <button
               type="button"
               data-testid="mobile-menu-toggle"
@@ -198,15 +176,15 @@ export const Navbar = () => {
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="mobile-menu"
-              className="relative z-[10001] flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 border border-slate-300 text-slate-900 dark:bg-[#0E152A] dark:border-slate-700 dark:text-white transition-all active:scale-95 hover:bg-slate-200 dark:hover:bg-slate-800 touch-manipulation lg:hidden shadow-sm"
+              className="relative z-[10001] flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-100 border border-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white transition-all active:scale-95 touch-manipulation lg:hidden"
             >
-              {open ? <X className="h-5 w-5 text-blue-600 dark:text-blue-400" /> : <Menu className="h-5 w-5 text-slate-800 dark:text-white" />}
+              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
           </div>
         </nav>
       </header>
 
-      {/* Mobile & Tablet Drawer Overlay */}
+      {/* Mobile Fullscreen Overlay */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -216,51 +194,54 @@ export const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 z-[10000] lg:hidden flex flex-col justify-start pt-20 px-4"
+            className="fixed inset-0 z-[10000] lg:hidden"
           >
             {/* Backdrop */}
             <div
-              className="fixed inset-0 bg-slate-950/60 dark:bg-slate-950/90 backdrop-blur-sm"
+              className="fixed inset-0 bg-zinc-950/70 backdrop-blur-sm"
               onClick={() => setOpen(false)}
               aria-hidden="true"
             />
 
-            {/* Compact Rectangular Floating Card */}
+            {/* Menu Panel */}
             <motion.div
-              initial={{ y: -12, opacity: 0, scale: 0.98 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              exit={{ y: -12, opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.18, ease: "easeOut" }}
-              className="relative z-10 w-full max-w-[320px] sm:max-w-xs mx-auto rounded-2xl bg-white border border-slate-200 p-4 shadow-2xl dark:bg-[#0E152A] dark:border-blue-500/60"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="relative z-10 mx-4 mt-20 max-w-sm mx-auto rounded-2xl bg-white border border-zinc-200 p-5 shadow-2xl dark:bg-zinc-900 dark:border-zinc-800"
             >
               <ul className="flex flex-col gap-1">
-                {NAV_LINKS.map((link) => {
+                {NAV_LINKS.map((link, idx) => {
                   const isActive = active === link.id;
                   return (
-                    <li key={link.id}>
+                    <motion.li
+                      key={link.id}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.05 }}
+                    >
                       <button
                         type="button"
                         data-testid={`mobile-nav-link-${link.id}`}
                         onClick={() => handleNav(link.id)}
-                        className={`w-full rounded-xl px-4 py-2.5 text-left text-sm font-extrabold transition-all active:scale-[0.98] ${
+                        className={`w-full rounded-xl px-4 py-3 text-left text-sm font-medium transition-all active:scale-[0.98] ${
                           isActive
-                            ? "bg-blue-50 text-blue-600 border border-blue-200 dark:bg-blue-600 dark:text-white dark:border-blue-400"
-                            : "text-slate-700 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-100 dark:hover:text-white dark:hover:bg-slate-800/90 border border-transparent"
+                            ? "bg-slate-100 dark:bg-slate-300/10 text-zinc-900 dark:text-white dark:bg-slate-100 dark:bg-slate-300/10 dark:text-zinc-500 dark:text-zinc-400"
+                            : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-800"
                         }`}
                       >
                         {link.label}
                       </button>
-                    </li>
+                    </motion.li>
                   );
                 })}
               </ul>
 
-              <div className="mt-3 flex items-center justify-between gap-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-slate-700 dark:text-slate-200 font-mono">
-                    {theme === "dark" ? "Night Mode 🌙" : "Morning Mode ☀️"}
-                  </span>
-                </div>
+              <div className="mt-4 flex items-center justify-between gap-2 pt-3 border-t border-zinc-100 dark:border-zinc-800">
+                <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                  {theme === "dark" ? "Dark Mode" : "Light Mode"}
+                </span>
                 <ThemeToggle />
               </div>
 
@@ -268,7 +249,7 @@ export const Navbar = () => {
                 type="button"
                 data-testid="mobile-nav-cta"
                 onClick={() => handleNav("contact")}
-                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-500 px-4 py-3 text-sm font-black text-white shadow-lg transition-all active:scale-[0.98]"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900 hover:bg-slate-900 dark:bg-slate-200 px-4 py-3 text-sm font-semibold text-white shadow-md transition-all active:scale-[0.98]"
               >
                 <span>Start Your Project</span>
                 <ArrowRight className="h-4 w-4" />
@@ -279,14 +260,4 @@ export const Navbar = () => {
       </AnimatePresence>
     </>
   );
-
 };
-
-
-
-
-
-
-
-
-

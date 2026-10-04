@@ -5,9 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
-        mono: ['"Space Mono"', 'ui-monospace', 'monospace'],
+        sans: ['"Inter"', '"SF Pro Display"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['"Inter"', '"SF Pro Display"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
 
       colors: {
@@ -44,28 +44,37 @@ module.exports = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        brand: {
-          bg: '#02030A',
-          card: '#080B18',
-          secondaryBg: '#050817',
-          electric: '#147BFF',
-          bright: '#2196FF',
-          violet: '#7C3CFF',
-          purple: '#A855F7',
-          muted: '#A8B0C0',
-          border: 'rgba(30, 41, 59, 0.8)',
+
+        /* ─── Kodeveil Brand Tokens ─── */
+        kv: {
+          bg:       'var(--kv-bg)',
+          elevated: 'var(--kv-elevated)',
+          card:     'var(--kv-card)',
+          border:   'var(--kv-border)',
+          text:     'var(--kv-text)',
+          muted:    'var(--kv-muted)',
+          accent:   '#6366F1',
+          glow:     'rgba(99, 102, 241, 0.15)',
         },
       },
+
       boxShadow: {
-        xs: '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+        'xs':       '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+        'card':     '0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03)',
+        'card-hover': '0 8px 30px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)',
+        'glow':     '0 0 0 1px rgba(99,102,241,1)',
+        'glow-lg':  '0 0 0 2px rgba(99,102,241,1)',
       },
+
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
         xl: 'calc(var(--radius) + 4px)',
         '2xl': 'calc(var(--radius) + 8px)',
+        '3xl': '1.5rem',
       },
+
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -75,41 +84,41 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' }
         },
-        'gradient-shift': {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' }
-        },
-        'float': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-18px)' }
-        },
-        'float-slow': {
-          '0%, 100%': { transform: 'translateY(0px) translateX(0px)' },
-          '50%': { transform: 'translateY(-28px) translateX(12px)' }
-        },
         'marquee': {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' }
         },
-        'spin-slow': {
-          from: { transform: 'rotate(0deg)' },
-          to: { transform: 'rotate(360deg)' }
+        'fade-in': {
+          from: { opacity: '0', transform: 'translateY(8px)' },
+          to: { opacity: '1', transform: 'translateY(0)' }
         },
-        'pulse-ring': {
-          '0%': { transform: 'scale(0.8)', opacity: '0.5' },
-          '100%': { transform: 'scale(2.4)', opacity: '0' }
-        }
+        'scale-in': {
+          from: { opacity: '0', transform: 'scale(0.95)' },
+          to: { opacity: '1', transform: 'scale(1)' }
+        },
+        'draw-line': {
+          from: { strokeDashoffset: '1' },
+          to: { strokeDashoffset: '0' }
+        },
+        'pulse-soft': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' }
+        },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-12px)' }
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'gradient-shift': 'gradient-shift 8s ease infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'float-slow': 'float-slow 9s ease-in-out infinite',
         'marquee': 'marquee 40s linear infinite',
-        'spin-slow': 'spin-slow 24s linear infinite',
-        'pulse-ring': 'pulse-ring 3s cubic-bezier(0.4,0,0.2,1) infinite',
-      }
+        'fade-in': 'fade-in 0.5s ease-out',
+        'scale-in': 'scale-in 0.3s ease-out',
+        'draw-line': 'draw-line 1s ease-out forwards',
+        'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+      },
     }
   },
   plugins: [require("tailwindcss-animate")],

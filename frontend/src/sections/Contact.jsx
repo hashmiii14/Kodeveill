@@ -1,12 +1,14 @@
 import { useState, useCallback } from "react";
 import { Reveal } from "@/components/Reveal";
+import { SectionHeading } from "@/components/SectionHeading";
 import { CONTACT } from "@/data/content";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
+import { submitEnquiry } from "@/admin/api";
 import { Mail, Phone, MessageCircle, Send, CheckCircle2 } from "lucide-react";
 
 const FIELDS = [
-  { name: "name", label: "Name", type: "text", placeholder: "Your full name", required: true },
+  { name: "name", label: "Full Name", type: "text", placeholder: "Your name", required: true },
   { name: "email", label: "Email", type: "email", placeholder: "you@company.com", required: true },
   { name: "business", label: "Business Name", type: "text", placeholder: "Your company", required: false },
   { name: "phone", label: "Phone", type: "tel", placeholder: "+91 00000 00000", required: false },
@@ -34,48 +36,30 @@ export const Contact = () => {
       toast.error("Please fill in your name, email and message.");
       return;
     }
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailClean);
-    if (!emailOk) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailClean)) {
       toast.error("Please enter a valid email address.");
       return;
     }
 
     setLoading(true);
-
     try {
-      const response = await fetch("https://formsubmit.co/ajax/mdhashmi955@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: nameClean,
-          email: emailClean,
-          business: form.business.trim() || "N/A",
-          phone: form.phone.trim() || "N/A",
-          message: messageClean,
-          _subject: `New Contact from ${nameClean} — KodeVeil`,
-          _captcha: "false",
-          _template: "table",
-        }),
+      await submitEnquiry({
+        name: nameClean,
+        email: emailClean,
+        business: form.business.trim() || "N/A",
+        phone: form.phone.trim() || "N/A",
+        message: messageClean,
       });
-
-      const data = await response.json();
-
-      if (data.success === "true" || data.success === true) {
-        setSubmitted(true);
-        toast.success("Thank you! Your message has been received.", {
-          description: "We'll get back to you within one business day.",
-          duration: 5000,
-        });
-        setForm({ name: "", email: "", business: "", phone: "", message: "" });
-        setTimeout(() => setSubmitted(false), 6000);
-      } else {
-        toast.error("Something went wrong. Please try again or email us directly.");
-      }
+      
+      setSubmitted(true);
+      toast.success("Thank you! Your message has been received.", {
+        description: "We'll get back to you within one business day.",
+        duration: 5000,
+      });
+      setForm({ name: "", email: "", business: "", phone: "", message: "" });
+      setTimeout(() => setSubmitted(false), 6000);
     } catch (err) {
-      toast.error("Network error. Please check your connection and try again.");
+      toast.error("Failed to submit. Please try again or email us directly.");
     } finally {
       setLoading(false);
     }
@@ -88,51 +72,44 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="relative bg-white dark:bg-[#030712] text-slate-900 dark:text-white py-20 sm:py-28 border-t border-slate-200 dark:border-slate-800/80 overflow-hidden transition-colors duration-300">
-      {/* Background Radial Glow */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 hidden md:block h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-blue-500/10 dark:bg-blue-500/5 blur-3xl"
-        aria-hidden="true"
-      />
-
+    <section
+      id="contact"
+      className="relative bg-zinc-50/50 dark:bg-transparent py-20 sm:py-28 border-t border-zinc-200 dark:border-white/10 overflow-hidden transition-colors duration-300"
+    >
       <div className="container-x relative z-10">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/80 bg-blue-50/90 px-4 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-blue-700 shadow-sm dark:border-blue-500/40 dark:bg-blue-950/80 dark:text-blue-300 font-mono">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" aria-hidden="true" />
-            <span>Get In Touch</span>
-          </span>
-          <h2 className="mt-5 font-display text-3xl sm:text-5xl font-black leading-tight text-slate-900 dark:text-white">
-            Let's Build Something <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-400 bg-clip-text text-transparent">Amazing</span>
-          </h2>
-          <p className="mt-4 text-slate-600 dark:text-slate-300 font-normal">
-            Tell us about your project goals. We usually respond within one business day.
-          </p>
+        <Reveal>
+          <SectionHeading
+            overline="Get In Touch"
+            title="Let's build something"
+            titleAccent="amazing."
+            description="Tell us about your project goals. We usually respond within one business day."
+          />
         </Reveal>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-          {/* Contact Info Panel */}
+          {/* Contact Info */}
           <Reveal>
-            <div className="flex h-full flex-col justify-between rounded-3xl bg-slate-50 border border-slate-200 p-8 shadow-xl dark:bg-[#080D1C]/90 dark:border-slate-800">
+            <div className="flex h-full flex-col justify-between kv-card p-7">
               <div>
-                <p className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">Software Agency</p>
-                <p className="mt-1 font-display text-2xl font-black text-slate-900 dark:text-white">{CONTACT.company}</p>
+                <p className="font-mono text-xs font-medium uppercase tracking-widest text-zinc-900 dark:text-white">Software Solutions</p>
+                <p className="mt-1 font-display text-2xl font-bold text-zinc-900 dark:text-white">{CONTACT.company}</p>
 
-                <div className="mt-8 space-y-4 font-bold text-sm">
+                <div className="mt-8 space-y-4 text-sm font-medium">
                   <a
                     href={`mailto:${CONTACT.email}`}
-                    aria-label={`Send email to ${CONTACT.email}`}
-                    className="flex items-center gap-3 text-slate-700 dark:text-slate-300 transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+                    aria-label={`Email ${CONTACT.email}`}
+                    className="flex items-center gap-3 text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:text-white transition-colors"
                     data-testid="contact-email-link"
                   >
-                    <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" aria-hidden="true" /> {CONTACT.email}
+                    <Mail className="h-4 w-4 text-zinc-900 dark:text-white" /> {CONTACT.email}
                   </a>
                   <a
                     href={`tel:${CONTACT.phoneRaw}`}
-                    aria-label={`Call phone number ${CONTACT.phone}`}
-                    className="flex items-center gap-3 text-slate-700 dark:text-slate-300 transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+                    aria-label={`Call ${CONTACT.phone}`}
+                    className="flex items-center gap-3 text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:text-white transition-colors"
                     data-testid="contact-phone-link"
                   >
-                    <Phone className="h-5 w-5 text-blue-600 dark:text-blue-400" aria-hidden="true" /> {CONTACT.phone}
+                    <Phone className="h-4 w-4 text-zinc-900 dark:text-white" /> {CONTACT.phone}
                   </a>
                 </div>
               </div>
@@ -147,9 +124,9 @@ export const Contact = () => {
                       data-testid={a.testid}
                       aria-label={`Contact via ${a.label}`}
                       {...(a.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="flex flex-col items-center gap-2 rounded-2xl border border-slate-200 bg-white py-4 text-xs font-bold text-slate-900 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-500 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-900/80 dark:text-white dark:hover:border-blue-500/50 dark:hover:text-blue-300"
+                      className="flex flex-col items-center gap-2 rounded-xl border border-zinc-200 bg-white py-4 text-xs font-medium text-zinc-600 transition-all duration-200 hover:-translate-y-1 hover:border-zinc-400 dark:border-zinc-500 hover:text-zinc-900 dark:text-white dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-300 dark:border-zinc-600"
                     >
-                      <Icon className="h-5 w-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+                      <Icon className="h-4 w-4 text-zinc-900 dark:text-white" />
                       {a.label}
                     </a>
                   );
@@ -158,44 +135,42 @@ export const Contact = () => {
             </div>
           </Reveal>
 
-          {/* Form Panel */}
+          {/* Form */}
           <Reveal delay={0.1}>
-            <form onSubmit={handleSubmit} className="rounded-3xl bg-slate-50 border border-slate-200 p-8 shadow-xl dark:bg-[#080D1C]/90 dark:border-slate-800" data-testid="contact-form" noValidate aria-label="Contact form">
+            <form onSubmit={handleSubmit} className="kv-card p-7" data-testid="contact-form" noValidate aria-label="Contact form">
               <div className="grid gap-5 sm:grid-cols-2">
                 {FIELDS.map((f) => (
-                  <div key={f.name} className={f.name === "message" ? "sm:col-span-2" : ""}>
-                    <label htmlFor={f.name} className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 font-mono">
-                      {f.label}{f.required && <span className="text-blue-600 dark:text-blue-400" aria-hidden="true"> *</span>}
+                  <div key={f.name}>
+                    <label htmlFor={f.name} className="mb-2 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                      {f.label}{f.required && <span className="text-zinc-900 dark:text-white" aria-hidden="true"> *</span>}
                     </label>
                     <input
                       id={f.name}
                       name={f.name}
                       type={f.type}
                       required={f.required}
-                      aria-required={f.required}
                       value={form[f.name]}
                       onChange={handleChange}
                       placeholder={f.placeholder}
                       data-testid={`contact-input-${f.name}`}
-                      className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all focus:border-blue-600 focus:ring-2 focus:ring-blue-500/30 dark:border-slate-800 dark:bg-[#040814] dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-500"
+                      className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none transition-all focus:border-slate-800 dark:border-slate-400 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500"
                     />
                   </div>
                 ))}
                 <div className="sm:col-span-2">
-                  <label htmlFor="message" className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 font-mono">
-                    Message<span className="text-blue-600 dark:text-blue-400" aria-hidden="true"> *</span>
+                  <label htmlFor="message" className="mb-2 block text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                    Message<span className="text-zinc-900 dark:text-white" aria-hidden="true"> *</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={5}
                     required
-                    aria-required="true"
                     value={form.message}
                     onChange={handleChange}
                     placeholder="Tell us about your project goals..."
                     data-testid="contact-input-message"
-                    className="w-full resize-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all focus:border-blue-600 focus:ring-2 focus:ring-blue-500/30 dark:border-slate-800 dark:bg-[#040814] dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-500"
+                    className="w-full resize-none rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none transition-all focus:border-slate-800 dark:border-slate-400 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500"
                   />
                 </div>
               </div>
@@ -204,24 +179,21 @@ export const Contact = () => {
                 type="submit"
                 disabled={loading}
                 data-testid="contact-submit"
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-gradient-to-r dark:from-blue-600 dark:to-purple-600 py-4 text-sm font-extrabold shadow-md transition-all active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed group"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900 hover:bg-slate-900 dark:bg-slate-200 text-white py-3.5 text-sm font-semibold shadow-md transition-all active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed group"
               >
                 <AnimatePresence mode="wait" initial={false}>
                   {submitted ? (
                     <motion.span key="done" initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-emerald-400" aria-hidden="true" /> Message Received
+                      <CheckCircle2 className="h-4 w-4 text-emerald-300" /> Message Received
                     </motion.span>
                   ) : loading ? (
                     <motion.span key="loading" initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-2">
-                      <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-                      </svg>
+                      <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" /></svg>
                       Sending...
                     </motion.span>
                   ) : (
                     <motion.span key="send" initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex items-center gap-2">
-                      Send Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                      Send Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </motion.span>
                   )}
                 </AnimatePresence>
@@ -231,15 +203,14 @@ export const Contact = () => {
                 {submitted && (
                   <motion.div
                     role="alert"
-                    aria-live="polite"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-4 flex items-center gap-3 overflow-hidden rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-800 dark:border-emerald-500/40 dark:bg-emerald-950/40 dark:text-emerald-300"
+                    className="mt-4 flex items-center gap-3 overflow-hidden rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-400"
                     data-testid="contact-success"
                   >
-                    <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
-                    Thank you! Your message has been received. We'll get back to you soon.
+                    <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
+                    Thank you! We'll get back to you soon.
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -250,6 +221,3 @@ export const Contact = () => {
     </section>
   );
 };
-
-
-

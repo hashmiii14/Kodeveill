@@ -13,7 +13,11 @@ function getReduceMotion() {
   return globalReduceMotion;
 }
 
-export const Reveal = ({ children, delay = 0, y = 14, className = "", once = true }) => {
+/**
+ * Spring-based reveal animation on viewport entry.
+ * Physics-based motion feels intentional and professional.
+ */
+export const Reveal = ({ children, delay = 0, y = 30, className = "", once = true }) => {
   const [reduceMotion, setReduceMotion] = useState(() => getReduceMotion());
 
   useEffect(() => {
@@ -38,15 +42,21 @@ export const Reveal = ({ children, delay = 0, y = 14, className = "", once = tru
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: "-20px" }}
-      transition={{ duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once, margin: "-40px" }}
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        mass: 0.8,
+        delay,
+      }}
     >
       {children}
     </motion.div>
   );
 };
 
-export const RevealStagger = ({ children, className = "", stagger = 0.06 }) => {
+export const RevealStagger = ({ children, className = "", stagger = 0.08 }) => {
   const [reduceMotion, setReduceMotion] = useState(() => getReduceMotion());
 
   useEffect(() => {
@@ -71,7 +81,7 @@ export const RevealStagger = ({ children, className = "", stagger = 0.06 }) => {
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-20px" }}
+      viewport={{ once: true, margin: "-40px" }}
       variants={{
         hidden: {},
         show: { transition: { staggerChildren: stagger } },
@@ -83,10 +93,15 @@ export const RevealStagger = ({ children, className = "", stagger = 0.06 }) => {
 };
 
 export const revealItem = {
-  hidden: { opacity: 0, y: 14 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+      mass: 0.8,
+    },
+  },
 };
-
-
-
-

@@ -4,21 +4,21 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    // Check localStorage or fallback to dark theme default
     const savedTheme = localStorage.getItem("kodeveil_theme");
     if (savedTheme === "dark" || savedTheme === "light") {
       return savedTheme;
     }
-    // Default to dark mode
-    return "dark";
+    return "dark"; // default to dark
   });
 
   useEffect(() => {
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
+      root.style.colorScheme = "dark";
     } else {
       root.classList.remove("dark");
+      root.style.colorScheme = "light";
     }
     localStorage.setItem("kodeveil_theme", theme);
   }, [theme]);

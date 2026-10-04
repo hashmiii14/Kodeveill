@@ -4,9 +4,11 @@ import "@/App.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { FloatingActions } from "@/components/FloatingActions";
+import { KodeveilBot } from "@/components/KodeveilBot";
 import { Navbar } from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import { Hero } from "@/sections/Hero";
+import { SocialProof } from "@/sections/SocialProof";
 
 // Lazy-load non-critical sections below the fold for minimal initial bundle size & sub-second FCP
 const WhoWeAre = lazy(() => import("@/sections/WhoWeAre").then((m) => ({ default: m.WhoWeAre })));
@@ -21,56 +23,65 @@ const Contact = lazy(() => import("@/sections/Contact").then((m) => ({ default: 
 const PrivacyPolicy = lazy(() => import("@/sections/PrivacyPolicy").then((m) => ({ default: m.PrivacyPolicy })));
 const Footer = lazy(() => import("@/sections/Footer").then((m) => ({ default: m.Footer })));
 
+import { Routes, Route } from "react-router-dom";
+
+// Admin Panel lazy loaded
+const AdminPanel = lazy(() => import("@/admin/AdminPanel"));
+
+const LandingPage = () => (
+  <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans antialiased selection:bg-indigo-500/20 selection:text-indigo-700 dark:selection:bg-indigo-500/30 dark:selection:text-white transition-colors duration-300">
+    {/* Accessibility Skip Link */}
+    <a
+      href="#main-content"
+      className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[10001] focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-xl focus:shadow-xl"
+    >
+      Skip to main content
+    </a>
+
+    {/* --- AMBIENT DARK MODE GLOW --- */}
+    <div className="pointer-events-none fixed inset-0 z-0 hidden dark:block">
+      <div className="absolute top-[-20%] left-[-10%] h-[500px] w-[500px] rounded-full bg-slate-800/30 blur-[120px]" />
+      <div className="absolute bottom-[-20%] right-[-10%] h-[600px] w-[600px] rounded-full bg-slate-800/20 blur-[150px]" />
+    </div>
+
+    <ScrollProgress />
+    <Navbar />
+
+    <main id="main-content" tabIndex="-1" className="w-full max-w-full overflow-x-hidden outline-none relative z-10 transition-colors duration-300">
+      <Hero />
+      <SocialProof />
+      <Suspense fallback={<div className="min-h-[200px] w-full bg-zinc-50 dark:bg-zinc-950" />}>
+        <WhoWeAre />
+        <Services />
+        <WhyChooseUs />
+        <Process />
+        <Pricing />
+        <Portfolio />
+        <Testimonials />
+        <CTA />
+        <Contact />
+        <PrivacyPolicy />
+        <Footer />
+      </Suspense>
+    </main>
+
+    <FloatingActions />
+    <KodeveilBot />
+    <Toaster position="bottom-right" richColors />
+  </div>
+);
+
 function App() {
   return (
     <ThemeProvider>
-      <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-slate-50 dark:bg-[#0B0F19] text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-blue-500/20 selection:text-blue-700 dark:selection:bg-blue-500/30 dark:selection:text-white transition-colors duration-300">
-        {/* Accessibility Skip Link */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[10001] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-xl focus:shadow-xl"
-        >
-          Skip to main content
-        </a>
-
-        <ScrollProgress />
-        <Navbar />
-
-        <main id="main-content" tabIndex="-1" className="w-full max-w-full overflow-x-hidden outline-none bg-slate-50 dark:bg-[#0B0F19] transition-colors duration-300">
-          {/* 1. HERO (Eagerly loaded for immediate FCP) */}
-          <Hero />
-
-          {/* Lazy Loaded Sections below fold */}
-          <Suspense fallback={<div className="min-h-[200px] w-full bg-slate-50 dark:bg-[#0B0F19]" />}>
-            {/* 2. WHO WE ARE & SERVICES */}
-            <WhoWeAre />
-            <Services />
-
-            {/* 3. WHY CHOOSE US, PROCESS & PRICING */}
-            <WhyChooseUs />
-            <Process />
-            <Pricing />
-
-            {/* 4. FEATURED PORTFOLIO */}
-            <Portfolio />
-
-            {/* 5. TESTIMONIALS, CTA, CONTACT & PRIVACY */}
-            <Testimonials />
-            <CTA />
-            <Contact />
-            <PrivacyPolicy />
-
-            {/* FOOTER */}
-            <Footer />
-          </Suspense>
-        </main>
-
-        <FloatingActions />
-        <Toaster position="bottom-right" richColors />
-      </div>
+      <Suspense fallback={<div className="min-h-screen bg-zinc-950" />}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/admin/*" element={<AdminPanel />} />
+        </Routes>
+      </Suspense>
     </ThemeProvider>
   );
 }
 
 export default App;
-

@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, MessageCircle } from "lucide-react";
 import { CONTACT } from "@/data/content";
-import { BackToTop } from "@/components/BackToTop";
 
 const WhatsAppIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
@@ -9,79 +9,130 @@ const WhatsAppIcon = (props) => (
   </svg>
 );
 
+const PRESET_QUESTIONS = [
+  "I need a new website built from scratch.",
+  "I want to revamp my current website.",
+  "I'm looking for custom software solutions.",
+  "Can I get a quote for a project?"
+];
+
 export const FloatingActions = () => {
-  const actions = [
-    {
-      label: "Call Us Now",
-      href: `tel:${CONTACT.phoneRaw}`,
-      icon: Phone,
-      testid: "fab-call",
-      bg: "linear-gradient(135deg,#2563EB,#1D4ED8)",
-      ring: "rgba(37,99,235,0.45)",
-    },
-    {
-      label: "Chat on WhatsApp",
-      href: CONTACT.whatsapp,
-      icon: WhatsAppIcon,
-      external: true,
-      testid: "fab-whatsapp",
-      bg: "linear-gradient(135deg,#25D366,#128C7E)",
-      ring: "rgba(37,211,102,0.45)",
-    },
-  ];
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleQuestionClick = (question) => {
+    // Append text to the WhatsApp URL. Handle existing query params securely.
+    const url = new URL(CONTACT.whatsapp);
+    url.searchParams.set('text', question);
+    window.open(url.toString(), "_blank");
+    setIsOpen(false);
+  };
 
   return (
     <div
-      className="fixed bottom-6 right-5 z-[9996] flex flex-col items-center gap-3.5 sm:right-6"
+      className="fixed bottom-6 right-5 z-[100] flex flex-col items-end gap-3 sm:right-6"
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
-      data-testid="floating-actions"
-      role="region"
-      aria-label="Quick contact actions"
     >
-      <BackToTop />
-
-      {actions.map((a, i) => {
-        const Icon = a.icon;
-        return (
-          <motion.a
-            key={a.testid}
-            href={a.href}
-            aria-label={a.label}
-            title={a.label}
-            data-testid={a.testid}
-            {...(a.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            initial={{ opacity: 0, scale: 0.5, x: 20 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ delay: 1.2 + i * 0.12, type: "spring", stiffness: 260, damping: 20 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.92 }}
-            className="group relative flex items-center justify-center rounded-full text-white shadow-2xl transition-transform"
-            style={{
-              width: 52,
-              height: 52,
-              background: a.bg,
-              border: "2px solid rgba(255,255,255,0.3)",
-              boxShadow: `0 12px 35px -8px ${a.ring}`,
-            }}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95, transition: { duration: 0.2 } }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="w-[320px] max-w-[calc(100vw-40px)] origin-bottom-right overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800"
           >
-            {/* Pulse outer ring */}
-            <span
-              className="absolute inset-0 rounded-full pointer-events-none"
-              style={{ border: `2px solid ${a.ring}`, animation: "pulse-ring 2.6s cubic-bezier(0.4,0,0.2,1) infinite" }}
-              aria-hidden="true"
-            />
-            <Icon className="relative h-6 w-6" style={{ width: 24, height: 24 }} />
-            
-            {/* Desktop Tooltip Label */}
-            <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-xl border border-slate-200 bg-slate-900 px-3.5 py-1.5 text-xs font-bold text-white shadow-xl opacity-0 transition-opacity duration-200 group-hover:opacity-100 lg:block">
-              {a.label}
-            </span>
-          </motion.a>
-        );
-      })}
+            {/* Header */}
+            <div className="flex items-center justify-between bg-[#25D366] p-4 text-white">
+              <div className="flex items-center gap-3">
+                <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
+                  <WhatsAppIcon className="h-6 w-6" />
+                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-[#25D366] bg-green-300" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold leading-tight">Kodeveil Support</h3>
+                  <p className="text-xs text-white/80">Typically replies instantly</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="rounded-full p-1.5 transition-colors hover:bg-white/20 active:scale-95"
+                aria-label="Close chat"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="bg-zinc-50 p-4 dark:bg-zinc-950/50">
+              {/* Agent Message */}
+              <div className="mb-4 flex gap-2">
+                <div className="flex flex-shrink-0 items-end">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#25D366] text-white">
+                    <WhatsAppIcon className="h-3.5 w-3.5" />
+                  </div>
+                </div>
+                <div className="rounded-2xl rounded-bl-none bg-white p-3 text-sm text-zinc-700 shadow-sm ring-1 ring-zinc-100 dark:bg-zinc-900 dark:text-zinc-300 dark:ring-zinc-800">
+                  Hi there! 👋 <br /> How can we help you today?
+                </div>
+              </div>
+
+              {/* Questions */}
+              <div className="flex flex-col gap-2 pl-8">
+                {PRESET_QUESTIONS.map((q, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleQuestionClick(q)}
+                    className="flex text-left items-center justify-between rounded-xl bg-white px-3.5 py-2.5 text-xs font-medium text-[#25D366] shadow-sm ring-1 ring-zinc-200 transition-all hover:bg-zinc-50 active:scale-95 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:bg-zinc-800"
+                  >
+                    <span>{q}</span>
+                    <MessageCircle className="ml-2 h-3.5 w-3.5 flex-shrink-0 opacity-50" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <motion.button
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Open WhatsApp Chat"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_25px_-5px_rgba(37,211,102,0.4)] transition-transform"
+      >
+        <AnimatePresence mode="wait">
+          {isOpen ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <X className="h-6 w-6" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="whatsapp"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <WhatsAppIcon className="h-7 w-7" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Pulse effect when closed */}
+        {!isOpen && (
+          <span className="absolute inset-0 -z-10 rounded-full bg-[#25D366] opacity-40 animate-ping" style={{ animationDuration: '3s' }} />
+        )}
+      </motion.button>
     </div>
   );
 };
-
-
-

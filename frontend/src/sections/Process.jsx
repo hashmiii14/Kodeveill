@@ -1,80 +1,72 @@
 import React from "react";
 import { Reveal, RevealStagger, revealItem } from "@/components/Reveal";
+import { SectionHeading } from "@/components/SectionHeading";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
 
 const PROCESS_STEPS = [
-  { step: "01", title: "DISCOVER", desc: "We analyze your business goals, target audience, competitive market, and tech requirements to build a clear project blueprint." },
-  { step: "02", title: "STRATEGIZE", desc: "We map user journeys, architecture, conversion funnels, and wireframes to ensure every page drives real business results." },
-  { step: "03", title: "DESIGN", desc: "We craft custom, high-converting, modern UI/UX mockups aligned with your brand visual identity." },
-  { step: "04", title: "DEVELOP", desc: "We write clean, modular, sub-second fast React code optimized for performance, security, and search engine ranking." },
-  { step: "05", title: "LAUNCH", desc: "We conduct end-to-end testing, SSL configuration, domain deployment, and provide post-launch optimization." },
+  { step: "01", title: "Discover", desc: "We analyze your business goals, target audience, competitive market, and tech requirements to build a clear project blueprint." },
+  { step: "02", title: "Strategize", desc: "We map user journeys, architecture, conversion funnels, and wireframes to ensure every page drives real business results." },
+  { step: "03", title: "Design", desc: "We craft custom, high-converting, modern UI/UX mockups aligned with your brand visual identity." },
+  { step: "04", title: "Develop", desc: "We write clean, modular, sub-second fast React code optimized for performance, security, and search engine ranking." },
+  { step: "05", title: "Launch", desc: "We conduct end-to-end testing, SSL configuration, domain deployment, and provide post-launch optimization." },
 ];
 
 export const Process = () => {
   return (
-    <section id="process" className="relative bg-slate-50 dark:bg-[#02030A] text-slate-900 dark:text-white py-24 sm:py-32 overflow-hidden border-b border-slate-200 dark:border-slate-800/80 transition-colors duration-300">
-      {/* Background Lighting */}
-      <div className="pointer-events-none absolute right-1/4 top-1/3 hidden md:block h-[400px] w-[400px] rounded-full bg-blue-500/10 dark:bg-blue-600/15 blur-3xl" aria-hidden="true" />
-
+    <section
+      id="process"
+      className="relative bg-zinc-50/50 dark:bg-transparent section-padding overflow-hidden transition-colors duration-300"
+    >
       <div className="container-x relative z-10">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/80 bg-blue-50/90 px-4 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-blue-700 shadow-sm dark:border-blue-500/40 dark:bg-blue-950/80 dark:text-blue-300 font-mono">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" aria-hidden="true" />
-            <span>Proven Workflow</span>
-          </span>
-
-          <h2 className="mt-5 font-display text-4xl font-black leading-tight text-slate-900 dark:text-white sm:text-6xl tracking-tight">
-            FROM IDEA TO <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-400 bg-clip-text text-transparent">IMPACT</span>
-          </h2>
-
-          <p className="mt-4 text-base text-slate-600 dark:text-slate-300 font-normal sm:text-lg">
-            A transparent engineering workflow with clear milestones, rapid iterations, and measurable results.
-          </p>
+        <Reveal>
+          <SectionHeading
+            overline="Our Process"
+            title="From idea to"
+            titleAccent="impact."
+            description="A transparent engineering workflow with clear milestones, rapid iterations, and measurable results."
+          />
         </Reveal>
 
-        <RevealStagger className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-          {PROCESS_STEPS.map((item, idx) => (
-            <motion.div
-              key={item.step}
-              variants={revealItem}
-              className="group relative flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/60 hover:shadow-xl dark:border-slate-800 dark:bg-[#060A18]/90"
-            >
-              {/* Connecting Line on Desktop */}
-              {idx < PROCESS_STEPS.length - 1 && (
-                <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-20 h-0.5 w-6 bg-gradient-to-r from-blue-500 to-purple-500 opacity-60" />
-              )}
+        {/* Vertical Timeline */}
+        <div className="mt-20 max-w-3xl mx-auto">
+          <RevealStagger className="relative">
+            {/* Connecting vertical line */}
+            <div className="absolute left-[19px] top-0 bottom-0 w-px bg-zinc-200 dark:bg-white/10" aria-hidden="true" />
 
-              <div>
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-3xl font-black bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                    {item.step}
-                  </span>
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 border border-blue-200 text-blue-700 dark:bg-blue-500/10 dark:border-blue-500/30 dark:text-blue-400">
-                    <CheckCircle2 className="h-3.5 w-3.5" />
+            <div className="space-y-8">
+              {PROCESS_STEPS.map((item) => (
+                <motion.div
+                  key={item.step}
+                  variants={revealItem}
+                  className="group relative flex gap-6"
+                >
+                  {/* Timeline dot */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-zinc-200 bg-white font-mono text-xs font-bold text-zinc-400 transition-all duration-300 group-hover:border-zinc-900 group-hover:bg-zinc-900 group-hover:text-white dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-500 dark:group-hover:border-zinc-300 dark:group-hover:bg-zinc-300 dark:group-hover:text-zinc-900">
+                      {item.step}
+                    </div>
                   </div>
-                </div>
 
-                <h3 className="mt-5 font-display text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors uppercase tracking-wider">
-                  {item.title}
-                </h3>
-
-                <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-normal">
-                  {item.desc}
-                </p>
-              </div>
-
-              <div className="mt-6 border-t border-slate-100 dark:border-slate-800/80 pt-3 flex items-center justify-between text-[11px] font-bold text-blue-600 dark:text-blue-400 font-mono">
-                <span>Phase {item.step}</span>
-                <span>Kodeveil Protocol</span>
-              </div>
-            </motion.div>
-          ))}
-        </RevealStagger>
+                  {/* Content card */}
+                  <div className="kv-card p-7 flex-1">
+                    <h3 className="text-lg font-bold text-zinc-900 dark:text-white transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+                      {item.desc}
+                    </p>
+                    <div className="mt-5 flex items-center gap-2 text-[10px] font-mono font-medium text-zinc-300 dark:text-zinc-600 uppercase tracking-widest">
+                      <span>Phase {item.step}</span>
+                      <span className="h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+                      <span>Kodeveil Standard</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </RevealStagger>
+        </div>
       </div>
     </section>
   );
 };
-
-
-
