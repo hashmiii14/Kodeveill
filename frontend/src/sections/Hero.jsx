@@ -171,11 +171,17 @@ export const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="mt-8 sm:mt-10 text-xs sm:text-[13px] font-medium"
+            className="mt-8 sm:mt-10 text-[11px] sm:text-[13px] font-medium px-4"
             style={{ letterSpacing: "-0.008em" }}
           >
-            <span className="inline-flex items-center gap-1.5 text-white/45 transition-colors hover:text-white/70">
-              50+ Websites Delivered · 99.9% Uptime · Sub-Second Load Times · No Subscription
+            <span className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-white/45 transition-colors hover:text-white/70 text-center">
+              <span>50+ Websites Delivered</span>
+              <span className="hidden sm:inline">·</span>
+              <span>99.9% Uptime</span>
+              <span className="hidden sm:inline">·</span>
+              <span>Sub-Second Load</span>
+              <span className="hidden sm:inline">·</span>
+              <span>No Subscription</span>
             </span>
           </motion.p>
 

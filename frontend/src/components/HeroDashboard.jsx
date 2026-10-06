@@ -242,18 +242,18 @@ export const HeroDashboard = () => {
     <div className="w-full rounded-3xl border border-white/10 bg-[#1a1b23] shadow-[0_20px_60px_-12px_rgba(0,0,0,0.5)] overflow-hidden select-none">
 
       {/* ─── Title Bar ─── */}
-      <div className="flex items-center justify-between border-b border-white/5 bg-[#15161d] px-5 py-3">
+      <div className="flex items-center justify-between border-b border-white/5 bg-[#15161d] px-3 sm:px-5 py-2 sm:py-3">
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-red-400/80" />
-          <div className="h-3 w-3 rounded-full bg-amber-400/80" />
-          <div className="h-3 w-3 rounded-full bg-emerald-400/80" />
+          <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-red-400/80" />
+          <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-amber-400/80" />
+          <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-400/80" />
         </div>
-        <div className="flex items-center gap-2 rounded-lg bg-white/5 px-3 py-1">
-          <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-[10px] font-medium text-zinc-400">dashboard.kodeveil.in</span>
+        <div className="flex items-center gap-2 rounded-lg bg-white/5 px-2 sm:px-3 py-1 overflow-hidden">
+          <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+          <span className="text-[9px] sm:text-[10px] font-medium text-zinc-400 truncate max-w-[120px] sm:max-w-none">dashboard.kodeveil.in</span>
         </div>
         <div className="flex items-center justify-end w-[44px]">
-          <img src={logoImg} alt="Kodeveil" className="h-4 w-auto object-contain opacity-70" />
+          <img src={logoImg} alt="Kodeveil" className="h-3 sm:h-4 w-auto object-contain opacity-70" />
         </div>
       </div>
 

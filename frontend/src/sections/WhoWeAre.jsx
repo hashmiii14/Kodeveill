@@ -81,9 +81,9 @@ export const WhoWeAre = () => {
         </div>
 
         {/* Bottom Stats — Clean, minimal */}
-        <Reveal className="mt-24 grid grid-cols-3 gap-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02] p-10 text-center">
+        <Reveal className="mt-16 sm:mt-24 grid grid-cols-1 sm:grid-cols-3 gap-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02] p-8 sm:p-10 text-center">
           {WHO_WE_ARE.stats.map((s, idx) => (
-            <div key={idx} className="border-r border-slate-200 dark:border-white/10 last:border-0">
+            <div key={idx} className="border-b sm:border-b-0 sm:border-r border-slate-200 dark:border-white/10 last:border-0 pb-8 sm:pb-0 last:pb-0">
               <div className="font-display text-4xl sm:text-5xl font-black text-slate-900 dark:text-white">
                 {s.value}
               </div>

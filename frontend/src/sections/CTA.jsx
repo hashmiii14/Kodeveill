@@ -47,10 +47,8 @@ export const CTA = () => {
           <Reveal>
             <span className="section-overline text-white/50">Ready to Start?</span>
 
-            <h2 className="mt-6 font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.05]">
-              Let's build something your
-              <br />
-              competitors will{" "}
+            <h2 className="mt-6 font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.05] text-balance mx-auto">
+              Let's build something your competitors will{" "}
               <span className="text-white">wish they had.</span>
             </h2>
 
