@@ -1,18 +1,24 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Leaf, Droplet, Building2, Smile, Coffee, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { scrollToId } from "@/lib/scroll";
 import { HeroDashboard } from "@/components/HeroDashboard";
 import { Marquee } from "@/components/Marquee";
 
+// Import brand logos
+import imgOudArabia from "@/assets/brands/oud-arabia.png";
+import imgFaizDental from "@/assets/brands/faiz-dental.png";
+import imgOrizerErp from "@/assets/brands/orizer-erp.png";
+import imgOrchidInstitute from "@/assets/brands/orchid-institute.png";
+import imgOakmora from "@/assets/brands/oakmora.png";
+
 const CLIENT_LOGOS = [
-  { name: "Oakmora", color: "#B45309", icon: Leaf },
-  { name: "Oud Arábia", color: "#D4AF37", icon: Droplet },
-  { name: "VYU Industries", color: "#3B82F6", icon: Building2 },
-  { name: "Faiz Dental", color: "#0D9488", icon: Smile },
-  { name: "Urban Café", color: "#EA580C", icon: Coffee },
-  { name: "Orchid Institute", color: "#C026D3", icon: BookOpen },
+  { name: "Oakmora", src: imgOakmora },
+  { name: "Oud Arábia", src: imgOudArabia },
+  { name: "Orizer ERP", src: imgOrizerErp },
+  { name: "Faiz Dental", src: imgFaizDental },
+  { name: "Orchid Institute", src: imgOrchidInstitute },
 ];
 
 const spring = { type: "spring", stiffness: 100, damping: 20, mass: 0.8 };
@@ -159,20 +165,18 @@ export const Hero = () => {
             <div className="w-full max-w-5xl mx-auto overflow-hidden">
               <Marquee speed={40} pauseOnHover showFade={false}>
                 <div className="flex items-center gap-16 px-8">
-                  {CLIENT_LOGOS.map((brand) => {
-                    const Icon = brand.icon;
-                    return (
-                      <div
-                        key={brand.name}
-                        className="flex items-center gap-2.5 opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 cursor-default"
-                      >
-                        <Icon className="h-6 w-6 text-white/80" strokeWidth={1.5} />
-                        <span className="text-xl font-bold tracking-tight font-display text-white/80">
-                          {brand.name}
-                        </span>
-                      </div>
-                    );
-                  })}
+                  {CLIENT_LOGOS.map((brand, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center justify-center opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 cursor-default px-2"
+                    >
+                      <img 
+                        src={brand.src} 
+                        alt={brand.name} 
+                        className="h-9 sm:h-11 w-auto object-contain object-center" 
+                      />
+                    </div>
+                  ))}
                 </div>
               </Marquee>
             </div>
