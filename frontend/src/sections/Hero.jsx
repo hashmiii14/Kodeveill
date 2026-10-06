@@ -156,18 +156,18 @@ export const Hero = () => {
             <p className="text-xs font-medium uppercase tracking-widest text-white/40 mb-4">
               Trusted by growing brands
             </p>
-            <div className="w-full max-w-4xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-              <Marquee speed={30} pauseOnHover>
-                <div className="flex items-center gap-14 pr-14">
+            <div className="w-full max-w-5xl mx-auto overflow-hidden">
+              <Marquee speed={40} pauseOnHover showFade={false}>
+                <div className="flex items-center gap-16 px-8">
                   {CLIENT_LOGOS.map((brand) => {
                     const Icon = brand.icon;
                     return (
                       <div
                         key={brand.name}
-                        className="flex items-center gap-2.5 opacity-40 hover:opacity-80 transition-opacity duration-300 cursor-default"
+                        className="flex items-center gap-2.5 opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0 cursor-default"
                       >
-                        <Icon className="h-5 w-5 text-white/60" strokeWidth={2} />
-                        <span className="text-lg font-bold tracking-tight font-display text-white/60">
+                        <Icon className="h-6 w-6 text-white/80" strokeWidth={1.5} />
+                        <span className="text-xl font-bold tracking-tight font-display text-white/80">
                           {brand.name}
                         </span>
                       </div>
