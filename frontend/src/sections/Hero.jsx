@@ -128,14 +128,11 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...spring, delay: 0.35 }}
-            className="mt-6 sm:mt-8 text-lg sm:text-xl text-white/75 max-w-3xl mx-auto text-balance"
+            className="mt-6 sm:mt-8 text-lg sm:text-xl text-white/75 max-w-2xl mx-auto text-balance"
             style={{ letterSpacing: "-0.011em", lineHeight: 1.33 }}
             data-testid="hero-subheading"
           >
-            Modern, lightning-fast websites for businesses that want to stand out —{" "}
-            <span className="text-white">
-              built to create trust, dominate search, and turn visitors into customers.
-            </span>
+            Engineering lightning-fast, high-converting websites for ambitious brands.
           </motion.p>
 
           {/* CTAs — OwnClip style rounded-full */}
