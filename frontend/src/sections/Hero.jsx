@@ -185,14 +185,8 @@ export const Hero = () => {
       </section>
 
       {/* ─── DASHBOARD SHOWCASE ─── */}
-      <section className="relative bg-[#f5f5f7] dark:bg-[#0D0E12] pb-20 sm:pb-28 -mt-2">
-        {/* Gradient bridge from dark hero into light section */}
-        <div
-          className="absolute top-0 left-0 right-0 h-40 sm:h-56 pointer-events-none z-0"
-          style={{ background: "linear-gradient(to bottom, #0D0E12 0%, #0D0E12 30%, transparent 100%)" }}
-          aria-hidden="true"
-        />
-
+      <section className="relative bg-[#f5f5f7] dark:bg-[#0D0E12] pt-16 pb-20 sm:pb-28">
+        
         <div className="container-x relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.95 }}

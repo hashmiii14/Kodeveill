@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import logoImg from "@/assets/kodeveill-logo.webp";
 
 /* ─── Animated Counter Hook ─── */
 const useCounter = (end, duration = 2000, delay = 0) => {
@@ -251,10 +252,8 @@ export const HeroDashboard = () => {
           <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
           <span className="text-[10px] font-medium text-zinc-400">dashboard.kodeveil.in</span>
         </div>
-        <div className="flex items-center gap-1.5">
-          <div className="h-1 w-4 rounded-full bg-zinc-700" />
-          <div className="h-1 w-4 rounded-full bg-zinc-700" />
-          <div className="h-1 w-4 rounded-full bg-zinc-700" />
+        <div className="flex items-center justify-end w-[44px]">
+          <img src={logoImg} alt="Kodeveil" className="h-4 w-auto object-contain opacity-70" />
         </div>
       </div>
 
