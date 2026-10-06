@@ -119,7 +119,7 @@ export const Navbar = () => {
             type="button"
             data-testid="nav-logo"
             onClick={() => handleNav("home")}
-            aria-label="KodeVeil home"
+            aria-label="Kodeveil home"
             className="flex items-center gap-2.5 focus-visible:outline-none group text-left touch-manipulation"
           >
             <span className={`flex h-9 w-9 items-center justify-center rounded-xl shadow-sm transition-all duration-300 group-hover:scale-105 ${
@@ -127,7 +127,7 @@ export const Navbar = () => {
                 ? "bg-white/10 border border-white/10"
                 : "bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900"
             }`}>
-              <img src={logo} alt="KodeVeil logo" className="h-5 w-5 object-contain brightness-125" width="20" height="20" />
+              <img src={logo} alt="Kodeveil logo" className="h-5 w-5 object-contain brightness-125" width="20" height="20" />
             </span>
             <span className={`font-bold text-lg tracking-tight transition-colors duration-300 ${
               isDarkNav ? "text-white" : "text-slate-900 dark:text-white"

@@ -1,4 +1,4 @@
-// Central content for the KodeVeil landing page (Deep Blue + Pure White Theme).
+// Central content for the Kodeveil landing page (Deep Blue + Pure White Theme).
 import {
   Palette, Layout, Briefcase, RefreshCw, Search, Wrench,
   Smartphone, MonitorSmartphone, LayoutDashboard, Zap, Lock,
@@ -16,7 +16,7 @@ export const NAV_LINKS = [
 export const WHO_WE_ARE = {
   subtitle: "WHO WE ARE",
   title: "Engineering Digital Excellence for Ambitious Brands",
-  story: "KodeVeil was founded with a singular mission: to eliminate slow, generic, template-driven websites that hold businesses back. We believe your digital presence should be as refined, capable, and ambitious as your real-world business.",
+  story: "Kodeveil was founded with a singular mission: to eliminate slow, generic, template-driven websites that hold businesses back. We believe your digital presence should be as refined, capable, and ambitious as your real-world business.",
   mission: "We combine modern frontend architecture, sub-second web speed, custom UI/UX design, and conversion strategy to craft digital experiences that build trust and generate high-value inbound leads.",
   points: [
     { title: "Bespoke Engineering", desc: "No generic templates or bloated builders. Every line of code is handcrafted for speed, security, and scalability." },
@@ -368,7 +368,7 @@ export const TESTIMONIALS = [
     name: "Dr. Adil Zafar",
     company: "Faiz Dental Clinic",
     initials: "AZ",
-    quote: "KodeVeil delivered a genuinely professional design and had it live faster than I expected. Communication was effortless throughout — they understood exactly what my clinic needed. Highly recommended.",
+    quote: "Kodeveil delivered a genuinely professional design and had it live faster than I expected. Communication was effortless throughout — they understood exactly what my clinic needed. Highly recommended.",
     rating: 5
   },
   {
@@ -388,7 +388,7 @@ export const TESTIMONIALS = [
 ];
 
 export const CONTACT = {
-  company: "KodeVeil",
+  company: "Kodeveil",
   email: "contact.kodeveil@gmail.com",
   phone: "+91 85950 18458",
   phoneRaw: "+918595018458",

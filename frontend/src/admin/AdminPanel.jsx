@@ -87,7 +87,7 @@ const AdminPanel = () => {
               <Shield className="h-5 w-5 text-white" />
             </div>
             <div>
-              <p className="font-display text-sm font-bold text-white">KodeVeil</p>
+              <p className="font-display text-sm font-bold text-white">Kodeveil</p>
               <p className="text-[10px] text-zinc-500 font-medium">Admin Panel</p>
             </div>
           </div>
@@ -154,7 +154,7 @@ const AdminPanel = () => {
           </button>
           <div className="flex items-center gap-2">
             <Shield className="h-5 w-5 text-indigo-400" />
-            <span className="font-display text-sm font-bold">KodeVeil Admin</span>
+            <span className="font-display text-sm font-bold">Kodeveil Admin</span>
           </div>
           <a href="/" className="rounded-lg p-2 text-zinc-400 hover:text-white transition-colors" title="Back to site">
             <ChevronLeft className="h-5 w-5" />

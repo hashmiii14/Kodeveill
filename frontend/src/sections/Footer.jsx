@@ -25,11 +25,11 @@ export const Footer = () => (
           <button
             type="button"
             onClick={() => scrollToId("home")}
-            aria-label="KodeVeil home"
+            aria-label="Kodeveil home"
             className="flex items-center gap-2.5 focus-visible:outline-none group"
           >
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white shadow-sm">
-              <img src={logo} alt="KodeVeil logo" className="h-6 w-6 object-contain brightness-125" width="24" height="24" />
+              <img src={logo} alt="Kodeveil logo" className="h-6 w-6 object-contain brightness-125" width="24" height="24" />
             </span>
             <div className="flex flex-col text-left">
               <span className="font-display text-xl font-bold text-white">Kodeveil</span>

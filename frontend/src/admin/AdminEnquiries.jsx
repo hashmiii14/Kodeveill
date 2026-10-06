@@ -296,14 +296,14 @@ export const AdminEnquiries = () => {
               {/* Actions */}
               <div className="flex flex-wrap gap-2 pt-2">
                 <a
-                  href={`mailto:${selected.email}?subject=Re: Your Enquiry — KodeVeil&body=Hi ${selected.name},%0A%0AThank you for reaching out to us!%0A%0A`}
+                  href={`mailto:${selected.email}?subject=Re: Your Enquiry — Kodeveil&body=Hi ${selected.name},%0A%0AThank you for reaching out to us!%0A%0A`}
                   className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-500 transition-colors"
                   onClick={() => handleStatusChange(selected.id, "replied")}
                 >
                   <Mail className="h-4 w-4" /> Reply via Email
                 </a>
                 <a
-                  href={`https://wa.me/${selected.phone?.replace(/\D/g, "") || ""}?text=Hi ${encodeURIComponent(selected.name)}, thank you for reaching out to KodeVeil!`}
+                  href={`https://wa.me/${selected.phone?.replace(/\D/g, "") || ""}?text=Hi ${encodeURIComponent(selected.name)}, thank you for reaching out to Kodeveil!`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-emerald-500 transition-colors"

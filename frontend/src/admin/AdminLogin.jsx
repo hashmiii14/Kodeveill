@@ -117,7 +117,7 @@ export const AdminLogin = ({ onLogin }) => {
 
           {/* Footer */}
           <p className="mt-6 text-center text-xs text-zinc-600">
-            Protected area · KodeVeil Admin
+            Protected area · Kodeveil Admin
           </p>
         </div>
       </motion.div>
