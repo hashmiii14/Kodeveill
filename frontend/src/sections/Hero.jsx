@@ -24,7 +24,7 @@ const CLIENT_LOGOS = [
 const spring = { type: "spring", stiffness: 100, damping: 20, mass: 0.8 };
 
 const AnimatedMesh = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+  <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
     {/* Indigo Blob */}
     <motion.div
       animate={{
@@ -33,7 +33,7 @@ const AnimatedMesh = () => (
         scale: [1, 1.1, 0.9, 1],
       }}
       transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-      className="absolute top-[20%] left-[20%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full mix-blend-screen filter blur-[120px] opacity-50"
+      className="absolute top-[10%] left-[15%] w-[400px] h-[400px] bg-indigo-500/50 rounded-full mix-blend-screen filter blur-[100px] opacity-80"
     />
     {/* Violet Blob */}
     <motion.div
@@ -43,7 +43,7 @@ const AnimatedMesh = () => (
         scale: [1, 0.9, 1.1, 1],
       }}
       transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-      className="absolute bottom-[20%] right-[20%] w-[600px] h-[600px] bg-violet-600/20 rounded-full mix-blend-screen filter blur-[120px] opacity-40"
+      className="absolute bottom-[20%] right-[15%] w-[500px] h-[500px] bg-purple-500/50 rounded-full mix-blend-screen filter blur-[120px] opacity-70"
     />
     {/* Blue Blob */}
     <motion.div
@@ -52,7 +52,7 @@ const AnimatedMesh = () => (
         y: [0, -100, 60, 0],
       }}
       transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full mix-blend-screen filter blur-[150px] opacity-30"
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/40 rounded-full mix-blend-screen filter blur-[140px] opacity-60"
     />
   </div>
 );
