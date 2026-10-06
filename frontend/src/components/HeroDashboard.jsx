@@ -320,6 +320,48 @@ export const HeroDashboard = () => {
               <span className="text-[10px] text-emerald-400">↑ 23% vs last month</span>
             </div>
           </motion.div>
+
+          {/* New Stack Integration Widget to fill empty space */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 3.4 }}
+            className="mt-6 pt-4 border-t border-white/5 flex flex-col gap-3"
+          >
+            <span className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider">Modern Edge Stack</span>
+            <div className="flex items-center gap-2">
+              <div className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.03] border border-white/5 opacity-80 hover:opacity-100 transition-opacity">
+                <span className="text-[11px] font-semibold text-white tracking-wide">Next.js</span>
+              </div>
+              <div className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.03] border border-white/5 opacity-80 hover:opacity-100 transition-opacity">
+                <span className="text-[11px] font-semibold text-white tracking-wide">React 18</span>
+              </div>
+              <div className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.03] border border-white/5 opacity-80 hover:opacity-100 transition-opacity">
+                <span className="text-[11px] font-semibold text-white tracking-wide">Tailwind</span>
+              </div>
+              <div className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.03] border border-white/5 opacity-80 hover:opacity-100 transition-opacity">
+                <span className="text-[11px] font-semibold text-white tracking-wide">Framer</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 mt-1">
+              <div className="h-1 flex-1 rounded-full bg-indigo-500/80 overflow-hidden relative">
+                 <motion.div 
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "100%" }}
+                    transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                    className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/50 to-transparent" 
+                 />
+              </div>
+              <div className="h-1 flex-1 rounded-full bg-emerald-500/80 overflow-hidden relative">
+                 <motion.div 
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "100%" }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                    className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/50 to-transparent" 
+                 />
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Right Panel: Metrics */}

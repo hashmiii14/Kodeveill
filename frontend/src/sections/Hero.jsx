@@ -198,7 +198,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 40, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ ...spring, delay: 0.4, mass: 1.2 }}
-            className="relative w-full max-w-6xl mx-auto"
+            className="relative w-full max-w-5xl mx-auto px-4 sm:px-6"
           >
             {/* Outer glow */}
             <div className="absolute -inset-2 rounded-[2rem] opacity-30 pointer-events-none" style={{
