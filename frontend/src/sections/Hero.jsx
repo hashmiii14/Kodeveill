@@ -184,21 +184,14 @@ export const Hero = () => {
         </div>
       </section>
 
-      {/* ─── DASHBOARD SHOWCASE (transitions from dark hero to light) ─── */}
-      <section className="relative bg-[#f5f5f7] dark:bg-[#0D0E12] pb-20 sm:pb-28 -mt-2">
-        {/* Gradient bridge from dark hero */}
-        <div
-          className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
-          style={{ background: "linear-gradient(to bottom, #0D0E12, transparent)" }}
-          aria-hidden="true"
-        />
-
-        <div className="container-x relative z-10">
+      {/* ─── DASHBOARD SHOWCASE (stays in dark, seamless with hero) ─── */}
+      <section className="relative bg-[#0D0E12] pb-0 -mt-2">
+        <div className="container-x relative z-10 pb-20 sm:pb-28">
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ ...spring, delay: 0.4, mass: 1.2 }}
-            className="relative w-full max-w-5xl mx-auto px-4 sm:px-6"
+            className="relative w-full max-w-4xl mx-auto"
           >
             {/* Outer glow */}
             <div className="absolute -inset-2 rounded-[2rem] opacity-30 pointer-events-none" style={{
@@ -210,26 +203,39 @@ export const Hero = () => {
               <HeroDashboard />
             </div>
           </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className="hidden lg:flex flex-col items-center mt-16 gap-2"
+          >
+            <span className="text-[10px] font-mono font-medium uppercase tracking-widest text-white/40">
+              Scroll to explore
+            </span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="h-8 w-5 rounded-full border-2 border-white/20 flex justify-center pt-1.5"
+            >
+              <div className="h-1.5 w-1.5 rounded-full bg-white/60" />
+            </motion.div>
+          </motion.div>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="hidden lg:flex flex-col items-center mt-16 gap-2"
-        >
-          <span className="text-[10px] font-mono font-medium uppercase tracking-widest text-slate-400 dark:text-white/40">
-            Scroll to explore
-          </span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="h-8 w-5 rounded-full border-2 border-slate-300 dark:border-white/20 flex justify-center pt-1.5"
-          >
-            <div className="h-1.5 w-1.5 rounded-full bg-slate-500 dark:bg-white/60" />
-          </motion.div>
-        </motion.div>
+        {/* Smooth gradient bridge from dark → light */}
+        <div
+          className="h-32 sm:h-48 pointer-events-none"
+          style={{ background: "linear-gradient(to bottom, #0D0E12, #f5f5f7)" }}
+          aria-hidden="true"
+        />
+        {/* Dark mode bridge */}
+        <div
+          className="hidden dark:block h-32 sm:h-48 pointer-events-none absolute bottom-0 left-0 right-0"
+          style={{ background: "linear-gradient(to bottom, #0D0E12, #0D0E12)" }}
+          aria-hidden="true"
+        />
       </section>
     </>
   );

@@ -321,44 +321,26 @@ export const HeroDashboard = () => {
             </div>
           </motion.div>
 
-          {/* New Stack Integration Widget to fill empty space */}
+          {/* Client Results — attention-grabbing ROI metrics */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 3.4 }}
-            className="mt-6 pt-4 border-t border-white/5 flex flex-col gap-3"
+            className="mt-6 pt-4 border-t border-white/5"
           >
-            <span className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider">Modern Edge Stack</span>
-            <div className="flex items-center gap-2">
-              <div className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.03] border border-white/5 opacity-80 hover:opacity-100 transition-opacity">
-                <span className="text-[11px] font-semibold text-white tracking-wide">Next.js</span>
+            <span className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider">Client Results</span>
+            <div className="grid grid-cols-3 gap-2 mt-3">
+              <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-3 text-center">
+                <p className="text-lg font-bold text-emerald-400 tabular-nums">3.2×</p>
+                <p className="text-[9px] font-medium text-emerald-400/70 mt-0.5">More Leads</p>
               </div>
-              <div className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.03] border border-white/5 opacity-80 hover:opacity-100 transition-opacity">
-                <span className="text-[11px] font-semibold text-white tracking-wide">React 18</span>
+              <div className="rounded-xl bg-indigo-500/10 border border-indigo-500/20 p-3 text-center">
+                <p className="text-lg font-bold text-indigo-400 tabular-nums">0.8s</p>
+                <p className="text-[9px] font-medium text-indigo-400/70 mt-0.5">Avg Load</p>
               </div>
-              <div className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.03] border border-white/5 opacity-80 hover:opacity-100 transition-opacity">
-                <span className="text-[11px] font-semibold text-white tracking-wide">Tailwind</span>
-              </div>
-              <div className="flex-1 flex items-center justify-center py-2.5 rounded-lg bg-white/[0.03] border border-white/5 opacity-80 hover:opacity-100 transition-opacity">
-                <span className="text-[11px] font-semibold text-white tracking-wide">Framer</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 mt-1">
-              <div className="h-1 flex-1 rounded-full bg-indigo-500/80 overflow-hidden relative">
-                 <motion.div 
-                    initial={{ x: "-100%" }}
-                    animate={{ x: "100%" }}
-                    transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-                    className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/50 to-transparent" 
-                 />
-              </div>
-              <div className="h-1 flex-1 rounded-full bg-emerald-500/80 overflow-hidden relative">
-                 <motion.div 
-                    initial={{ x: "-100%" }}
-                    animate={{ x: "100%" }}
-                    transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                    className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/50 to-transparent" 
-                 />
+              <div className="rounded-xl bg-amber-500/10 border border-amber-500/20 p-3 text-center">
+                <p className="text-lg font-bold text-amber-400 tabular-nums">47%</p>
+                <p className="text-[9px] font-medium text-amber-400/70 mt-0.5">Conv. Rate ↑</p>
               </div>
             </div>
           </motion.div>
