@@ -24,12 +24,12 @@ export const CTA = () => {
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover opacity-20"
+          className="absolute inset-0 h-full w-full object-cover opacity-40"
         >
           <source src="/cta-bg.mp4" type="video/mp4" />
         </video>
-        {/* Overlay gradient to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0D0E12]/95 via-[#0D0E12]/80 to-[#0D0E12]/95" />
+        {/* Lighter overlay to let video breathe */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0D0E12]/80 via-[#0D0E12]/50 to-[#0D0E12]/80" />
       </div>
 
       {/* Subtle radial glow */}
