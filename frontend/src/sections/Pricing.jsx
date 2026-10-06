@@ -11,7 +11,7 @@ export const Pricing = () => {
   return (
     <section
       id="pricing"
-      className="relative bg-white/50 dark:bg-transparent section-padding overflow-hidden border-b border-zinc-200 dark:border-white/10 transition-colors duration-300"
+      className="relative bg-[#f5f5f7] dark:bg-transparent section-padding overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300"
     >
       <div className="container-x relative z-10">
         <Reveal>
@@ -26,10 +26,10 @@ export const Pricing = () => {
         {/* Currency Toggle */}
         <Reveal>
           <div className="mt-8 flex justify-center items-center gap-4">
-            <span className={`text-sm font-medium transition-colors ${currency === "INR" ? "text-zinc-900 dark:text-white" : "text-zinc-400 dark:text-zinc-500"}`}>INR (₹)</span>
+            <span className={`text-sm font-medium transition-colors ${currency === "INR" ? "text-slate-900 dark:text-white" : "text-slate-400 dark:text-slate-500"}`}>INR (₹)</span>
             <button
               onClick={() => setCurrency(currency === "INR" ? "USD" : "INR")}
-              className="relative inline-flex h-7 w-14 items-center rounded-full bg-zinc-200 dark:bg-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-zinc-950"
+              className="relative inline-flex h-7 w-14 items-center rounded-full bg-slate-200 dark:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950"
               role="switch"
               aria-checked={currency === "USD"}
             >
@@ -40,7 +40,7 @@ export const Pricing = () => {
                 }`}
               />
             </button>
-            <span className={`text-sm font-medium transition-colors ${currency === "USD" ? "text-zinc-900 dark:text-white" : "text-zinc-400 dark:text-zinc-500"}`}>USD ($)</span>
+            <span className={`text-sm font-medium transition-colors ${currency === "USD" ? "text-slate-900 dark:text-white" : "text-slate-400 dark:text-slate-500"}`}>USD ($)</span>
           </div>
         </Reveal>
 
@@ -57,46 +57,46 @@ export const Pricing = () => {
                   idx === 2 ? "md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:max-w-none lg:mx-0 w-full" : "w-full"
                 } ${
                   isFeatured
-                    ? "border-2 border-slate-800 dark:border-slate-400 bg-white shadow-glow dark:bg-zinc-900 dark:border-slate-800 dark:border-slate-400 dark:shadow-glow"
-                    : "border border-zinc-200 bg-white shadow-card hover:shadow-card-hover dark:bg-zinc-900 dark:border-white/10 dark:hover:border-zinc-700"
+                    ? "border-2 border-slate-900 dark:border-indigo-400/50 bg-white shadow-[0_0_0_1px_rgba(99,102,241,1)] dark:bg-[#15161d] dark:shadow-[0_0_0_2px_rgba(99,102,241,0.5)]"
+                    : "kv-card hover:border-slate-300 dark:hover:border-white/20"
                 }`}
                 data-testid={`pricing-card-${plan.id}`}
               >
                 {/* Popular Badge */}
                 {isFeatured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900 px-4 py-1 text-xs font-semibold text-white shadow-md z-20">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-indigo-600 text-white px-4 py-1 text-xs font-semibold shadow-md z-20">
                     Recommended
                   </div>
                 )}
 
                 <div>
                   <div className="flex items-center justify-between gap-2 pt-1">
-                    <h3 className="font-display text-xl font-bold text-zinc-900 dark:text-white">{plan.name}</h3>
+                    <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white">{plan.name}</h3>
                     <span className={`rounded-full px-3 py-1 text-xs font-medium ${
                       isFeatured
-                        ? "bg-slate-100 dark:bg-slate-300/10 text-zinc-900 dark:text-white border border-zinc-300 dark:border-zinc-600 dark:bg-slate-100 dark:bg-slate-300/10 dark:text-zinc-500 dark:text-zinc-400 dark:border-zinc-300 dark:border-zinc-600"
-                        : "bg-zinc-100 text-zinc-600 border border-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:border-zinc-700"
+                        ? "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20"
+                        : "bg-slate-100 text-slate-600 border border-slate-200 dark:bg-white/5 dark:text-slate-400 dark:border-white/10"
                     }`}>
                       {plan.badge}
                     </span>
                   </div>
 
-                  <p className="mt-3 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400 min-h-[36px]">
+                  <p className="mt-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400 min-h-[36px]">
                     {plan.desc}
                   </p>
 
                   {/* Price */}
-                  <div className="mt-6 border-b border-zinc-100 dark:border-white/10 pb-5">
+                  <div className="mt-6 border-b border-slate-100 dark:border-white/10 pb-5">
                     <div className="flex items-baseline gap-2">
-                      <span className="font-display text-4xl font-bold tracking-tight text-zinc-900 dark:text-white" data-testid={`price-display-${plan.id}`}>
+                      <span className="font-display text-4xl font-bold tracking-tight text-slate-900 dark:text-white" data-testid={`price-display-${plan.id}`}>
                         {currency === "INR" ? plan.price : plan.priceUSD}
                       </span>
-                      <span className="text-xs font-medium text-zinc-400 dark:text-zinc-500">/ one-time</span>
+                      <span className="text-xs font-medium text-slate-400 dark:text-slate-500">/ one-time</span>
                     </div>
 
                     {plan.maintenance ? (
-                      <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-3 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-400">
-                        <span className="h-1.5 w-1.5 rounded-full bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900" aria-hidden="true" />
+                      <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-400">
+                        <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" aria-hidden="true" />
                         Maintenance: {currency === "INR" ? plan.maintenance : plan.maintenanceUSD}
                       </div>
                     ) : (
@@ -107,9 +107,9 @@ export const Pricing = () => {
                   {/* Features */}
                   <ul className="mt-6 space-y-3 text-sm">
                     {plan.features.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-zinc-700 dark:text-zinc-300">
+                      <li key={i} className="flex items-start gap-2.5 text-slate-700 dark:text-slate-300">
                         <span className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full mt-0.5 ${
-                          isFeatured ? "bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900 text-white" : "bg-zinc-900 text-white dark:bg-zinc-600"
+                          isFeatured ? "bg-indigo-600 text-white" : "bg-slate-900 text-white dark:bg-slate-600"
                         }`}>
                           <Check className="h-2.5 w-2.5 stroke-[3]" />
                         </span>
@@ -127,10 +127,10 @@ export const Pricing = () => {
                     href={plan.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group inline-flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-semibold transition-all duration-200 ${
+                    className={`group inline-flex w-full items-center justify-center gap-2 rounded-full py-3.5 text-sm font-semibold transition-all duration-200 ${
                       isFeatured
-                        ? "bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900 hover:bg-slate-900 dark:bg-slate-200 text-white shadow-md"
-                        : "bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                        ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-md"
+                        : "bg-slate-900 hover:bg-slate-800 text-white dark:bg-white/10 dark:hover:bg-white/20"
                     }`}
                     data-testid={`pricing-cta-${plan.id}`}
                   >
@@ -146,38 +146,38 @@ export const Pricing = () => {
         {/* Feature Comparison Table */}
         <Reveal className="mt-24">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <h3 className="font-display text-2xl font-bold text-zinc-900 dark:text-white">Feature Comparison</h3>
-            <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">Compare capabilities across all tiers.</p>
+            <h3 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Feature Comparison</h3>
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Compare capabilities across all tiers.</p>
           </div>
 
-          <div className="mx-auto max-w-4xl overflow-x-auto rounded-2xl border border-zinc-200 bg-white shadow-card dark:border-white/10 dark:bg-zinc-900">
-            <table className="w-full text-left text-sm text-zinc-900 dark:text-white min-w-[600px]" data-testid="pricing-comparison-table">
+          <div className="mx-auto max-w-4xl overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] dark:border-white/10 dark:bg-[#1a1b23]">
+            <table className="w-full text-left text-sm text-slate-900 dark:text-white min-w-[600px]" data-testid="pricing-comparison-table">
               <thead>
-                <tr className="border-b border-zinc-200 bg-zinc-50 dark:border-white/10 dark:bg-zinc-900">
-                  <th scope="col" className="p-4 sm:p-5 font-semibold text-zinc-900 dark:text-white">Features</th>
-                  <th scope="col" className="p-4 sm:p-5 text-center font-semibold text-zinc-600 dark:text-zinc-300">Starter</th>
-                  <th scope="col" className="p-4 sm:p-5 text-center font-semibold text-zinc-900 dark:text-white bg-slate-100/50 dark:bg-slate-300/5 dark:text-zinc-500 dark:text-zinc-400 dark:bg-zinc-50 dark:bg-zinc-900">Professional</th>
-                  <th scope="col" className="p-4 sm:p-5 text-center font-semibold text-zinc-600 dark:text-zinc-300">Business</th>
+                <tr className="border-b border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-[#15161d]">
+                  <th scope="col" className="p-4 sm:p-5 font-semibold text-slate-900 dark:text-white">Features</th>
+                  <th scope="col" className="p-4 sm:p-5 text-center font-semibold text-slate-600 dark:text-slate-300">Starter</th>
+                  <th scope="col" className="p-4 sm:p-5 text-center font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-900/10">Professional</th>
+                  <th scope="col" className="p-4 sm:p-5 text-center font-semibold text-slate-600 dark:text-slate-300">Business</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
+              <tbody className="divide-y divide-slate-100 dark:divide-white/5">
                 {PRICING_COMPARISON.map((row, idx) => (
-                  <tr key={idx} className="transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
-                    <td className="p-4 text-zinc-700 dark:text-zinc-300 font-medium">{row.feature}</td>
+                  <tr key={idx} className="transition-colors hover:bg-slate-50 dark:hover:bg-white/[0.02]">
+                    <td className="p-4 text-slate-700 dark:text-slate-300 font-medium">{row.feature}</td>
                     {["starter", "professional", "business"].map((tier) => (
-                      <td key={tier} className={`p-4 text-center ${tier === "professional" ? "bg-slate-100/30 dark:bg-slate-300/5 dark:bg-zinc-50 dark:bg-zinc-900" : ""}`}>
+                      <td key={tier} className={`p-4 text-center ${tier === "professional" ? "bg-indigo-50/30 dark:bg-indigo-900/5" : ""}`}>
                         {typeof row[tier] === "boolean" ? (
                           row[tier] ? (
-                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900 text-white mx-auto">
+                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900 mx-auto">
                               <Check className="h-3 w-3" />
                             </span>
                           ) : (
-                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-zinc-100 text-zinc-400 dark:bg-zinc-800 mx-auto">
+                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-slate-400 dark:bg-white/5 mx-auto">
                               <Minus className="h-3 w-3" />
                             </span>
                           )
                         ) : (
-                          <span className={`font-medium ${tier === "professional" ? "text-zinc-900 dark:text-white dark:text-zinc-500 dark:text-zinc-400" : "text-zinc-600 dark:text-zinc-300"}`}>
+                          <span className={`font-medium ${tier === "professional" ? "text-indigo-700 dark:text-indigo-300" : "text-slate-600 dark:text-slate-300"}`}>
                             {row[tier]}
                           </span>
                         )}
@@ -191,14 +191,14 @@ export const Pricing = () => {
         </Reveal>
 
         {/* Trust Badges */}
-        <Reveal className="mt-16 border-t border-zinc-200 dark:border-white/10 pt-12">
+        <Reveal className="mt-16 border-t border-slate-200 dark:border-white/10 pt-12">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-center">
             {PRICING_TRUST_BADGES.map((badge, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-center gap-2 rounded-xl border border-zinc-200 bg-zinc-50 px-3.5 py-3 text-xs font-medium text-zinc-600 shadow-xs transition-colors hover:border-zinc-300 dark:border-zinc-600 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-zinc-300 dark:border-zinc-600"
+                className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 text-xs font-medium text-slate-600 transition-colors hover:border-slate-300 dark:border-white/10 dark:bg-white/5 dark:text-slate-400 dark:hover:border-white/20"
               >
-                <ShieldCheck className="h-4 w-4 text-slate-700 dark:text-slate-300 flex-shrink-0" />
+                <ShieldCheck className="h-4 w-4 text-indigo-500 dark:text-indigo-400 flex-shrink-0" />
                 <span>{badge}</span>
               </div>
             ))}

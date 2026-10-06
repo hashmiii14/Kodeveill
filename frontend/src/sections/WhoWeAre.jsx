@@ -9,7 +9,7 @@ export const WhoWeAre = () => {
   return (
     <section
       id="about"
-      className="relative bg-white/50 dark:bg-transparent section-padding overflow-hidden transition-colors duration-300"
+      className="relative bg-[#f5f5f7] dark:bg-transparent section-padding overflow-hidden transition-colors duration-300"
     >
       <div className="container-x relative z-10">
         
@@ -20,16 +20,16 @@ export const WhoWeAre = () => {
           <Reveal>
             <span className="section-overline">About Kodeveil</span>
 
-            <h2 className="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-zinc-900 dark:text-white">
+            <h2 className="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-slate-900 dark:text-white">
               We turn ideas into
               <br className="hidden sm:block" />
               <span className="text-indigo-600 dark:text-indigo-400">digital experiences.</span>
             </h2>
 
-            <p className="mt-8 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">
+            <p className="mt-8 text-lg leading-relaxed text-slate-500 dark:text-slate-400">
               {WHO_WE_ARE.story}
             </p>
-            <p className="mt-4 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">
+            <p className="mt-4 text-lg leading-relaxed text-slate-500 dark:text-slate-400">
               {WHO_WE_ARE.mission}
             </p>
 
@@ -38,9 +38,9 @@ export const WhoWeAre = () => {
               {["HANDCRAFTED CODE", "CONVERSION-FIRST", "SUB-SECOND SPEED", "FULL OWNERSHIP"].map((pill) => (
                 <span
                   key={pill}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/5 px-3.5 py-1.5 text-[10px] font-mono font-medium text-zinc-500 dark:text-zinc-400 tracking-wide"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 px-3.5 py-1.5 text-[10px] font-mono font-medium text-slate-500 dark:text-slate-400 tracking-wide"
                 >
-                  <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-500" />
+                  <span className="h-1 w-1 rounded-full bg-slate-400 dark:bg-slate-500" />
                   {pill}
                 </span>
               ))}
@@ -66,13 +66,13 @@ export const WhoWeAre = () => {
                 variants={revealItem}
                 className="group kv-card p-7"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 font-mono font-bold text-xs text-zinc-400 dark:text-zinc-500">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 font-mono font-bold text-xs text-slate-400 dark:text-slate-500">
                   0{idx + 1}
                 </div>
-                <h3 className="mt-5 text-base font-bold text-zinc-900 dark:text-white transition-colors">
+                <h3 className="mt-5 text-base font-bold text-slate-900 dark:text-white transition-colors">
                   {point.title}
                 </h3>
-                <p className="mt-2.5 text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                <p className="mt-2.5 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
                   {point.desc}
                 </p>
               </motion.div>
@@ -81,13 +81,13 @@ export const WhoWeAre = () => {
         </div>
 
         {/* Bottom Stats — Clean, minimal */}
-        <Reveal className="mt-24 grid grid-cols-3 gap-8 rounded-3xl border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.02] p-10 text-center">
+        <Reveal className="mt-24 grid grid-cols-3 gap-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02] p-10 text-center">
           {WHO_WE_ARE.stats.map((s, idx) => (
-            <div key={idx} className="border-r border-zinc-200 dark:border-white/10 last:border-0">
-              <div className="font-display text-4xl sm:text-5xl font-black text-zinc-900 dark:text-white">
+            <div key={idx} className="border-r border-slate-200 dark:border-white/10 last:border-0">
+              <div className="font-display text-4xl sm:text-5xl font-black text-slate-900 dark:text-white">
                 {s.value}
               </div>
-              <p className="mt-3 text-xs font-mono font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">
+              <p className="mt-3 text-xs font-mono font-medium text-slate-400 dark:text-slate-500 uppercase tracking-widest">
                 {s.label}
               </p>
             </div>

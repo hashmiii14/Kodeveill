@@ -9,7 +9,7 @@ export const Testimonials = () => {
   return (
     <section
       id="testimonials"
-      className="relative bg-white/50 dark:bg-transparent section-padding overflow-hidden border-b border-zinc-200 dark:border-white/10 transition-colors duration-300"
+      className="relative bg-[#f5f5f7] dark:bg-transparent section-padding overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300"
     >
       <div className="container-x relative z-10">
         <Reveal>
@@ -35,21 +35,21 @@ export const Testimonials = () => {
                       <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <Quote className="h-7 w-7 text-zinc-200 dark:text-zinc-700 group-hover:text-slate-800 dark:group-hover:text-slate-300/40 transition-colors" />
+                  <Quote className="h-7 w-7 text-slate-200 dark:text-slate-800 group-hover:text-indigo-100 dark:group-hover:text-indigo-900/40 transition-colors" />
                 </div>
 
-                <p className="mt-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300 italic">
+                <p className="mt-5 text-sm leading-relaxed text-slate-600 dark:text-slate-300 italic">
                   "{t.quote}"
                 </p>
               </div>
 
-              <div className="mt-6 flex items-center gap-3.5 border-t border-zinc-100 dark:border-white/10 pt-5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 dark:bg-slate-300 text-white dark:text-slate-900 font-medium text-white text-sm">
+              <div className="mt-6 flex items-center gap-3.5 border-t border-slate-100 dark:border-white/10 pt-5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 font-medium text-sm">
                   {t.initials}
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">{t.name}</h3>
-                  <p className="text-xs text-zinc-900 dark:text-white">{t.company}</p>
+                  <h3 className="text-sm font-semibold text-slate-900 dark:text-white">{t.name}</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">{t.company}</p>
                 </div>
               </div>
             </motion.div>

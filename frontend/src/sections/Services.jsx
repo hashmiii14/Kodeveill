@@ -24,7 +24,7 @@ export const Services = () => {
   return (
     <section
       id="services"
-      className="relative bg-zinc-50/50 dark:bg-transparent section-padding overflow-hidden transition-colors duration-300"
+      className="relative section-padding overflow-hidden bg-[#f5f5f7] dark:bg-[#0D0E12] transition-colors duration-300"
     >
       <div className="container-x relative z-10">
         <Reveal>
@@ -46,6 +46,7 @@ export const Services = () => {
               <motion.div
                 key={s.title}
                 variants={revealItem}
+                className="h-full"
               >
                 <TiltCard
                   tiltAmount={4}
@@ -54,21 +55,21 @@ export const Services = () => {
                   <div>
                     {/* Icon + Number */}
                     <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-700 dark:text-zinc-300 transition-all duration-300 group-hover:bg-zinc-900 group-hover:text-white group-hover:border-zinc-900 dark:group-hover:bg-white/10 dark:group-hover:border-white/20">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 transition-all duration-300 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900 dark:group-hover:bg-white/10 dark:group-hover:border-white/20">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </div>
-                      <span className="font-mono text-xs font-medium text-indigo-600 dark:text-indigo-400 transition-colors duration-300 group-hover:text-zinc-900 dark:group-hover:text-white">
+                      <span className="font-mono text-xs font-medium text-indigo-500 dark:text-indigo-400 transition-colors duration-300 group-hover:text-slate-900 dark:group-hover:text-white">
                         {(idx + 1).toString().padStart(2, "0")}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="mt-6 text-lg font-bold text-zinc-900 dark:text-white transition-colors">
+                    <h3 className="mt-6 text-lg font-bold text-slate-900 dark:text-white transition-colors">
                       {s.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+                    <p className="mt-3 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
                       {s.desc}
                     </p>
 
@@ -78,9 +79,9 @@ export const Services = () => {
                         {pills.map((pill) => (
                           <span
                             key={pill}
-                            className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/5 px-3 py-1 text-[10px] font-mono font-medium text-zinc-500 dark:text-zinc-400 tracking-wide"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 px-3 py-1 text-[10px] font-mono font-medium text-slate-500 dark:text-slate-400 tracking-wide"
                           >
-                            <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-500" />
+                            <span className="h-1 w-1 rounded-full bg-slate-400 dark:bg-slate-500" />
                             {pill}
                           </span>
                         ))}
@@ -89,14 +90,14 @@ export const Services = () => {
                   </div>
 
                   {/* Bottom action */}
-                  <div className="mt-8 pt-4 border-t border-zinc-100 dark:border-white/5 flex items-center justify-between">
-                    <span className="text-xs font-medium text-zinc-400 dark:text-zinc-600">
+                  <div className="mt-8 pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+                    <span className="text-xs font-medium text-slate-400 dark:text-slate-500">
                       Learn more
                     </span>
                     <button
                       type="button"
                       onClick={() => scrollToId("contact")}
-                      className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-100 dark:bg-white/5 text-zinc-400 dark:text-zinc-500 transition-all duration-300 group-hover:bg-zinc-900 group-hover:text-white dark:group-hover:bg-white/10 dark:group-hover:text-white"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 dark:bg-white/5 text-slate-400 dark:text-slate-500 transition-all duration-300 group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white/10 dark:group-hover:text-white"
                       aria-label={`Inquire about ${s.title}`}
                     >
                       <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />

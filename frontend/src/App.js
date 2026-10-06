@@ -29,7 +29,7 @@ import { Routes, Route } from "react-router-dom";
 const AdminPanel = lazy(() => import("@/admin/AdminPanel"));
 
 const LandingPage = () => (
-  <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans antialiased selection:bg-indigo-500/20 selection:text-indigo-700 dark:selection:bg-indigo-500/30 dark:selection:text-white transition-colors duration-300">
+  <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-[#f5f5f7] dark:bg-[#0D0E12] text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-indigo-500/15 selection:text-indigo-900 dark:selection:bg-indigo-500/30 dark:selection:text-white transition-colors duration-300">
     {/* Accessibility Skip Link */}
     <a
       href="#main-content"
@@ -40,8 +40,8 @@ const LandingPage = () => (
 
     {/* --- AMBIENT DARK MODE GLOW --- */}
     <div className="pointer-events-none fixed inset-0 z-0 hidden dark:block">
-      <div className="absolute top-[-20%] left-[-10%] h-[500px] w-[500px] rounded-full bg-slate-800/30 blur-[120px]" />
-      <div className="absolute bottom-[-20%] right-[-10%] h-[600px] w-[600px] rounded-full bg-slate-800/20 blur-[150px]" />
+      <div className="absolute top-[-20%] left-[-10%] h-[500px] w-[500px] rounded-full bg-indigo-950/20 blur-[120px]" />
+      <div className="absolute bottom-[-20%] right-[-10%] h-[600px] w-[600px] rounded-full bg-slate-900/20 blur-[150px]" />
     </div>
 
     <ScrollProgress />
@@ -50,7 +50,7 @@ const LandingPage = () => (
     <main id="main-content" tabIndex="-1" className="w-full max-w-full overflow-x-hidden outline-none relative z-10 transition-colors duration-300">
       <Hero />
       <SocialProof />
-      <Suspense fallback={<div className="min-h-[200px] w-full bg-zinc-50 dark:bg-zinc-950" />}>
+      <Suspense fallback={<div className="min-h-[200px] w-full bg-[#f5f5f7] dark:bg-[#0D0E12]" />}>
         <WhoWeAre />
         <Services />
         <WhyChooseUs />
@@ -74,7 +74,7 @@ const LandingPage = () => (
 function App() {
   return (
     <ThemeProvider>
-      <Suspense fallback={<div className="min-h-screen bg-zinc-950" />}>
+      <Suspense fallback={<div className="min-h-screen bg-[#0D0E12]" />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/admin/*" element={<AdminPanel />} />

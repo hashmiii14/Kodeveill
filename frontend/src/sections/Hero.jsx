@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Play, Leaf, Droplet, Building2, Smile, Coffee, BookOpen } from "lucide-react";
 
 import { scrollToId } from "@/lib/scroll";
-import { MagneticButton } from "@/components/MagneticButton";
 import { HeroDashboard } from "@/components/HeroDashboard";
 import { Marquee } from "@/components/Marquee";
 
@@ -20,149 +19,214 @@ const spring = { type: "spring", stiffness: 100, damping: 20, mass: 0.8 };
 
 export const Hero = () => {
   return (
-    <section
-      id="home"
-      className="relative min-h-screen overflow-hidden bg-zinc-50/50 dark:bg-transparent pt-32 pb-20 transition-colors duration-300"
-    >
-      {/* Subtle grid background */}
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" aria-hidden="true" />
+    <>
+      {/* ─── DARK HERO SECTION (OwnClip-inspired full-viewport) ─── */}
+      <section
+        id="home"
+        data-nav-dark="true"
+        className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#0D0E12]"
+      >
+        {/* Ambient gradient overlay */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(rgba(8, 9, 12, 0.4) 0%, rgba(8, 9, 12, 0.2) 30%, rgba(8, 9, 12, 0.3) 60%, rgba(8, 9, 12, 0.85) 100%)"
+          }}
+          aria-hidden="true"
+        />
 
-      <div className="container-x relative z-10 flex flex-col items-center text-center">
-        
-        {/* ─── Top: Copy ─── */}
-        
-        {/* Overline badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...spring, delay: 0.1 }}
-        >
-          <span className="kv-badge">
-            <span className="h-1.5 w-1.5 rounded-full bg-slate-400 animate-pulse-soft" aria-hidden="true" />
-            Grow & Digitalise with Kodeveil
-          </span>
-        </motion.div>
+        {/* Subtle radial glow behind hero content */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] opacity-40"
+          style={{
+            background: "radial-gradient(50% 50% at 50% 50%, rgba(99, 102, 241, 0.15), transparent 70%)",
+            filter: "blur(60px)"
+          }}
+        />
 
-        {/* Main headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...spring, delay: 0.2 }}
-          className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight text-zinc-900 dark:text-white leading-[1.05] max-w-4xl"
-          data-testid="hero-headline"
-        >
-          We engineer digital experiences that <span className="text-indigo-600 dark:text-indigo-400">convert.</span>
-        </motion.h1>
+        {/* Dot grid overlay */}
+        <div
+          className="absolute inset-0 z-[5] pointer-events-none opacity-30"
+          style={{
+            backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
+            backgroundSize: "24px 24px"
+          }}
+          aria-hidden="true"
+        />
 
-        {/* Subheading */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...spring, delay: 0.35 }}
-          className="mt-8 max-w-2xl text-lg sm:text-xl leading-relaxed text-zinc-500 dark:text-zinc-400"
-          data-testid="hero-subheading"
-        >
-          Modern, lightning-fast websites for businesses that want to
-          stand out — built to create trust, dominate search, and turn
-          visitors into customers.
-        </motion.p>
+        {/* ─── Hero Content ─── */}
+        <div className="container-x relative z-20 pt-28 sm:pt-32 pb-16 text-center">
 
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...spring, delay: 0.5 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-        >
-          <MagneticButton
-            type="button"
-            onClick={() => scrollToId("contact")}
-            className="kv-btn-primary group"
-            data-testid="hero-primary-cta"
+          {/* Overline text */}
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...spring, delay: 0.1 }}
+            className="mb-5 sm:mb-6 text-sm sm:text-[15px] text-white/70 font-medium"
+            style={{ letterSpacing: "-0.011em" }}
           >
-            <span>Start a Project</span>
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-          </MagneticButton>
+            Premium Web Engineering
+            <span aria-hidden="true" className="mx-2 sm:mx-3 text-white/30">·</span>
+            Custom Code Only
+            <span aria-hidden="true" className="mx-2 sm:mx-3 text-white/30">·</span>
+            No Templates
+          </motion.p>
 
-          <MagneticButton
-            type="button"
-            onClick={() => scrollToId("portfolio")}
-            className="kv-btn-ghost group"
-            data-testid="hero-secondary-cta"
+          {/* Main headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...spring, delay: 0.2 }}
+            className="font-semibold text-white mx-auto max-w-5xl text-balance"
+            style={{
+              fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.07
+            }}
+            data-testid="hero-headline"
           >
-            <Play className="h-4 w-4" />
-            <span>View Our Work</span>
-          </MagneticButton>
-        </motion.div>
+            We engineer digital experiences that{" "}
+            <span className="text-gradient-indigo">convert.</span>
+          </motion.h1>
 
-        {/* Client logos trust bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...spring, delay: 0.65 }}
-          className="mt-12 flex flex-col items-center"
-        >
-          <p className="text-xs font-medium uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-4">
-            Trusted by growing brands
-          </p>
-          <div className="w-full max-w-4xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-            <Marquee speed={30} pauseOnHover>
-              <div className="flex items-center gap-14 pr-14">
-                {CLIENT_LOGOS.map((brand) => {
-                  const Icon = brand.icon;
-                  return (
-                    <div
-                      key={brand.name}
-                      style={{ color: brand.color }}
-                      className="flex items-center gap-2.5 opacity-60 hover:opacity-100 transition-opacity duration-300 cursor-default"
-                    >
-                      <Icon className="h-6 w-6" strokeWidth={2.5} />
-                      <span className="text-xl font-black tracking-tight font-display">
-                        {brand.name}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </Marquee>
-          </div>
-        </motion.div>
+          {/* Subheading */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...spring, delay: 0.35 }}
+            className="mt-6 sm:mt-8 text-lg sm:text-xl text-white/75 max-w-3xl mx-auto text-balance"
+            style={{ letterSpacing: "-0.011em", lineHeight: 1.33 }}
+            data-testid="hero-subheading"
+          >
+            Modern, lightning-fast websites for businesses that want to stand out —{" "}
+            <span className="text-white">
+              built to create trust, dominate search, and turn visitors into customers.
+            </span>
+          </motion.p>
 
-        {/* ─── Bottom: Animated Kodeveil Dashboard ─── */}
-        <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ ...spring, delay: 0.4, mass: 1.2 }}
-          className="relative mt-16 lg:mt-24 w-full max-w-6xl"
-        >
-          {/* Outer glow effect */}
-          <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-b from-slate-200 to-transparent opacity-50 blur-lg dark:from-slate-700 dark:opacity-30 pointer-events-none" />
-          
-          <div className="relative">
-            <HeroDashboard />
-          </div>
-        </motion.div>
+          {/* CTAs — OwnClip style rounded-full */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...spring, delay: 0.5 }}
+            className="mt-9 sm:mt-11 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5"
+          >
+            <button
+              type="button"
+              onClick={() => scrollToId("contact")}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-white text-slate-900 font-medium text-base rounded-full transition-all duration-200 hover:bg-white/90 active:scale-[0.97]"
+              data-testid="hero-primary-cta"
+            >
+              <span>Start a Project</span>
+              <ArrowRight className="h-4 w-4" />
+            </button>
 
-        {/* Scroll indicator positioned underneath everything */}
+            <button
+              type="button"
+              onClick={() => scrollToId("portfolio")}
+              className="group text-base text-white/80 hover:text-white transition-colors font-medium px-2 inline-flex items-center gap-1.5"
+              data-testid="hero-secondary-cta"
+            >
+              View Our Work
+              <span className="transition-transform group-hover:translate-x-0.5">→</span>
+            </button>
+          </motion.div>
+
+          {/* Trust line */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+            className="mt-8 sm:mt-10 text-xs sm:text-[13px] font-medium"
+            style={{ letterSpacing: "-0.008em" }}
+          >
+            <span className="inline-flex items-center gap-1.5 text-white/45 transition-colors hover:text-white/70">
+              50+ Websites Delivered · 99.9% Uptime · Sub-Second Load Times · No Subscription
+            </span>
+          </motion.p>
+
+          {/* Client logos trust bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...spring, delay: 0.65 }}
+            className="mt-12 flex flex-col items-center"
+          >
+            <p className="text-xs font-medium uppercase tracking-widest text-white/40 mb-4">
+              Trusted by growing brands
+            </p>
+            <div className="w-full max-w-4xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+              <Marquee speed={30} pauseOnHover>
+                <div className="flex items-center gap-14 pr-14">
+                  {CLIENT_LOGOS.map((brand) => {
+                    const Icon = brand.icon;
+                    return (
+                      <div
+                        key={brand.name}
+                        className="flex items-center gap-2.5 opacity-40 hover:opacity-80 transition-opacity duration-300 cursor-default"
+                      >
+                        <Icon className="h-5 w-5 text-white/60" strokeWidth={2} />
+                        <span className="text-lg font-bold tracking-tight font-display text-white/60">
+                          {brand.name}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Marquee>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── DASHBOARD SHOWCASE (transitions from dark hero to light) ─── */}
+      <section className="relative bg-[#f5f5f7] dark:bg-[#0D0E12] pb-20 sm:pb-28 -mt-2">
+        {/* Gradient bridge from dark hero */}
+        <div
+          className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
+          style={{ background: "linear-gradient(to bottom, #0D0E12, transparent)" }}
+          aria-hidden="true"
+        />
+
+        <div className="container-x relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ ...spring, delay: 0.4, mass: 1.2 }}
+            className="relative w-full max-w-6xl mx-auto"
+          >
+            {/* Outer glow */}
+            <div className="absolute -inset-2 rounded-[2rem] opacity-30 pointer-events-none" style={{
+              background: "radial-gradient(60% 60% at 50% 50%, rgba(99, 102, 241, 0.2), transparent 70%)",
+              filter: "blur(40px)"
+            }} />
+
+            <div className="relative">
+              <HeroDashboard />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="hidden lg:flex flex-col items-center mt-12 mb-4 gap-2"
+          className="hidden lg:flex flex-col items-center mt-16 gap-2"
         >
-          <span className="text-[10px] font-mono font-medium uppercase tracking-widest text-zinc-400">
+          <span className="text-[10px] font-mono font-medium uppercase tracking-widest text-slate-400 dark:text-white/40">
             Scroll to explore
           </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="h-8 w-5 rounded-full border-2 border-zinc-300 dark:border-zinc-700 flex justify-center pt-1.5"
+            className="h-8 w-5 rounded-full border-2 border-slate-300 dark:border-white/20 flex justify-center pt-1.5"
           >
-            <div className="h-1.5 w-1.5 rounded-full bg-zinc-900 dark:bg-white" />
+            <div className="h-1.5 w-1.5 rounded-full bg-slate-500 dark:bg-white/60" />
           </motion.div>
         </motion.div>
-        
-      </div>
-    </section>
+      </section>
+    </>
   );
 };

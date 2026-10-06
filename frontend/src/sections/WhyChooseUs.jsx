@@ -35,7 +35,7 @@ export const WhyChooseUs = () => {
   return (
     <section
       id="why-us"
-      className="relative bg-white/50 dark:bg-transparent section-padding overflow-hidden transition-colors duration-300"
+      className="relative bg-[#f5f5f7] dark:bg-transparent section-padding overflow-hidden transition-colors duration-300"
     >
       <div className="container-x relative z-10">
         <Reveal>
@@ -59,19 +59,19 @@ export const WhyChooseUs = () => {
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-3xl font-black text-indigo-600 dark:text-indigo-400 transition-colors duration-300 group-hover:text-zinc-900 dark:group-hover:text-white">
+                    <span className="font-mono text-3xl font-black text-indigo-500 dark:text-indigo-400 transition-colors duration-300 group-hover:text-slate-900 dark:group-hover:text-white">
                       {(idx + 1).toString().padStart(2, "0")}
                     </span>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-600 dark:text-zinc-400 transition-all duration-300 group-hover:bg-zinc-900 group-hover:border-zinc-900 group-hover:text-white dark:group-hover:bg-white/10 dark:group-hover:border-white/20">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 transition-all duration-300 group-hover:bg-slate-900 group-hover:border-slate-900 group-hover:text-white dark:group-hover:bg-white/10 dark:group-hover:border-white/20">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </div>
                   </div>
 
-                  <h3 className="mt-6 text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wide transition-colors">
+                  <h3 className="mt-6 text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wide transition-colors">
                     {item.title}
                   </h3>
 
-                  <p className="mt-3 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  <p className="mt-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
                     {item.desc}
                   </p>
 
@@ -80,9 +80,9 @@ export const WhyChooseUs = () => {
                     {item.pills.map((pill) => (
                       <span
                         key={pill}
-                        className="inline-flex items-center gap-1 rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/5 px-2.5 py-1 text-[9px] font-mono font-medium text-zinc-400 dark:text-zinc-500 tracking-wide"
+                        className="inline-flex items-center gap-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 px-2.5 py-1 text-[9px] font-mono font-medium text-slate-400 dark:text-slate-500 tracking-wide"
                       >
-                        <span className="h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+                        <span className="h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-600" />
                         {pill}
                       </span>
                     ))}
@@ -91,7 +91,7 @@ export const WhyChooseUs = () => {
 
                 {/* Progress bar — extends on hover */}
                 <div className="mt-7">
-                  <div className="h-0.5 w-10 rounded-full bg-zinc-300 dark:bg-zinc-700 transition-all duration-500 group-hover:w-full group-hover:bg-zinc-900 dark:group-hover:bg-zinc-300" />
+                  <div className="h-0.5 w-10 rounded-full bg-slate-300 dark:bg-slate-700 transition-all duration-500 group-hover:w-full group-hover:bg-slate-900 dark:group-hover:bg-slate-300" />
                 </div>
               </motion.div>
             );

@@ -15,7 +15,7 @@ export const Process = () => {
   return (
     <section
       id="process"
-      className="relative bg-zinc-50/50 dark:bg-transparent section-padding overflow-hidden transition-colors duration-300"
+      className="relative bg-[#f5f5f7] dark:bg-transparent section-padding overflow-hidden transition-colors duration-300"
     >
       <div className="container-x relative z-10">
         <Reveal>
@@ -31,7 +31,7 @@ export const Process = () => {
         <div className="mt-20 max-w-3xl mx-auto">
           <RevealStagger className="relative">
             {/* Connecting vertical line */}
-            <div className="absolute left-[19px] top-0 bottom-0 w-px bg-zinc-200 dark:bg-white/10" aria-hidden="true" />
+            <div className="absolute left-[19px] top-0 bottom-0 w-px bg-slate-200 dark:bg-white/10" aria-hidden="true" />
 
             <div className="space-y-8">
               {PROCESS_STEPS.map((item) => (
@@ -42,22 +42,22 @@ export const Process = () => {
                 >
                   {/* Timeline dot */}
                   <div className="relative z-10 flex-shrink-0">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-zinc-200 bg-white font-mono text-xs font-bold text-zinc-400 transition-all duration-300 group-hover:border-zinc-900 group-hover:bg-zinc-900 group-hover:text-white dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-500 dark:group-hover:border-zinc-300 dark:group-hover:bg-zinc-300 dark:group-hover:text-zinc-900">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-200 bg-white font-mono text-xs font-bold text-slate-400 transition-all duration-300 group-hover:border-slate-900 group-hover:bg-slate-900 group-hover:text-white dark:border-white/10 dark:bg-[#1a1b23] dark:text-slate-500 dark:group-hover:border-white/40 dark:group-hover:bg-white/10 dark:group-hover:text-white">
                       {item.step}
                     </div>
                   </div>
 
                   {/* Content card */}
                   <div className="kv-card p-7 flex-1">
-                    <h3 className="text-lg font-bold text-zinc-900 dark:text-white transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white transition-colors">
                       {item.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+                    <p className="mt-3 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
                       {item.desc}
                     </p>
-                    <div className="mt-5 flex items-center gap-2 text-[10px] font-mono font-medium text-zinc-300 dark:text-zinc-600 uppercase tracking-widest">
+                    <div className="mt-5 flex items-center gap-2 text-[10px] font-mono font-medium text-slate-400 dark:text-slate-500 uppercase tracking-widest">
                       <span>Phase {item.step}</span>
-                      <span className="h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+                      <span className="h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-600" />
                       <span>Kodeveil Standard</span>
                     </div>
                   </div>

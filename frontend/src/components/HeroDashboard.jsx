@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useMemo } from "react";
+import { motion } from "framer-motion";
 
 /* ─── Animated Counter Hook ─── */
 const useCounter = (end, duration = 2000, delay = 0) => {
@@ -75,12 +75,31 @@ const TypingCode = () => {
             <motion.span
               animate={{ opacity: [1, 0] }}
               transition={{ duration: 0.6, repeat: Infinity }}
-              className="inline-block w-[6px] h-4 bg-slate-300 ml-0.5"
+              className="inline-block w-[6px] h-4 bg-indigo-400 ml-0.5"
             />
           )}
         </motion.div>
       ))}
     </div>
+  );
+};
+
+/* ─── Sparkline Chart ─── */
+const SparklineChart = ({ data, color = "#6366f1", height = 40 }) => {
+  const max = Math.max(...data);
+  const points = data.map((v, i) => `${(i / (data.length - 1)) * 100},${100 - (v / max) * 100}`).join(" ");
+  const fillPoints = `0,100 ${points} 100,100`;
+  return (
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full" style={{ height }}>
+      <defs>
+        <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.3" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <polygon points={fillPoints} fill="url(#sparkFill)" />
+      <polyline points={points} fill="none" stroke={color} strokeWidth="2" vectorEffect="non-scaling-stroke" />
+    </svg>
   );
 };
 
@@ -95,24 +114,30 @@ const BarChart = () => {
           initial={{ height: 0 }}
           animate={{ height: `${h}%` }}
           transition={{ delay: 0.8 + i * 0.08, duration: 0.5, ease: "easeOut" }}
-          className="flex-1 rounded-sm bg-gradient-to-t from-slate-500 to-slate-300 dark:from-slate-400 dark:to-slate-200 min-w-[4px]"
+          className="flex-1 rounded-sm bg-gradient-to-t from-indigo-500/60 to-indigo-400/30 min-w-[4px]"
         />
       ))}
     </div>
   );
 };
 
-/* ─── Activity Dots ─── */
+/* ─── Activity Dots (GitHub-style) ─── */
 const ActivityGrid = () => {
   const weeks = 12;
   const days = 7;
+  // Generate intensities once with useMemo
+  const intensities = useMemo(() =>
+    Array.from({ length: weeks * days }, () => Math.random()),
+    [] // eslint-disable-line react-hooks/exhaustive-deps
+  );
+
   return (
     <div className="flex gap-[2px]">
       {Array.from({ length: weeks }).map((_, w) => (
         <div key={w} className="flex flex-col gap-[2px]">
           {Array.from({ length: days }).map((_, d) => {
-            const intensity = Math.random();
-            const opacity = intensity < 0.2 ? 0.1 : intensity < 0.4 ? 0.25 : intensity < 0.7 ? 0.5 : 0.9;
+            const intensity = intensities[w * days + d];
+            const opacity = intensity < 0.2 ? 0.08 : intensity < 0.4 ? 0.2 : intensity < 0.7 ? 0.4 : 0.8;
             return (
               <motion.div
                 key={d}
@@ -120,7 +145,7 @@ const ActivityGrid = () => {
                 animate={{ scale: 1 }}
                 transition={{ delay: 1.2 + (w * days + d) * 0.005 }}
                 className="h-[6px] w-[6px] rounded-[1px]"
-                style={{ background: `rgba(148,163,184,${opacity})` }}
+                style={{ background: `rgba(99,102,241,${opacity})` }}
               />
             );
           })}
@@ -132,9 +157,10 @@ const ActivityGrid = () => {
 
 /* ─── Deployment Status List ─── */
 const DEPLOYMENTS = [
-  { name: "oakmora.com", status: "live", time: "2m ago" },
-  { name: "oudarabia.in", status: "building", time: "just now" },
-  { name: "vyuindustries.com", status: "live", time: "1h ago" },
+  { name: "oakmora.com", status: "live", time: "2m ago", progress: 100 },
+  { name: "oudarabia.in", status: "building", time: "just now", progress: 67 },
+  { name: "vyuindustries.com", status: "live", time: "1h ago", progress: 100 },
+  { name: "orchid-institute.in", status: "live", time: "3h ago", progress: 100 },
 ];
 
 const DeploymentList = () => (
@@ -144,28 +170,76 @@ const DeploymentList = () => (
         key={d.name}
         initial={{ opacity: 0, x: 10 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.5 + i * 0.2, duration: 0.3 }}
-        className="flex items-center justify-between rounded-lg bg-zinc-800/50 px-3 py-2"
+        transition={{ delay: 1.5 + i * 0.15, duration: 0.3 }}
+        className="rounded-xl bg-white/[0.03] border border-white/5 px-3 py-2.5"
       >
-        <div className="flex items-center gap-2.5">
-          <div className={`h-2 w-2 rounded-full ${d.status === "live" ? "bg-emerald-400" : "bg-amber-400 animate-pulse"}`} />
-          <span className="text-[11px] font-medium text-zinc-200">{d.name}</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className={`h-2 w-2 rounded-full ${d.status === "live" ? "bg-emerald-400" : "bg-amber-400 animate-pulse"}`} />
+            <span className="text-[11px] font-medium text-zinc-200">{d.name}</span>
+          </div>
+          <span className="text-[10px] text-zinc-500">{d.time}</span>
         </div>
-        <span className="text-[10px] text-zinc-500">{d.time}</span>
+        {d.status === "building" && (
+          <div className="mt-2 h-1 rounded-full bg-white/5 overflow-hidden">
+            <motion.div
+              className="h-full rounded-full bg-indigo-500/60"
+              initial={{ width: "0%" }}
+              animate={{ width: `${d.progress}%` }}
+              transition={{ delay: 2, duration: 1.5, ease: "easeOut" }}
+            />
+          </div>
+        )}
       </motion.div>
     ))}
   </div>
 );
 
+/* ─── Performance Ring ─── */
+const PerformanceRing = ({ value, label, delay = 0 }) => {
+  const circumference = 2 * Math.PI * 20;
+  const strokeDashoffset = circumference - (value / 100) * circumference;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay, duration: 0.5 }}
+      className="flex flex-col items-center gap-1.5"
+    >
+      <div className="relative w-14 h-14">
+        <svg className="w-14 h-14 -rotate-90" viewBox="0 0 44 44">
+          <circle cx="22" cy="22" r="20" stroke="rgba(255,255,255,0.06)" strokeWidth="3" fill="none" />
+          <motion.circle
+            cx="22" cy="22" r="20" fill="none"
+            stroke={value >= 90 ? "#22c55e" : value >= 70 ? "#eab308" : "#ef4444"}
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            initial={{ strokeDashoffset: circumference }}
+            animate={{ strokeDashoffset }}
+            transition={{ delay: delay + 0.3, duration: 1.2, ease: "easeOut" }}
+          />
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-xs font-bold text-white tabular-nums">{value}</span>
+        </div>
+      </div>
+      <span className="text-[9px] font-mono uppercase tracking-wider text-zinc-500">{label}</span>
+    </motion.div>
+  );
+};
+
 /* ─── Main Dashboard Component ─── */
 export const HeroDashboard = () => {
   const projects = useCounter(54, 2000, 800);
   const uptime = useCounter(99, 1500, 1000);
-  const speed = useCounter(98, 1800, 1200);
+
+  const sparkData = [20, 35, 28, 55, 42, 68, 52, 75, 60, 82, 70, 88, 78, 92, 85, 95];
 
   return (
-    <div className="w-full rounded-3xl border border-zinc-200 bg-[#1a1b23] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25)] dark:border-white/10 dark:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] overflow-hidden select-none">
-      
+    <div className="w-full rounded-3xl border border-white/10 bg-[#1a1b23] shadow-[0_20px_60px_-12px_rgba(0,0,0,0.5)] overflow-hidden select-none">
+
       {/* ─── Title Bar ─── */}
       <div className="flex items-center justify-between border-b border-white/5 bg-[#15161d] px-5 py-3">
         <div className="flex items-center gap-2">
@@ -186,16 +260,19 @@ export const HeroDashboard = () => {
 
       {/* ─── Dashboard Content ─── */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-        
+
         {/* Left Panel: Code Editor */}
         <div className="md:col-span-2 p-4 sm:p-5 border-r border-white/5">
           {/* Tab bar */}
           <div className="flex items-center gap-1 mb-4">
-            <div className="rounded-md bg-white/10 px-3 py-1">
-              <span className="text-[10px] font-medium text-zinc-300">deploy.config.js</span>
+            <div className="rounded-md bg-indigo-500/10 border border-indigo-500/20 px-3 py-1">
+              <span className="text-[10px] font-medium text-indigo-300">deploy.config.js</span>
             </div>
             <div className="rounded-md px-3 py-1">
               <span className="text-[10px] font-medium text-zinc-600">analytics.ts</span>
+            </div>
+            <div className="rounded-md px-3 py-1">
+              <span className="text-[10px] font-medium text-zinc-600">seo.config.ts</span>
             </div>
           </div>
 
@@ -213,86 +290,102 @@ export const HeroDashboard = () => {
           >
             <div className="flex items-center gap-2 mb-2">
               <span className="text-[10px] font-medium text-zinc-600">TERMINAL</span>
+              <span className="text-[9px] font-mono text-emerald-500/60">bash</span>
             </div>
             <div className="font-mono text-[10px] space-y-1">
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.8 }} className="text-emerald-400">✓ Build completed in 2.3s</motion.p>
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3.2 }} className="text-emerald-400">✓ Lighthouse score: 98/100</motion.p>
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3.6 }} className="text-emerald-400">✓ Deployed to production</motion.p>
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 4.0 }} className="text-indigo-400">→ https://oakmora.com — live</motion.p>
             </div>
           </motion.div>
 
-          {/* Live Network Traffic Animation */}
+          {/* Live Traffic Sparkline */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 3.0 }}
             className="mt-6 pt-4 border-t border-white/5"
           >
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-[10px] font-medium text-zinc-500 uppercase tracking-wider">Live Network Traffic</span>
-              <span className="text-[10px] font-mono text-emerald-400 animate-pulse">● LIVE</span>
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider">Traffic Overview</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] font-mono text-zinc-600">Last 30 days</span>
+                <span className="text-[10px] font-mono text-emerald-400 animate-pulse">● LIVE</span>
+              </div>
             </div>
-            <div className="h-16 flex items-end gap-1 overflow-hidden">
-              {[...Array(40)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    height: ["20%", "80%", "40%", "100%", "30%", "60%", "20%"],
-                  }}
-                  transition={{
-                    duration: 3 + Math.random() * 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: Math.random() * 2,
-                  }}
-                  className="w-full bg-indigo-500/20 rounded-t-sm"
-                  style={{ minWidth: '4px' }}
-                />
-              ))}
+            <SparklineChart data={sparkData} color="#6366f1" height={48} />
+            <div className="flex items-center justify-between mt-2">
+              <span className="text-[10px] text-zinc-600">12.4K visitors</span>
+              <span className="text-[10px] text-emerald-400">↑ 23% vs last month</span>
             </div>
           </motion.div>
         </div>
 
         {/* Right Panel: Metrics */}
         <div className="p-4 sm:p-5 space-y-5">
-          
+
+          {/* Performance Rings */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="rounded-xl bg-white/[0.03] border border-white/5 p-4"
+          >
+            <p className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider mb-4">Core Web Vitals</p>
+            <div className="flex items-center justify-between">
+              <PerformanceRing value={98} label="Perf" delay={0.8} />
+              <PerformanceRing value={96} label="A11y" delay={1.0} />
+              <PerformanceRing value={100} label="SEO" delay={1.2} />
+            </div>
+          </motion.div>
+
           {/* Metric Cards */}
           <div className="space-y-3">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="rounded-xl bg-white/5 p-3.5 border border-white/5"
+              className="rounded-xl bg-white/[0.03] p-3.5 border border-white/5"
             >
-              <p className="text-[10px] font-medium text-zinc-500 uppercase tracking-wider">Projects Delivered</p>
-              <p className="mt-1 text-2xl font-bold text-white tabular-nums">{projects}+</p>
+              <p className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider">Projects Delivered</p>
+              <div className="flex items-end justify-between mt-1">
+                <p className="text-2xl font-bold text-white tabular-nums">{projects}+</p>
+                <span className="text-[10px] text-emerald-400 font-medium">↑ 12 this quarter</span>
+              </div>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="rounded-xl bg-white/5 p-3.5 border border-white/5"
+              className="rounded-xl bg-white/[0.03] p-3.5 border border-white/5"
             >
-              <p className="text-[10px] font-medium text-zinc-500 uppercase tracking-wider">Uptime SLA</p>
-              <p className="mt-1 text-2xl font-bold text-white tabular-nums">{uptime}.9%</p>
+              <p className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider">Uptime SLA</p>
+              <div className="flex items-end justify-between mt-1">
+                <p className="text-2xl font-bold text-white tabular-nums">{uptime}.9%</p>
+                <div className="flex gap-0.5">
+                  {[...Array(7)].map((_, i) => (
+                    <div key={i} className="w-1.5 h-4 rounded-sm bg-emerald-400/70" />
+                  ))}
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.0 }}
-              className="rounded-xl bg-white/5 p-3.5 border border-white/5"
+              className="rounded-xl bg-white/[0.03] p-3.5 border border-white/5"
             >
-              <p className="text-[10px] font-medium text-zinc-500 uppercase tracking-wider">PageSpeed Score</p>
-              <p className="mt-1 text-2xl font-bold text-white tabular-nums">{speed}</p>
+              <p className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider">PageSpeed Score</p>
               <div className="mt-2"><BarChart /></div>
             </motion.div>
           </div>
 
           {/* Deployments */}
           <div>
-            <p className="text-[10px] font-medium text-zinc-500 uppercase tracking-wider mb-2">Live Deployments</p>
+            <p className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider mb-2">Live Deployments</p>
             <DeploymentList />
           </div>
 
@@ -302,7 +395,7 @@ export const HeroDashboard = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.8 }}
           >
-            <p className="text-[10px] font-medium text-zinc-500 uppercase tracking-wider mb-2">Commit Activity</p>
+            <p className="text-[10px] font-mono font-medium text-zinc-500 uppercase tracking-wider mb-2">Commit Activity</p>
             <ActivityGrid />
           </motion.div>
         </div>

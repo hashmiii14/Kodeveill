@@ -20,7 +20,6 @@ export const FloatingActions = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleQuestionClick = (question) => {
-    // Append text to the WhatsApp URL. Handle existing query params securely.
     const url = new URL(CONTACT.whatsapp);
     url.searchParams.set('text', question);
     window.open(url.toString(), "_blank");
@@ -39,7 +38,7 @@ export const FloatingActions = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95, transition: { duration: 0.2 } }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="w-[320px] max-w-[calc(100vw-40px)] origin-bottom-right overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800"
+            className="w-[320px] max-w-[calc(100vw-40px)] origin-bottom-right overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-slate-200 dark:bg-[#15161d] dark:ring-white/10"
           >
             {/* Header */}
             <div className="flex items-center justify-between bg-[#25D366] p-4 text-white">
@@ -63,7 +62,7 @@ export const FloatingActions = () => {
             </div>
 
             {/* Body */}
-            <div className="bg-zinc-50 p-4 dark:bg-zinc-950/50">
+            <div className="bg-slate-50 p-4 dark:bg-transparent">
               {/* Agent Message */}
               <div className="mb-4 flex gap-2">
                 <div className="flex flex-shrink-0 items-end">
@@ -71,7 +70,7 @@ export const FloatingActions = () => {
                     <WhatsAppIcon className="h-3.5 w-3.5" />
                   </div>
                 </div>
-                <div className="rounded-2xl rounded-bl-none bg-white p-3 text-sm text-zinc-700 shadow-sm ring-1 ring-zinc-100 dark:bg-zinc-900 dark:text-zinc-300 dark:ring-zinc-800">
+                <div className="rounded-2xl rounded-bl-none bg-white p-3 text-sm text-slate-700 shadow-sm ring-1 ring-slate-200 dark:bg-[#1a1b23] dark:text-slate-300 dark:ring-white/5">
                   Hi there! 👋 <br /> How can we help you today?
                 </div>
               </div>
@@ -82,7 +81,7 @@ export const FloatingActions = () => {
                   <button
                     key={idx}
                     onClick={() => handleQuestionClick(q)}
-                    className="flex text-left items-center justify-between rounded-xl bg-white px-3.5 py-2.5 text-xs font-medium text-[#25D366] shadow-sm ring-1 ring-zinc-200 transition-all hover:bg-zinc-50 active:scale-95 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:bg-zinc-800"
+                    className="flex text-left items-center justify-between rounded-xl bg-white px-3.5 py-2.5 text-xs font-medium text-[#25D366] shadow-sm ring-1 ring-slate-200 transition-all hover:bg-slate-50 active:scale-95 dark:bg-[#1a1b23] dark:ring-white/5 dark:hover:bg-white/5"
                   >
                     <span>{q}</span>
                     <MessageCircle className="ml-2 h-3.5 w-3.5 flex-shrink-0 opacity-50" />

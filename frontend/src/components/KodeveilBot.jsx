@@ -87,7 +87,7 @@ export const KodeveilBot = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-transform ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
+        className={`fixed bottom-24 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-transform ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
         aria-label="Open Kodeveil Bot"
       >
         <Sparkles className="h-6 w-6" />
@@ -101,7 +101,7 @@ export const KodeveilBot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed sm:bottom-6 sm:left-6 bottom-4 left-4 z-50 flex sm:h-[550px] h-[calc(100dvh-2rem)] sm:w-[380px] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-zinc-200 dark:bg-zinc-950 dark:ring-white/10"
+            className="fixed sm:bottom-6 sm:left-6 bottom-4 left-4 z-50 flex sm:h-[550px] h-[calc(100dvh-2rem)] sm:w-[380px] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] ring-1 ring-slate-200 dark:bg-[#15161d] dark:ring-white/10 dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
           >
             {/* Header */}
             <div className="flex items-center justify-between bg-indigo-600 px-4 py-4 text-white">
@@ -126,16 +126,16 @@ export const KodeveilBot = () => {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-zinc-50/50 dark:bg-zinc-900/50">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50/50 dark:bg-[#0D0E12]">
               {messages.map((msg, idx) => (
                 <div
                   key={idx}
                   className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
                 >
-                  <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${msg.role === 'user' ? 'bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400' : 'bg-indigo-100 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400'}`}>
+                  <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${msg.role === 'user' ? 'bg-slate-200 text-slate-600 dark:bg-[#1a1b23] dark:text-slate-400' : 'bg-indigo-100 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400'}`}>
                     {msg.role === 'user' ? <User className="h-4 w-4" /> : <Sparkles className="h-4 w-4" />}
                   </div>
-                  <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm ${msg.role === 'user' ? 'bg-indigo-600 text-white rounded-tr-sm' : 'bg-white text-zinc-800 shadow-sm ring-1 ring-zinc-200 dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10 rounded-tl-sm'}`}>
+                  <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm ${msg.role === 'user' ? 'bg-indigo-600 text-white rounded-tr-sm' : 'bg-white text-slate-800 shadow-sm ring-1 ring-slate-200 dark:bg-[#15161d] dark:text-slate-200 dark:ring-white/10 rounded-tl-sm'}`}>
                     {/* Render line breaks */}
                     {msg.content.split('\n').map((line, i) => (
                       <React.Fragment key={i}>
@@ -154,14 +154,14 @@ export const KodeveilBot = () => {
             </div>
 
             {/* Input Area */}
-            <form onSubmit={handleSend} className="border-t border-zinc-200 bg-white p-3 dark:border-white/10 dark:bg-zinc-950">
+            <form onSubmit={handleSend} className="border-t border-slate-200 bg-white p-3 dark:border-white/10 dark:bg-[#15161d]">
               <div className="relative flex items-center">
                 <input
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Ask a question..."
-                  className="w-full rounded-full border border-zinc-200 bg-zinc-50 py-2.5 pl-4 pr-12 text-sm text-zinc-900 placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-white/10 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500 dark:focus:border-indigo-500"
+                  className="w-full rounded-full border border-slate-200 bg-slate-50 py-2.5 pl-4 pr-12 text-sm text-slate-900 placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-white/10 dark:bg-[#1a1b23] dark:text-white dark:placeholder:text-slate-500 dark:focus:border-indigo-500"
                 />
                 <button
                   type="submit"
