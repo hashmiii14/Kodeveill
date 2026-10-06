@@ -12,6 +12,7 @@ import { SocialProof } from "@/sections/SocialProof";
 
 // Lazy-load non-critical sections below the fold for minimal initial bundle size & sub-second FCP
 const WhoWeAre = lazy(() => import("@/sections/WhoWeAre").then((m) => ({ default: m.WhoWeAre })));
+const Team = lazy(() => import("@/sections/Team").then((m) => ({ default: m.Team })));
 const Services = lazy(() => import("@/sections/Services").then((m) => ({ default: m.Services })));
 const Portfolio = lazy(() => import("@/sections/Portfolio").then((m) => ({ default: m.Portfolio })));
 const WhyChooseUs = lazy(() => import("@/sections/WhyChooseUs").then((m) => ({ default: m.WhyChooseUs })));
@@ -52,6 +53,7 @@ const LandingPage = () => (
       <SocialProof />
       <Suspense fallback={<div className="min-h-[200px] w-full bg-[#f5f5f7] dark:bg-[#0D0E12]" />}>
         <WhoWeAre />
+        <Team />
         <Services />
         <WhyChooseUs />
         <Process />
