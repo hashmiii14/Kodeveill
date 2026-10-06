@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, X, Send, User } from "lucide-react";
+import { Bot, X, Send, User } from "lucide-react";
 
 import { WHO_WE_ARE, SERVICES, PRICING_PLANS } from "@/data/content";
 
@@ -90,7 +90,7 @@ export const KodeveilBot = () => {
         className={`fixed bottom-24 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-transform ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
         aria-label="Open Kodeveil Bot"
       >
-        <Sparkles className="h-6 w-6" />
+        <Bot className="h-6 w-6" />
       </motion.button>
 
       {/* Chat Window */}
@@ -107,7 +107,7 @@ export const KodeveilBot = () => {
             <div className="flex items-center justify-between bg-indigo-600 px-4 py-4 text-white">
               <div className="flex items-center gap-3">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
-                  <Sparkles className="h-5 w-5" />
+                  <Bot className="h-5 w-5" />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold">Kodeveil Bot</h3>
@@ -133,7 +133,7 @@ export const KodeveilBot = () => {
                   className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
                 >
                   <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${msg.role === 'user' ? 'bg-slate-200 text-slate-600 dark:bg-[#1a1b23] dark:text-slate-400' : 'bg-indigo-100 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400'}`}>
-                    {msg.role === 'user' ? <User className="h-4 w-4" /> : <Sparkles className="h-4 w-4" />}
+                    {msg.role === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
                   </div>
                   <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm ${msg.role === 'user' ? 'bg-indigo-600 text-white rounded-tr-sm' : 'bg-white text-slate-800 shadow-sm ring-1 ring-slate-200 dark:bg-[#15161d] dark:text-slate-200 dark:ring-white/10 rounded-tl-sm'}`}>
                     {/* Render line breaks */}

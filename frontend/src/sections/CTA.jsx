@@ -51,7 +51,7 @@ export const CTA = () => {
               Let's build something your
               <br />
               competitors will{" "}
-              <span className="text-white/40">wish they had.</span>
+              <span className="text-white">wish they had.</span>
             </h2>
 
             <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-xl mx-auto">
