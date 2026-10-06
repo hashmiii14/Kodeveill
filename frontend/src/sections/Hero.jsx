@@ -23,6 +23,40 @@ const CLIENT_LOGOS = [
 
 const spring = { type: "spring", stiffness: 100, damping: 20, mass: 0.8 };
 
+const AnimatedMesh = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    {/* Indigo Blob */}
+    <motion.div
+      animate={{
+        x: [0, 100, -50, 0],
+        y: [0, 50, -100, 0],
+        scale: [1, 1.1, 0.9, 1],
+      }}
+      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+      className="absolute top-[20%] left-[20%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full mix-blend-screen filter blur-[120px] opacity-50"
+    />
+    {/* Violet Blob */}
+    <motion.div
+      animate={{
+        x: [0, -100, 80, 0],
+        y: [0, -80, 100, 0],
+        scale: [1, 0.9, 1.1, 1],
+      }}
+      transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+      className="absolute bottom-[20%] right-[20%] w-[600px] h-[600px] bg-violet-600/20 rounded-full mix-blend-screen filter blur-[120px] opacity-40"
+    />
+    {/* Blue Blob */}
+    <motion.div
+      animate={{
+        x: [0, 60, -80, 0],
+        y: [0, -100, 60, 0],
+      }}
+      transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full mix-blend-screen filter blur-[150px] opacity-30"
+    />
+  </div>
+);
+
 export const Hero = () => {
   return (
     <>
@@ -32,6 +66,9 @@ export const Hero = () => {
         data-nav-dark="true"
         className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#0D0E12]"
       >
+        {/* Animated Mesh Background */}
+        <AnimatedMesh />
+
         {/* Ambient gradient overlay */}
         <div
           className="absolute inset-0 z-10 pointer-events-none"
@@ -39,16 +76,6 @@ export const Hero = () => {
             background: "linear-gradient(rgba(8, 9, 12, 0.4) 0%, rgba(8, 9, 12, 0.2) 30%, rgba(8, 9, 12, 0.3) 60%, rgba(8, 9, 12, 0.85) 100%)"
           }}
           aria-hidden="true"
-        />
-
-        {/* Subtle radial glow behind hero content */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] opacity-40"
-          style={{
-            background: "radial-gradient(50% 50% at 50% 50%, rgba(99, 102, 241, 0.15), transparent 70%)",
-            filter: "blur(60px)"
-          }}
         />
 
         {/* Dot grid overlay */}
